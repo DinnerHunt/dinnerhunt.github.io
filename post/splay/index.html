@@ -1,0 +1,395 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Splay | Gridea</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dinnerhunt.cn">
+  <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1556983704380" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Splay
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-04 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p><a href="https://www.luogu.org/problemnew/show/P3369">普通平衡树</a></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 200005;
+int ch[maxd][2],val[maxd],cnt[maxd],par[maxd],size[maxd],rev[maxd];
+int root,ncnt;
+
+//判断自身在父节点的左右
+int chk(int x){         
+    return ch[par[x]][1] == x;
+}
+//更新数组
+void pushup(int x){
+    size[x] = size[ch[x][0]] + size[ch[x][1]] + cnt[x];
+}
+//旋转操作
+void rotate(int x) {    //将x节点往上提一层
+    int y = par[x], z = par[y], k = chk(x), w = ch[x][k^1]; 
+    // 如果在父节点左边，则取右儿子，不然则取左儿子，为了保持中序顺序不变
+    ch[y][k] = w; par[w] = y;   
+    ch[z][chk(y)] = x; par[x] = z;  
+    ch[x][k^1] = y; par[y] = x; //将原本属于儿子节点给y
+    pushup(y); pushup(x);   //更新节点数量
+}
+//伸展操作
+void splay(int x, int goal = 0) {   //将x节点提升到goal节点下
+    while (par[x] != goal) {    
+        int y = par[x], z = par[y];
+        if (z != goal) {        //  如果爷爷节点不是指定节点，那么得选择2次
+            if (chk(x) == chk(y)) rotate(y);    //如果是一条直线，那么要先旋转父亲节点
+            else rotate(x); 
+        }
+        rotate(x);   //再选择一次       
+    }
+    if (!goal) root = x;
+}
+
+void find(int x){   //将x的前驱提到根
+    if(!root) return;   //  如果根为0，则退出
+    int cur = root;     
+    while(ch[cur][x&gt;val[cur]] &amp;&amp; x!=val[cur])
+        cur = ch[cur][x&gt;val[cur]];
+    splay(cur);     //将cur提到根
+}  
+
+void insert(int x){
+    int cur = root, p=0;
+    while(cur &amp;&amp; val[cur]!=x){
+        p = cur;
+        cur = ch[cur][x&gt;val[cur]];
+    }
+    if(cur) cnt[cur]++;
+    else {
+        cur = ++ncnt;
+        if(p) ch[p][x&gt;val[p]] = cur;
+        ch[cur][0] = ch[cur][1] = 0;
+        val[cur] = x;par[cur] = p;
+        cnt[cur] = size[cur] = 1;
+    }
+    splay(cur);
+}
+
+int kth(int k){
+    int cur = root;
+    while(1){
+        //pushdown(cur);
+        if(ch[cur][0] &amp;&amp; k &lt;= size[ch[cur][0]])  //往左
+            cur = ch[cur][0];
+        else if(k &gt; size[ch[cur][0]] + cnt[cur]){ //往右
+            k -= size[ch[cur][0]] + cnt[cur];
+            cur = ch[cur][1];
+        }
+        else return cur;
+    }
+}
+int pre(int x){ //提到根后，左儿子的最右儿子
+    find(x);
+    if(val[root] &lt; x) return root;
+    int cur = ch[root][0];
+    while(ch[cur][1]) cur = ch[cur][1];
+    return cur;
+}
+int succ(int x){ //提到根后，右儿子的最左儿子
+    find(x);
+    if(val[root] &gt; x) return root;
+    int cur = ch[root][1];
+    while(ch[cur][0]) cur = ch[cur][0];
+    return cur;
+}
+void remove(int x){ 
+    int last = pre(x),next = succ(x);
+    splay(last);splay(next,last);   // 将前驱挪到根，将后驱挪到他的儿子，一定会在右儿子
+    int del = ch[next][0];          // 这时后驱一定只有一个左儿子，因为一个数的前驱和后驱之间只有它自己
+    if(cnt[del] &gt; 1){
+        cnt[del]--;
+        splay(del);
+    }
+    else ch[next][0] = 0;
+}
+inline int read(){
+    int f=1,x=0;char ch;
+    do{ch=getchar();if(ch=='-')f=-1;}while(ch&lt;'0'||ch&gt;'9');
+    do{x=x*10+ch-'0';ch=getchar();}while(ch&gt;='0'&amp;&amp;ch&lt;='9');
+    return f*x;
+}
+inline int print(int x){
+    if(x&lt;0){putchar('-');x=-x;}  
+    if(x&gt;=10){print(x/10);}
+    putchar(x%10+'0');
+}
+int main(){
+    int n = read();
+    insert(0x3f3f3f3f);
+    insert(0xcfcfcfcf);
+    for(int i=1;i&lt;=n;i++){
+        int x = read(),y=read();
+        switch(x){
+            case 1:
+                insert(y);
+                break;
+            case 2:
+                remove(y);
+                break;
+            case 3:
+                find(y);
+                print(size[ch[root][0]]);
+                putchar(10);
+                break;
+            case 4:
+                print(val[kth(y+1)]);
+                putchar(10);
+                break;
+            case 5:
+                print(val[pre(y)]);
+                putchar(10);
+                break;
+            case 6:
+                print(val[succ(y)]);
+                putchar(10);
+                break;
+        }
+    }
+    return 0;
+}
+
+</code></pre>
+<br>
+<p><a href="https://www.luogu.org/problemnew/show/P3391">文艺平衡树</a></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 200005;
+int ch[maxd][2],val[maxd],cnt[maxd],par[maxd],size[maxd],rev[maxd];
+int root,ncnt,n,m,flag;
+
+//判断自身在父节点的左右
+int chk(int x){         
+    return ch[par[x]][1] == x;
+}
+//更新数组
+void pushup(int x){
+    size[x] = size[ch[x][0]] + size[ch[x][1]] + cnt[x];
+}
+//旋转操作
+void rotate(int x) {    //将x节点往上提一层
+    int y = par[x], z = par[y], k = chk(x), w = ch[x][k^1]; 
+    // 如果在父节点左边，则取右儿子，不然则取左儿子，为了保持中序顺序不变
+    ch[y][k] = w; par[w] = y;   
+    ch[z][chk(y)] = x; par[x] = z;  
+    ch[x][k^1] = y; par[y] = x; //将原本属于儿子节点给y
+    pushup(y); pushup(x);   //更新节点数量
+}
+//伸展操作
+void splay(int x, int goal = 0) {   //将x节点提升到goal节点下
+    while (par[x] != goal) {    
+        int y = par[x], z = par[y];
+        if (z != goal) {        //  如果爷爷节点不是指定节点，那么得选择2次
+            if (chk(x) == chk(y)) rotate(y);    //如果是一条直线，那么要先旋转父亲节点
+            else rotate(x); 
+        }
+        rotate(x);   //再选择一次       
+    }
+    if (!goal) root = x;
+}
+
+void find(int x){   //将x的前驱提到根
+    if(!root) return;   //  如果根为0，则退出
+    int cur = root;     
+    while(ch[cur][x&gt;val[cur]] &amp;&amp; x!=val[cur])
+        cur = ch[cur][x&gt;val[cur]];
+    splay(cur);     //将cur提到根
+}  
+
+void insert(int x){
+    int cur = root, p=0;
+    while(cur &amp;&amp; val[cur]!=x){
+        p = cur;
+        cur = ch[cur][x&gt;val[cur]];
+    }
+    if(cur) cnt[cur]++;
+    else {
+        cur = ++ncnt;
+        if(p) ch[p][x&gt;val[p]] = cur;
+        ch[cur][0] = ch[cur][1] = 0;
+        val[cur] = x;par[cur] = p;
+        cnt[cur] = size[cur] = 1;
+    }
+    splay(cur);
+}
+
+void pushdown(int x){
+    if(rev[x]){
+        swap(ch[x][0],ch[x][1]);
+        rev[ch[x][0]] ^=1;
+        rev[ch[x][1]] ^=1;
+        rev[x] = 0;
+    }
+}
+int kth(int k){
+    int cur = root;
+    while(1){
+        pushdown(cur);
+        if(ch[cur][0] &amp;&amp; k &lt;= size[ch[cur][0]])  //往左
+            cur = ch[cur][0];
+        else if(k &gt; size[ch[cur][0]] + cnt[cur]){ //往右
+            k -= size[ch[cur][0]] + cnt[cur];
+            cur = ch[cur][1];
+        }
+        else return cur;
+    }
+}
+int pre(int x){ //提到根后，左儿子的最右儿子
+    find(x);
+    if(val[root] &lt; x) return root;
+    int cur = ch[root][0];
+    while(ch[cur][1]) cur = ch[cur][1];
+    return cur;
+}
+int succ(int x){ //提到根后，右儿子的最左儿子
+    find(x);
+    if(val[root] &gt; x) return root;
+    int cur = ch[root][1];
+    while(ch[cur][0]) cur = ch[cur][0];
+    return cur;
+}
+void remove(int x){ 
+    int last = pre(x),next = succ(x);
+    splay(last);splay(next,last);   // 将前驱挪到根，将后驱挪到他的儿子，一定会在右儿子
+    int del = ch[next][0];          // 这时后驱一定只有一个左儿子，因为一个数的前驱和后驱之间只有它自己
+    if(cnt[del] &gt; 1){
+        cnt[del]--;
+        splay(del);
+    }
+    else ch[next][0] = 0;
+}
+void reverse(int l,int r){
+    int x = kth(l),y =kth(r+2);
+    splay(x);splay(y,x);
+    rev[ch[y][0]] ^= 1;
+}
+void output(int x) {
+    pushdown(x);
+    if (ch[x][0]) output(ch[x][0]);
+    if (val[x] &amp;&amp; val[x] &lt;= n) printf(&quot;%d &quot;, val[x]);
+    if (ch[x][1]) output(ch[x][1]);
+}
+inline int read(){
+    int f=1,x=0;char ch;
+    do{ch=getchar();if(ch=='-')f=-1;}while(ch&lt;'0'||ch&gt;'9');
+    do{x=x*10+ch-'0';ch=getchar();}while(ch&gt;='0'&amp;&amp;ch&lt;='9');
+    return f*x;
+}
+inline int print(int x){
+    if(x&lt;0){putchar('-');x=-x;}  
+    if(x&gt;=10){print(x/10);}
+    putchar(x%10+'0');
+}
+int main(){
+    n = read(),m=read();
+    for(int i=0;i&lt;=n+1;i++) insert(i);
+    for(int i=1;i&lt;=m;i++){
+        int a = read(),b=read();
+        reverse(a,b);
+    }
+    output(root);
+    return 0;
+}
+
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

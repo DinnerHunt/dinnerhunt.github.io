@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>高精度 | Gridea</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dinnerhunt.cn">
+  <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1556983704380" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              高精度
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-04 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <pre><code class="language-cpp">struct bign
+{
+    int d[maxn], len;
+ 
+    void clean() { while(len &gt; 1 &amp;&amp; !d[len-1]) len--; }
+ 
+    bign()          { memset(d, 0, sizeof(d)); len = 1; }
+    bign(int num)   { *this = num; } 
+    bign(char* num) { *this = num; }
+    bign operator = (const char* num){
+        memset(d, 0, sizeof(d)); len = strlen(num);
+        for(int i = 0; i &lt; len; i++) d[i] = num[len-1-i] - '0';
+        clean();
+        return *this;
+    }
+    bign operator = (int num){
+        char s[20]; sprintf(s, &quot;%d&quot;, num);
+        *this = s;
+        return *this;
+    }
+ 
+    bign operator + (const bign&amp; b){
+        bign c = *this; int i;
+        for (i = 0; i &lt; b.len; i++){
+            c.d[i] += b.d[i];
+            if (c.d[i] &gt; 9) c.d[i]%=10, c.d[i+1]++;
+        }
+        while (c.d[i] &gt; 9) c.d[i++]%=10, c.d[i]++;
+        c.len = max(len, b.len);
+        if (c.d[i] &amp;&amp; c.len &lt;= i) c.len = i+1;
+        return c;
+    }
+    bign operator - (const bign&amp; b){
+        bign c = *this; int i;
+        for (i = 0; i &lt; b.len; i++){
+            c.d[i] -= b.d[i];
+            if (c.d[i] &lt; 0) c.d[i]+=10, c.d[i+1]--;
+        }
+        while (c.d[i] &lt; 0) c.d[i++]+=10, c.d[i]--;
+        c.clean();
+        return c;
+    }
+    bign operator * (const bign&amp; b)const{
+        int i, j; bign c; c.len = len + b.len; 
+        for(j = 0; j &lt; b.len; j++) for(i = 0; i &lt; len; i++) 
+            c.d[i+j] += d[i] * b.d[j];
+        for(i = 0; i &lt; c.len-1; i++)
+            c.d[i+1] += c.d[i]/10, c.d[i] %= 10;
+        c.clean();
+        return c;
+    }
+    bign operator / (const bign&amp; b){
+        int i, j;
+        bign c = *this, a = 0;
+        for (i = len - 1; i &gt;= 0; i--)
+        {
+            a = a*10 + d[i];
+            for (j = 0; j &lt; 10; j++) if (a &lt; b*(j+1)) break;
+            c.d[i] = j;
+            a = a - b*j;
+        }
+        c.clean();
+        return c;
+    }
+    bign operator % (const bign&amp; b){
+        int i, j;
+        bign a = 0;
+        for (i = len - 1; i &gt;= 0; i--)
+        {
+            a = a*10 + d[i];
+            for (j = 0; j &lt; 10; j++) if (a &lt; b*(j+1)) break;
+            a = a - b*j;
+        }
+        return a;
+    }
+    bign operator += (const bign&amp; b){
+        *this = *this + b;
+        return *this;
+    }
+ 
+    bool operator &lt;(const bign&amp; b) const{
+        if(len != b.len) return len &lt; b.len;
+        for(int i = len-1; i &gt;= 0; i--)
+            if(d[i] != b.d[i]) return d[i] &lt; b.d[i];
+        return false;
+    }
+    bool operator &gt;(const bign&amp; b) const{return b &lt; *this;}
+    bool operator&lt;=(const bign&amp; b) const{return !(b &lt; *this);}
+    bool operator&gt;=(const bign&amp; b) const{return !(*this &lt; b);}
+    bool operator!=(const bign&amp; b) const{return b &lt; *this || *this &lt; b;}
+    bool operator==(const bign&amp; b) const{return !(b &lt; *this) &amp;&amp; !(b &gt; *this);}
+ 
+    string str() const{
+        char s[maxn]={};
+        for(int i = 0; i &lt; len; i++) s[len-1-i] = d[i]+'0';
+        return s;
+    }
+};
+ 
+istream&amp; operator &gt;&gt; (istream&amp; in, bign&amp; x)
+{
+    string s;
+    in &gt;&gt; s;
+    x = s.c_str();
+    return in;
+}
+ 
+ostream&amp; operator &lt;&lt; (ostream&amp; out, const bign&amp; x)
+{
+    out &lt;&lt; x.str();
+    return out;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

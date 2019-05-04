@@ -1,0 +1,192 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LOJ-10153 二叉苹果树 | Gridea</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dinnerhunt.cn">
+  <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1556983704380" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              LOJ-10153 二叉苹果树
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-04 ·
+              </time>
+              
+                <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="post-tags">
+                  # 树型DP
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p><a href="https://loj.ac/problem/10153">[LOJ 10153] 二叉苹果树</a></p>
+<h5 id="题意">题意</h5>
+<blockquote>
+<p>有一棵二叉苹果树，如果数字有分叉，一定是分两叉，即没有只有一个儿子的节点。这棵树共 N 个节点，标号 1 至 N，树根编号一定为 1。</p>
+<p>我们用一根树枝两端连接的节点编号描述一根树枝的位置。一棵有四根树枝的苹果树，因为树枝太多了，需要剪枝。但是一些树枝上长有苹果，给定需要保留的树枝数量，求最多能留住多少苹果。</p>
+</blockquote>
+<h5 id="题解">题解</h5>
+<blockquote>
+<p>树形DP中的背包问题<br>
+具体看代码注释</p>
+</blockquote>
+<h5 id="代码">代码</h5>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 105;
+int dp[maxd][maxd],vis[maxd],arr[maxd];
+int n,m,a,b,c;
+struct
+{
+	struct node
+	{
+		int v,net,w;
+	}e[maxd];
+	int f[maxd],eid;
+	void init()
+	{
+		memset(f,-1,sizeof(f));
+		eid=0;
+	}
+	void insert(int a,int b,int c)
+	{
+		e[eid].v = b;
+		e[eid].net = f[a];
+		e[eid].w = c;
+		f[a] = eid++;
+	}
+}G;
+int dfs(int x)
+{
+	if(G.f[x] == -1) return 0;
+	vis[x] = 1;
+	int sum = 0;
+	for(int i=G.f[x];i+1;i=G.e[i].net)
+	{
+		int v = G.e[i].v;
+		if(vis[v]) continue;
+		int t = dfs(v)+1;
+		for(int j=0;j&lt;=sum;j++) arr[j] = dp[x][j];
+		for(int j=0;j&lt;=sum;j++)	
+			for(int k=1;k&lt;=t&amp;&amp;j+k&lt;=m;k++)
+				dp[x][j+k] = max(dp[x][j+k],arr[j]+dp[v][k-1]+G.e[i].w);
+		sum += t;
+	}
+	return sum;
+}
+int main()
+{
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	G.init();
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;n;i++)
+	{
+		scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+		G.insert(a,b,c);
+		G.insert(b,a,c);
+	}
+	dfs(1);
+	printf(&quot;%d&quot;,dp[1][m]);
+	return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dinnerhunt.cn/post/template">
+              <h3 class="post-title">
+                模版
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

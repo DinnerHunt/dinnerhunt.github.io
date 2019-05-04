@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>线性筛 | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,72 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              线性筛
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p>线性筛素数</p>
+<pre><code class="language-cpp">void init()
+{
+    for(int i=2;i&lt;maxd;i++)
+    {
+        if(!vis[i]) pri[++cnt] = i;
+        for(int j=1;j&lt;=cnt&amp;&amp;i*pri[j]&lt;maxd;j++)
+        {
+            vis[i * pri[j]] = 1;
+            if(!(i%prime[j])) break;
+        }
+    }
+}
+</code></pre>
+<br>
+<p>线性筛欧拉函数</p>
+<pre><code class="language-cpp">void init()
+{
+    for(int i=2;i&lt;maxd;i++)
+    {
+        if(!vis[i])
+        {
+            pri[++cnt]=i;
+            phi[i]=i-1;
+        }
+        for(int j=1;j&lt;=cnt&amp;&amp;i*pri[j]&lt;maxd;j++)
+        {
+            vis[i*pri[j]]=1;
+            if(!(i%pri[j]))
+			{
+				phi[i*pri[j]]=phi[i]*pri[j];
+				break;
+			}
+			else phi[i*pri[j]]=phi[i]*(pri[j]-1);
+        }
+    }
+}
+
+</code></pre>
+<br>
+<p>线性筛莫比乌斯函数</p>
+<pre><code class="language-cpp">void init()
+{
+    mu[1] = 1;
+    for(int i=2;i&lt;maxd;i++)
+    {
+        if(!vis[i]) prime[++cnt] = i, mu[i] = -1;
+        for(int j=1;j&lt;=cnt &amp;&amp; i*prime[j] &lt;= maxd;j++)
+        {
+            vis[i*prime[j]] = 1;
+            if(i%prime[j] == 0) break;
+            mu[i*prime[j]] = -mu[i]; 
+        }
+    }
+}
+</code></pre>
 
             </div>
           </article>

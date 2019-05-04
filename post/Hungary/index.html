@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>匈牙利算法 | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,78 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              匈牙利算法
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p>匈牙利算法</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+const int maxd = 1e6+10;
+const int maxn = 1e4+10;
+struct
+{
+    int v,net;
+}e[maxd&lt;&lt;2];
+int f[maxd&lt;&lt;1],eid;
+void insert(int x,int y)
+{
+    e[eid].v = y;
+    e[eid].net = f[x];
+    f[x] = eid++;
+}
+bool vis[maxd&lt;&lt;1];
+int ans[maxd&lt;&lt;1],n,m;
+
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid=0;
+}
+bool dfs(int x)
+{
+    for(int i=f[x];i+1;i=e[i].net)
+    {
+        int v = e[i].v;
+        if(!vis[v])
+        {
+            vis[v] = true;
+            if(ans[v] ==-1||dfs(ans[v]))
+            {
+                ans[v] = x;
+                return true; 
+            }
+        }
+    }
+    return false;
+}
+int maxmatch()
+{
+    int cnt = 0;
+    memset(ans,-1,sizeof(ans));
+    for(int i=1;i&lt;maxd;i++)
+    {
+        memset(vis,0,sizeof(vis));
+        if(!dfs(i)) return cnt;
+        cnt++;
+    }
+    return cnt;
+}
+int main()
+{
+	freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	init();
+	return 0;
+}
+</code></pre>
 
             </div>
           </article>

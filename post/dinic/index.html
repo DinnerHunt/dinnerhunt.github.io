@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>Dinic | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,106 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              Dinic
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p>最大流算法 <strong>Dinic</strong></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+using namespace std;
+const int maxd = 505;   //点数
+const int maxn = 1e5+10; //边数
+const int inf = 1e9+10;
+struct
+{
+    int v,net,c;
+}e[maxn];
+int f[maxd],eid;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid = 0;
+}
+void insert(int x,int y,int c)
+{
+    e[eid].v = y;
+    e[eid].net = f[x];
+    e[eid].c = c;
+    f[x] = eid++;
+}
+void addedge(int x,int y,int z)
+{
+    insert(x,y,z);
+    insert(y,x,0);
+}
+int s,t;
+int d[maxd],in[maxd],out[maxd],k[maxd];
+bool bfs()
+{
+    memset(d,-1,sizeof(d));
+    queue&lt;int&gt; que;
+    que.push(s);
+    d[s] = 0;
+    while(!que.empty())
+    {
+        int x = que.front();
+        que.pop();
+        for(int i=f[x];i!=-1;i=e[i].net)
+        {
+            int v = e[i].v;
+            if(e[i].c &gt; 0 &amp;&amp; d[v] ==-1)
+            {
+                que.push(v);
+                d[v] = d[x] +1;
+            }
+        }
+    }
+    return (d[t] != -1);
+}
+int dfs(int x,int flow)
+{
+    if( x== t) return flow;
+    int res = 0;
+    for(int i = f[x];i+1;i=e[i].net)
+    {
+        int v = e[i].v;
+        if(e[i].c &gt;0 &amp;&amp; d[x]+1 == d[v])
+        {
+            int tmp = dfs(v,min(flow,e[i].c));
+            flow -= tmp;
+            e[i].c -= tmp;
+            res += tmp;
+            e[i^1].c += tmp;
+            if(!flow) break;
+        } 
+    }
+    if(res == 0) d[x] = -1;
+    return res;
+}
+int maxflow()
+{
+    int res = 0;
+    while(bfs()) res += dfs(s,inf);
+    return res;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    init();
+    return 0;
+}
+
+</code></pre>
 
             </div>
           </article>

@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NOI2001 炮兵阵地 | Gridea</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dinnerhunt.cn">
+  <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1556983704380" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              NOI2001 炮兵阵地
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-04 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p><a href="https://www.luogu.org/problemnew/show/P2704">[NOI2001]炮兵阵地</a></p>
+<h4 id="题意">题意</h4>
+<blockquote>
+<p>给定一个字母矩阵，字母P可以摆放一个十字架型的方块，求不冲突的最多字母摆法</p>
+</blockquote>
+<h4 id="题解">题解</h4>
+<blockquote>
+<p>预处理出每行的可行方案，然后每次保存前两次的方案，因为高度为3，不预处理会炸时空复杂度<br>
+然后正常状压DP即可</p>
+</blockquote>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+using namespace std;
+const int maxd = 105;
+int dp[maxd][maxd][maxd], G[maxd], mp[maxd], ans;
+bool check(int x, int y) { return (x | y) == y; }
+bool ok(int x) { return !((x &amp; (x &gt;&gt; 1)) || (x &amp; (x &gt;&gt; 2))); }
+bool grep(int x, int y) { return !(x &amp; y); }
+int count(int x) {
+    int s = 0;
+    while (x) {
+        s += (x &amp; 1);
+        x &gt;&gt;= 1;
+    }
+    return s;
+}
+int main() {
+    int n, m, len = 0;
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+    for (int i = 0; i &lt; n; i++)
+        for (int j = 0; j &lt; m; j++) {
+            char ch;
+            cin &gt;&gt; ch;
+            if (ch == 'P')
+                G[i] += 1 &lt;&lt; (m - j - 1);
+        }
+    for (int i = 0; i &lt; (1 &lt;&lt; m); i++)
+        if (ok(i))
+            mp[len++] = i;
+
+    for (int i = 0; i &lt; len; i++)
+        for (int j = 0; j &lt; len; j++)
+            if (check(mp[i], G[0]) &amp;&amp; check(mp[j], G[1]) &amp;&amp; grep(mp[i], mp[j]))
+                dp[1][i][j] = count(mp[i]) + count(mp[j]);
+
+    for (int i = 2; i &lt; n; i++)
+        for (int j = 0; j &lt; len; j++)
+            if (check(mp[j], G[i]))
+                for (int k = 0; k &lt; len; k++)
+                    if (check(mp[k], G[i - 1]) &amp;&amp; grep(mp[j], mp[k]))
+                        for (int l = 0; l &lt; len; l++)
+                            if (check(mp[l], G[i - 2]) &amp;&amp; grep(mp[j], mp[l]) &amp;&amp; grep(mp[k], mp[l]))
+                                dp[i][k][j] = max(dp[i][k][j], dp[i - 1][l][k] + count(mp[j]));
+
+    for (int i = 0; i &lt; len; i++)
+        for (int j = 0; j &lt; len; j++) ans = max(ans, dp[n - 1][i][j]);
+
+    printf(&quot;%d&quot;, ans);
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dinnerhunt.cn/post/P2607">
+              <h3 class="post-title">
+                ZJOI-2008 骑士
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

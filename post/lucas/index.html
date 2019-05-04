@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lucas定理 | Gridea</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dinnerhunt.cn">
+  <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1556983704380" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Lucas定理
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-04 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <h4 id="组合数的求法">组合数的求法</h4>
+<p><code>$O(n^2)$</code> 递推</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>n</mi><mi>m</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>m</mi></mrow></msubsup><mo>+</mo><msubsup><mi>C</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">C_n^m = C_{n-1}^{m} + C_{n-1}^{m-1}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.864108em;"></span><span class="strut bottom" style="height:1.178878em;vertical-align:-0.31477em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.247em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span style="top:-0.4129999999999999em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.24700000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.41300000000000003em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">m</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.256439em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.41300000000000003em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">m</span><span class="mbin">−</span><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> 线性逆元法</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>c</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>i</mi><mo>!</mo><mi>i</mi><mi>n</mi><mi>v</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>i</mi><mi>n</mi><mi>v</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>!</mo><msubsup><mi>C</mi><mi>n</mi><mi>m</mi></msubsup><mo>=</mo><mi>f</mi><mi>a</mi><mi>c</mi><mo>[</mo><mi>n</mi><mo>]</mo><mo>⋅</mo><mi>i</mi><mi>n</mi><mi>v</mi><mo>[</mo><mi>n</mi><mo>−</mo><mi>m</mi><mo>]</mo><mo>⋅</mo><mi>i</mi><mi>n</mi><mi>v</mi><mo>[</mo><mi>m</mi><mo>]</mo></mrow><annotation encoding="application/x-tex"> fac[i] = i!   
+ 
+ inv[i] = inv[i]!  
+ 
+ C_n^m = fac[n] \cdot inv[n-m] \cdot inv[m]   
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit">i</span><span class="mclose">!</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mclose">!</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.247em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span style="top:-0.4129999999999999em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mclose">]</span><span class="mbin">⋅</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathit">m</span><span class="mclose">]</span><span class="mbin">⋅</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord mathit">m</span><span class="mclose">]</span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> 卢卡斯定理
+当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">p</span></span></span></span> 为质数时</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>n</mi><mi>m</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mi>p</mi></mrow><mrow><mi>m</mi><mi mathvariant="normal">/</mi><mi>p</mi></mrow></msubsup><mo>⋅</mo><msubsup><mi>C</mi><mrow><mi>n</mi><mi mathvariant="normal">%</mi><mi>p</mi></mrow><mrow><mi>m</mi><mi mathvariant="normal">%</mi><mi>p</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">C_n^m = C_{n/p}^{m/p} \cdot C_{n \% p}^{m \% p} 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.0448em;"></span><span class="strut bottom" style="height:1.5599999999999998em;vertical-align:-0.5151999999999999em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.247em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span style="top:-0.4129999999999999em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.3401999999999999em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span><span class="mord mathrm">/</span><span class="mord mathit">p</span></span></span></span><span style="top:-0.5198em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">m</span><span class="mord mathrm">/</span><span class="mord mathit">p</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">⋅</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.34019999999999995em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span><span class="mord mathrm">%</span><span class="mord mathit">p</span></span></span></span><span style="top:-0.4809079999999999em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">m</span><span class="mord mathrm">%</span><span class="mord mathit">p</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+using namespace std;
+const int maxd = 1e4+10;
+long long t,n,m,p,fac[maxd];
+long long pow(long long x,long long y)
+{
+    long long now = 1;
+    while(y)
+    {
+        if(y&amp;1) (now *= x)%=p;
+        (x *= x)%=p;
+        y&gt;&gt;=1;
+    }
+    return now;
+}
+long long C(long long n,long long m)
+{
+    if(n&lt;m) return 0;
+    long long a = 1, b =1;
+    for(long long i = n-m+1; i&lt;=n; i++) (a*=i)%=p;
+    for(long long i = 1; i&lt;=m; i++) (b*=i)%=p;
+    return a * pow(b,p-2) %p;
+}
+long long lucas(long long n,long long m)
+{
+    if(!m) return 1;
+    return C(n%p,m%p) * lucas(n/p,m/p)%p;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%lld&quot;,&amp;t); fac[1] = 1;
+    for(int i=1;i&lt;=t;i++)
+    {
+        scanf(&quot;%lld %lld %lld&quot;,&amp;n,&amp;m,&amp;p);
+        printf(&quot;%lld\n&quot;,lucas(n,m));   
+    }
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

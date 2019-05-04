@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>ExKMP | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,76 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              ExKMP
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p>求出字符串Str的所有后缀与T的最长公共前缀</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int maxd = 5e5 + 10;
+int net[maxd],extend[maxd];
+char T[maxd],str[maxd];
+void getnet() // 所有后缀与前缀的最大匹配
+{
+	net[0] = strlen(T);
+	int p = 0; 
+	while(T[p+1]&amp;&amp;T[p] == T[p+1]) p++;
+	int k = 1;
+	net[k] = p;
+	for(int i=2;T[i];i++)
+	{
+		p = k + net[k] - 1;
+		int l = net[i-k];
+		if(i+l &lt;= p) net[i] = l;
+		else 
+		{
+			int j = p - i +1; // 当前匹配到的位置
+			j = max(j,0);
+			while(T[i+j] &amp;&amp; T[i+j] == T[j]) j++;
+			net[i] = j;
+			k = i;
+		}
+	}
+}
+void exkmp()
+{
+	int p = 0;
+	while(T[p] &amp;&amp; str[P] &amp;&amp; T[p] == str[p]) p++;
+	int k = 0;
+	extend[k] = p;
+	for(int i=1;str[i];i++)
+	{
+		p = k + extend[k] - 1;
+		int l = net[i-k];
+		if(i+l &lt;= p ) extend[i] = l; 
+		else
+		{
+			int j = p - i +1;
+			j = max(j,0);
+			while(T[j]&amp;&amp;str[i+j]&amp;&amp;T[j] == str[i+j]) j++;
+			extend[i] = j;
+			k = i;
+		}
+	}   
+}
+int main()
+{
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+
+	return 0;
+
+}
+</code></pre>
 
             </div>
           </article>

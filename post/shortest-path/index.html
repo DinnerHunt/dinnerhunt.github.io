@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>最短路 | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,110 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              最短路
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p><strong>zkw线段树优化-dijkstra</strong></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 2500;		//点数
+const int maxn = 10000;		//边数
+const int inf = 1e9;
+struct node
+{
+	int v,w,next;
+}e[maxn*2];
+int f[maxd],eid;
+void init()
+{
+	memset(f,-1,sizeof(f));
+	eid = 0;
+}
+void insert(int a,int b,int c)
+{
+	e[eid].v = b;
+	e[eid].w = c;
+	e[eid].next = f[a];
+	f[a] = eid++;
+}
+struct
+{
+	int minx[maxd*4],v[maxd*4];
+	int n,len;
+	void push_up(int x)
+	{
+		minx[x] = min(minx[x&lt;&lt;1],minx[x&lt;&lt;1|1]);
+		v[x] = minx[x&lt;&lt;1] &lt; minx[x&lt;&lt;1|1] ? v[x&lt;&lt;1] : v[x&lt;&lt;1|1];
+	}
+	void build()
+	{
+		for(len=1;len&lt;=n+1;len&lt;&lt;=1);
+		for(int i=len;i&lt;=(len&lt;&lt;1)-1;i++)
+		{
+			minx[i] = inf;
+			v[i] = i-len;
+		}
+		for(int i=len-1;i;i--) push_up(i);
+	}
+	void updata(int x,int k)
+	{
+		for(minx[x+=len]=k,x&gt;&gt;=1;x;x&gt;&gt;=1) 
+		{
+			//printf(&quot;%d &quot;,x);
+			push_up(x);
+		}
+	}
+}tree;
+int dist[maxd],n,m,ts,te,a,b,c;
+void dijkstra()
+{
+	//ts 起始点，te终点，n总点数
+	memset(dist,0x3f,sizeof(dist));
+	tree.n = n;
+	tree.build();
+	dist[ts] = 0;
+	tree.updata(ts,0);
+	while(tree.minx[1]!=inf)
+	{
+		int v = tree.v[1];
+		tree.updata(v,inf);
+		for(int i=f[v];i+1;i=e[i].next)
+		{
+			int s = e[i].v,w = e[i].w;
+			if(dist[v]+w &lt; dist[s])
+			{
+				dist[s] = dist[v] + w;
+				tree.updata(s,dist[s]);
+			}
+		}
+	}
+	printf(&quot;%d&quot;,dist[te]);
+}
+int main()
+{
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	init();
+	scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;ts,&amp;te);
+	for(int i=1;i&lt;=m;i++)
+	{
+		scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+		insert(a,b,c);
+		insert(b,a,c);
+	}
+	dijkstra();
+	return 0;
+}
+</code></pre>
 
             </div>
           </article>

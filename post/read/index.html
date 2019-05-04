@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>快读 | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,46 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              快读
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+typedef unsigned long long ull;
+const int maxd = 1e5+10;
+inline int read()
+{
+    int f=1,x=0;char ch;
+    do{ch=getchar();if(ch=='-')f=-1;}while(ch&lt;'0'||ch&gt;'9');
+    do{x=x*10+ch-'0';ch=getchar();}while(ch&gt;='0'&amp;&amp;ch&lt;='9');
+    return f*x;
+}
+inline void print(int x)
+{
+    if(x&lt;0){putchar('-');x=-x;}  
+    if(x&gt;=10){print(x/10);}
+    putchar(x%10+'0');
+}
+void init()
+{
+	freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+}
+int main()
+{
+	init();
+    return 0;
+}	
+</code></pre>
 
             </div>
           </article>

@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>高斯消元 | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,66 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              高斯消元
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p><a href="https://www.luogu.org/problemnew/show/P3389">P3389 高斯消元</a></p>
+<p>给定一个线性方程组，对其求解</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const double eps = 1e-8;
+const int maxd = 100+5;
+double arr[maxd][maxd],ans[maxd];
+int n;
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=n+1;j++)
+            scanf(&quot;%lf&quot;,&amp;arr[i][j]);
+    for(int i=1;i&lt;=n;i++)
+    {
+        int p = i;
+        for(int j=i;j&lt;=n;j++)   //找系数最大的点
+            if(fabs(arr[j][i]) &lt; fabs(arr[p][i])) p=j;
+
+        if(fabs(arr[i][i])&lt;=eps) 
+        {
+            printf(&quot;No Solution\n&quot;);
+            return 0;
+        }
+        if(i!=p) swap(arr[i],arr[p]);
+        double div = arr[i][i];
+        for(int j=i+1;j&lt;=n+1;j++) arr[i][j] /= div; //列中所有系数全部除以该数
+        for(int j=i+1;j&lt;=n;j++)
+        {
+            div = arr[j][i];    
+            for(int k=i;k&lt;=n+1;k++) arr[j][k] -= arr[i][k] * div; //其他行减去该行
+        }
+    }
+    ans[n] = arr[n][n+1];
+		for(int i=n-1;i&gt;=1;i--)
+		{
+				ans[i] = arr[i][n+1];
+				for(int j=i+1;j&lt;=n;j++)
+						ans[i] -= arr[i][j] * ans[j];
+		}
+		for(int i=1;i&lt;=n;i++)
+				printf(&quot;%.2lf\n&quot;,ans[i]);
+    return 0;
+}   
+</code></pre>
 
             </div>
           </article>

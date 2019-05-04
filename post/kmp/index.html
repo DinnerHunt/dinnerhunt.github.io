@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>KMP | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,60 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              KMP
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p><a href="https://www.luogu.org/problemnew/show/P3375">P3375 KMP</a></p>
+<p>判断 str 是否在 p 中出现过</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+using namespace std;
+const int maxd = 1e6;
+int fail[maxd],ans;
+char str[maxd],p[maxd]	// 文本串，匹配串
+void getfail()
+{
+	fail[0] = -1;
+	int match = -1;
+	for(int i=1;p[i];i++)
+	{
+		while(match&gt;=0&amp;&amp;p[match+1] != p[i])
+			match = fail[match];
+		if(p[match+1] == p[i]) match++;
+		fail[i] = match;
+	}
+}
+void kmp()
+{
+	int match = -1;
+	for(int i=0;str[i];i++)
+	{
+		while(match&gt;=0&amp;&amp;p[match+1] != str[i])
+			match = fail[match];
+		if(p[match+1] == str[i]) 
+		{
+			match++;
+			if(!p[match+1])
+			{
+				ans = 1;
+				return;
+			}
+		}
+	}
+}
+int main()
+{
+	fail();
+	kmp();
+	return 0;
+}
+</code></pre>
 
             </div>
           </article>

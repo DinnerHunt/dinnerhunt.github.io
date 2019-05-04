@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>拉格朗日插值 | Gridea</title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
@@ -72,22 +72,58 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              拉格朗日插值
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-05-04 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <p>水题杀手<br>
-网络赛守门员</p>
-<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
-Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
-CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
-Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+              <p><a href="https://www.luogu.org/problemnew/show/P4781">P4781 拉格朗日插值</a></p>
+<p>给定n个点，请你确定这个多项式，并将k代入求值</p>
+<p>求出的值对998244353998244353取模</p>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+typedef long long ll;
+const int maxd = 2005;
+const ll mod = 998244353;
+ll x[maxd],y[maxd],n,k,ans;
+long long pow(long long x,long long y)
+{
+    long long ans = 1;
+    while(y)
+    {
+        if(y&amp;1) ans=ans * x %mod;
+        x = x*x%mod;
+        y&gt;&gt;=1;
+    }
+    return ans;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%lld %lld&quot;,&amp;n,&amp;k);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld %lld&quot;,&amp;x[i],&amp;y[i]);
+    for(int i=1;i&lt;=n;i++)
+    {
+        ll sum=1;
+        for(int j=1;j&lt;=n;j++)
+            if(j!=i) sum = sum*(x[i]+mod-x[j]) %mod;
+        sum = pow(sum,mod-2); // 费马小定理求逆元
+        for(int j=1;j&lt;=n;j++)
+            if(i!=j) sum = sum*(k+mod - x[j])%mod;
+        sum = sum * y[i] %mod;
+        ans = (ans+sum)%mod;
+    }
+    printf(&quot;%lld&quot;,ans);
+    return 0;
+}
+</code></pre>
 
             </div>
           </article>

@@ -1,0 +1,195 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZJOI-2008 骑士 | Gridea</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dinnerhunt.cn">
+  <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1556983704380" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              ZJOI-2008 骑士
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-04 ·
+              </time>
+              
+                <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="post-tags">
+                  # 树型DP
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p><a href="https://www.luogu.org/problemnew/show/P2607">[ZJOI 2008] 骑士</a></p>
+<h5 id="题目">题目</h5>
+<blockquote>
+<p>基树环版没有上司的舞会</p>
+</blockquote>
+<h5 id="题解">题解</h5>
+<blockquote>
+<p>把环拆开，两头分别做一次舞会，求最大值即可</p>
+</blockquote>
+<h5 id="代码">代码</h5>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e6+10;
+int vis[maxd],arr[maxd];
+long long dp[maxd][2],ans;
+int a,b,n,x,k;
+struct node
+{
+    int v,net;
+}e[2*maxd];
+int f[maxd],eid;
+void insert(int x,int y)
+{
+    e[eid].net = f[x];
+    e[eid].v = y;
+    f[x] = eid++;
+}
+void dfs(int x,int last)
+{
+    vis[x] = 1;
+    for(int i=f[x];i+1;i=e[i].net)
+    {
+        if((i^1)==last) continue;
+        int v = e[i].v;
+        if(vis[v]) a=x,b=v,k=i;
+        else dfs(v,i);
+    }
+}
+void dp_dfs(int x,int last)
+{
+    dp[x][0] = 0;
+    dp[x][1] = arr[x];
+    for(int i=f[x];i+1;i=e[i].net)
+    {
+        if((i^1)==last) continue;
+        if(i==k||(i^1)==k) continue;
+        dp_dfs(e[i].v,i);
+        dp[x][0] += max(dp[e[i].v][1],dp[e[i].v][0]);
+        dp[x][1] += dp[e[i].v][0];
+    }
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    memset(f,-1,sizeof(f));
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%d %d&quot;,&amp;arr[i],&amp;x);
+        insert(i,x);insert(x,i);
+    }
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(vis[i]) continue;
+        dfs(i,-1);
+        dp_dfs(a,-1);
+        long long temp = dp[a][0];
+        dp_dfs(b,-1);
+        ans += max(dp[b][0],temp);
+    }
+    printf(&quot;%lld&quot;,ans);
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dinnerhunt.cn/post/Loj10153">
+              <h3 class="post-title">
+                LOJ-10153 二叉苹果树
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AHOI2009 中国象棋 | Gridea</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556983704380">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dinnerhunt.cn">
+  <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1556983704380" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              AHOI2009 中国象棋
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-04 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p><a href="https://www.luogu.org/problemnew/show/P2051">[AHOI2009]中国象棋</a></p>
+<h4 id="题意">题意</h4>
+<blockquote>
+<p>给定一个<code>n x m</code>的矩阵，能在其中摆任意数量的炮，问有多少种不同摆 法</p>
+</blockquote>
+<h4 id="题解">题解</h4>
+<blockquote>
+<p>不像状压DP的多维DP<br>
+因为每行每列都最多只能摆两个炮<br>
+<code>DP[i][j][k]</code> 表示前i行,其中j列有1个炮，k列有两个炮的摆法方案数
+然后一列列往下，每次位置加1或者2个炮，由当前位置推后面位置炮的个数</p>
+</blockquote>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int mod = 9999973;
+const int maxd = 105;
+int n,m;
+long long dp[maxd][maxd][maxd],ans;
+int C(int n)
+{
+	return n*(n-1)/2;
+}
+int main()
+{	
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	dp[0][0][0] = 1;
+	for(int i=0;i&lt;n;i++)
+		for(int j=0;j&lt;=m;j++)
+			for(int k=0;k+j&lt;=m;k++)
+				if(dp[i][j][k])
+				{
+					(dp[i+1][j][k] += dp[i][j][k])%=mod;//不放
+					if(m-j-k)(dp[i+1][j+1][k] += dp[i][j][k]*(m-j-k))%=mod;
+					if(j)(dp[i+1][j-1][k+1] += dp[i][j][k]*j) %=mod;
+					if(m-j-k&gt;=2)(dp[i+1][j+2][k] += dp[i][j][k]*C(m-j-k))%=mod;
+					if(j&amp;&amp;(m-j-k))(dp[i+1][j][k+1] += dp[i][j][k] * j *(m-j-k))%=mod;
+					if(j&gt;=2)(dp[i+1][j-2][k+2] += dp[i][j][k] *C(j)) %=mod;
+				}
+	for( int i = 0; i &lt;= m; ++i ) // 有1个棋子的列
+    for( int j = 0; i+j &lt;= m; ++j ) { // 2个棋子的列
+        ans = ( ans + dp[n][i][j] ) % mod;
+    }
+	printf(&quot;%lld&quot;,ans);
+	return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dinnerhunt.cn/post/P2704">
+              <h3 class="post-title">
+                NOI2001 炮兵阵地
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
