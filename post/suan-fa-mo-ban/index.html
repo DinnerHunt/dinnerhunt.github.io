@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" >
 
-<title>LOJ-10153 二叉苹果树 | dinnerhunt</title>
+<title>算法模版 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556985032293">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556988031070">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -80,91 +80,61 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>LOJ-10153 二叉苹果树</h1>
+            <h1>算法模版</h1>
             <p class="article-meta">
               2019-05-04
               
-                <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
-                  树型DP
+                <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+                  template
                 </a>
               
             </p>
             
+              <img src="https://dinnerhunt.cn/post-images/suan-fa-mo-ban.tif" alt="算法模版">
+            
             <div class="post-content">
-              <p><a href="https://loj.ac/problem/10153">[LOJ 10153] 二叉苹果树</a></p>
-<h5 id="题意">题意</h5>
+              <p>收录了一些个人常用模版</p>
+<!-- more -->
+<h3 id="图论"><strong>图论</strong></h3>
 <blockquote>
-<p>有一棵二叉苹果树，如果数字有分叉，一定是分两叉，即没有只有一个儿子的节点。这棵树共 N 个节点，标号 1 至 N，树根编号一定为 1。</p>
-<p>我们用一根树枝两端连接的节点编号描述一根树枝的位置。一棵有四根树枝的苹果树，因为树枝太多了，需要剪枝。但是一些树枝上长有苹果，给定需要保留的树枝数量，求最多能留住多少苹果。</p>
+<p><a href="http://dinnerhunt.cn/post/shortest-path">最短路</a><br>
+<a href="http://dinnerhunt.cn/post/tarjan">强连通</a><br>
+<a href="http://dinnerhunt.cn/post/Hungary">匈牙利算法</a><br>
+<a href="http://dinnerhunt.cn/post/dinic">Dinic</a><br>
+<a href="http://dinnerhunt.cn/post/lca">LCA-倍增</a><br>
+<a href="http://dinnerhunt.cn/post/euler-path">欧拉回路</a></p>
 </blockquote>
-<h5 id="题解">题解</h5>
+<h3 id="数论"><strong>数论</strong></h3>
 <blockquote>
-<p>树形DP中的背包问题<br>
-具体看代码注释</p>
+<p><a href="http://dinnerhunt.cn/post/linear">线性筛</a><br>
+<a href="http://dinnerhunt.cn/post/Gaussian-Elimination">高斯消元</a><br>
+<a href="http://dinnerhunt.cn/post/lagrange">拉格朗日插值</a><br>
+<a href="http://dinnerhunt.cn/post/lucas">Lucas</a></p>
 </blockquote>
-<h5 id="代码">代码</h5>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 105;
-int dp[maxd][maxd],vis[maxd],arr[maxd];
-int n,m,a,b,c;
-struct
-{
-	struct node
-	{
-		int v,net,w;
-	}e[maxd];
-	int f[maxd],eid;
-	void init()
-	{
-		memset(f,-1,sizeof(f));
-		eid=0;
-	}
-	void insert(int a,int b,int c)
-	{
-		e[eid].v = b;
-		e[eid].net = f[a];
-		e[eid].w = c;
-		f[a] = eid++;
-	}
-}G;
-int dfs(int x)
-{
-	if(G.f[x] == -1) return 0;
-	vis[x] = 1;
-	int sum = 0;
-	for(int i=G.f[x];i+1;i=G.e[i].net)
-	{
-		int v = G.e[i].v;
-		if(vis[v]) continue;
-		int t = dfs(v)+1;
-		for(int j=0;j&lt;=sum;j++) arr[j] = dp[x][j];
-		for(int j=0;j&lt;=sum;j++)	
-			for(int k=1;k&lt;=t&amp;&amp;j+k&lt;=m;k++)
-				dp[x][j+k] = max(dp[x][j+k],arr[j]+dp[v][k-1]+G.e[i].w);
-		sum += t;
-	}
-	return sum;
-}
-int main()
-{
-	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-	G.init();
-	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-	for(int i=1;i&lt;n;i++)
-	{
-		scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
-		G.insert(a,b,c);
-		G.insert(b,a,c);
-	}
-	dfs(1);
-	printf(&quot;%d&quot;,dp[1][m]);
-	return 0;
-}
-</code></pre>
+<h3 id="数据结构"><strong>数据结构</strong></h3>
+<blockquote>
+<p><a href="http://dinnerhunt.cn/post/Tree-chain-subdivision">树链剖分</a><br>
+<a href="http://dinnerhunt.cn/post/dancing-links">DanceLink</a><br>
+<a href="http://dinnerhunt.cn/post/splay">Splay</a><br>
+<a href="http://dinnerhunt.cn/post/fhq-treap">Fhq-Treap</a><br>
+<a href="http://dinnerhunt.cn/post/Persistent-Segment-Tree">主席树</a><br>
+<a href="http://dinnerhunt.cn/post/st">ST表</a></p>
+</blockquote>
+<h3 id="字符串"><strong>字符串</strong></h3>
+<blockquote>
+<p><a href="http://dinnerhunt.cn/post/hash">Hash</a><br>
+<a href="http://dinnerhunt.cn/post/kmp">KMP</a><br>
+<a href="http://dinnerhunt.cn/post/exkmp">ExKmp</a><br>
+<a href="http://dinnerhunt.cn/post/manacher">Manacher</a><br>
+<a href="http://dinnerhunt.cn/post/Aho-Corasick-automaton">AC自动机</a><br>
+<a href="http://dinnerhunt.cn/post/sa">后缀数组</a><br>
+<a href="http://dinnerhunt.cn/post/SAM">后缀自动机</a></p>
+</blockquote>
+<h3 id="杂项"><strong>杂项</strong></h3>
+<blockquote>
+<p><a href="http://dinnerhunt.cn/post/read">高精度</a><br>
+<a href="http://dinnerhunt.cn/post/High-precision">快读</a></p>
+</blockquote>
 
             </div>
           </article>
@@ -175,9 +145,9 @@ int main()
               <div class="next">
                 下一篇
               </div>
-              <a href="https://dinnerhunt.cn/post/template">
+              <a href="https://dinnerhunt.cn/post/hello-gridea">
                 <h3 class="post-title">
-                  模版
+                  Hello Gridea
                 </h3>
               </a>
             </div>
@@ -188,7 +158,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1556985032293" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1556988031070" class="no-responsive avatar">
     <div class="text-muted">add one's</div>
     <div class="social-container">
       
@@ -213,25 +183,37 @@ int main()
         
           
             <li>
+              <a href="https://dinnerhunt.cn/post/HDU3555">HDU-3555 Bomb</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu-2089-bu-yao-62">HDU-2089  不要62</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P1896">SCOI2005 互不侵犯</a>
+            </li>
+          
+        
+          
+            <li>
               <a href="https://dinnerhunt.cn/post/P2051">AHOI2009 中国象棋</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P2704">NOI2001 炮兵阵地</a>
+              <a href="https://dinnerhunt.cn/post/noi2001-pao-bing-zhen-di">NOI2001 炮兵阵地</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P2607">ZJOI-2008 骑士</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Loj10153">LOJ-10153 二叉苹果树</a>
+              <a href="https://dinnerhunt.cn/post/zjoi2008-qi-shi">ZJOI2008 骑士</a>
             </li>
           
         
@@ -260,15 +242,7 @@ int main()
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/tarjan">Tarjan</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/dinic">Dinic</a>
-            </li>
           
         
           
@@ -320,7 +294,15 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge success">
           树型DP
         </a>
       
@@ -336,6 +318,8 @@ int main()
   </div>
   <div class="paper">
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
   </div>
 </div>
 

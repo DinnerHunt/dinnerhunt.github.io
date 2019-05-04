@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>KMP | dinnerhunt</title>
+<title>SCOI2005 互不侵犯 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,55 +80,74 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>KMP</h1>
+            <h1>SCOI2005 互不侵犯</h1>
             <p class="article-meta">
-              2019-05-04
+              2019-05-05
+              
+                <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+                  状压DP
+                </a>
               
             </p>
             
             <div class="post-content">
-              <p><a href="https://www.luogu.org/problemnew/show/P3375">P3375 KMP</a></p>
-<p>判断 str 是否在 p 中出现过</p>
+              <p>在N×N的棋盘里面放K个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共8个格子。</p>
+ <!-- more --> 
+<h4 id="题目链接">题目链接🔗</h4>
+<p><a href="https://www.luogu.org/problemnew/show/P1896">[SCOI2005]互不侵犯</a></p>
+<h4 id="题解">题解</h4>
+<p>国王能攻击到周围9个格子<br>
+行列数据范围很小，我们可以压缩每行选取国王的情况
+<code>dp[i][j][k]</code> 表示前<code>i</code>行，第<code>i</code>行摆法的压缩状态为<code>j</code>摆<code>k</code>个国王的摆法有多少种<br>
+为了不超时，先预先处理每行的状态数，保存起来，然后直接DP转移即可</p>
+<h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
 using namespace std;
-const int maxd = 1e6;
-int fail[maxd],ans;
-char str[maxd],p[maxd]	// 文本串，匹配串
-void getfail()
+const int maxd = 2005;
+long long dp[10][maxd][80];
+long long map[maxd],num[maxd];
+long long n,k,tot,ans;
+void init()
 {
-	fail[0] = -1;
-	int match = -1;
-	for(int i=1;p[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != p[i])
-			match = fail[match];
-		if(p[match+1] == p[i]) match++;
-		fail[i] = match;
-	}
-}
-void kmp()
-{
-	int match = -1;
-	for(int i=0;str[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != str[i])
-			match = fail[match];
-		if(p[match+1] == str[i]) 
-		{
-			match++;
-			if(!p[match+1])
-			{
-				ans = 1;
-				return;
-			}
-		}
-	}
+    long long mx = (1&lt;&lt;n) - 1;
+
+    for(int i=0;i&lt;=mx;i++)
+    {
+        if(!((i&lt;&lt;1)&amp;i))
+        {
+            map[++tot] = i;
+            int t = i;
+            while(t)
+            {
+                num[tot] += t&amp;1;
+                t &gt;&gt;= 1;
+            }
+            //printf(&quot;%lld&quot;,num[tot]);
+        }
+    }
 }
 int main()
 {
-	fail();
-	kmp();
-	return 0;
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%lld %lld&quot;,&amp;n,&amp;k);
+    init();
+    for(int i=1;i&lt;=tot;i++)
+        if(num[i]&lt;=k) dp[1][i][num[i]] = 1;
+    for(int i=2;i&lt;=n;i++)	//当前行
+        for(int j=1;j&lt;=tot;j++) // 当前行的状态
+            for(int p=1;p&lt;=tot;p++)	// 下行状态
+            {
+                if(map[j]&amp;map[p])continue;
+                if(map[j]&amp;(map[p]&lt;&lt;1))continue;
+                if((map[j]&lt;&lt;1)&amp;map[p]) continue;
+                for(int s=1;s+num[j]&lt;=k;s++)
+                    dp[i][j][s+num[j]] += dp[i-1][p][s];
+            }
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=tot;j++) ans += dp[i][j][k];
+    printf(&quot;%lld&quot;,ans);	
+    return 0;
 }
 </code></pre>
 
@@ -136,6 +155,17 @@ int main()
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/P2051">
+                <h3 class="post-title">
+                  AHOI2009 中国象棋
+                </h3>
+              </a>
+            </div>
           
         </div>
         
@@ -279,23 +309,23 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
           Gridea
         </a>
       

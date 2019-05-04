@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>KMP | dinnerhunt</title>
+<title>NOI2001 炮兵阵地 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,55 +80,76 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>KMP</h1>
+            <h1>NOI2001 炮兵阵地</h1>
             <p class="article-meta">
               2019-05-04
+              
+                <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+                  状压DP
+                </a>
               
             </p>
             
             <div class="post-content">
-              <p><a href="https://www.luogu.org/problemnew/show/P3375">P3375 KMP</a></p>
-<p>判断 str 是否在 p 中出现过</p>
+              <p>司令部的将军们打算在N<em>M的网格地图上部署他们的炮兵部队。一个N</em>M的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：</p>
+<!-- more --> 
+<p>如果在地图中的灰色所标识的平原上部署一支炮兵部队，则图中的黑色的网格表示它能够攻击到的区域：沿横向左右各两格，沿纵向上下各两格。图上其它白色网格均攻击不到。从图上可见炮兵的攻击范围不受地形的影响。 现在，将军们规划如何部署炮兵部队，在防止误伤的前提下（保证任何两支炮兵部队之间不能互相攻击，即任何一支炮兵部队都不在其他支炮兵部队的攻击范围内），在整个地图区域内最多能够摆放多少我军的炮兵部队。</p>
+<h4 id="题目链接">题目链接🔗</h4>
+<p><a href="https://www.luogu.org/problemnew/show/P2704">[NOI2001]炮兵阵地</a></p>
+<h4 id="题解">题解</h4>
+<p>预处理出每行的可行方案，然后每次保存前两次的方案，因为高度为3，不预处理会炸时空复杂度<br>
+然后正常状压DP即可</p>
+<h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
 using namespace std;
-const int maxd = 1e6;
-int fail[maxd],ans;
-char str[maxd],p[maxd]	// 文本串，匹配串
-void getfail()
-{
-	fail[0] = -1;
-	int match = -1;
-	for(int i=1;p[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != p[i])
-			match = fail[match];
-		if(p[match+1] == p[i]) match++;
-		fail[i] = match;
-	}
+const int maxd = 105;
+int dp[maxd][maxd][maxd], G[maxd], mp[maxd], ans;
+bool check(int x, int y) { return (x | y) == y; }
+bool ok(int x) { return !((x &amp; (x &gt;&gt; 1)) || (x &amp; (x &gt;&gt; 2))); }
+bool grep(int x, int y) { return !(x &amp; y); }
+int count(int x) {
+    int s = 0;
+    while (x) {
+        s += (x &amp; 1);
+        x &gt;&gt;= 1;
+    }
+    return s;
 }
-void kmp()
-{
-	int match = -1;
-	for(int i=0;str[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != str[i])
-			match = fail[match];
-		if(p[match+1] == str[i]) 
-		{
-			match++;
-			if(!p[match+1])
-			{
-				ans = 1;
-				return;
-			}
-		}
-	}
-}
-int main()
-{
-	fail();
-	kmp();
-	return 0;
+int main() {
+    int n, m, len = 0;
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+    for (int i = 0; i &lt; n; i++)
+        for (int j = 0; j &lt; m; j++) {
+            char ch;
+            cin &gt;&gt; ch;
+            if (ch == 'P')
+                G[i] += 1 &lt;&lt; (m - j - 1);
+        }
+    for (int i = 0; i &lt; (1 &lt;&lt; m); i++)
+        if (ok(i))
+            mp[len++] = i;
+
+    for (int i = 0; i &lt; len; i++)
+        for (int j = 0; j &lt; len; j++)
+            if (check(mp[i], G[0]) &amp;&amp; check(mp[j], G[1]) &amp;&amp; grep(mp[i], mp[j]))
+                dp[1][i][j] = count(mp[i]) + count(mp[j]);
+
+    for (int i = 2; i &lt; n; i++)
+        for (int j = 0; j &lt; len; j++)
+            if (check(mp[j], G[i]))
+                for (int k = 0; k &lt; len; k++)
+                    if (check(mp[k], G[i - 1]) &amp;&amp; grep(mp[j], mp[k]))
+                        for (int l = 0; l &lt; len; l++)
+                            if (check(mp[l], G[i - 2]) &amp;&amp; grep(mp[j], mp[l]) &amp;&amp; grep(mp[k], mp[l]))
+                                dp[i][k][j] = max(dp[i][k][j], dp[i - 1][l][k] + count(mp[j]));
+
+    for (int i = 0; i &lt; len; i++)
+        for (int j = 0; j &lt; len; j++) ans = max(ans, dp[n - 1][i][j]);
+
+    printf(&quot;%d&quot;, ans);
+    return 0;
 }
 </code></pre>
 
@@ -136,6 +157,17 @@ int main()
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/zjoi2008-qi-shi">
+                <h3 class="post-title">
+                  ZJOI2008 骑士
+                </h3>
+              </a>
+            </div>
           
         </div>
         
@@ -295,7 +327,7 @@ int main()
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
           Gridea
         </a>
       

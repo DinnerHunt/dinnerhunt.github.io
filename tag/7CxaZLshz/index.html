@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>KMP | dinnerhunt</title>
+<title>状压DP | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -22,7 +22,6 @@
 
   </head>
   <body>
-  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
@@ -79,68 +78,91 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <article class="article">
-            <h1>KMP</h1>
-            <p class="article-meta">
-              2019-05-04
-              
-            </p>
-            
-            <div class="post-content">
-              <p><a href="https://www.luogu.org/problemnew/show/P3375">P3375 KMP</a></p>
-<p>判断 str 是否在 p 中出现过</p>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-using namespace std;
-const int maxd = 1e6;
-int fail[maxd],ans;
-char str[maxd],p[maxd]	// 文本串，匹配串
-void getfail()
-{
-	fail[0] = -1;
-	int match = -1;
-	for(int i=1;p[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != p[i])
-			match = fail[match];
-		if(p[match+1] == p[i]) match++;
-		fail[i] = match;
-	}
-}
-void kmp()
-{
-	int match = -1;
-	for(int i=0;str[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != str[i])
-			match = fail[match];
-		if(p[match+1] == str[i]) 
-		{
-			match++;
-			if(!p[match+1])
-			{
-				ans = 1;
-				return;
-			}
-		}
-	}
-}
-int main()
-{
-	fail();
-	kmp();
-	return 0;
-}
-</code></pre>
-
-            </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
+          <h2 class="current-tag">标签: 状压DP</h2>
           
-        </div>
-        
-      </div>
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P1896">SCOI2005 互不侵犯</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-05
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+          状压DP
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>在N×N的棋盘里面放K个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共8个格子。</p>
 
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P1896" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P2051">AHOI2009 中国象棋</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-04
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+          状压DP
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>这次小可可想解决的难题和中国象棋有关，在一个N行M列的棋盘上，让你放若干个炮（可以是0个），使得没有一个炮可以攻击到另一个炮，请问有多少种放置方法。大家肯定很清楚，在中国象棋中炮的行走方式是：一个炮攻击到另一个炮，当且仅当它们在同一行或同一列中，且它们之间恰好 有一个棋子。你也来和小可可一起锻炼一下思维吧！</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P2051" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/noi2001-pao-bing-zhen-di">NOI2001 炮兵阵地</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-04
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+          状压DP
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>司令部的将军们打算在N<em>M的网格地图上部署他们的炮兵部队。一个N</em>M的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/noi2001-pao-bing-zhen-di" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
+        </div>
+        <div class="row flex-edges">
+  
+  
+</div>
+
+      </div>
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://dinnerhunt.cn/images/avatar.png?v=1556988031070" class="no-responsive avatar">
@@ -283,11 +305,11 @@ int main()
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge ">
           树型DP
         </a>
       
@@ -295,7 +317,7 @@ int main()
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
           Gridea
         </a>
       
@@ -307,7 +329,6 @@ int main()
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
   </div>
 </div>
-
 
     </div>
 

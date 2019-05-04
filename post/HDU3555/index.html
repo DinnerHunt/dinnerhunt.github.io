@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" >
 
-<title>NOI2001 炮兵阵地 | dinnerhunt</title>
+<title>HDU-3555 Bomb | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556985032293">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556988031070">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -80,73 +80,65 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>NOI2001 炮兵阵地</h1>
+            <h1>HDU-3555 Bomb</h1>
             <p class="article-meta">
-              2019-05-04
+              2019-05-05
+              
+                <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+                  数位DP
+                </a>
               
             </p>
             
             <div class="post-content">
-              <p><a href="https://www.luogu.org/problemnew/show/P2704">[NOI2001]炮兵阵地</a></p>
-<h4 id="题意">题意</h4>
-<blockquote>
-<p>给定一个字母矩阵，字母P可以摆放一个十字架型的方块，求不冲突的最多字母摆法</p>
-</blockquote>
+              <p>The counter-terrorists found a time bomb in the dust. But this time the terrorists improve on the time bomb. The number sequence of the time bomb counts from 1 to N. If the current number sequence includes the sub-sequence &quot;49&quot;, the power of the blast would add one point.
+Now the counter-terrorist knows the number N. They want to know the final points of the power. Can you help them?</p>
+ <!-- more --> 
+<h4 id="题目链接">题目链接🔗</h4>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3555">[HDU 3555] Bomb</a></p>
 <h4 id="题解">题解</h4>
-<blockquote>
-<p>预处理出每行的可行方案，然后每次保存前两次的方案，因为高度为3，不预处理会炸时空复杂度<br>
-然后正常状压DP即可</p>
-</blockquote>
+<p>数位DP,分类讨论
+先考虑长度，长度为<code>$n$</code>时最多会有多少个数包含<code>$62$</code>
+然后分类讨论</p>
 <h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
 using namespace std;
-const int maxd = 105;
-int dp[maxd][maxd][maxd], G[maxd], mp[maxd], ans;
-bool check(int x, int y) { return (x | y) == y; }
-bool ok(int x) { return !((x &amp; (x &gt;&gt; 1)) || (x &amp; (x &gt;&gt; 2))); }
-bool grep(int x, int y) { return !(x &amp; y); }
-int count(int x) {
-    int s = 0;
-    while (x) {
-        s += (x &amp; 1);
-        x &gt;&gt;= 1;
+long long n,arr[15],dp[15][3];
+void init()
+{
+    dp[0][0] = 1; // 前i为不包含49的个数
+    dp[0][1] = dp[0][2] = 0; // 最高位为9的个数，包含49的个数
+    for(int i=1;i&lt;15;i++)
+    {
+        dp[i][0] = dp[i-1][0] * 10 - dp[i-1][1];
+        dp[i][1] = dp[i-1][0];
+        dp[i][2] = dp[i-1][1] + dp[i-1][2] * 10;
     }
-    return s;
 }
-int main() {
-    int n, m, len = 0;
-    scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
-    for (int i = 0; i &lt; n; i++)
-        for (int j = 0; j &lt; m; j++) {
-            char ch;
-            cin &gt;&gt; ch;
-            if (ch == 'P')
-                G[i] += 1 &lt;&lt; (m - j - 1);
-        }
-    for (int i = 0; i &lt; (1 &lt;&lt; m); i++)
-        if (ok(i))
-            mp[len++] = i;
-
-    for (int i = 0; i &lt; len; i++)
-        for (int j = 0; j &lt; len; j++)
-            if (check(mp[i], G[0]) &amp;&amp; check(mp[j], G[1]) &amp;&amp; grep(mp[i], mp[j]))
-                dp[1][i][j] = count(mp[i]) + count(mp[j]);
-
-    for (int i = 2; i &lt; n; i++)
-        for (int j = 0; j &lt; len; j++)
-            if (check(mp[j], G[i]))
-                for (int k = 0; k &lt; len; k++)
-                    if (check(mp[k], G[i - 1]) &amp;&amp; grep(mp[j], mp[k]))
-                        for (int l = 0; l &lt; len; l++)
-                            if (check(mp[l], G[i - 2]) &amp;&amp; grep(mp[j], mp[l]) &amp;&amp; grep(mp[k], mp[l]))
-                                dp[i][k][j] = max(dp[i][k][j], dp[i - 1][l][k] + count(mp[j]));
-
-    for (int i = 0; i &lt; len; i++)
-        for (int j = 0; j &lt; len; j++) ans = max(ans, dp[n - 1][i][j]);
-
-    printf(&quot;%d&quot;, ans);
+long long solve(long long n)
+{
+    long long len=0,ans=0,flag = 0;
+    while(n) arr[++len]=n%10,n/=10; arr[len+1] = 0;
+    for(int i=len;i&gt;0;i--)
+    {
+        ans += arr[i] * dp[i-1][2];
+        if(flag) ans += dp[i-1][0] * arr[i];
+        if(!flag&amp;&amp;arr[i]&gt;4) ans += dp[i-1][1];
+        if(arr[i+1]==4&amp;&amp;arr[i]==9) flag = 1;
+    }
+    return ans;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    init();int t;scanf(&quot;%d&quot;,&amp;t);
+    for(int i=1;i&lt;=t;i++)
+    {
+        scanf(&quot;%lld&quot;,&amp;n);
+        printf(&quot;%lld\n&quot;,solve(n+1));
+    }
     return 0;
 }
 </code></pre>
@@ -160,9 +152,9 @@ int main() {
               <div class="next">
                 下一篇
               </div>
-              <a href="https://dinnerhunt.cn/post/P2607">
+              <a href="https://dinnerhunt.cn/post/hdu-2089-bu-yao-62">
                 <h3 class="post-title">
-                  ZJOI-2008 骑士
+                  HDU-2089  不要62
                 </h3>
               </a>
             </div>
@@ -173,7 +165,7 @@ int main() {
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1556985032293" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1556988031070" class="no-responsive avatar">
     <div class="text-muted">add one's</div>
     <div class="social-container">
       
@@ -198,25 +190,37 @@ int main() {
         
           
             <li>
+              <a href="https://dinnerhunt.cn/post/HDU3555">HDU-3555 Bomb</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu-2089-bu-yao-62">HDU-2089  不要62</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P1896">SCOI2005 互不侵犯</a>
+            </li>
+          
+        
+          
+            <li>
               <a href="https://dinnerhunt.cn/post/P2051">AHOI2009 中国象棋</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P2704">NOI2001 炮兵阵地</a>
+              <a href="https://dinnerhunt.cn/post/noi2001-pao-bing-zhen-di">NOI2001 炮兵阵地</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P2607">ZJOI-2008 骑士</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Loj10153">LOJ-10153 二叉苹果树</a>
+              <a href="https://dinnerhunt.cn/post/zjoi2008-qi-shi">ZJOI2008 骑士</a>
             </li>
           
         
@@ -245,15 +249,7 @@ int main() {
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/tarjan">Tarjan</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/dinic">Dinic</a>
-            </li>
           
         
           
@@ -305,7 +301,15 @@ int main() {
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
           树型DP
         </a>
       
@@ -313,7 +317,7 @@ int main() {
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
           Gridea
         </a>
       
@@ -321,6 +325,8 @@ int main() {
   </div>
   <div class="paper">
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
   </div>
 </div>
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>KMP | dinnerhunt</title>
+<title>ZJOI2008 骑士 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,55 +80,93 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>KMP</h1>
+            <h1>ZJOI2008 骑士</h1>
             <p class="article-meta">
               2019-05-04
+              
+                <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+                  树型DP
+                </a>
               
             </p>
             
             <div class="post-content">
-              <p><a href="https://www.luogu.org/problemnew/show/P3375">P3375 KMP</a></p>
-<p>判断 str 是否在 p 中出现过</p>
+              <p>Z国的骑士团是一个很有势力的组织，帮会中汇聚了来自各地的精英。他们劫富济贫，惩恶扬善，受到社会各界的赞扬。</p>
+<p>最近发生了一件可怕的事情，邪恶的Y国发动了一场针对Z国的侵略战争。战火绵延五百里，在和平环境中安逸了数百年的Z国又怎能抵挡的住Y国的军队。于是人们把所有的希望都寄托在了骑士团的身上，就像期待有一个真龙天子的降生，带领正义打败邪恶。</p>
+<!-- more -->
+<p>骑士团是肯定具有打败邪恶势力的能力的，但是骑士们互相之间往往有一些矛盾。每个骑士都有且仅有一个自己最厌恶的骑士（当然不是他自己），他是绝对不会与自己最厌恶的人一同出征的。</p>
+<p>战火绵延，人民生灵涂炭，组织起一个骑士军团加入战斗刻不容缓！国王交给了你一个艰巨的任务，从所有的骑士中选出一个骑士军团，使得军团内没有矛盾的两人（不存在一个骑士与他最痛恨的人一同被选入骑士军团的情况），并且，使得这支骑士军团最具有战斗力。</p>
+<p>为了描述战斗力，我们将骑士按照1至N编号，给每名骑士一个战斗力的估计，一个军团的战斗力为所有骑士的战斗力总和。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P2607">[ZJOI 2008] 骑士</a></p>
+<h5 id="题解">题解</h5>
+<p>基数环版没有上司的舞会<br>
+把环拆开，两头分别做一次舞会，求最大值即可</p>
+<h5 id="代码">代码</h5>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
 using namespace std;
-const int maxd = 1e6;
-int fail[maxd],ans;
-char str[maxd],p[maxd]	// 文本串，匹配串
-void getfail()
+const int maxd = 1e6+10;
+int vis[maxd],arr[maxd];
+long long dp[maxd][2],ans;
+int a,b,n,x,k;
+struct node
 {
-	fail[0] = -1;
-	int match = -1;
-	for(int i=1;p[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != p[i])
-			match = fail[match];
-		if(p[match+1] == p[i]) match++;
-		fail[i] = match;
-	}
+    int v,net;
+}e[2*maxd];
+int f[maxd],eid;
+void insert(int x,int y)
+{
+    e[eid].net = f[x];
+    e[eid].v = y;
+    f[x] = eid++;
 }
-void kmp()
+void dfs(int x,int last)
 {
-	int match = -1;
-	for(int i=0;str[i];i++)
-	{
-		while(match&gt;=0&amp;&amp;p[match+1] != str[i])
-			match = fail[match];
-		if(p[match+1] == str[i]) 
-		{
-			match++;
-			if(!p[match+1])
-			{
-				ans = 1;
-				return;
-			}
-		}
-	}
+    vis[x] = 1;
+    for(int i=f[x];i+1;i=e[i].net)
+    {
+        if((i^1)==last) continue;
+        int v = e[i].v;
+        if(vis[v]) a=x,b=v,k=i;
+        else dfs(v,i);
+    }
+}
+void dp_dfs(int x,int last)
+{
+    dp[x][0] = 0;
+    dp[x][1] = arr[x];
+    for(int i=f[x];i+1;i=e[i].net)
+    {
+        if((i^1)==last) continue;
+        if(i==k||(i^1)==k) continue;
+        dp_dfs(e[i].v,i);
+        dp[x][0] += max(dp[e[i].v][1],dp[e[i].v][0]);
+        dp[x][1] += dp[e[i].v][0];
+    }
 }
 int main()
 {
-	fail();
-	kmp();
-	return 0;
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    memset(f,-1,sizeof(f));
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%d %d&quot;,&amp;arr[i],&amp;x);
+        insert(i,x);insert(x,i);
+    }
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(vis[i]) continue;
+        dfs(i,-1);
+        dp_dfs(a,-1);
+        long long temp = dp[a][0];
+        dp_dfs(b,-1);
+        ans += max(dp[b][0],temp);
+    }
+    printf(&quot;%lld&quot;,ans);
+    return 0;
 }
 </code></pre>
 
@@ -136,6 +174,17 @@ int main()
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/suan-fa-mo-ban">
+                <h3 class="post-title">
+                  算法模版
+                </h3>
+              </a>
+            </div>
           
         </div>
         
@@ -279,23 +328,23 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge ">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
           Gridea
         </a>
       

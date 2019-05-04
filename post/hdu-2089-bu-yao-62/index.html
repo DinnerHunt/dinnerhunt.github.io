@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" >
 
-<title>模版 | dinnerhunt</title>
+<title>HDU-2089  不要62 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556985032293">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556988031070">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -80,58 +80,66 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>模版</h1>
+            <h1>HDU-2089  不要62</h1>
             <p class="article-meta">
-              2019-05-04
+              2019-05-05
               
-                <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
-                  template
+                <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+                  数位DP
                 </a>
               
             </p>
             
             <div class="post-content">
-              <!-- more -->
-<h3 id="图论"><strong>图论</strong></h3>
-<blockquote>
-<p><a href="http://dinnerhunt.cn/post/shortest-path">最短路</a><br>
-<a href="http://dinnerhunt.cn/post/tarjan">强连通</a><br>
-<a href="http://dinnerhunt.cn/post/Hungary">匈牙利算法</a><br>
-<a href="http://dinnerhunt.cn/post/dinic">Dinic</a><br>
-<a href="http://dinnerhunt.cn/post/lca">LCA-倍增</a><br>
-<a href="http://dinnerhunt.cn/post/euler-path">欧拉回路</a></p>
-</blockquote>
-<h3 id="数论"><strong>数论</strong></h3>
-<blockquote>
-<p><a href="http://dinnerhunt.cn/post/linear">线性筛</a><br>
-<a href="http://dinnerhunt.cn/post/Gaussian-Elimination">高斯消元</a><br>
-<a href="http://dinnerhunt.cn/post/lagrange">拉格朗日插值</a><br>
-<a href="http://dinnerhunt.cn/post/lucas">Lucas</a></p>
-</blockquote>
-<h3 id="数据结构"><strong>数据结构</strong></h3>
-<blockquote>
-<p><a href="http://dinnerhunt.cn/post/Tree-chain-subdivision">树链剖分</a><br>
-<a href="http://dinnerhunt.cn/post/dancing-links">DanceLink</a><br>
-<a href="http://dinnerhunt.cn/post/splay">Splay</a><br>
-<a href="http://dinnerhunt.cn/post/fhq-treap">Fhq-Treap</a><br>
-<a href="http://dinnerhunt.cn/post/Persistent-Segment-Tree">主席树</a><br>
-<a href="http://dinnerhunt.cn/post/st">ST表</a></p>
-</blockquote>
-<h3 id="字符串"><strong>字符串</strong></h3>
-<blockquote>
-<p><a href="http://dinnerhunt.cn/post/hash">Hash</a><br>
-<a href="http://dinnerhunt.cn/post/kmp">KMP</a><br>
-<a href="http://dinnerhunt.cn/post/exkmp">ExKmp</a><br>
-<a href="http://dinnerhunt.cn/post/manacher">Manacher</a><br>
-<a href="http://dinnerhunt.cn/post/Aho-Corasick-automaton">AC自动机</a><br>
-<a href="http://dinnerhunt.cn/post/sa">后缀数组</a><br>
-<a href="http://dinnerhunt.cn/post/SAM">后缀自动机</a></p>
-</blockquote>
-<h3 id="杂项"><strong>杂项</strong></h3>
-<blockquote>
-<p><a href="http://dinnerhunt.cn/post/read">高精度</a><br>
-<a href="http://dinnerhunt.cn/post/High-precision">快读</a></p>
-</blockquote>
+              <p>杭州人称那些傻乎乎粘嗒嗒的人为62（音：laoer）。
+杭州交通管理局经常会扩充一些的士车牌照，新近出来一个好消息，以后上牌照，不再含有不吉利的数字了，这样一来，就可以消除个别的士司机和乘客的心理障碍，更安全地服务大众。
+不吉利的数字为所有含有4或62的号码。</p>
+ <!-- more --> 
+<p>例如： 62315 73418 88914
+都属于不吉利号码。但是，61152虽然含有6和2，但不是62连号，所以不属于不吉利数字之列。
+你的任务是，对于每次给出的一个牌照区间号，推断出交管局今次又要实际上给多少辆新的士车上牌照了。</p>
+<h4 id="题目链接">题目链接🔗</h4>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">[HDU 2089]不要62</a></p>
+<h4 id="题解">题解</h4>
+<p>数位DP，位内分类讨论</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+long long n, arr[12], dp[12][12];
+void init() {
+    dp[0][0] = 1;  // 前i个数首位为j的不包含62和4的个数
+    for (int i = 1; i &lt;= 10; i++)
+        for (int j = 0; j &lt;= 9; j++)
+            for (int k = 0; k &lt;= 9; k++)
+                if (j != 4 &amp;&amp; !(j == 6 &amp;&amp; k == 2))
+                    dp[i][j] += dp[i - 1][k];
+}
+long long solve(long long n) {
+    long long len = 0ll, ans = 0ll;
+    while (n) arr[++len] = n % 10, n /= 10;
+    arr[len + 1] = 0;
+    //printf(&quot;%lld &quot;,dp[len][0]);
+    for (int i = len; i &gt; 0; i--) {
+        for (int j = 0; j &lt; arr[i]; j++)
+            if (arr[i + 1] != 6 || j != 2)
+                ans += dp[i][j];
+        if (arr[i] == 4 || (arr[i + 1] == 6 &amp;&amp; arr[i] == 2))
+            break;
+
+    }
+    return ans;
+}
+int main() {
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    init();
+    long long a, b;
+    while (scanf(&quot;%lld %lld&quot;, &amp;a, &amp;b) != EOF &amp;&amp; a &amp;&amp; b) printf(&quot;%lld\n&quot;, solve(b + 1) - solve(a));
+
+    return 0;
+}
+</code></pre>
 
             </div>
           </article>
@@ -142,9 +150,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://dinnerhunt.cn/post/hello-gridea">
+              <a href="https://dinnerhunt.cn/post/P1896">
                 <h3 class="post-title">
-                  Hello Gridea
+                  SCOI2005 互不侵犯
                 </h3>
               </a>
             </div>
@@ -155,7 +163,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1556985032293" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1556988031070" class="no-responsive avatar">
     <div class="text-muted">add one's</div>
     <div class="social-container">
       
@@ -180,25 +188,37 @@
         
           
             <li>
+              <a href="https://dinnerhunt.cn/post/HDU3555">HDU-3555 Bomb</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu-2089-bu-yao-62">HDU-2089  不要62</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P1896">SCOI2005 互不侵犯</a>
+            </li>
+          
+        
+          
+            <li>
               <a href="https://dinnerhunt.cn/post/P2051">AHOI2009 中国象棋</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P2704">NOI2001 炮兵阵地</a>
+              <a href="https://dinnerhunt.cn/post/noi2001-pao-bing-zhen-di">NOI2001 炮兵阵地</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P2607">ZJOI-2008 骑士</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Loj10153">LOJ-10153 二叉苹果树</a>
+              <a href="https://dinnerhunt.cn/post/zjoi2008-qi-shi">ZJOI2008 骑士</a>
             </li>
           
         
@@ -227,15 +247,7 @@
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/tarjan">Tarjan</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/dinic">Dinic</a>
-            </li>
           
         
           
@@ -287,15 +299,23 @@
     </div>
     <div class="row">
       
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+          状压DP
+        </a>
+      
         <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
           Gridea
         </a>
       
@@ -303,6 +323,8 @@
   </div>
   <div class="paper">
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
   </div>
 </div>
 
