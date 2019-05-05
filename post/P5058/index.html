@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「ZJOI2004」嗅探器 | dinnerhunt</title>
+<meta name="description" content="add one&#39;s">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1557059469967">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「ZJOI2004」嗅探器</h1>
+            <p class="article-meta">
+              2019-05-05
+              
+                <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge warning">
+                  连通图
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>某军搞信息对抗实战演习，红军成功地侵入了蓝军的内部网络，蓝军共有两个信息中心，红军计划在某台中间服务器上安装一个嗅探器，从而能够侦听到两个信息中心互相交换的所有信息，但是蓝军的网络相当的庞大，数据包从一个信息中心传到另一个信息中心可以不止有一条通路。现在需要你尽快地解决这个问题，应该把嗅探器安装在哪个中间服务器上才能保证所有的数据包都能被捕获？</p>
+<!-- more --> 
+<p><strong>链接🔗</strong>
+<a href="https://www.luogu.org/problemnew/show/P5058">[ZJOI 2004] 嗅探器</a></p>
+<h4 id="题解">题解</h4>
+<p>简化题意<br>
+给一张无向图，求图上两点路径的字典序最小的割点</p>
+<p><code>s</code>为起点,<code>t</code> 为终点,<code>x</code> 为当前枚举到的割点，从<code>s</code>点开始进行<code>tarjan</code></p>
+<ol>
+<li>割点不在起点或者终点</li>
+<li><code>dfn[t] &gt; dfn[x]</code> , 因为终点绝对在当前点后面被枚举到</li>
+<li><code>low[t] &gt;= dfn[x]</code>，确保<code>x</code>点在路径上</li>
+</ol>
+<ul>
+<li>因为如果<code>low[t]</code> 没被枚举到时，它的值为<code>0</code></li>
+</ul>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5;
+struct {
+    int v, net;
+} e[maxd &lt;&lt; 1];
+int f[maxd], eid;
+void insert(int x, int y) {
+    e[eid].v = y;
+    e[eid].net = f[x];
+    f[x] = eid++;
+}
+void init() {
+    memset(f, -1, sizeof(f));
+    eid = 0;
+}
+int dfn[maxd], low[maxd], tot = 0, n, s, t, ans = 1e9;
+void tarjan(int x) {
+    dfn[x] = low[x] = ++tot;
+    for (int i = f[x]; i + 1; i = e[i].net) {
+        int v = e[i].v;
+        if (!dfn[v]) {
+            tarjan(v);
+            low[x] = min(low[v], low[x]);
+            if (dfn[x] &lt;= low[v] &amp;&amp; x != s &amp;&amp; x != t &amp;&amp; dfn[t] &gt;= dfn[v] &amp;&amp; low[t] &gt;= low[x])
+                ans = min(ans, x);
+        }
+        low[x] = min(low[x], dfn[v]);
+    }
+}
+int main() {
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int a, b;
+    init();
+    scanf(&quot;%d&quot;, &amp;n);
+    while (1) {
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        if (a == 0 || b == 0)
+            break;
+        insert(a, b);
+        insert(b, a);
+    }
+    scanf(&quot;%d %d&quot;, &amp;s, &amp;t);
+    tarjan(s);
+    if (ans != 1e9)
+        printf(&quot;%d\n&quot;, ans);
+    else
+        printf(&quot;No solution&quot;);
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/BZOJ3033">
+                <h3 class="post-title">
+                  「BZOJ 3033」 太鼓达人
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1557059469967" class="no-responsive avatar">
+    <div class="text-muted">add one's</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/BZOJ3620">「BZOJ 3620」似乎在梦中见过的样子</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3498">「POI2010」KOR-Beads</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P5231">「JSOI2012」玄武密码</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2322">「HNOI2006」最短母串问题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3966">「TJOI2013」 单词</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3294">「SCOI2016」 背单词</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/POJ1417">「POJ 1417」True Liars</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/NC637K">「16届同大邀请赛」美味佳肴</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3960">「NOIP2017」列队</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P4216">「SCOI2015」情报传递</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge success">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge success">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge ">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge ">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge success">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge warning">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge ">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge warning">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

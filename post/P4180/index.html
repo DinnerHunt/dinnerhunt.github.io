@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「BJWC2010」 严格次小生成树 | dinnerhunt</title>
+<meta name="description" content="add one&#39;s">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1557059469967">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「BJWC2010」 严格次小生成树</h1>
+            <p class="article-meta">
+              2019-05-05
+              
+                <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
+                  LCA
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>小C最近学了很多最小生成树的算法，Prim算法、Kurskal算法、消圈算法等等。正当小C洋洋得意之时，小P又来泼小C冷水了。小P说，让小C求出一个无向图的次小生成树，而且这个次小生成树还得是严格次小的，也就是说：如果最小生成树选择的边集是EM，严格次小生成树选择的边集是ES，那么需要满足：(value(e)表示边e的权值)<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><msub><mi>m</mi><mrow><mi>e</mi><mo>∈</mo><msub><mi>E</mi><mi>M</mi></msub></mrow></msub><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>(</mo><mi>e</mi><mo>)</mo><mo>&lt;</mo><msub><mo>∑</mo><mrow><mi>e</mi><mo>∈</mo><msub><mi>E</mi><mi>S</mi></msub></mrow></msub><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>(</mo><mi>e</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">sum_{e \in E_M} value(e) &lt; \sum_{e \in E_S } value(e)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.1550099999999999em;vertical-align:-0.40501em;"></span><span class="base textstyle uncramped"><span class="mord mathit">s</span><span class="mord mathit">u</span><span class="mord"><span class="mord mathit">m</span><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">e</span><span class="mrel">∈</span><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="vlist"><span style="top:0.15em;margin-right:0.07142857142857144em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord mathit" style="margin-right:0.10903em;">M</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">u</span><span class="mord mathit">e</span><span class="mopen">(</span><span class="mord mathit">e</span><span class="mclose">)</span><span class="mrel">&lt;</span><span class="mop"><span class="op-symbol small-op mop" style="top:-0.0000050000000000050004em;">∑</span><span class="vlist"><span style="top:0.30001em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">e</span><span class="mrel">∈</span><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="vlist"><span style="top:0.15em;margin-right:0.07142857142857144em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord mathit" style="margin-right:0.05764em;">S</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">u</span><span class="mord mathit">e</span><span class="mopen">(</span><span class="mord mathit">e</span><span class="mclose">)</span></span></span></span></p>
+<!-- more -->
+<p>这下小 C 蒙了，他找到了你，希望你帮他解决这个问题。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P4180">[BJWC2010]严格次小生成树</a></p>
+<h4 id="题解">题解</h4>
+<p>严格次小生成树，与最小生成树只有一条边不同<br>
+可以以此枚举出非生成树上的边，树加入边后必定形成环，将环上小于加入边的最大边删除，可以得到一个增量，次小生成树的权值就为最小生成树的权值加最小增量<br>
+求环上最短边可以用<strong>LCA</strong>倍增求解</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;set&gt;
+using namespace std;
+const int maxd = 1e5+100;
+struct node
+{
+    int x,y,flag;
+    long long w;
+    bool operator &lt; (const node &amp;other) const
+    {
+        return w &lt; other.w;
+    }
+}arr[maxd&lt;&lt;2];
+inline int read()
+{
+    int f=1,x=0;char ch;
+    do{ch=getchar();if(ch=='-')f=-1;}while(ch&lt;'0'||ch&gt;'9');
+    do{x=x*10+ch-'0';ch=getchar();}while(ch&gt;='0'&amp;&amp;ch&lt;='9');
+    return f*x;
+}
+struct
+{
+    int v,net;
+    long long w;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void insert(int a,int b,long long c)
+{
+    e[eid].net= f[a];
+    e[eid].v= b;
+    e[eid].w = c;
+    f[a] = eid++;
+}
+int p[maxd][30],d[maxd];
+long long  mx[maxd][20],mi[maxd][30];
+int fa[maxd];
+int n,m,a,b,c,x;
+long long ans =1e14,sum=0ll;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    memset(d,-1,sizeof(f));
+    for(int i=1;i&lt;=n;i++) fa[i] = i;
+    eid = 0; d[1] = 0;
+}
+int gf(int x)
+{
+    if(fa[x] == x) return x;
+    return fa[x] = gf(fa[x]);
+}
+void dfs(int x)
+{
+    for(int i = f[x]; i+1; i = e[i].net)
+    {
+        int v = e[i].v;
+        if(d[v]==-1)
+        {
+            d[v] = d[x]+1;
+            p[v][0] = x;
+            mx[v][0] = e[i].w;
+            mi[v][0] = -1e14;
+            dfs(v);
+        }    
+    }
+}
+int lca(int a,int b,long long c)
+{
+    long long x=-1e14,y=-1e14;
+    if(d[b] &gt; d[a]) swap(a,b);
+    for(int i = 15;i&gt;=0;i--)
+        if(d[p[a][i]]&gt;=d[b])
+        {
+            long long k = 0;
+            if(x!=mx[a][i]) k = min(x,mx[a][i]);
+            x = max(x,mx[a][i]);
+            y = max(max(y,mi[a][i]),k); 
+            a = p[a][i];
+        }
+    if(a==b)
+    {
+        if(x == c) return y;
+        return x;
+    }
+    for(int i = 15;i&gt;=0;i--)
+        if(p[a][i]!=p[b][i])
+        {
+            long long check[6];
+            check[0] = x;check[1] = mx[b][i]; check[2]=mx[a][i];
+            check[3] = y;check[4] = mi[b][i]; check[5]=mi[a][i];
+            sort(check,check+6);
+            x = check[5];
+            for(int j=0;j&lt;6;j++)
+            {
+                if(check[j] == x) break;
+                y = check[j];
+            }
+            a=p[a][i],b = p[b][i];
+        }
+    long long check[6];
+    check[0] = x;check[1] = mx[b][0]; check[2]=mx[a][0];
+    check[3] = y;check[4] = mi[b][0]; check[5]=mi[a][0];
+    sort(check,check+6);
+    x = check[5];
+    for(int i=0;i&lt;6;i++)
+    {
+        if(check[i] == x) break;
+        y = check[i];
+    }
+    if(x==c) return y;
+    return x;
+}
+void solve()        //求最小生成树
+{
+    sort(arr+1,arr+m+1);
+    for(int i=1;i&lt;=m;i++)
+    {
+        int x = gf(arr[i].x), y = gf(arr[i].y);
+        if(x == y) continue;
+        sum += arr[i].w;
+        fa[x] = y; 
+        arr[i].flag = 1;
+    }
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    n =read(), m =read();
+    init();
+    for(int i=1;i&lt;=m;i++)       //读取所有边
+        arr[i].x = read(), arr[i].y =read() , arr[i].w= (long long)read();
+    solve();
+    for(int i=1;i&lt;=m;++i)   //  建树
+    {
+        if(arr[i].flag)
+        {
+            insert(arr[i].x,arr[i].y,arr[i].w);
+            insert(arr[i].y,arr[i].x,arr[i].w);
+        }
+    }
+    dfs(1);
+    for(int j=1;j&lt;=15;j++)
+        for(int i=1;i&lt;=n;i++){
+            p[i][j] = p[p[i][j-1]][j-1];    // 父节点
+            long long k = -1e14;
+            if(mx[i][j-1]!=mx[p[i][j-1]][j-1])  // 如果两个点的最长边不同
+            k = min(mx[i][j-1],mx[p[i][j-1]][j-1]); //边权小的那条可能成为次短边
+            mx[i][j] = max(mx[i][j-1],mx[p[i][j-1]][j-1]);
+            mi[i][j] = max(k,max(mi[i][j-1],mi[p[i][j-1]][j-1]));
+        }
+    for(int i=1;i&lt;=m;i++)
+        if(!arr[i].flag)
+        {
+            long long k = arr[i].w - lca(arr[i].x,arr[i].y,arr[i].w);
+            ans = min(ans,k);   //  最小增量
+        }
+    printf(&quot;%lld&quot;,sum + ans);
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/BZOJ2144">
+                <h3 class="post-title">
+                  「BZOJ2144」 跳跳棋
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1557059469967" class="no-responsive avatar">
+    <div class="text-muted">add one's</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/BZOJ3620">「BZOJ 3620」似乎在梦中见过的样子</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3498">「POI2010」KOR-Beads</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P5231">「JSOI2012」玄武密码</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2322">「HNOI2006」最短母串问题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3966">「TJOI2013」 单词</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3294">「SCOI2016」 背单词</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/POJ1417">「POJ 1417」True Liars</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/NC637K">「16届同大邀请赛」美味佳肴</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3960">「NOIP2017」列队</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P4216">「SCOI2015」情报传递</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge warning">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge ">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

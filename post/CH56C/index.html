@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「Contest Hunter Round 56」 异象石 | dinnerhunt</title>
+<meta name="description" content="add one&#39;s">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1557059469967">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「Contest Hunter Round 56」 异象石</h1>
+            <p class="article-meta">
+              2019-05-05
+              
+                <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge success">
+                  LCA
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>Adera是Microsoft应用商店中的一款解谜游戏。
+异象石是进入Adera中异时空的引导物，在Adera的异时空中有一张地图。这张地图上有N个点，有N-1条双向边把它们连通起来。起初地图上没有任何异象石，在接下来的M个时刻中，每个时刻会发生以下三种类型的事件之一：</p>
+<!-- more -->
+<ol>
+<li>地图的某个点上出现了异象石（已经出现的不会再次出现）；</li>
+<li>地图某个点上的异象石被摧毁（不会摧毁没有异象石的点）；</li>
+<li>向玩家询问使所有异象石所在的点连通的边集的总长度最小是多少。
+请你作为玩家回答这些问题。</li>
+</ol>
+<h4 id="链接">链接🔗</h4>
+<p><a href="http://contest-hunter.org:83/contest/CH%20Round%20%2356%20-%20%E5%9B%BD%E5%BA%86%E8%8A%82%E6%AC%A2%E4%B9%90%E8%B5%9B/%E5%BC%82%E8%B1%A1%E7%9F%B3">[Contest Hunter Round #56] 异象石</a></p>
+<h4 id="题解">题解</h4>
+<p>树上点的路径可以通过<strong>dfs序</strong>求出来,<br>
+<strong>(a[1] -&gt; a[2] -&gt; a[3] -&gt; a[n] - &gt; a[1])/2</strong>
+然后插入和修改点，我们也可以进行动态维护，因为只有简单的前驱与后继的操作，可以直接用<code>set</code>来维护<br>
+PS: 统计距离要用<strong>long long</strong></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;set&gt;
+using namespace std;
+const int maxd = 1e5+10;
+struct
+{
+    int v,net,w;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void insert(int a,int b,int c)
+{
+    e[eid].net= f[a];
+    e[eid].v= b;
+    e[eid].w = c;
+    f[a] = eid++;
+}
+int p[maxd][30],d[maxd],id[maxd],num[maxd],tot;
+int n,m,a,b,c,x;
+long long ans =0,dist[maxd];
+set&lt;int&gt; s;
+set&lt;int&gt; :: iterator l,r;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    memset(d,-1,sizeof(f));
+    eid = 0; d[1] = 0;
+}
+void dfs(int x)
+{
+    id[x] = ++tot;
+    num[tot] = x;
+    for(int i = f[x]; i+1; i = e[i].net)
+    {
+        int v = e[i].v;
+        if(d[v]==-1)
+        {
+            d[v] = d[x]+1;
+            p[v][0] = x;
+            dist[v] =(long long)(dist[x] + e[i].w);
+            dfs(v);
+        }    
+    }
+}
+int lca(int a,int b)
+{
+    if(d[b] &gt; d[a]) swap(a,b);
+    for(int i = 25;i&gt;=0;i--)
+        if(d[p[a][i]]&gt;=d[b]) a = p[a][i];
+    if(a==b) return a;
+    for(int i = 25;i&gt;=0;i--)
+        if(p[a][i]!=p[b][i]) a=p[a][i],b = p[b][i];
+    return p[a][0];
+}
+long long dis(int x,int y)
+{
+    int ca = lca(x,y);
+    return (long long)(dist[x] + dist[y] - 2*dist[ca]);
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;n);
+    init();
+    for(int i=1;i&lt;n;i++)
+    {
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        insert(a,b,c);insert(b,a,c);
+    }
+    dfs(1);
+    for(int j=1;j&lt;=25;j++)
+        for(int i=1;i&lt;=n;i++)
+            p[i][j] = p[p[i][j-1]][j-1];
+    scanf(&quot;%d\n&quot;,&amp;m);
+    for(int i=1;i&lt;=m;i++)
+    {
+        char str[2];
+        scanf(&quot;%s&quot;,str);
+        if(str[0] == '?') printf(&quot;%lld\n&quot;,ans/2);
+        else if(str[0] == '+')
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            if(s.empty())
+            {
+                s.insert(id[x]);
+                continue;
+            }
+            l = r = s.lower_bound(id[x]);
+            if(r == s.begin()) l = s.end(); l--;
+            if(r == s.end()) r = s.begin();
+            ans +=(long long)(dis(num[*l],x) + dis(x,num[*r]) - dis(num[*l],num[*r]));
+            s.insert(id[x]);
+        }
+        else
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            s.erase(id[x]);
+            if(s.empty()) continue;
+            l = r = s.lower_bound(id[x]);
+            if(r == s.begin()) l = s.end(); l--;
+            if(r == s.end()) r = s.begin();
+            ans -= (long long)(dis(num[*l],x) + dis(x,num[*r]) - dis(num[*l],num[*r]));
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/P4180">
+                <h3 class="post-title">
+                  「BJWC2010」 严格次小生成树
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1557059469967" class="no-responsive avatar">
+    <div class="text-muted">add one's</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/BZOJ3620">「BZOJ 3620」似乎在梦中见过的样子</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3498">「POI2010」KOR-Beads</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P5231">「JSOI2012」玄武密码</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2322">「HNOI2006」最短母串问题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3966">「TJOI2013」 单词</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3294">「SCOI2016」 背单词</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/POJ1417">「POJ 1417」True Liars</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/NC637K">「16届同大邀请赛」美味佳肴</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3960">「NOIP2017」列队</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P4216">「SCOI2015」情报传递</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge warning">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge secondary">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge ">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge ">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge warning">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge ">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge ">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
