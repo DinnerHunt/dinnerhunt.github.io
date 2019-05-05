@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>SDOI2010 古代猪文 | dinnerhunt</title>
+<meta name="description" content="add one&#39;s">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1557043461928">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>SDOI2010 古代猪文</h1>
+            <p class="article-meta">
+              2019-05-05
+              
+                <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+                  组合数学
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge ">
+                  中国剩余定理
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
+                  欧拉定理
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+                  数论
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>猪王国的文明源远流长，博大精深。</p>
+<p>iPig在大肥猪学校图书馆中查阅资料，得知远古时期猪文文字总个数为N。当然，一种语言如果字数很多，字典也相应会很大。当时的猪王国国王考虑到如果修一本字典，规模有可能远远超过康熙字典，花费的猪力、物力将难以估量。故考虑再三没有进行这一项劳猪伤财之举。当然，猪王国的文字后来随着历史变迁逐渐进行了简化，去掉了一些不常用的字。</p>
+<!-- more -->
+<p>iPig打算研究古时某个朝代的猪文文字。根据相关文献记载，那个朝代流传的猪文文字恰好为远古时期的k分之一，其中k是N的一个正约数（可以是1和N）。不过具体是哪k分之一，以及k是多少，由于历史过于久远，已经无从考证了。</p>
+<p>iPig觉得只要符合文献，每一种能整除N的k都是有可能的。他打算考虑到所有可能的k。显然当k等于某个定值时，该朝的猪文文字个数为N / k。然而从N个文字中保留下N / k个的情况也是相当多的。iPig预计，如果所有可能的k的所有情况数加起来为P的话，那么他研究古代文字的代价将会是G的P次方。</p>
+<p>现在他想知道猪王国研究古代文字的代价是多少。由于iPig觉得这个数字可能是天文数字，所以你只需要告诉他答案除以999911659的余数就可以了。</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problemnew/show/P2480">[SDOI]古代猪文</a></p>
+<h4 id="题解">题解</h4>
+<p>化简题面，得知我们需要求得东西是下面这个式子</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mrow><msub><mo>∑</mo><mrow><mi>d</mi><mi mathvariant="normal">∣</mi><mi>n</mi></mrow></msub><msubsup><mi>C</mi><mi>n</mi><mi>d</mi></msubsup></mrow></msup><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mn>9</mn><mn>9</mn><mn>9</mn><mn>9</mn><mn>1</mn><mn>1</mn><mn>6</mn><mn>5</mn><mn>9</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">G^{\sum_{d|n}C_n^d}  ( mod  \ 999911659)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.044077em;"></span><span class="strut bottom" style="height:1.294077em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">G</span><span class="vlist"><span style="top:-0.442757em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mop"><span class="op-symbol small-op mop" style="top:0.074995em;">∑</span><span class="vlist"><span style="top:0.30001em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord scriptscriptstyle cramped"><span class="mord mathit">d</span><span class="mord mathrm">∣</span><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.247em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord mathit">n</span></span></span><span style="top:-0.363em;margin-right:0.07142857142857144em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle uncramped"><span class="mord mathit">d</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord mathrm">9</span><span class="mord mathrm">9</span><span class="mord mathrm">9</span><span class="mord mathrm">9</span><span class="mord mathrm">1</span><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mord mathrm">5</span><span class="mord mathrm">9</span><span class="mclose">)</span></span></span></span></p>
+<p>根据欧拉定理<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mi>x</mi></msup><mi mathvariant="normal">%</mi><mi>p</mi><mo>=</mo><msup><mi>n</mi><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></msup><mi mathvariant="normal">%</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">n^x \% p = n^{x-1} \% p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">x</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">%</span><span class="mord mathit">p</span><span class="mrel">=</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">x</span><span class="mbin">−</span><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">%</span><span class="mord mathit">p</span></span></span></span></p>
+<p>因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mo>∑</mo><mrow><mi>d</mi><mi mathvariant="normal">∣</mi><mi>n</mi></mrow></msub><msubsup><mi>C</mi><mi>n</mi><mi>d</mi></msubsup></mrow><annotation encoding="application/x-tex">\sum_{d|n}C_n^d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:1.324118em;vertical-align:-0.47501em;"></span><span class="base textstyle uncramped"><span class="mop"><span class="op-symbol small-op mop" style="top:-0.0000050000000000050004em;">∑</span><span class="vlist"><span style="top:0.30001em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">d</span><span class="mord mathrm">∣</span><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.247em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">d</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> 过大，高精度运算会炸时间，所以我们得找到一个不会改变结果的模数<br>
+因为模的不是质数，所以不能直接上卢卡斯定理<br>
+我们可以将模数拆开成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> 个质数，然后求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>n</mi><mi>d</mi></msubsup><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>p</mi><mi>r</mi><mi>i</mi><mi>m</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">C_n^d (mod \  prime[i])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:0.247em;margin-left:-0.07153em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">d</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord mathit">p</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit">m</span><span class="mord mathit">e</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span> 的值<br>
+我们用中国剩余定理合并一下,就可以得到原来取余的值</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+using namespace std;
+const int maxd = 1e5;
+const int mod = 999911658;
+long long t,n,m,g,fac[maxd],val;
+long long k[4]={2,3,4679,35617},ans[4];
+long long pow(long long x,long long y,long long p)
+{
+    long long now = 1;
+    while(y)
+    {
+        if(y&amp;1) (now *= x)%=p;
+        (x *= x)%=p;
+        y&gt;&gt;=1;
+    }
+    return now;
+}
+long long C(long long n,long long m,long long p)
+{
+    if(n&lt;m) return 0;
+    return fac[n] * pow(fac[m],p-2,p)%p * pow(fac[n-m],p-2,p)%p;
+}
+long long lucas(long long n,long long m,long long p)
+{
+    if(n&lt;m)return 0; if(!n) return 1;
+    return C(n%p,m%p,p) * lucas(n/p,m/p,p)%p;
+}
+void crt()
+{
+    for(int i=0;i&lt;4;i++)
+        val = val+ans[i]*(mod/k[i])%mod * pow(mod/k[i],k[i]-2,k[i])%mod;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%lld %lld&quot;,&amp;n,&amp;g); fac[0] = 1;
+    if(g%(mod+1)==0)
+    {
+        printf(&quot;0\n&quot;);
+        return 0;
+    }
+    for(int j=0;j&lt;4;j++)
+    {
+        for(int i=1;i&lt;=k[j];i++)
+            fac[i] = fac[i-1]*i%k[j];
+        for(long long i=1;i*i&lt;=n;i++)
+            if(n%i==0)
+            {
+                (ans[j] += lucas(n,i,k[j]))%=k[j];
+                if(i*i!=n) (ans[j]+=lucas(n,n/i,k[j]))%=k[j];
+            }
+    }
+    crt();
+    printf(&quot;%lld\n&quot;,pow(g,val,mod+1));
+    return 0;
+}
+&gt;```
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/P1072">
+                <h3 class="post-title">
+                  NOIP2009 HanKson的趣味题
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1557043461928" class="no-responsive avatar">
+    <div class="text-muted">add one's</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P1640">SCOI2010 连续攻击游戏</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3802">Luogu-P3802 小魔女帕琪</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P1365">Luogu-P1365 WJMZBMR打osu! / Easy</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/Light1336">LightOJ-1336 Sigma Function</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2480">SDOI2010 古代猪文</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P1072">NOIP2009 HanKson的趣味题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/LOJ10222">LOJ-10222 佳佳的Fibonacci</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P4159">SCOI2009 迷路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF402E">CodeForces-402E  Strictly Positive Matrix</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/POJ2773">POJ-2773 Happy 2006</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge warning">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge success">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
