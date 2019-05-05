@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" >
 
-<title>HDU-2089  不要62 | dinnerhunt</title>
+<title>计算几何 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1556988425559">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1557039481223">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -22,7 +22,6 @@
 
   </head>
   <body>
-  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
@@ -79,91 +78,44 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <article class="article">
-            <h1>HDU-2089  不要62</h1>
-            <p class="article-meta">
-              2019-05-05
-              
-                <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
-                  数位DP
-                </a>
-              
-            </p>
-            
-            <div class="post-content">
-              <p>杭州人称那些傻乎乎粘嗒嗒的人为62（音：laoer）。
-杭州交通管理局经常会扩充一些的士车牌照，新近出来一个好消息，以后上牌照，不再含有不吉利的数字了，这样一来，就可以消除个别的士司机和乘客的心理障碍，更安全地服务大众。
-不吉利的数字为所有含有4或62的号码。</p>
- <!-- more --> 
-<p>例如： 62315 73418 88914
-都属于不吉利号码。但是，61152虽然含有6和2，但不是62连号，所以不属于不吉利数字之列。
-你的任务是，对于每次给出的一个牌照区间号，推断出交管局今次又要实际上给多少辆新的士车上牌照了。</p>
-<h4 id="题目链接">题目链接🔗</h4>
-<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">[HDU 2089]不要62</a></p>
-<h4 id="题解">题解</h4>
-<p>数位DP，位内分类讨论</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-long long n, arr[12], dp[12][12];
-void init() {
-    dp[0][0] = 1;  // 前i个数首位为j的不包含62和4的个数
-    for (int i = 1; i &lt;= 10; i++)
-        for (int j = 0; j &lt;= 9; j++)
-            for (int k = 0; k &lt;= 9; k++)
-                if (j != 4 &amp;&amp; !(j == 6 &amp;&amp; k == 2))
-                    dp[i][j] += dp[i - 1][k];
-}
-long long solve(long long n) {
-    long long len = 0ll, ans = 0ll;
-    while (n) arr[++len] = n % 10, n /= 10;
-    arr[len + 1] = 0;
-    //printf(&quot;%lld &quot;,dp[len][0]);
-    for (int i = len; i &gt; 0; i--) {
-        for (int j = 0; j &lt; arr[i]; j++)
-            if (arr[i + 1] != 6 || j != 2)
-                ans += dp[i][j];
-        if (arr[i] == 4 || (arr[i + 1] == 6 &amp;&amp; arr[i] == 2))
-            break;
-
-    }
-    return ans;
-}
-int main() {
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    init();
-    long long a, b;
-    while (scanf(&quot;%lld %lld&quot;, &amp;a, &amp;b) != EOF &amp;&amp; a &amp;&amp; b) printf(&quot;%lld\n&quot;, solve(b + 1) - solve(a));
-
-    return 0;
-}
-</code></pre>
-
-            </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
+          <h2 class="current-tag">标签: 计算几何</h2>
           
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://dinnerhunt.cn/post/P1896">
-                <h3 class="post-title">
-                  SCOI2005 互不侵犯
-                </h3>
-              </a>
-            </div>
-          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/POJ3304">POJ-3304 Segments</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-05
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
+          计算几何
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>Given n segments in the two dimensional space, write a program, which determines if there exists a line such that after projecting these segments on it, all projected segments have at least one point in common.</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/POJ3304" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
         </div>
-        
+        <div class="row flex-edges">
+  
+  
+</div>
+
       </div>
-
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1556988425559" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1557039481223" class="no-responsive avatar">
     <div class="text-muted">add one's</div>
     <div class="social-container">
       
@@ -188,62 +140,84 @@ int main() {
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/HDU3555">HDU-3555 Bomb</a>
+              <a href="https://dinnerhunt.cn/post/CF402E">CodeForces-402E  Strictly Positive Matrix</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/hdu-2089-bu-yao-62">HDU-2089  不要62</a>
+              <a href="https://dinnerhunt.cn/post/POJ2773">POJ-2773 Happy 2006</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P1896">SCOI2005 互不侵犯</a>
+              <a href="https://dinnerhunt.cn/post/CF1152C">CodeForces-1152C Neko does Maths</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/P2051">AHOI2009 中国象棋</a>
+              <a href="https://dinnerhunt.cn/post/P2303">SDOI2012 Longge的问题</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/noi2001-pao-bing-zhen-di">NOI2001 炮兵阵地</a>
+              <a href="https://dinnerhunt.cn/post/P2261">CQOI2007 余数求和</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/zjoi2008-qi-shi">ZJOI2008 骑士</a>
+              <a href="https://dinnerhunt.cn/post/NC637C">16届同大邀请赛 半数素</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/High-precision">高精度</a>
+              <a href="https://dinnerhunt.cn/post/POJ3304">POJ-3304 Segments</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/read">快读</a>
+              <a href="https://dinnerhunt.cn/post/CF1012C">CodeForces-1012C Hills</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/lca">LCA - 倍增</a>
+              <a href="https://dinnerhunt.cn/post/CF1152D">CodeForces-1152D Neko and Aki&#39;s Prank</a>
             </li>
           
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/euler-path">欧拉回路</a>
+              <a href="https://dinnerhunt.cn/post/LOJ10157">LOJ-10157 皇宫守卫</a>
             </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
           
         
           
@@ -299,19 +273,35 @@ int main() {
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
-          数位DP
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge warning">
+          连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
-          状压DP
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+          数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge success">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
           template
         </a>
       
@@ -327,7 +317,6 @@ int main() {
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
   </div>
 </div>
-
 
     </div>
 
