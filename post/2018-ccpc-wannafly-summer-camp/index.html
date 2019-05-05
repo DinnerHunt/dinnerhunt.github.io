@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>16届同大邀请赛 半数素 | dinnerhunt</title>
+<title>2018 CCPC Wannafly Summer Camp  游记 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,60 +88,96 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>16届同大邀请赛 半数素</h1>
+            <h1>2018 CCPC Wannafly Summer Camp  游记</h1>
             <p class="article-meta">
               2019-05-05
               
-                <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
-                  数论
+                <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge success">
+                  个人经历
                 </a>
               
             </p>
             
             <div class="post-content">
-              <p>最近张老师对半素数感兴趣。半素数(semi-prime)是可以表示成两个素数乘积的数。比如4和10是半素数，因为4=2×2，10=2×5。而8不是半素数，因为8=2×2×2。他想知道某一个l到r的闭区间内有多少个这样的数。但是这个问题太困难了，他想让你帮他解决。</p>
+              <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6813.JPG?Expires=1557076979&OSSAccessKeyId=TMP.AgESO8_5vCdVRCKTYc1TRZgCuEbUlI6puIHilIbiexW6UQO993CuVbX6ciuQADAtAhUAs-cFySzmetDT4WiobuCcyxHvCsICFCP9LHz582NmNsaRU7ZjkuHjBJwa&Signature=eDo5j%2BtScA3Spae1XyJcCxyNiPI%3D"  div align=center />
 <!-- more -->
-<h4 id="题目链接">题目链接🔗</h4>
-<p><a href="https://ac.nowcoder.com/acm/contest/637/C">16届 同大邀请赛 半数素</a></p>
-<h4 id="题解">题解</h4>
-<p>考虑埃氏筛法，将l-r区间的因子一定是在1e5以内，我们枚举1e5以内的数，并考虑他们在区间l-r中数的贡献，并对每个数用数组记录因子个数</p>
-<p>如果一个数的因子个数为2，那么他则是半素数</p>
-<h5 id="代码">代码</h5>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-typedef long long ll;
-const int maxd = 1e5+10;
-vector&lt;ll&gt; v[maxd];
-ll a[maxd];
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    ll l,r;scanf(&quot;%lld %lld&quot;,&amp;l,&amp;r);
-    for(ll i=l;i&lt;=r;i++) a[i-l] = i;
-    for(ll i=2;i*i&lt;=r;i++)  //枚举因子
-        for(ll j = (i+l-1)/i*i;j&lt;=r;j+=i) //枚举因子的作用区域 n^(1/2)
-            while(a[j-l] % i == 0)
-            {
-                v[j-l].push_back(i);    //添加因子
-                a[j-l]/=i;
-            }
-    ll ans = 0;
-    for(ll i=0;i&lt;=r-l;i++)
-    {
-        if(a[i] &gt; 1) v[i].push_back(a[i]);
-        sort(v[i].begin(),v[i].end());
-        if(v[i].size() == 2) ans++;
-    }
-    printf(&quot;%lld\n&quot;,ans);
-    for(ll i=0;i&lt;=r-l;i++)
-        if(v[i].size() == 2) printf(&quot;%lld %lld %lld\n&quot;,i+l,v[i][0],v[i][1]);
-    return 0;
-}
-</code></pre>
+<h4 id="前言">前言</h4>
+<p>一次偶然的机会，在 NewCode 的群里发现了这个 Camp 的信息</p>
+<p>我立刻联系了同学 <strong>Closefrom</strong> 与 <strong>deep_kevin</strong> ，得知他们的意愿之后，我便开始筹划了这次旅程。</p>
+<p>特别感谢当时阿姨的照顾和对我辞职的理解，以及一直支持我去学习的父母</p>
+<p>使得我有机会，参加这次Camp</p>
+<br> 
+<h4 id="day-1">Day -1</h4>
+<p>秦皇岛 -- 这应该是我出过最远的一次门了</p>
+<p>下午6点左右，我们上了火车，在行驶了将近28个小时以后，我们到达了秦皇岛</p>
+<p>Camp安排的酒店挺不错的，离上课的地方很近，就是酒店有点老旧</p>
+<p>路途中，还遇到了 CUG 地质专业的同学， 他背着睡袋和一些工具，脸上映射着阳光，给人一种非常和蔼的感觉<br>
+夜里，我们一起撸了串，聊了许多</p>
+<p>旅行的意义不止是学习吧，还能遇见很多事，认识很多人</p>
+<p>不得不说，北方的撸串才能算是真正的撸串，价格实惠，分量也特别足</p>
+<p>比较特比的是，这边出站行李也需要过机检查</p>
+<br>
+<h4 id="day-0">Day 0</h4>
+<p>上午，我们到了签到处，领到了小牌牌，见到了许多巨佬</p>
+<img src="http://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6817.JPG?Expires=1557079002&OSSAccessKeyId=TMP.AgESO8_5vCdVRCKTYc1TRZgCuEbUlI6puIHilIbiexW6UQO993CuVbX6ciuQADAtAhUAs-cFySzmetDT4WiobuCcyxHvCsICFCP9LHz582NmNsaRU7ZjkuHjBJwa&Signature=eHIHL88bwmh9rTo0cgwNJnLL7nw%3D" width = "300" height = "900" />
+<br>
+<p>下午是自由活动时间<br>
+我们去了海边，海水特别干净，比深圳大梅沙干净太多了 ，人也不是特别多</p>
+<img src="http://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6829.JPG?Expires=1557079044&OSSAccessKeyId=TMP.AgESO8_5vCdVRCKTYc1TRZgCuEbUlI6puIHilIbiexW6UQO993CuVbX6ciuQADAtAhUAs-cFySzmetDT4WiobuCcyxHvCsICFCP9LHz582NmNsaRU7ZjkuHjBJwa&Signature=QUlnxjk8UhS27QIDQT2i8%2BOEkUE%3D"  div align=center />
+<h4 id="day-1-2">Day 1</h4>
+<p>早上起晚了，错过了 <strong>wls</strong> 的一部分讲课..</p>
+<p><strong>wls</strong> 讲了学习的意义与与一些学习方法，受益匪浅</p>
+<p>午饭在食堂吃的，还不错</p>
+<p>下午进行了一场训练赛</p>
+<p>题目便难，除了做出签到题以外，就一直在划水</p>
+<p>从排行榜上认识了咖啡鸡  ，从此多了一个可以膜的对象</p>
+<p>晚上听题解听的迷迷糊糊的</p>
+<h4 id="day-2">Day 2</h4>
+<p>经过昨天的教训，我们提前来到了教室，并占坐了一个好位置</p>
+<p>教室是个阶梯教室，我们将近有100支队伍，在300名队员的热情下，教室如同一个大蒸笼，空调显得有点无力</p>
+<p>上午是 <strong>KeyID</strong> 老师上数论课</p>
+<p>讲了一些 积性函数的性质，莫比乌斯反演 等
+剩下的并没有听懂多少，数学基础太差了，而且有点公式恐惧症，以后慢慢补回来吧</p>
+<p>下午又是一场自闭的训练赛</p>
+<p>晚饭吃了当地的面食，味道挺不错的，跟在南方吃的不太一样，面比较有嚼劲</p>
+<h4 id="day-3">Day 3</h4>
+<p>上午 <strong>qls</strong> 讲的计算几何<br>
+讲了一些听的懂的知识点和听不懂的知识点</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6862.JPG?Expires=1557076877&OSSAccessKeyId=TMP.AgESO8_5vCdVRCKTYc1TRZgCuEbUlI6puIHilIbiexW6UQO993CuVbX6ciuQADAtAhUAs-cFySzmetDT4WiobuCcyxHvCsICFCP9LHz582NmNsaRU7ZjkuHjBJwa&Signature=HYbN4tmiKyCSIKdVG1TNBYpF1Vk%3D"  div align=center />
+<p>下午接着训练赛<br>
+渐渐的能熟悉这种节奏，虽然还是不能过更多的题，但是会去尽力去思考</p>
+<h4 id="day-4">Day 4</h4>
+<p>上午孙耀辉老师讲的线段树</p>
+<p>孙老师课件准备的特别好，难度梯度也设置的非常好，学到了很多线段树的操作</p>
+<p>下午接着训练赛鸭</p>
+<h4 id="day-5">Day 5</h4>
+<p>今天是HDU的多校训练赛，于是我们边获得了一天自由活动的时间</p>
+<p><strong>deep_kevin</strong> 去了山海关<br>
+我和 <strong>Closefrom</strong> 则去海边玩了下水，海边服务收费还是挺贵的，而且服务设置也很简陋</p>
+<p>很可惜 <strong>Closefrom</strong> 想学会游泳的想法在哪天下午并没能实现</p>
+<h4 id="day-6-7-8">Day 6 7 8</h4>
+<p>后面的事记得不是很清楚了</p>
+<p>依稀记得<br>
+<strong>deep_kevin</strong> 为了我和 <strong>Closefrom</strong>  连开三辆小黄车</p>
+<p>群里调侃与领导人体质是不是不一样，为什么秦皇岛能避暑</p>
+<p>早上学校门口各种各样的摊位</p>
+<p>教学楼楼下售空的自动贩卖机</p>
+<p>新校区斜坡上满地的🐛</p>
+<p>某天下午去的公园</p>
+<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6874.JPG?Expires=1557078161&OSSAccessKeyId=TMP.AgESO8_5vCdVRCKTYc1TRZgCuEbUlI6puIHilIbiexW6UQO993CuVbX6ciuQADAtAhUAs-cFySzmetDT4WiobuCcyxHvCsICFCP9LHz582NmNsaRU7ZjkuHjBJwa&Signature=iHFCD4AicAnrKORQgDD%2FnBU4Asw%3D" width = "300" height = "900" /></p>
+<p>还有最后的聚餐 ，环境挺大的，第一次见到开在地下的自助餐厅，但是味道一般般</p>
+<p><img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6887.JPG?Expires=1557078253&OSSAccessKeyId=TMP.AgESO8_5vCdVRCKTYc1TRZgCuEbUlI6puIHilIbiexW6UQO993CuVbX6ciuQADAtAhUAs-cFySzmetDT4WiobuCcyxHvCsICFCP9LHz582NmNsaRU7ZjkuHjBJwa&Signature=E0as0gYnkCOWxeGOoI9ShX%2Fik1M%3D
+"  div align=center /></p>
+<p>以及最后和集团照</p>
+<p><img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/DSC_1100.jpg?Expires=1557078496&OSSAccessKeyId=TMP.AgESO8_5vCdVRCKTYc1TRZgCuEbUlI6puIHilIbiexW6UQO993CuVbX6ciuQADAtAhUAs-cFySzmetDT4WiobuCcyxHvCsICFCP9LHz582NmNsaRU7ZjkuHjBJwa&Signature=Z9f%2Bh2PfiQZpp0UPKUzPAWOXGrE%3D
+"  div align=center /></p>
+<h4 id="后续">后续</h4>
+<p>虽然对自己算法能力的帮助并不是很大(对于我来说难度偏大，不太合适) ，自己以后得多多加油呀</p>
+<p>最后谢谢 <strong>wls</strong> , <strong>王老师</strong> ，这几天的授课老师 ， 以及现场的志愿者小哥哥小姐姐们 ，给我带来如此优质的 camp</p>
+<br>
+<p>本次CAMP 的所有课件，赛题与题解
+<a href="http://note.youdao.com/noteshare?id=2602ccca74102c9643d642fedb5fb742">课件链接🔗 </a></p>
 
             </div>
           </article>
@@ -152,9 +188,9 @@ int main()
               <div class="next">
                 下一篇
               </div>
-              <a href="https://dinnerhunt.cn/post/POJ3304">
+              <a href="https://dinnerhunt.cn/post/BZOJ3620">
                 <h3 class="post-title">
-                  POJ-3304 Segments
+                  「BZOJ 3620」似乎在梦中见过的样子
                 </h3>
               </a>
             </div>
@@ -395,23 +431,23 @@ int main()
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge success">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge success">
           并查集
         </a>
       
@@ -419,15 +455,15 @@ int main()
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge success">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge ">
           树上问题
         </a>
       
@@ -435,15 +471,15 @@ int main()
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
           二分
         </a>
       
@@ -459,11 +495,11 @@ int main()
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge ">
           组合数学
         </a>
       
@@ -471,7 +507,7 @@ int main()
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
           欧拉定理
         </a>
       
@@ -479,11 +515,11 @@ int main()
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge success">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
           树型DP
         </a>
       
@@ -491,15 +527,15 @@ int main()
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
           Gridea
         </a>
       
