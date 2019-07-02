@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>「友链」 | dinnerhunt</title>
+<title>「UVA 11183」 Teen Girl Squad | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,55 +88,140 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>「友链」</h1>
+            <h1>「UVA 11183」 Teen Girl Squad</h1>
             <p class="article-meta">
-              2019-05-05
+              2019-07-02
+              
+                <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge secondary">
+                  最小树形图
+                </a>
               
             </p>
             
             <div class="post-content">
-              <p>收录一些大佬的 blog ， 以便膜拜</p>
-<p><br> <br>
-<img src="https://xqinger.com/images/avatar.png?v=1558612767249" width = "100" height = "100" div align=right /></p>
-<p><a href="https://xqinger.com/">某不科学の技術博客</a></p>
-<p>深职网红(Deep Web Celebrity)<br>
-全栈专家(Can Do Everything)<br>
-AI学者(AI Scholars)<br>
-羽毛球运动员(Badminton Ace In 4399)<br>
-北区统治者(The King Of The North Border)<br>
-静香获得者(Harem 3000)<br>
-颜值担当(Handsome Man)<br>
-<br> <br></p>
-<p><img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/1558710162699.jpg
-" width = "100" height = "100" div align=right /></p>
-<p><a href="http://yoho.ac.cn/">Yoho</a><br>
-深职雷少(The son of the thor)<br>
-研发总监(Director of SIC)<br>
-大厂员工(Penguin keeper)</p>
-<p><br> <br>
-<img src="http://blog.hsojo.com/img/avatar.png" width = "100" height = "100" div align=right /></p>
-<p><a href="http://blog.hsojo.com/">弱窝(Hs)</a></p>
-<p>技能大赛满贯(Skills slam)<br>
-全能巨佬(Can Do Everything)<br>
-幽灵步伐(Walking Silence)</p>
-<p><br> <br></p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/908631557062661_.pic.jpg" width = "100" height = "100" div align=right />
-<p><a href="https://have.somuch.work/">RLXZMDD'S BLOG</a></p>
-<p>成功人士(A Successful Person)<br>
-学会大佬(Association Boss)<br>
-<br> <br></p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/1558333974983.jpg" width = "100" height = "100" div align=right />
-<p><a href="http://119.23.108.144/80/">CLOSEFROM</a></p>
-<p>汇编大佬(Master of Assembly)<br>
-健身教练(Can Fit Ten People)<br>
-百万富翁(Home Demolition)<br>
-英俊潇洒(Handsome Natural)<br>
-算法退役(Algorithm Retired)</p>
+              <p>You are part of a group of n teenage girls armed with cellphones. You have some news you want
+to tell everyone in the group. The problem is that no two of you are in the same room, and you must
+communicate using only cellphones. What’s worse is that due to excessive usage, your parents have
+refused to pay your cellphone bills, so you must distribute the news by calling each other in the cheapest
+possible way. You will call several of your friends, they will call some of their friends, and so on until
+everyone in the group hears the news.</p>
+<!-- more -->
+<p>Each of you is using a different phone service provider, and you know the price of girl A calling
+girl B for all possible A and B. Not all of your friends like each other, and some of them will never
+call people they don’t like. Your job is to find the cheapest possible sequence of calls so that the news
+spreads from you to all n-1 other members of the group.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/UVA-11183">「UVA 11183」 Teen Girl Squad</a></p>
+<h4 id="题解">题解</h4>
+<p>最小树形图模版题<br>
+有向图最小生成树，且能从根节点到达任意节点<br>
+这里用的是 <strong>朱刘算法</strong> ，先贪心找出除根以外每个节点的最优前缀边<br>
+这样可能会产生环，如果没产生环，则就是最优答案<br>
+如果产生了环，则环上的某条边得替换成其他边，来去环<br>
+我们先将环缩点，把它看成一个新的独立点来处理<br>
+环内之间连边的费用就按最优的边，环外产生边是，则是替换环内的边，加上差值即可<br>
+然后重复上列缩点，重新建图操作，直到无环</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;string&gt;
+using namespace std;
+const int maxd = 4e4+10;
+struct node
+{
+    int from,v,c;
+}e[maxd*2];
+int in[1005],pre[1005],id[1005],vis[1005];
+int n,m,ans,cnt;
+bool find_mst(int root)
+{
+    ans = 0;
+    while(1)
+    {
+        fill(in,in+1+n,2e9);
+        fill(id,id+1+n,-1);
+        fill(pre,pre+1+n,-1);
+        fill(vis,vis+1+n,-1);
+        for(int i=1;i&lt;=m;i++)
+        {
+            int x = e[i].from, y = e[i].v;
+            if(e[i].c &lt; in[y] &amp;&amp; x!=y)
+                pre[y] = x,in[y] = e[i].c;
+        }
+
+        for(int i=0;i&lt;n;i++)
+        {
+            if(i==root) continue;
+            if(pre[i] == -1) return 0;
+        }
+
+        in[root] = 0; cnt = 0;
+
+        for(int i=0;i&lt;n;i++)
+        {
+            ans += in[i];
+            int v = i;
+            while(vis[v]!=i&amp;&amp;id[v]==-1&amp;&amp;v!=root)
+            {
+                vis[v] = i;
+                v = pre[v];
+            }
+            if(v!=root &amp;&amp; id[v] ==-1)
+            {
+                for(int u = pre[v];u!=v;u=pre[u]) id[u] = cnt;
+                id[v] = cnt++;
+            }
+        }
+
+        if(cnt == 0) return 1;
+        for(int i=0;i&lt;n;i++) if(id[i] == -1) id[i] = cnt++;
+        for(int i=1;i&lt;=m;i++)
+        {
+            int x = e[i].from, y = e[i].v;
+            e[i].from = id[x];
+            e[i].v = id[y];
+            if(id[x]!=id[y]) e[i].c -= in[y];
+        }
+        n = cnt;
+        root = id[root];
+    }
+
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    for(int l=1;l&lt;=t;l++)
+    {
+        printf(&quot;Case #%d: &quot;,l);
+        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+        for(int i=1;i&lt;=m;i++)
+            scanf(&quot;%d %d %d&quot;,&amp;e[i].from,&amp;e[i].v,&amp;e[i].c);
+        if(find_mst(0)) printf(&quot;%d\n&quot;,ans);
+        else printf(&quot;Possums!\n&quot;);
+    }
+    return 0;
+}
+</code></pre>
 
             </div>
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">
+                <h3 class="post-title">
+                  「2019 GDCPC 中智杯」游记
+                </h3>
+              </a>
+            </div>
           
         </div>
         
@@ -376,23 +461,23 @@ AI学者(AI Scholars)<br>
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge warning">
           最小树形图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge success">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge ">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge warning">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
           数论
         </a>
       
@@ -408,51 +493,51 @@ AI学者(AI Scholars)<br>
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge warning">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge ">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge warning">
           二分
         </a>
       
@@ -460,27 +545,27 @@ AI学者(AI Scholars)<br>
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge ">
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge warning">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
           矩阵乘法
         </a>
       
@@ -496,15 +581,15 @@ AI学者(AI Scholars)<br>
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
           Gridea
         </a>
       
