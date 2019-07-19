@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>「POJ 1417」True Liars | dinnerhunt</title>
+<title>「SCOI2008」奖励关 | dinnerhunt</title>
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,131 +88,64 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>「POJ 1417」True Liars</h1>
+            <h1>「SCOI2008」奖励关</h1>
             <p class="article-meta">
-              2019-05-05
+              2019-07-20
               
-                <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge warning">
-                  并查集
+                <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+                  期望概率
                 </a>
               
-                <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
-                  普通DP
+                <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
+                  状压DP
                 </a>
               
             </p>
             
             <div class="post-content">
-              <p>After having drifted about in a small boat for a couple of days, Akira Crusoe Maeda was finally cast ashore on a foggy island. Though he was exhausted and despaired, he was still fortunate to remember a legend of the foggy island, which he had heard from patriarchs in his childhood. This must be the island in the legend. In the legend, two tribes have inhabited the island, one is divine and the other is devilish, once members of the divine tribe bless you, your future is bright and promising, and your soul will eventually go to Heaven, in contrast, once members of the devilish tribe curse you, your future is bleak and hopeless, and your soul will eventually fall down to Hell.</p>
+              <p>你正在玩你最喜欢的电子游戏，并且刚刚进入一个奖励关。在这个奖励关里，系统将依次随机抛出k次宝物，每次你都可以选择吃或者不吃（必须在抛出下一个宝物之前做出选择，且现在决定不吃的宝物以后也不能再吃）。</p>
+<p>宝物一共有n种，系统每次抛出这n种宝物的概率都相同且相互独立。也就是说，即使前k-1 次系统都抛出宝物1（这种情况是有可能出现的，尽管概率非常小），第k次抛出各个宝物的概率依然均为1/n。</p>
 <!-- more -->
-<p>In order to prevent the worst-case scenario, Akira should distinguish the devilish from the divine. But how? They looked exactly alike and he could not distinguish one from the other solely by their appearances. He still had his last hope, however. The members of the divine tribe are truth-tellers, that is, they always tell the truth and those of the devilish tribe are liars, that is, they always tell a lie.</p>
-<p>He asked some of them whether or not some are divine. They knew one another very much and always responded to him &quot;faithfully&quot; according to their individual natures (i.e., they always tell the truth or always a lie). He did not dare to ask any other forms of questions, since the legend says that a devilish member would curse a person forever when he did not like the question. He had another piece of useful informationf the legend tells the populations of both tribes. These numbers in the legend are trustworthy since everyone living on this island is immortal and none have ever been born at least these millennia.</p>
-<p>You are a good computer programmer and so requested to help Akira by writing a program that classifies the inhabitants according to their answers to his inquiries.</p>
+<p>获取第 i 种宝物将得到Pi分，但并不是每种宝物都是可以随意获取的。第i种宝物有一个前提宝物集合Si。只有当Si中所有宝物都至少吃过一次，才能吃第i 种宝物（如果系统抛出了一个目前不能吃的宝物，相当于白白的损失了一次机会）。注意，Pi 可以是负数，但如果它是很多高分宝物的前提，损失短期利益而吃掉这个负分宝物将获得更大的长期利益。</p>
+<p>假设你采取最优策略，平均情况你一共能在奖励关得到多少分值？</p>
 <h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/12603/origin">「POJ 1417」True Liars </a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P2473">「SCOI2008」奖励关</a></p>
 <h4 id="题解">题解</h4>
-<p><strong>带权并查集 + DP + 记录路径</strong><br>
-先用带权并查集维护集合内对立人数(每个集合中不能属于同一组中两队的人数)<br>
-然后DP求解选取 m 人的方案数是否为 1 ,在用一个数组记录每次选取的路径</p>
+<p>DP[i][j]  表示还剩 i 次选择，到当前状态为j的最优期望值</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-#define MAXN 600
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
 using namespace std;
-
-int pre[MAXN], rank[MAXN], gg[MAXN], jj[MAXN][MAXN], tag[MAXN][2], dp[MAXN][MAXN], cc[MAXN][2];
-int tot;
-int find(int x)
-{
-    if(x!=pre[x])
-    {
-        int px=find(pre[x]);
-        rank[x]^=rank[pre[x]];
-        pre[x]=px;
-    }
-    return pre[x];
-}
-
-void jion(int x, int y, int d)
-{
-    int px=find(x);
-    int py=find(y);
-    if(px!=py)
-    {
-        pre[py]=px;
-        rank[py]=rank[x]^rank[y]^d;
-    }
-}
-void init()
-{
-	memset(gg, 0, sizeof(gg)); 
-    memset(jj, 0, sizeof(jj));
-    memset(tag, 0, sizeof(tag));
-    memset(dp, 0, sizeof(dp));
-    memset(cc, 0, sizeof(cc));
-    tot=0;
-    for(int i=1; i&lt;=p+q; i++)
-    {
-        rank[i]=0;
-        pre[i]=i;
-    }
-}
-
+const int maxd = 1&lt;&lt;15;
+double dp[100][maxd];
+int arr[16],val[16];
+int n,k;
 int main()
 {
-	freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-	freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int m, p, q;
-    while(scanf(&quot;%d%d%d&quot;, &amp;m, &amp;p, &amp;q))
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d %d&quot;,&amp;k,&amp;n);
+    for(int i=1;i&lt;=n;i++)
     {
-        if(m+p+q==0) break;
-        init();
-        while(m--)
+        scanf(&quot;%d&quot;,&amp;val[i]);
+        int x;
+        while(1)
         {
-            int x, y, d=1;
-            char ch[5];
-            scanf(&quot;%d%d%s&quot;, &amp;x, &amp;y, ch);
-            if(ch[0]=='y') d=0;
-            jion(x, y, d);
-        }
-        //**统计集合个数并且编号
-        for(int i=1; i&lt;=p+q; i++)  if(find(i)==i) gg[i]=++tot;
-        //**分别统计每个集合两种类的数目并存储到tag中
-        for(int i=1; i&lt;=p+q; i++)  tag[gg[find(i)]][rank[i]]++; 
-
-        dp[0][0]=1;
-        for(int i=1; i&lt;=tot; i++)
-        {
-            for(int j=0; j&lt;=p+q; j++) //**dp[i][j]存储到第i个集合选择种类和为j的方法数
-            {  
-                if(j-tag[i][0]&gt;=0&amp;&amp;dp[i-1][j-tag[i][0]])
-                {
-                    dp[i][j]+=dp[i-1][j-tag[i][0]];
-                    jj[i][j]=tag[i][0];   //**jj数组记录路径，即选的是1还是0
-                }
-                if(j-tag[i][1]&gt;=0&amp;&amp;dp[i-1][j-tag[i][1]])
-                {
-                    dp[i][j]+=dp[i-1][j-tag[i][1]];
-                    jj[i][j]=tag[i][1];
-                }
-            }
-        }
-        if(dp[tot][p]!=1) printf(&quot;no\n&quot;);
-        else
-        {
-            for(int i=tot,j=p; j&gt;0&amp;&amp;i&gt;0; i--)//**标记路径
-            { 
-                if(jj[i][j]==tag[i][0]) cc[i][0]=1;
-                else cc[i][1]=1;
-                j-=jj[i][j];
-            }
-            for(int i=1; i&lt;=p+q; i++)
-                if(cc[gg[find(i)]][rank[i]])
-                    printf(&quot;%d\n&quot;, i);
-            printf(&quot;end\n&quot;);
+            scanf(&quot;%d&quot;,&amp;x);
+            if(!x) break;
+            arr[i] |= (1&lt;&lt;(x-1));
         }
     }
+    for(int i=k;i&gt;=1;i--)
+        for(int j=0;j&lt;(1&lt;&lt;n);j++)
+            for(int l=1;l&lt;=n;l++)
+            {
+                if((j&amp;arr[l])==arr[l])
+                    dp[i][j] += max(dp[i+1][j|(1&lt;&lt;(l-1))]+val[l],dp[i+1][j])*1.0/n;
+                else dp[i][j] += dp[i+1][j]*1.0/n;
+            }
+    printf(&quot;%lf&quot;,dp[1][0]);
     return 0;
 }
 </code></pre>
@@ -226,9 +159,9 @@ int main()
               <div class="next">
                 下一篇
               </div>
-              <a href="https://dinnerhunt.cn/post/NC637K">
+              <a href="https://dinnerhunt.cn/post/SummerWork-2019">
                 <h3 class="post-title">
-                  「16届同大邀请赛」美味佳肴
+                  暑假训练 补题计划
                 </h3>
               </a>
             </div>
@@ -479,11 +412,11 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge warning">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
           状压DP
         </a>
       
@@ -495,27 +428,27 @@ int main()
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
           Hash
         </a>
       
@@ -523,11 +456,11 @@ int main()
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
@@ -535,15 +468,15 @@ int main()
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge success">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
           线段树
         </a>
       
@@ -551,23 +484,23 @@ int main()
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge success">
           连通图
         </a>
       
@@ -575,11 +508,11 @@ int main()
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
           中国剩余定理
         </a>
       
@@ -587,7 +520,7 @@ int main()
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge ">
           矩阵乘法
         </a>
       
@@ -607,7 +540,7 @@ int main()
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
           Gridea
         </a>
       
