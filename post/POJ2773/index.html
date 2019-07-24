@@ -7,7 +7,7 @@
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1563978088677">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1563994564687">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -106,10 +106,10 @@
 <p><a href="http://poj.org/problem?id=2773">[POJ 2773]Happy 2006</a></p>
 <h4 id="题解">题解</h4>
 <p>因为<br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>y</mi><mo separator="true">,</mo><mi>x</mi><mi mathvariant="normal">%</mi><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">gcd(x,y) = gcd(y,x\%y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mord mathit">x</span><span class="mord mathrm">%</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>y</mi><mo>∗</mo><mi>t</mi><mo>+</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">gcd(x,y) = gcd(y*t+x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mbin">∗</span><span class="mord mathit">t</span><span class="mbin">+</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><br>
-如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">gcd(a,b) = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span> ,那么  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>∗</mo><mi>t</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">gcd(a+b*t,b) = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">b</span><span class="mbin">∗</span><span class="mord mathit">t</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span></p>
-<p>因此，与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span></span></span></span>  互质的数对 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span></span></span></span>  取模具有周期性，因此我们可以找到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>m</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,m]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">[</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit">m</span><span class="mclose">]</span></span></span></span> 的互质数，然后根据周期性推出其他的数</p>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>y</mi><mo separator="true">,</mo><mi>x</mi><mi mathvariant="normal">%</mi><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">gcd(x,y) = gcd(y,x\%y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mord">%</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>y</mi><mo>∗</mo><mi>t</mi><mo>+</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">gcd(x,y) = gcd(y*t+x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><br>
+如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">gcd(a,b) = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ,那么  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>∗</mo><mi>t</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">gcd(a+b*t,b) = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
+<p>因此，与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>  互质的数对 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>  取模具有周期性，因此我们可以找到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>m</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,m]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">]</span></span></span></span> 的互质数，然后根据周期性推出其他的数</p>
 <h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
 #include &lt;algorithm&gt;
@@ -156,7 +156,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1563978088677" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1563994564687" class="no-responsive avatar">
     <div class="text-muted">add one's</div>
     <div class="social-container">
       
@@ -217,12 +217,6 @@ int main()
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/du-jiao-shai">「Template」 杜教筛</a>
-            </li>
-          
-        
-          
-            <li>
               <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula">「学习笔记」莫比乌斯反演</a>
             </li>
           
@@ -240,57 +234,9 @@ int main()
           
         
           
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
+            <li>
+              <a href="https://dinnerhunt.cn/post/math1">「学习笔记」 数论 (1)</a>
+            </li>
           
         
           
@@ -396,35 +342,35 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge secondary">
           最小树形图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge ">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
           KMP
         </a>
       
@@ -432,15 +378,15 @@ int main()
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge ">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
           搜索
         </a>
       
@@ -448,27 +394,27 @@ int main()
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge success">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge success">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge ">
           LCA
         </a>
       
@@ -476,11 +422,11 @@ int main()
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
           二分
         </a>
       
@@ -496,15 +442,15 @@ int main()
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge warning">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
           矩阵乘法
         </a>
       
@@ -524,7 +470,7 @@ int main()
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
           Gridea
         </a>
       

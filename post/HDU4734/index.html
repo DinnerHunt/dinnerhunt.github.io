@@ -7,7 +7,7 @@
 <meta name="description" content="add one&#39;s">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1563978088677">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1563994564687">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -92,7 +92,7 @@
             <p class="article-meta">
               2019-05-05
               
-                <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
+                <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
                   数位DP
                 </a>
               
@@ -107,7 +107,7 @@
 <p><strong>数位DP</strong><br>
 先可以得到状态转移方程<br>
 我们设 <strong>dp[i][j]</strong>  为长度为 <strong>i</strong> , <strong>f[x]</strong> 值小于 <strong>j</strong> 的个数<br>
-假设第 <strong>i</strong> 位为 <strong>k</strong> ,那么长度 <strong>i-1</strong> 的数都满足 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mi>B</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">x \in [0,B]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span><span class="mrel">∈</span><span class="mopen">[</span><span class="mord mathrm">0</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">]</span></span></span></span> ,然后只需要求出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mn>1</mn></mrow><mrow><mi>k</mi></mrow></msubsup><mi>d</mi><mi>p</mi><mo>[</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo>⋅</mo><mo>(</mo><mn>1</mn><mo>&lt;</mo><mo>&lt;</mo><mo>(</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">\sum_{1}^{k}dp[len-1][j-i \cdot (1&lt;&lt;(len-1))]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8501079999999999em;"></span><span class="strut bottom" style="height:1.150118em;vertical-align:-0.30001em;"></span><span class="base textstyle uncramped"><span class="mop"><span class="op-symbol small-op mop" style="top:-0.0000050000000000050004em;">∑</span><span class="vlist"><span style="top:0.30001em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">1</span></span></span></span><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathit">i</span><span class="mbin">⋅</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mrel">&lt;</span><span class="mrel">&lt;</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span> , 当 <strong>k</strong> 为 <strong>0</strong> 是需要特判处理，因为它少一位的数不一定小于原数<br>
+假设第 <strong>i</strong> 位为 <strong>k</strong> ,那么长度 <strong>i-1</strong> 的数都满足 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mi>B</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">x \in [0,B]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mclose">]</span></span></span></span> ,然后只需要求出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mn>1</mn><mi>k</mi></msubsup><mi>d</mi><mi>p</mi><mo>[</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo>⋅</mo><mo>(</mo><mn>1</mn><mo>&lt;</mo><mo>&lt;</mo><mo>(</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">\sum_{1}^{k}dp[len-1][j-i \cdot (1&lt;&lt;(len-1))]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2887179999999998em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9890079999999999em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span> , 当 <strong>k</strong> 为 <strong>0</strong> 是需要特判处理，因为它少一位的数不一定小于原数<br>
 防止超时，在搜索过程中用上记忆化</p>
 <h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
@@ -174,7 +174,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1563978088677" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1563994564687" class="no-responsive avatar">
     <div class="text-muted">add one's</div>
     <div class="social-container">
       
@@ -235,12 +235,6 @@ int main()
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/du-jiao-shai">「Template」 杜教筛</a>
-            </li>
-          
-        
-          
-            <li>
               <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula">「学习笔记」莫比乌斯反演</a>
             </li>
           
@@ -258,57 +252,9 @@ int main()
           
         
           
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
+            <li>
+              <a href="https://dinnerhunt.cn/post/math1">「学习笔记」 数论 (1)</a>
+            </li>
           
         
           
@@ -414,31 +360,31 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge success">
           最小树形图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
           数论
         </a>
       
@@ -450,23 +396,23 @@ int main()
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge success">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
           并查集
         </a>
       
@@ -478,7 +424,7 @@ int main()
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
           线段树
         </a>
       
@@ -486,19 +432,19 @@ int main()
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
           二分
         </a>
       
@@ -506,7 +452,7 @@ int main()
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
           二分图
         </a>
       
@@ -518,23 +464,23 @@ int main()
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
           数位DP
         </a>
       
@@ -542,7 +488,7 @@ int main()
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
           Gridea
         </a>
       
