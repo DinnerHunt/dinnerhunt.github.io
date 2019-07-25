@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-07-24T18:56:58.882Z</updated>
+    <updated>2019-07-25T06:21:06.273Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -134,7 +134,7 @@ int main()
 <li>A. Blank [DP]</li>
 <li>B. Operation [线性基]</li>
 <li>C. Milk [离散化+背包+思维]</li>
-<li>D. <s>Vacation</s>[签到]</li>
+<li><s>D. Vacation</s>[签到]</li>
 <li><s>E. Path</s>[最短路+最小割]</li>
 <li>F. Typewriter[SAM]</li>
 <li>G. Meteor[数学]</li>
@@ -144,6 +144,21 @@ int main()
 <li>K. Function[数论]</li>
 <li>L. Sequence[数学]</li>
 <li>M.Code[计算几何]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-2"><a href="https://vjudge.net/contest/314058">2019 Multi-University Training Contest 2</a> [1/12]</h4>
+<ul>
+<li>A. Another Chess Problem [组合数学+思维]</li>
+<li>B. Beauty Of Unimodal Sequence [DP]</li>
+<li>C. Coefficient [数学]</li>
+<li>D. Double Tree [树分治]</li>
+<li>E. Everything Is Generated In Equal Probability [期望]</li>
+<li>F. Fantastic Magic Cube[FWT]</li>
+<li>G. Game [博弈]</li>
+<li>H. Harmonious Army[网络流]</li>
+<li>I. I Love Palindrome String[字符串]</li>
+<li><s>J. Just Skip The Problem</s>[签到]</li>
+<li>K.  Keen On Everything But Triangle[线段树 or 主席树]</li>
+<li>L. Longest Subarray[线段树]</li>
 </ul>
 ]]></content>
     </entry>
