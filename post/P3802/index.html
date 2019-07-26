@@ -1,105 +1,126 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>「Luogu P3802」 小魔女帕琪 | dinnerhunt</title>
-<meta name="description" content="add one&#39;s">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1564151162615">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Luogu P3802」 小魔女帕琪 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1564154573466">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
-
-
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        
+</head>
 
-
-  </head>
-  <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/friend" class="menu">
-                友链
-              </a>
-            
-          </li>
-        
-      </ul>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1564154573466" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-  </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>「Luogu P3802」 小魔女帕琪</h1>
-            <p class="article-meta">
-              2019-05-05
-              
-                <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
-                  期望概率
-                </a>
-              
-            </p>
-            
-            <div class="post-content">
-              <p>帕琪有7种属性的能量晶体，分别为a1,a2,a3,a4,a5,a6,a7(均为自然数)，每次释放魔法时，会随机消耗一个现有的能量晶体，然后释放一个对应属性的魔法。<br>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Luogu P3802」 小魔女帕琪
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="post-tag i-tag
+                            i-tag-other_2">
+                            #期望概率
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>帕琪有7种属性的能量晶体，分别为a1,a2,a3,a4,a5,a6,a7(均为自然数)，每次释放魔法时，会随机消耗一个现有的能量晶体，然后释放一个对应属性的魔法。<br>
 帕琪七重奏的触发条件是：连续释放的7个魔法中，如果魔法的属性各不相同，就能触发一次帕琪七重奏。<br>
 现在帕琪想知道，她释放出帕琪七重奏的期望次数是多少</p>
 <!-- more -->
@@ -139,370 +160,106 @@ int main()
 }
 </code></pre>
 
-            </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://dinnerhunt.cn/post/P1365">
-                <h3 class="post-title">
-                  「Luogu P1365」 WJMZBMR打osu! / Easy
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-      </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://dinnerhunt.cn/post/P1365">
+                                <h3 class="post-title">
+                                    「Luogu P1365」 WJMZBMR打osu! / Easy
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1564151162615" class="no-responsive avatar">
-    <div class="text-muted">add one's</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
     </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P2473">「SCOI2008」奖励关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Training-Contest">Training Contest</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/LightOJ1027">「LightOJ 1027」A Dangerous Maze</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/hdu2121">「HDU 2121」Ice_cream’s world II</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/uva11183">「UVA 11183」 Teen Girl Squad</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">「2019 GDCPC 中智杯」游记</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula">「学习笔记」莫比乌斯反演</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P3327">「SDOI2015」约数和个数</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P2557">「Luogu-P2257」YY的GCD</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/math1">「学习笔记」 数论 (1)</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
-          期望概率
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
-          状压DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge secondary">
-          最小树形图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
-          个人经历
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
-          学习笔记
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
-          莫比乌斯反演
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
-          数论
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
-          KMP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge success">
-          字符串
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
-          Hash
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge success">
-          AC自动机
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
-          搜索
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
-          Tire
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
-          并查集
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
-          普通DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
-          主席树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
-          线段树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
-          树上问题
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
-          LCA
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
-          图论
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
-          生成树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
-          二分
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge ">
-          连通图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
-          二分图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
-          组合数学
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
-          中国剩余定理
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
-          欧拉定理
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge warning">
-          矩阵乘法
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
-          计算几何
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
-          树型DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
-          数位DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
-          template
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
-  </div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
 </div>
 
-
-    </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-
-  </body>
 </html>

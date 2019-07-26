@@ -1,628 +1,417 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>dinnerhunt</title>
-<meta name="description" content="add one&#39;s">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1564151162615">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1564154573466">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
-
-
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
 
-
-  </head>
-  <body>
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/friend" class="menu">
-                友链
-              </a>
-            
-          </li>
-        
-      </ul>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1564154573466" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-  </div>
-</nav>
+</div>
 
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/HDU2089">HDU-2089  不要62</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
-          数位DP
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/HDU3555">
+                        HDU-3555 Bomb
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="post-tag i-tag
+                            i-tag-warning">
+            #数位DP
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>杭州人称那些傻乎乎粘嗒嗒的人为62（音：laoer）。<br>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>The counter-terrorists found a time bomb in the dust. But this time the terrorists improve on the time bomb. The number sequence of the time bomb counts from 1 to N. If the current number sequence includes the sub-sequence &quot;49&quot;, the power of the blast would add one point.<br>
+Now the counter-terrorist knows the number N. They want to know the final points of the power. Can you help them?</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/HDU3555">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/HDU2089">
+                        HDU-2089  不要62
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="post-tag i-tag
+                            i-tag-">
+            #数位DP
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>杭州人称那些傻乎乎粘嗒嗒的人为62（音：laoer）。<br>
 杭州交通管理局经常会扩充一些的士车牌照，新近出来一个好消息，以后上牌照，不再含有不吉利的数字了，这样一来，就可以消除个别的士司机和乘客的心理障碍，更安全地服务大众。<br>
 不吉利的数字为所有含有4或62的号码。</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/HDU2089" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P1896">「SCOI2005」 互不侵犯</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
-          状压DP
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/HDU2089">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P1896">
+                        「SCOI2005」 互不侵犯
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="post-tag i-tag
+                            i-tag-">
+            #状压DP
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>在N×N的棋盘里面放K个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共8个格子。</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>在N×N的棋盘里面放K个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共8个格子。</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P1896" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2051">「AHOI2009」 中国象棋</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-04
-      
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
-          状压DP
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P1896">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P2051">
+                        「AHOI2009」 中国象棋
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-04</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="post-tag i-tag
+                            i-tag-other_3">
+            #状压DP
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>这次小可可想解决的难题和中国象棋有关，在一个N行M列的棋盘上，让你放若干个炮（可以是0个），使得没有一个炮可以攻击到另一个炮，请问有多少种放置方法。大家肯定很清楚，在中国象棋中炮的行走方式是：一个炮攻击到另一个炮，当且仅当它们在同一行或同一列中，且它们之间恰好 有一个棋子。你也来和小可可一起锻炼一下思维吧！</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>这次小可可想解决的难题和中国象棋有关，在一个N行M列的棋盘上，让你放若干个炮（可以是0个），使得没有一个炮可以攻击到另一个炮，请问有多少种放置方法。大家肯定很清楚，在中国象棋中炮的行走方式是：一个炮攻击到另一个炮，当且仅当它们在同一行或同一列中，且它们之间恰好 有一个棋子。你也来和小可可一起锻炼一下思维吧！</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2051" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2704">「NOI2001」 炮兵阵地</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-04
-      
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
-          状压DP
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2051">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P2704">
+                        「NOI2001」 炮兵阵地
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-04</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="post-tag i-tag
+                            i-tag-other_4">
+            #状压DP
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>司令部的将军们打算在N<em>M的网格地图上部署他们的炮兵部队。一个N</em>M的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>司令部的将军们打算在N<em>M的网格地图上部署他们的炮兵部队。一个N</em>M的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2704" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2607">「ZJOI2008」 骑士</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-04
-      
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge success">
-          树型DP
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2704">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P2607">
+                        「ZJOI2008」 骑士
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-04</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="post-tag i-tag
+                            i-tag-">
+            #树型DP
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Z国的骑士团是一个很有势力的组织，帮会中汇聚了来自各地的精英。他们劫富济贫，惩恶扬善，受到社会各界的赞扬。</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>Z国的骑士团是一个很有势力的组织，帮会中汇聚了来自各地的精英。他们劫富济贫，惩恶扬善，受到社会各界的赞扬。</p>
 <p>最近发生了一件可怕的事情，邪恶的Y国发动了一场针对Z国的侵略战争。战火绵延五百里，在和平环境中安逸了数百年的Z国又怎能抵挡的住Y国的军队。于是人们把所有的希望都寄托在了骑士团的身上，就像期待有一个真龙天子的降生，带领正义打败邪恶。</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2607" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/template">Algorithm-Template</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-04
-      
-        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
-          template
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2607">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/template">
+                        Algorithm-Template
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-04</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/template" class="post-tag i-tag
+                            i-tag-other_1">
+            #template
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>收录一些常数巨大的模版</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>收录一些常数巨大的模版</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/template" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/hello-gridea">Hello Gridea</a>
-    </h2>
-    <p class="article-meta">
-      2018-12-12
-      
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
-          Gridea
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/template">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/hello-gridea">
+                        Hello Gridea
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-12</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/gridea" class="post-tag i-tag
+                            i-tag-">
+            #Gridea
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://dinnerhunt.cn/post/hello-gridea" class="post-feature-image" style="background-image:url(https://dinnerhunt.cn/post-images/hello-gridea.png) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/hello-gridea" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/hello-gridea">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+    <div class="pagination-container">
+        
+            <a href="https://dinnerhunt.cn/page/5/" class="page-btn btn">上一页</a>
+            
+                
     </div>
-  </article>
+    
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
 
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1564154573466)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            add one&#39;s
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
         </div>
-        
-        <div class="row flex-edges">
-  
-    <a href="https://dinnerhunt.cn/page/5/" class="paper-btn">
-      上一页
-    </a>
-  
-  
-</div>
+    </div>
+    
 
-      </div>
-      
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1564151162615" class="no-responsive avatar">
-    <div class="text-muted">add one's</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P2473">「SCOI2008」奖励关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Training-Contest">Training Contest</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/LightOJ1027">「LightOJ 1027」A Dangerous Maze</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/hdu2121">「HDU 2121」Ice_cream’s world II</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/uva11183">「UVA 11183」 Teen Girl Squad</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">「2019 GDCPC 中智杯」游记</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula">「学习笔记」莫比乌斯反演</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P3327">「SDOI2015」约数和个数</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P2557">「Luogu-P2257」YY的GCD</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/math1">「学习笔记」 数论 (1)</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
-          期望概率
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
-          状压DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge secondary">
-          最小树形图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge success">
-          个人经历
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
-          学习笔记
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
-          莫比乌斯反演
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
-          数论
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
-          KMP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
-          字符串
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge ">
-          Hash
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
-          AC自动机
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
-          搜索
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
-          Tire
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge warning">
-          并查集
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
-          普通DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge ">
-          主席树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
-          线段树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
-          树上问题
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
-          LCA
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
-          图论
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
-          生成树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
-          二分
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
-          连通图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
-          二分图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
-          组合数学
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge warning">
-          中国剩余定理
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
-          欧拉定理
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
-          矩阵乘法
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
-          计算几何
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
-          树型DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
-          数位DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
-          template
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
-  </div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
 </div>
 
-    </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
 
-
-
-  </body>
 </html>

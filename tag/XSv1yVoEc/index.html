@@ -1,719 +1,495 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>数论 | dinnerhunt</title>
-<meta name="description" content="add one&#39;s">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1564151162615">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    数论 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1564154573466">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
-
-
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
 
-
-  </head>
-  <body>
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/friend" class="menu">
-                友链
-              </a>
-            
-          </li>
-        
-      </ul>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1564154573466" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-  </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <h2 class="current-tag">标签: 数论</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P3327">「SDOI2015」约数和个数</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-07
-      
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
-          莫比乌斯反演
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
-          数论
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">d(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的约数个数，给定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi mathvariant="normal">、</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">N、M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord cjk_fallback">、</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>，求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></msubsup><mi>d</mi><mo>(</mo><mi>i</mi><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^N \sum_{j=1}^M d(ij)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.417049em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></p>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P3327" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        数论</b>
     </div>
-  </article>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P3327">
+                        「SDOI2015」约数和个数
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-07</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="post-tag i-tag
+                            i-tag-success">
+            #莫比乌斯反演
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-other_1">
+            #数论
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">d(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的约数个数，给定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi mathvariant="normal">、</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">N、M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord cjk_fallback">、</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>，求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></msubsup><mi>d</mi><mo>(</mo><mi>i</mi><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^N \sum_{j=1}^M d(ij)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.417049em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></p>
 
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2557">「Luogu-P2257」YY的GCD</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-07
-      
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
-          莫比乌斯反演
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P3327">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P2557">
+                        「Luogu-P2257」YY的GCD
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-07</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="post-tag i-tag
+                            i-tag-warning">
+            #莫比乌斯反演
         </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
-          数论
+                        
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-error">
+            #数论
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>神犇YY虐完数论后给傻×kAc出了一题</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>神犇YY虐完数论后给傻×kAc出了一题</p>
 <p>给定N, M,求1&lt;=x&lt;=N, 1&lt;=y&lt;=M且gcd(x, y)为质数的(x, y)有多少对</p>
 <p>kAc这种傻×必然不会了，于是向你来请教……</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2557" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2557">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/Light1336">
+                        「LightOJ 1336」 Sigma Function
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-other_4">
+            #数论
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>Sigma function is an interesting function in Number Theory. It is denoted by the Greek letter Sigma (σ). This function actually denotes the sum of all divisors of a number. For example σ(24) = 1+2+3+4+6+8+12+24=60. Sigma of small numbers is easy to find but for large numbers it is very difficult to find in a straight forward way. But mathematicians have discovered a formula to find sigma. If the prime power decomposition of an integer is</p>
 
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/Light1336">「LightOJ 1336」 Sigma Function</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
-          数论
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/Light1336">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P2480">
+                        「SDOI2010」 古代猪文
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="post-tag i-tag
+                            i-tag-error">
+            #组合数学
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Sigma function is an interesting function in Number Theory. It is denoted by the Greek letter Sigma (σ). This function actually denotes the sum of all divisors of a number. For example σ(24) = 1+2+3+4+6+8+12+24=60. Sigma of small numbers is easy to find but for large numbers it is very difficult to find in a straight forward way. But mathematicians have discovered a formula to find sigma. If the prime power decomposition of an integer is</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/Light1336" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2480">「SDOI2010」 古代猪文</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
-          组合数学
+                        
+                        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="post-tag i-tag
+                            i-tag-other_1">
+            #中国剩余定理
         </a>
-      
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge warning">
-          中国剩余定理
+                        
+                        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="post-tag i-tag
+                            i-tag-error">
+            #欧拉定理
         </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge warning">
-          欧拉定理
+                        
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-success">
+            #数论
         </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
-          数论
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>猪王国的文明源远流长，博大精深。</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>猪王国的文明源远流长，博大精深。</p>
 <p>iPig在大肥猪学校图书馆中查阅资料，得知远古时期猪文文字总个数为N。当然，一种语言如果字数很多，字典也相应会很大。当时的猪王国国王考虑到如果修一本字典，规模有可能远远超过康熙字典，花费的猪力、物力将难以估量。故考虑再三没有进行这一项劳猪伤财之举。当然，猪王国的文字后来随着历史变迁逐渐进行了简化，去掉了一些不常用的字。</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2480" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P1072">「NOIP2009」 HanKson的趣味题</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
-          数论
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2480">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P1072">
+                        「NOIP2009」 HanKson的趣味题
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-other_3">
+            #数论
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Hanks 博士是 BT(Bio-Tech，生物技术) 领域的知名专家，他的儿子名叫 Hankson。现在，刚刚放学回家的 Hankson 正在思考一个有趣的问题。</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>Hanks 博士是 BT(Bio-Tech，生物技术) 领域的知名专家，他的儿子名叫 Hankson。现在，刚刚放学回家的 Hankson 正在思考一个有趣的问题。</p>
 <p>今天在课堂上，老师讲解了如何求两个正整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">c_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">c_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的最大公约数和最小公倍数。现在 Hankson 认为自己已经熟练地掌握了这些知识，他开始思考一个“求公约数”和“求公倍数”之类问题的“逆问题”，这个问题是这样的：已知正整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>b</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>b</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a_0,a_1,b_0,b_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> ，设某未知正整数 x 满足：</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P1072" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/POJ2773">POJ-2773 Happy 2006</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
-          数论
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P1072">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/POJ2773">
+                        POJ-2773 Happy 2006
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-other_3">
+            #数论
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Two positive integers are said to be relatively prime to each other if the Great Common Divisor (GCD) is 1. For instance, 1, 3, 5, 7, 9...are all relatively prime to 2006.</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>Two positive integers are said to be relatively prime to each other if the Great Common Divisor (GCD) is 1. For instance, 1, 3, 5, 7, 9...are all relatively prime to 2006.</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/POJ2773" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/CF1152C">CodeForces-1152C Neko does Maths</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
-          数论
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/POJ2773">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CF1152C">
+                        CodeForces-1152C Neko does Maths
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-other_4">
+            #数论
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Neko loves divisors. During the latest number theory lesson, he got an interesting exercise from his math teacher.</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>Neko loves divisors. During the latest number theory lesson, he got an interesting exercise from his math teacher.</p>
 <p>Neko has two integers 𝑎 and 𝑏. His goal is to find a non-negative integer 𝑘 such that the least common multiple of 𝑎+𝑘 and 𝑏+𝑘 is the smallest possible. If there are multiple optimal integers 𝑘, he needs to choose the smallest one.</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/CF1152C" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2303">「SDOI2012」 Longge的问题</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
-          数论
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CF1152C">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P2303">
+                        「SDOI2012」 Longge的问题
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-other_4">
+            #数论
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Longge的数学成绩非常好，并且他非常乐于挑战高难度的数学问题。现在问题来了：给定一个整数<strong>n</strong>，你需要求出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^n gcd(i,n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>Longge的数学成绩非常好，并且他非常乐于挑战高难度的数学问题。现在问题来了：给定一个整数<strong>n</strong>，你需要求出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^n gcd(i,n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2303" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2261">「CQOI2007」 余数求和</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
-          数论
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2303">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P2261">
+                        「CQOI2007」 余数求和
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-">
+            #数论
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>给出正整数 <strong>n</strong> 和 <strong>k</strong> 计算 <strong>G(n,k) = k mod  1 + k mod 2 + k mod 3 + k mod 4 + ... + k mod n</strong> 的值，其中 <strong>k mod i</strong> 表示 <strong>k</strong> 除以 <strong>i</strong> 的余数</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>给出正整数 <strong>n</strong> 和 <strong>k</strong> 计算 <strong>G(n,k) = k mod  1 + k mod 2 + k mod 3 + k mod 4 + ... + k mod n</strong> 的值，其中 <strong>k mod i</strong> 表示 <strong>k</strong> 除以 <strong>i</strong> 的余数</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2261" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/NC637C">16届同大邀请赛 半数素</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
-          数论
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2261">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/NC637C">
+                        16届同大邀请赛 半数素
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
+                            i-tag-banana">
+            #数论
         </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>最近张老师对半素数感兴趣。半素数(semi-prime)是可以表示成两个素数乘积的数。比如4和10是半素数，因为4=2×2，10=2×5。而8不是半素数，因为8=2×2×2。他想知道某一个l到r的闭区间内有多少个这样的数。但是这个问题太困难了，他想让你帮他解决。</p>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>最近张老师对半素数感兴趣。半素数(semi-prime)是可以表示成两个素数乘积的数。比如4和10是半素数，因为4=2×2，10=2×5。而8不是半素数，因为8=2×2×2。他想知道某一个l到r的闭区间内有多少个这样的数。但是这个问题太困难了，他想让你帮他解决。</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/NC637C" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/NC637C">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
 
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1564154573466)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            add one&#39;s
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
+    </div>
+    
 
-      </div>
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1564151162615" class="no-responsive avatar">
-    <div class="text-muted">add one's</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P2473">「SCOI2008」奖励关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Training-Contest">Training Contest</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/LightOJ1027">「LightOJ 1027」A Dangerous Maze</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/hdu2121">「HDU 2121」Ice_cream’s world II</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/uva11183">「UVA 11183」 Teen Girl Squad</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">「2019 GDCPC 中智杯」游记</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula">「学习笔记」莫比乌斯反演</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P3327">「SDOI2015」约数和个数</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P2557">「Luogu-P2257」YY的GCD</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/math1">「学习笔记」 数论 (1)</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
-          期望概率
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
-          状压DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/PnG0-6GQM" class="badge ">
-          最小树形图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
-          个人经历
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
-          学习笔记
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
-          莫比乌斯反演
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
-          数论
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
-          KMP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
-          字符串
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
-          Hash
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
-          AC自动机
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
-          搜索
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
-          Tire
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge success">
-          并查集
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
-          普通DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge success">
-          主席树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
-          线段树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
-          树上问题
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge success">
-          LCA
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
-          图论
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge warning">
-          生成树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
-          二分
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
-          连通图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
-          二分图
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
-          组合数学
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
-          中国剩余定理
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
-          欧拉定理
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
-          矩阵乘法
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge success">
-          计算几何
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
-          树型DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
-          数位DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
-          template
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
-  </div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
 </div>
 
-    </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
 
-
-
-  </body>
 </html>
