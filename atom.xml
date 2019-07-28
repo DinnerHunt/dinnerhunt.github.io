@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-07-26T19:13:55.796Z</updated>
+    <updated>2019-07-28T17:53:24.135Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -244,7 +244,7 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
 <li>I. Temperature Survey [NTT+思维]</li>
 <li><s>J. Time Limit</s> [签到]</li>
 </ul>
-<h4 id="arabellacpc-2019"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248400">ArabellaCPC 2019 </a> [6/13]</h4>
+<h4 id="arabellacpc-2019"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248400">ArabellaCPC 2019 </a> [7/13]</h4>
 <ul>
 <li><s>A. Is It Easy ?</s>                        [签到]</li>
 <li><s>B. Road to Arabella</s>               [简单博弈]</li>
@@ -304,7 +304,7 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
 <li><s>K.  Keen On Everything But Triangle</s>[线段树 or 主席树]</li>
 <li>L. Longest Subarray[线段树]</li>
 </ul>
-<h4 id="2019牛客多校第三场"><a href="https://ac.nowcoder.com/acm/contest/883#question">2019牛客多校(第三场)</a> [2/10]</h4>
+<h4 id="2019牛客多校第三场"><a href="https://ac.nowcoder.com/acm/contest/883#question">2019牛客多校(第三场)</a> [5/10]</h4>
 <ul>
 <li>A. Graph Games [思维+数据结构]</li>
 <li><s>B. Crazy Binary String</s>[签到]</li>
@@ -312,10 +312,24 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
 <li><s>D. Big Integer</s>[数论]</li>
 <li>E. Trees in the Pocket II [不太可做]</li>
 <li><s>F. Planting Trees</s> [单调队列+暴力]</li>
-<li>G. Removing Stones[分治]</li>
+<li><s>G. Removing Stones</s>[分治]</li>
 <li><s>H. Magic Line</s>[签到+几何]</li>
 <li>I. Median[DP]</li>
-<li>J. LRU management[链表+模拟]</li>
+<li><s>J. LRU management</s>[链表+模拟]</li>
+</ul>
+<h4 id="2019牛客多校第四场"><a href="https://ac.nowcoder.com/acm/contest/884#question">2019牛客多校(第四场)</a> [3/11]</h4>
+<ul>
+<li><s>A	meeting</s>	[DP]</li>
+<li>B	xor	        [线性基+线段树]</li>
+<li>~~C	sequence	~~[数据结构]</li>
+<li><s>D	triples I</s>	  [构造]</li>
+<li>E	triples II	 [容斥+DP]</li>
+<li>F	merge	  [平衡树+思维]</li>
+<li>G	tree	[搜索+树形DP]</li>
+<li>H	RNGs	[神仙]</li>
+<li>I	string	[后缀自动机 + 回文树]</li>
+<li><s>J	free</s>	  [BFS]</li>
+<li><s>K	number</s>  [DP?]</li>
 </ul>
 ]]></content>
     </entry>
