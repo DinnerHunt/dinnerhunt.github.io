@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-08-01T18:55:39.678Z</updated>
+    <updated>2019-08-02T16:00:34.132Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -11,20 +11,111 @@
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
     <entry>
+        <title type="html"><![CDATA[「CQOI 2015」 任务查询系统]]></title>
+        <id>https://dinnerhunt.cn/post/P3168</id>
+        <link href="https://dinnerhunt.cn/post/P3168">
+        </link>
+        <updated>2019-08-02T15:54:50.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近实验室正在为其管理的超级计算机编制一套任务管理系统，而你被安排完成其中的查询部分。超级计算机中的任务用三元组(Si,Ei,Pi)描述，(Si,Ei,Pi)表示任务从第Si秒开始，在第Ei秒后结束（第Si秒和Ei秒任务也在运行），其优先级为Pi。同一时间可能有多个任务同时执行，它们的优先级可能相同，也可能不同。调度系统会经常向查询系统询问，第Xi秒正在运行的任务中，优先级最小的Ki个任务（即将任务按照优先级从小到大排序后取前Ki个）的优先级之和是多少。特别的，如果Ki大于第Xi秒正在运行的任务总数，则直接回答第Xi秒正在运行的任务优先级之和。上述所有参数均为整数，时间的范围在1到n之间（包含1和n）。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近实验室正在为其管理的超级计算机编制一套任务管理系统，而你被安排完成其中的查询部分。超级计算机中的任务用三元组(Si,Ei,Pi)描述，(Si,Ei,Pi)表示任务从第Si秒开始，在第Ei秒后结束（第Si秒和Ei秒任务也在运行），其优先级为Pi。同一时间可能有多个任务同时执行，它们的优先级可能相同，也可能不同。调度系统会经常向查询系统询问，第Xi秒正在运行的任务中，优先级最小的Ki个任务（即将任务按照优先级从小到大排序后取前Ki个）的优先级之和是多少。特别的，如果Ki大于第Xi秒正在运行的任务总数，则直接回答第Xi秒正在运行的任务优先级之和。上述所有参数均为整数，时间的范围在1到n之间（包含1和n）。</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P3168">「CQOI 2015」 任务查询系统</a></p>
+<h4 id="题解">题解</h4>
+<p>把区间开始结束时间理解成差分，然后根据时间排序后在主席树上插入即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int maxd = 2e5+10;
+int rt[maxd&lt;&lt;5],ls[maxd&lt;&lt;5],rs[maxd&lt;&lt;5],size[maxd&lt;&lt;5];
+long long sum[maxd&lt;&lt;5];
+int x,a,b,c,tot;
+void insert(int &amp;rt,int last,int l,int r,int x)
+{
+    rt = ++tot; ls[rt] = ls[last],rs[rt] = rs[last];
+    size[rt] = size[last]+((x&gt;0)?1:-1);
+    sum[rt] = (long long)sum[last] + x;
+    //printf(&quot;%d %d %d %d %lld\n&quot;,rt,l,r,size[rt],sum[rt]);
+    if(l==r) return ;
+    int mid = (l+r)&gt;&gt;1;
+    if(abs(x)&lt;=mid) insert(ls[rt],ls[last],l,mid,x);
+    else insert(rs[rt],rs[last],mid+1,r,x);
+    //printf(&quot;%d %d %d %d %d\n&quot;,size[rt],size[last],l,r,x);
+}
+long long query(int y,int l,int r,int v)
+{
+    //printf(&quot;%d %d %d %d %d %d\n&quot;,y,l,r,size[y],size[ls[y]],size[rs[y]]);
+    if(l==r)return min(v,size[y])*l;
+    int mid = (l+r)&gt;&gt;1;
+    if(v &lt;= size[ls[y]]) return query(ls[y],l,mid,v);
+    else return sum[ls[y]] + query(rs[y],mid+1,r,v-size[ls[y]]);
+}
+int eid;
+struct node
+{
+    int pos,v;
+}arr[maxd];
+bool cmp(const node &amp;x,const node &amp;y)
+{
+    return x.pos &lt; y.pos;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,m,k=0;scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        arr[++eid].pos = a, arr[eid].v = c;
+        arr[++eid].pos = b+1,arr[eid].v = -c;
+        k = max(k,b+1);
+    }
+    sort(arr+1,arr+1+eid,cmp);
+    int id=1;arr[eid+1].pos = 0;
+    for(int i=1;i&lt;=k;i++)
+    {
+        if(arr[id].pos!=i) rt[i] = rt[i-1];
+        else
+        {
+            //printf(&quot;%d %d %d\n&quot;,i,i-1,arr[id].v);
+            insert(rt[i],rt[i-1],1,10000000,arr[id++].v);
+            while(arr[id].pos == i)
+            {
+                //printf(&quot;%d %d %d\n&quot;,i,i,arr[id].v);
+                insert(rt[i],rt[i],1,10000000,arr[id++].v);
+            }
+        }
+        //printf(&quot;%d %d %d %d\n&quot;,i,rt[i],size[ls[rt[i]]],size[rs[rt[i]]]);
+    }
+    long long ans = 1;
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d %d %d %d&quot;,&amp;x,&amp;a,&amp;b,&amp;c);
+        long long k = 1+(a*ans%c+b)%c;
+        //printf(&quot;%d %lld\n&quot;,x,k);
+        ans = query(rt[x],1,10000000,k);
+        printf(&quot;%lld\n&quot;,ans);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[「ZJOI 2012」 灾难]]></title>
         <id>https://dinnerhunt.cn/post/P2597</id>
         <link href="https://dinnerhunt.cn/post/P2597">
         </link>
         <updated>2019-08-01T18:46:23.000Z</updated>
-        <summary type="html"><![CDATA[<p>链接🔗<br>
-<a href="https://www.luogu.org/problem/P2597">「ZJOI 2012」 灾难</a><br>
-阿米巴是小强的好朋友。</p>
+        <summary type="html"><![CDATA[<p>阿米巴是小强的好朋友。</p>
 <p>阿米巴和小强在草原上捉蚂蚱。小强突然想，如果蚂蚱被他们捉灭绝了，那么吃蚂蚱的小鸟就会饿死，而捕食小鸟的猛禽也会跟着灭绝，从而引发一系列的生态灾难。</p>
 <p>学过生物的阿米巴告诉小强，草原是一个极其稳定的生态系统。如果蚂蚱灭绝了，小鸟照样可以吃别的虫子，所以一个物种的灭绝并不一定会引发重大的灾难。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>链接🔗<br>
-<a href="https://www.luogu.org/problem/P2597">「ZJOI 2012」 灾难</a><br>
-阿米巴是小强的好朋友。</p>
+        <content type="html"><![CDATA[<p>阿米巴是小强的好朋友。</p>
 <p>阿米巴和小强在草原上捉蚂蚱。小强突然想，如果蚂蚱被他们捉灭绝了，那么吃蚂蚱的小鸟就会饿死，而捕食小鸟的猛禽也会跟着灭绝，从而引发一系列的生态灾难。</p>
 <p>学过生物的阿米巴告诉小强，草原是一个极其稳定的生态系统。如果蚂蚱灭绝了，小鸟照样可以吃别的虫子，所以一个物种的灭绝并不一定会引发重大的灾难。</p>
 <!--more-->
@@ -37,6 +128,8 @@
 <p>举个例子：在一个草场上，生物之间的关系是：</p>
 <p>如果小强和阿米巴把草原上所有的羊都给吓死了，那么狼会因为没有食物而灭绝，而小强和阿米巴可以通过吃牛、牛可以通过吃草来生存下去。所以，羊的灾难值是1。但是，如果草突然灭绝，那么整个草原上的5种生物都无法幸免，所以，草的灾难值是4。</p>
 <p>给定一个食物网，你要求出每个生物的灾难值。</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P2597">「ZJOI 2012」 灾难</a></p>
 <h4 id="题解">题解</h4>
 <p>支配点定义: 如果从点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>o</mi><mi>o</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">root</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span></span></span></span>出发，到达点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 的路上，存在点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>，使得如果点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>不能通过，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>o</mi><mi>o</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">root</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span></span></span></span>无法到达<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> ,则称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>的支配点</p>
 <p>题目就是求每个点所支配点的数量</p>
@@ -125,16 +218,12 @@ int main()
         <link href="https://dinnerhunt.cn/post/hdu-6621">
         </link>
         <updated>2019-08-01T17:33:24.000Z</updated>
-        <summary type="html"><![CDATA[<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/HDU-6621">「HDU 6621」 K-th Closest Distance</a><br>
-You have an array: a1, a2, ......, an and you must answer for some queries.<br>
+        <summary type="html"><![CDATA[<p>You have an array: a1, a2, ......, an and you must answer for some queries.<br>
 For each query, you are given an interval [L, R] and two numbers p and K. Your goal is to find the Kth closest distance between p and aL, aL+1, ..., aR.<br>
 The distance between p and ai is equal to |p - ai|.<br>
 For example:</p>
 ]]></summary>
-        <content type="html"><![CDATA[<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/HDU-6621">「HDU 6621」 K-th Closest Distance</a><br>
-You have an array: a1, a2, ......, an and you must answer for some queries.<br>
+        <content type="html"><![CDATA[<p>You have an array: a1, a2, ......, an and you must answer for some queries.<br>
 For each query, you are given an interval [L, R] and two numbers p and K. Your goal is to find the Kth closest distance between p and aL, aL+1, ..., aR.<br>
 The distance between p and ai is equal to |p - ai|.<br>
 For example:</p>
@@ -142,6 +231,8 @@ For example:</p>
 <p>A = {31, 2, 5, 45, 4 } and L = 2, R = 5, p = 3, K = 2.<br>
 |p - a2| = 1, |p - a3| = 2, |p - a4| = 42, |p - a5| = 1.<br>
 Sorted distance is {1, 1, 2, 42}. Thus, the 2nd closest distance is 1.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/HDU-6621">「HDU 6621」 K-th Closest Distance</a></p>
 <h4 id="题解">题解</h4>
 <p>查询可以转换成, 给定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>,求最小<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>,使得在区间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>L</mi><mo separator="true">,</mo><mi>R</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[L,R]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">]</span></span></span></span>区间内，数值范围在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>p</mi><mo>−</mo><mi>x</mi><mo separator="true">,</mo><mi>p</mi><mo>+</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[p-x,p+x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>之间的数不小于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个<br>
 然后区间小于某数的数量可以用主席树实现,然后套上一个二分即可</p>
@@ -864,148 +955,6 @@ int main()
     return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「2019 GDCPC 中智杯」游记]]></title>
-        <id>https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji</id>
-        <link href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">
-        </link>
-        <updated>2019-05-19T15:16:49.000Z</updated>
-        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 50% />]]></summary>
-        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 50% />
-<!-- more -->
-<h4 id="前言">前言</h4>
-<p>在老班与王老师的辛苦下，能公费参与此次比赛，与广东各高校优秀的ACMer交流学习，感到十分荣幸</p>
-<h4 id="day-1">Day  -1</h4>
-<p>周五，在中午下课后，去电影院看了 《比卡丘》，以缓解这周学习数论所带来的阴影<br>
-晚上 Xuqing 将板子打印出来，我们的赛前准备也就结束了</p>
-<br>
-<h4 id="day-0">Day 0</h4>
-<p>凌晨被猫叫醒，也许它也担心我是否能赶上早晨的动车</p>
-<p>下楼正好碰到一同前行的队友 WFcong , 在柳园食堂随便吃了点就到了集合地点 （<strong>mark</strong> Xuqing  🐦 * 1）</p>
-<p>在取票的时候，收到了来之 Fann 老师沉重的关爱，每人两支水( WFcong 背了一个来回  )</p>
-<br>
-<p>经过和谐号的过道，穿过七号线的走廊，我们到达了大学城南（我忘了是南还是北来着）</p>
-<p>搭上一趟计程车后，到了华南理工大学的北门</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_564.jpg"  div align=center />
-<br>
-<br>
-<p>然后右边就是我们下榻的酒店</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_565.jpg"  div align=center />
-<br>
-<br>
-<p>酒店从外面看有些陈旧，但是内部无论是环境，还是设计都是无可挑剔的 (听说很贵，我也不知道，我也不敢问)</p>
-<p>房间里布局(老师特意为我们选了带窗的房间)<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_567.jpg"  div align=center /></p>
-<br>
-<p>电梯门口的椅子，有点像爱丽丝梦游仙境里红心女王的椅子<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_57d.jpg"  div align=center /></p>
-<br>
-<br>
-<p>然后就是浴室里的牙膏是小条的黑人牙膏，洗手液是瓶装的蓝月亮，还有发胶和漱口水，除了牙刷牙膏以外，其他都不是一次性的，都是些品质比较好的牌子。这时我从未见过的，当然上面大部分都标了非赠品</p>
-<p>午饭在酒店二楼吃的，帅气的 Fann 老师请我们吃了一顿星级大餐。然而这里的茄子煲没有灵魂，我并没能吃完它，挺愧疚的。</p>
-<br>
-<p>在宿舍眯了一会之后，我们坐车来到了中山大学，提前试机，看看考场 （<strong>mark</strong> Fann 老师填错目的地）</p>
-<p>试机时，看了看 A 题，然后写了个分段打表，WA了一发后发现没去 freopen() ，再次提交时过了<br>
-挺开心的，这应该算是ACM现场赛的第一道题了吧</p>
-<p>然后我们收到了老师的领的队服和赞助商送的礼物&quot;智能触碰护眼3色冷暖光可调节能LED灯&quot;一台，据说WFcong 当晚抱着它睡了一晚<br>
-<br></p>
-<p>幸运的看到了中大的龙舟训练<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_56b.jpg"  div align=center /></p>
-<br>
-<p>在回酒店的路上，拍了许多照</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_56f.jpg"  style="float:left;"  width = 33% height = 20% />
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_572.jpg"  style="float:left;"  width = 33% height = 20%/>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_582.jpg"  style="float:left;" width = 33% height = 20%/></p>
-<br>
-<br>
-<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_579.jpg"  style="float:left;" width = 33% height = 20%/>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_576.jpg" style="float:left;"  width = 33% height = 20%/></p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_575.jpg"  style="float:left;"  width = 33% height = 20% />
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p>晚上和 Xqing 叫了一顿丰盛的M记，外加一个榴莲披萨🍕<br>
-(其中，Xqing为了激励自己蓝桥国赛拿特等，特意把电脑显示器的轴承弄坏了点，这种破釜沉舟的精神值得我们学习 )</p>
-<br>
-<br>
-<h4 id="day-1-2">Day 1</h4>
-<p>早早的起了床，洗漱完毕后，成功先于老师到达电梯门口✌️</p>
-<p>酒店的自助早餐特别丰盛，可能是因为有很多外国学者，教授来交流，有特别多的西式早点。</p>
-<br> 
-<p>到了赛场门口，去拿参赛牌时被告知我的并没有打印到，于是给了我一个中大选手的赛牌。挺难过的，第一次参赛没有拿到奖牌，也没有拿到赛牌。</p>
-<p>透过门缝，看到了中大的师兄们在奋力的吹气球。由于他们刚刚开始准备，打算通过猜气球数量猜签到题的想法失败了（wls教的）</p>
-<p>开始觉得带词典进场挺丢人的，看到很多队伍也背了，于是便也大大方方的从包了拿了出来。</p>
-<p>临进比赛时间时，忽然发现旁边的人散开了，回头一看，竟然是楼教主，没想到竟然跟楼教主一个赛场。</p>
-<p>在赛前偷偷拍了几张照片</p>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_57f.jpg"  style="float:left;"  width = 50% height = 25% /></p>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_580.jpg"  style="float:left;"  width =50% height = 25% /></p>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
-<h5 id="赛中">赛中</h5>
-<p>我从头读题，WFcong从尾读，Xqinger中间。</p>
-<p>A读了几遍题意不太明白具体意思<br>
-然后通过榜单发现E和L是两道签到，然后WFcong 尝试着写E , 在交之前中大系统重启了<br>
-电脑重启后，WA了两法，我发现了这是个错误算法，于是决定自己来写，让他们看L</p>
-<p>写完后一些细节没有处理好，导致程序RE，这时心态有点炸，不过开始以为前8才有牌，所以并没有拿牌的欲望（后来才后悔莫及）</p>
-<p>在做L的时候，因读错题意，WA了两发后，决定不管罚时了（事实证明这个是个错误的决定）   (<strong>mark</strong> Xqinger 读错题)</p>
-<p>在经过几次试探，和重新读题后，L终于过了，接着把E的细节处理好，得到了两个气球，但此时基本垫底</p>
-<p>K是个模拟题，B也是个水题，于是决定让他们读B，我来写K<br>
-写完之后WA了2发，找不到错误。</p>
-<p>正在惆怅时，突然飞来了几个麦当劳外卖袋。特别开心，在赛场上吃到了M记，中大赛场的服务真的好，这次报名费回本了，于是心态调整了回来。</p>
-<p>后面发现了K的题目读错了，修正下过了K以后，一起看了B题  (<strong>mark</strong> 以后不碰雀魂)</p>
-<p>赛前一周一直再看数论，发现手生疏了很多，有点码不动，并且代码错误特别多，在思路正确的情况下，B还WA了两发</p>
-<p>最后以为时间不多了，边随便看了看题，并没有再过题的欲望。过了几分钟后发现刚封榜不久，还有40来分钟，于是打算尝试C，C的想法的想出来了，但之前没做过几道莫队的题，在最后部分卡壳了。原本想在内部二分查找，却发现无法处理，得用平衡树或者主席树，接着大脑陷入了逻辑死循环。赛后听到离散化+树状数组才恍然大悟</p>
-<p>最后因为罚时过高，4题打铁收场</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/WechatIMG7981.jpeg"  div align=center />
- <br>
-<br>
- <br>
-<br>
-<p>在总结大会上，看到了气质的主持小姐姐，霸气外漏的楼教主，还有各种上台领奖的大佬</p>
-<p>在等待颁奖的过程中，被幸运的抽到了吐槽的机会。</p>
-<p>在吐槽完后，看到小姐姐从旁边拿着一个灰色的盒子向我走来时，我的笑容逐渐消失 （返程背包负重+20）</p>
-<p>挺可惜的，为了赶车，我们不得不提前离场，错过了滚榜。</p>
-<p>在广州的高铁站，又收获了 Fann 老师的一顿KFC，希望下次还能由Fann带队 😄   ( <strong>mark</strong> Fann 老师走错厕所 🚽)</p>
-<br>
-<br>
-<h4 id="后续">后续</h4>
-<p>特别感谢学校的支持，还有老班，王老师，Fann 老师的帮助 。</p>
-<p>Fann 老师特别可爱，每次去看考点前都跟我们说，待会我就不去了,等你们搞完我去接你们就好了，然后每次都跟着我们去的</p>
-<p>对于成绩还是不太满意的。总共有三个问题，一个读题；一个是做题做少了，码的过程中错误频发；最后就是训练赛打少了，比赛过程中比较紧张。</p>
-<p>争取下次那块牌吧</p>
 ]]></content>
     </entry>
 </feed>

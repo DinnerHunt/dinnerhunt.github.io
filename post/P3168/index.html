@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    HDU-4734 F(x) | dinnerhunt
+    「CQOI 2015」 任务查询系统 | dinnerhunt
 </title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1564761481158">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -107,67 +107,100 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            HDU-4734 F(x)
+                            「CQOI 2015」 任务查询系统
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-05-05</time>
+                            <time class="post-time">2019-08-02</time>
                             
-                                <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="post-tag i-tag
-                            i-tag-success">
-                            #数位DP
+                                <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="post-tag i-tag
+                            i-tag-other_2">
+                            #主席树
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <p>For a decimal number x with n digits (A nA n-1A n-2 ... A 2A 1), we define its weight as F(x) = A n * 2 n-1 + A n-1 * 2 n-2 + ... + A 2 * 2 + A 1 * 1. Now you are given two numbers A and B, please calculate how many numbers are there between 0 and B, inclusive, whose weight is no more than F(A).</p>
-<!-- more --> 
-<h4 id="题目链接">题目链接🔗</h4>
-<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4734">HDU-4734 F(x)</a></p>
+                                    <p>最近实验室正在为其管理的超级计算机编制一套任务管理系统，而你被安排完成其中的查询部分。超级计算机中的任务用三元组(Si,Ei,Pi)描述，(Si,Ei,Pi)表示任务从第Si秒开始，在第Ei秒后结束（第Si秒和Ei秒任务也在运行），其优先级为Pi。同一时间可能有多个任务同时执行，它们的优先级可能相同，也可能不同。调度系统会经常向查询系统询问，第Xi秒正在运行的任务中，优先级最小的Ki个任务（即将任务按照优先级从小到大排序后取前Ki个）的优先级之和是多少。特别的，如果Ki大于第Xi秒正在运行的任务总数，则直接回答第Xi秒正在运行的任务优先级之和。上述所有参数均为整数，时间的范围在1到n之间（包含1和n）。</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P3168">「CQOI 2015」 任务查询系统</a></p>
 <h4 id="题解">题解</h4>
-<p><strong>数位DP</strong><br>
-先可以得到状态转移方程<br>
-我们设 <strong>dp[i][j]</strong>  为长度为 <strong>i</strong> , <strong>f[x]</strong> 值小于 <strong>j</strong> 的个数<br>
-假设第 <strong>i</strong> 位为 <strong>k</strong> ,那么长度 <strong>i-1</strong> 的数都满足 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mi>B</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">x \in [0,B]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mclose">]</span></span></span></span> ,然后只需要求出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mn>1</mn><mi>k</mi></msubsup><mi>d</mi><mi>p</mi><mo>[</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo>⋅</mo><mo>(</mo><mn>1</mn><mo>&lt;</mo><mo>&lt;</mo><mo>(</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">\sum_{1}^{k}dp[len-1][j-i \cdot (1&lt;&lt;(len-1))]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2887179999999998em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9890079999999999em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span> , 当 <strong>k</strong> 为 <strong>0</strong> 是需要特判处理，因为它少一位的数不一定小于原数<br>
-防止超时，在搜索过程中用上记忆化</p>
+<p>把区间开始结束时间理解成差分，然后根据时间排序后在主席树上插入即可</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
 #include &lt;cstring&gt;
 using namespace std;
-int t,dp[15][10005],arr[15];
-int dfs(int len,int x,int flag)
+const int maxd = 2e5+10;
+int rt[maxd&lt;&lt;5],ls[maxd&lt;&lt;5],rs[maxd&lt;&lt;5],size[maxd&lt;&lt;5];
+long long sum[maxd&lt;&lt;5];
+int x,a,b,c,tot;
+void insert(int &amp;rt,int last,int l,int r,int x)
 {
-    if(len == 0) return x&gt;=0;
-    if(x &lt; 0) return 0;
-    if(!flag&amp;&amp;dp[len][x]!=-1) return dp[len][x]; 
-    int ans = 0, end = flag?arr[len]:9;
-    for(int i=0;i&lt;=end;i++)
-        ans += dfs(len-1,x - i*(1&lt;&lt;(len-1)),flag&amp;&amp;i==end);
-    if(!flag) dp[len][x] = ans;
-    return ans;
+    rt = ++tot; ls[rt] = ls[last],rs[rt] = rs[last];
+    size[rt] = size[last]+((x&gt;0)?1:-1);
+    sum[rt] = (long long)sum[last] + x;
+    //printf(&quot;%d %d %d %d %lld\n&quot;,rt,l,r,size[rt],sum[rt]);
+    if(l==r) return ;
+    int mid = (l+r)&gt;&gt;1;
+    if(abs(x)&lt;=mid) insert(ls[rt],ls[last],l,mid,x);
+    else insert(rs[rt],rs[last],mid+1,r,x);
+    //printf(&quot;%d %d %d %d %d\n&quot;,size[rt],size[last],l,r,x);
 }
-int f(int x)
+long long query(int y,int l,int r,int v)
 {
-    int ans = 0,i=0;
-    while(x) ans+=(x%10)*(1&lt;&lt;i),i++,x/=10;
-    return ans;
+    //printf(&quot;%d %d %d %d %d %d\n&quot;,y,l,r,size[y],size[ls[y]],size[rs[y]]);
+    if(l==r)return min(v,size[y])*l;
+    int mid = (l+r)&gt;&gt;1;
+    if(v &lt;= size[ls[y]]) return query(ls[y],l,mid,v);
+    else return sum[ls[y]] + query(rs[y],mid+1,r,v-size[ls[y]]);
 }
-int solve(int x,int y)
+int eid;
+struct node
 {
-    int i=0;
-    while(y)arr[++i] = y%10,y/=10;
-    return dfs(i,f(x),1);
+    int pos,v;
+}arr[maxd];
+bool cmp(const node &amp;x,const node &amp;y)
+{
+    return x.pos &lt; y.pos;
 }
 int main()
 {
     // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
     // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d&quot;,&amp;t);memset(dp,-1,sizeof(dp));
-    for(int i=1;i&lt;=t;i++)
+    int n,m,k=0;scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++)
     {
-        int a,b;
-        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
-        printf(&quot;Case #%d: %d\n&quot;,i,solve(a,b));
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        arr[++eid].pos = a, arr[eid].v = c;
+        arr[++eid].pos = b+1,arr[eid].v = -c;
+        k = max(k,b+1);
+    }
+    sort(arr+1,arr+1+eid,cmp);
+    int id=1;arr[eid+1].pos = 0;
+    for(int i=1;i&lt;=k;i++)
+    {
+        if(arr[id].pos!=i) rt[i] = rt[i-1];
+        else
+        {
+            //printf(&quot;%d %d %d\n&quot;,i,i-1,arr[id].v);
+            insert(rt[i],rt[i-1],1,10000000,arr[id++].v);
+            while(arr[id].pos == i)
+            {
+                //printf(&quot;%d %d %d\n&quot;,i,i,arr[id].v);
+                insert(rt[i],rt[i],1,10000000,arr[id++].v);
+            }
+        }
+        //printf(&quot;%d %d %d %d\n&quot;,i,rt[i],size[ls[rt[i]]],size[rs[rt[i]]]);
+    }
+    long long ans = 1;
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d %d %d %d&quot;,&amp;x,&amp;a,&amp;b,&amp;c);
+        long long k = 1+(a*ans%c+b)%c;
+        //printf(&quot;%d %lld\n&quot;,x,k);
+        ans = query(rt[x],1,10000000,k);
+        printf(&quot;%lld\n&quot;,ans);
     }
     return 0;
 }
@@ -179,9 +212,9 @@ int main()
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://dinnerhunt.cn/post/HDU3555">
+                            <a href="https://dinnerhunt.cn/post/P2597">
                                 <h3 class="post-title">
-                                    HDU-3555 Bomb
+                                    「ZJOI 2012」 灾难
                                 </h3>
                             </a>
                         </div>
@@ -206,7 +239,7 @@ int main()
 <ul>
 <li>
 <ul>
-<li><a href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5">题目链接🔗</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
 <li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
 <li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
 </ul>
