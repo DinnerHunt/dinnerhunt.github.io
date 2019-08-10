@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-08-02T17:33:20.101Z</updated>
+    <updated>2019-08-10T14:29:31.310Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,243 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[Training Contest]]></title>
+        <id>https://dinnerhunt.cn/post/Training-Contest</id>
+        <link href="https://dinnerhunt.cn/post/Training-Contest">
+        </link>
+        <updated>2019-08-02T17:36:27.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+<!-- more --> 
+<h4 id="2019牛客多校第一场"><a href="https://ac.nowcoder.com/acm/contest/881#question">2019牛客多校(第一场)</a>  [4/10]</h4>
+<ul>
+<li><s>A. Equivalent Prefixes</s>            [递归乱搞]</li>
+<li>B. Integration                                   [数学题]</li>
+<li>C. Euclidean Distance                      [拉格兰日乘子法]</li>
+<li>D. Parity of Tuples                            [FWT]</li>
+<li><s>E. ABBA</s>                                 [贪心+DP or 组合数学]</li>
+<li><s>F.  Random Point in Triangle</s>  [暴力跑点猜期望]</li>
+<li>G. Substrings 2                                [可持久化分块]</li>
+<li>H. xor                                               [线性基]</li>
+<li>I. Points Division                              [DP+线段树]</li>
+<li><s>J. Fraction Comparision</s>        [模拟]</li>
+</ul>
+<h4 id="arabellacpc-2019"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248400">ArabellaCPC 2019 </a> [7/13]</h4>
+<ul>
+<li><s>A. Is It Easy ?</s>                        [签到]</li>
+<li><s>B. Road to Arabella</s>               [简单博弈]</li>
+<li><s>C. Check The Text</s>                [模拟]</li>
+<li>D. Meeting Bahosain                       [<strong>可做</strong>]</li>
+<li>E. Longest path Problem                 [未知]</li>
+<li>F. Musical Chairs                             [博弈?]</li>
+<li><s>G. Card Game</s>                                  [简单期望]</li>
+<li><s>H. Steaks</s>                                         [签到]</li>
+<li>I. Bashar and Hamada                     [思维]</li>
+<li><s>J. Thanos Power</s>                              [DP]</li>
+<li>K. Smart Strategies                         [未知]</li>
+<li>L. Burgers                                        [未知]</li>
+<li><s>M. Two Operations</s>                           [签到]</li>
+</ul>
+<h4 id="2019牛客多校第二场"><a href="https://ac.nowcoder.com/acm/contest/882#question">2019牛客多校(第二场)</a>  [1/10]</h4>
+<ul>
+<li>A. Eddy Walker[概率]</li>
+<li>B. Eddy Walker 2[概率]</li>
+<li>C. Go on Strike! [LCT]</li>
+<li>D. Kth Minimum Clique [暴力]</li>
+<li>E.  MAZE [线段树+DP]</li>
+<li>F.	Partition problem [暴力]</li>
+<li>G. 	Polygons[计算几何]</li>
+<li><s>H. Second Large Rectangle</s> [DP+悬线法]</li>
+<li>I. Inside A rectangle [DP]</li>
+<li>J. Subarray[数据结构+暴力]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-1"><a href="https://vjudge.net/contest/313395">2019 Multi-University Training Contest 1</a> [2/13]</h4>
+<ul>
+<li>A. Blank [DP]</li>
+<li>B. Operation [线性基]</li>
+<li>C. Milk [离散化+背包+思维]</li>
+<li><s>D. Vacation</s>[签到]</li>
+<li><s>E. Path</s>[最短路+最小割]</li>
+<li>F. Typewriter[SAM]</li>
+<li>G. Meteor[数学]</li>
+<li>H. Desert[不太可做]</li>
+<li>I. String[贪心]</li>
+<li>J. Kingdom[区间DP]</li>
+<li>K. Function[数论]</li>
+<li>L. Sequence[数学]</li>
+<li>M.Code[计算几何]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-2"><a href="https://vjudge.net/contest/314058">2019 Multi-University Training Contest 2</a> [2/12]</h4>
+<ul>
+<li>A. Another Chess Problem [组合数学+思维]</li>
+<li>B. Beauty Of Unimodal Sequence [DP]</li>
+<li>C. Coefficient [数学]</li>
+<li>D. Double Tree [树分治]</li>
+<li>E. Everything Is Generated In Equal Probability [期望]</li>
+<li>F. Fantastic Magic Cube[FWT]</li>
+<li>G. Game [博弈]</li>
+<li>H. Harmonious Army[网络流]</li>
+<li>I. I Love Palindrome String[字符串]</li>
+<li><s>J. Just Skip The Problem</s>[签到]</li>
+<li><s>K.  Keen On Everything But Triangle</s>[线段树 or 主席树]</li>
+<li>L. Longest Subarray[线段树]</li>
+</ul>
+<h4 id="2019牛客多校第三场"><a href="https://ac.nowcoder.com/acm/contest/883#question">2019牛客多校(第三场)</a> [6/10]</h4>
+<ul>
+<li>A. Graph Games [思维+数据结构]</li>
+<li><s>B. Crazy Binary String</s>[签到]</li>
+<li>C. Guessing ETT [构造]</li>
+<li><s>D. Big Integer</s>[数论]</li>
+<li>E. Trees in the Pocket II [不太可做]</li>
+<li><s>F. Planting Trees</s> [单调队列+暴力]</li>
+<li><s>G. Removing Stones</s>[分治]</li>
+<li><s>H. Magic Line</s>[签到+几何]</li>
+<li>I. Median[DP]</li>
+<li><s>J. LRU management</s>[链表+模拟]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-3"><a href="https://vjudge.net/contest/315536">2019 Multi-University Training Contest 3</a> [2/11]</h4>
+<ul>
+<li>A. Azshara's deep sea [几何.凸包]</li>
+<li><s>B. Blow up the city</s> [支配树]</li>
+<li>C. Yukikaze and Demons [树上问题.分治]</li>
+<li>D. Distribution of books [二分+数据结构优化DP]</li>
+<li>E. Easy Math Problem [数论]</li>
+<li><s>F. Fansblog</s> [打表找规律]</li>
+<li><s>G. Find the answer</s> [数据结构]</li>
+<li>H. Game [三维莫队]</li>
+<li>I. K Subsequence [dijkstra费用流]</li>
+<li>J. Sindar's Art Exhibition [树链剖分]</li>
+<li>K. Squrirrel [DP]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-4"><a href="https://vjudge.net/contest/316142">2019 Multi-University Training Contest 4</a> [0/11]</h4>
+<ul>
+<li><s>A. AND Minimum Spanning Tree</s>   [签到]</li>
+<li>B. Colored Tree</li>
+<li>C. Divide the Stones  [可做]</li>
+<li>D. Enveloping Convex</li>
+<li>E. Good Numbers</li>
+<li>F. Horse</li>
+<li>G. Just an Old Puzzle     [找规律]</li>
+<li><s>H. K-th Closest Distance</s>   [主席树]</li>
+<li>I. Linear Functions</li>
+<li><s>J. Minimal Power of Prime</s> [数学]</li>
+</ul>
+<h4 id="2019牛客多校第五场"><a href="https://ac.nowcoder.com/acm/contest/885#question">2019牛客多校(第五场)</a> [2/10]</h4>
+<ul>
+<li><s>A	digits 2</s>	[签到]</li>
+<li>B	generator 1	 [矩阵快速幂]</li>
+<li>C	generator 2	 [BSGS]</li>
+<li>D	generator 3	 [循环节+凸包+RMQ]</li>
+<li>E	independent set 1 [状压DP]</li>
+<li>F	maximum clique 1 [二分图]</li>
+<li>G	<s>subsequence 1</s>	[DP]</li>
+<li>H	subsequence 2	[Topsort]</li>
+<li>I	three points 1	[计算几何]</li>
+<li>J	three points 2	[扫描线+树状数组]</li>
+</ul>
+<h4 id="2019牛客多校第六场"><a href="https://ac.nowcoder.com/acm/contest/886#question">2019牛客多校(第六场)</a></h4>
+<ul>
+<li><s>A.	Garbage Classification</s> [签到]</li>
+<li><s>B.	Shorten IPv6 Address</s> [模拟]</li>
+<li>C.	Palindrome Mouse  [回文树 + 数据结构]</li>
+<li><s>D.	Move</s> [二分]</li>
+<li>E.	Androgynos [思维]</li>
+<li>F.	K-ary Heap [不太可做]</li>
+<li>G.	Is Today Friday? [思维]</li>
+<li>H.	Train Driver [思维 + 最短路?]</li>
+<li>I.	Can They Go to Galar? [概率+图论]</li>
+<li><s>J.	Upgrading Technology</s> [坑题]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-5"><a href="https://vjudge.net/contest/317548">2019 Multi-University Training Contest 5</a> [1/10]</h4>
+<ul>
+<li>A. fraction</li>
+<li>B. three arrays</li>
+<li>C. geometric problem</li>
+<li>D. equation</li>
+<li>E. permutation 1</li>
+<li><s>F. string matching</s> [Exkmp]</li>
+<li>G. permutation 2</li>
+<li>H. line symmetric</li>
+<li>I. discrete logarithm problem</li>
+<li>J. find hidden array</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-6"><a href="https://vjudge.net/contest/318115">2019 Multi-University Training Contest 6</a> [1/10]</h4>
+<ul>
+<li>A. Salty Fish</li>
+<li>B. Nonsense Time</li>
+<li>C. Milk Candy</li>
+<li>D. Speed Dog</li>
+<li>E. Snowy Smile</li>
+<li>F. Faraway</li>
+<li>G. Support or Not</li>
+<li>H. TDL</li>
+<li>I. Three Investigators</li>
+<li>J. Ridiculous Netizens</li>
+<li>K. 11 Dimensions</li>
+<li>L. Stay Real</li>
+</ul>
+<hr>
+<h4 id="2019牛客多校第七场"><a href="https://ac.nowcoder.com/acm/contest/887#question">2019牛客多校(第七场)</a></h4>
+<ul>
+<li>A.	String</li>
+<li>B.	Irreducible Polynomial</li>
+<li>C.	Governing sand</li>
+<li>D.	Number</li>
+<li>E.	Find the median</li>
+<li>F.	Energy stones</li>
+<li>G.	Make Shan Happy</li>
+<li>H.	Pair</li>
+<li>I. Chessboard</li>
+<li>J.	A+B problem</li>
+<li>K.	Function</li>
+</ul>
+<h4 id="2019牛客多校第七场-2"><a href="https://ac.nowcoder.com/acm/contest/888#question">2019牛客多校(第七场)</a></h4>
+<ul>
+<li>A. All-one Matrices</li>
+<li>B. Beauty Values</li>
+<li>C. CDMA</li>
+<li>D. Distance</li>
+<li>E. Explorer</li>
+<li>F. Flower Dance</li>
+<li>G. Gemstones</li>
+<li>H. How Many Schemes</li>
+<li>I. Inner World</li>
+<li>J. Just Jump</li>
+</ul>
+<h4 id="the-13th-chinese-northeast-collegiate-programming-contest"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248323">The 13th Chinese Northeast Collegiate Programming Contest</a>  [6/10]</h4>
+<p><a href="https://www.cnblogs.com/clrs97/p/11080565.html">题解</a></p>
+<ul>
+<li>A. Apple Business[不太可做]</li>
+<li><s>B. B. Balanced Diet</s> [贪心]</li>
+<li><s>C. Meeting Bahosain</s>[简单几何]</li>
+<li>D. Master of Data Structure [数据结构]</li>
+<li><s>E. Minimum Spanning Tree</s> [线图的最小生成树]</li>
+<li>F. Mini-game Before Contest [博弈]</li>
+<li><s>G. Radar Scanner</s> [线段中位数]</li>
+<li><s>H. Skyscraper</s> [树状数组]</li>
+<li>I. Temperature Survey [NTT+思维]</li>
+<li><s>J. Time Limit</s> [签到]</li>
+</ul>
+<h4 id="2019牛客多校第四场"><a href="https://ac.nowcoder.com/acm/contest/884#question">2019牛客多校(第四场)</a> [5/11]</h4>
+<ul>
+<li><s>A.	meeting</s>	[DP]</li>
+<li>B.	xor	        [线性基+线段树]</li>
+<li><s>C.	sequence</s>[数据结构]</li>
+<li><s>D.	triples I</s>	  [构造]</li>
+<li>E.	triples II	 [容斥+DP]</li>
+<li>F.	merge	  [平衡树+思维]</li>
+<li>G.	tree	[搜索+树形DP]</li>
+<li>H.	RNGs	[神仙]</li>
+<li>I.	string	[后缀自动机 + 回文树]</li>
+<li><s>J.	free</s>	  [BFS]</li>
+<li><s>K.	number</s>  [DP?]</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「HDU 6604」Blow up the city ]]></title>
         <id>https://dinnerhunt.cn/post/HDU6604</id>
@@ -320,6 +557,22 @@ int main()
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Network Contest]]></title>
+        <id>https://dinnerhunt.cn/post/codeforces</id>
+        <link href="https://dinnerhunt.cn/post/codeforces">
+        </link>
+        <updated>2019-08-01T17:57:46.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+<!-- more --> 
+<h4 id="codeforces-round-576-div-2"><a href="http://codeforces.com/contest/1199">Codeforces Round #576 (Div. 2)</a> [0/6]</h4>
+<h4 id="atcoder-beginner-contest-136"><a href="https://atcoder.jp/contests/abc136">AtCoder Beginner Contest 136</a>[1/6]</h4>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[「HDU 6621」 K-th Closest Distance]]></title>
         <id>https://dinnerhunt.cn/post/HDU6621</id>
         <link href="https://dinnerhunt.cn/post/HDU6621">
@@ -530,27 +783,6 @@ int main()
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Network Contest]]></title>
-        <id>https://dinnerhunt.cn/post/codeforces</id>
-        <link href="https://dinnerhunt.cn/post/codeforces">
-        </link>
-        <updated>2019-07-25T17:57:46.000Z</updated>
-        <summary type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
-]]></summary>
-        <content type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
-<!-- more --> 
-<h4 id="codeforces-round-576-div-2"><a href="http://codeforces.com/contest/1199">Codeforces Round #576 (Div. 2)</a></h4>
-<p>A.City Day<br>
-B.Water Lily<br>
-C.MP3<br>
-D.Welfare State<br>
-E.Matching vs Independent Set<br>
-F.Rectangle Painting</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[「SCOI2008」奖励关]]></title>
         <id>https://dinnerhunt.cn/post/P2473</id>
         <link href="https://dinnerhunt.cn/post/P2473">
@@ -605,175 +837,6 @@ int main()
     return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Training Contest]]></title>
-        <id>https://dinnerhunt.cn/post/Training-Contest</id>
-        <link href="https://dinnerhunt.cn/post/Training-Contest">
-        </link>
-        <updated>2019-07-19T11:24:59.000Z</updated>
-        <summary type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
-]]></summary>
-        <content type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
-<!-- more --> 
-<h4 id="2019牛客多校第一场"><a href="https://ac.nowcoder.com/acm/contest/881#question">2019牛客多校(第一场)</a>  [4/10]</h4>
-<ul>
-<li><s>A. Equivalent Prefixes</s>            [递归乱搞]</li>
-<li>B. Integration                                   [数学题]</li>
-<li>C. Euclidean Distance                      [拉格兰日乘子法]</li>
-<li>D. Parity of Tuples                            [FWT]</li>
-<li><s>E. ABBA</s>                                 [贪心+DP or 组合数学]</li>
-<li><s>F.  Random Point in Triangle</s>  [暴力跑点猜期望]</li>
-<li>G. Substrings 2                                [可持久化分块]</li>
-<li>H. xor                                               [线性基]</li>
-<li>I. Points Division                              [DP+线段树]</li>
-<li><s>J. Fraction Comparision</s>        [模拟]</li>
-</ul>
-<h4 id="arabellacpc-2019"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248400">ArabellaCPC 2019 </a> [7/13]</h4>
-<ul>
-<li><s>A. Is It Easy ?</s>                        [签到]</li>
-<li><s>B. Road to Arabella</s>               [简单博弈]</li>
-<li><s>C. Check The Text</s>                [模拟]</li>
-<li>D. Meeting Bahosain                       [<strong>可做</strong>]</li>
-<li>E. Longest path Problem                 [未知]</li>
-<li>F. Musical Chairs                             [博弈?]</li>
-<li><s>G. Card Game</s>                                  [简单期望]</li>
-<li><s>H. Steaks</s>                                         [签到]</li>
-<li>I. Bashar and Hamada                     [思维]</li>
-<li><s>J. Thanos Power</s>                              [DP]</li>
-<li>K. Smart Strategies                         [未知]</li>
-<li>L. Burgers                                        [未知]</li>
-<li><s>M. Two Operations</s>                           [签到]</li>
-</ul>
-<h4 id="2019牛客多校第二场"><a href="https://ac.nowcoder.com/acm/contest/882#question">2019牛客多校(第二场)</a>  [1/10]</h4>
-<ul>
-<li>A. Eddy Walker[概率]</li>
-<li>B. Eddy Walker 2[概率]</li>
-<li>C. Go on Strike! [LCT]</li>
-<li>D. Kth Minimum Clique [暴力]</li>
-<li>E.  MAZE [线段树+DP]</li>
-<li>F.	Partition problem [暴力]</li>
-<li>G. 	Polygons[计算几何]</li>
-<li><s>H. Second Large Rectangle</s> [DP+悬线法]</li>
-<li>I. Inside A rectangle [DP]</li>
-<li>J. Subarray[数据结构+暴力]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-1"><a href="https://vjudge.net/contest/313395">2019 Multi-University Training Contest 1</a> [2/13]</h4>
-<ul>
-<li>A. Blank [DP]</li>
-<li>B. Operation [线性基]</li>
-<li>C. Milk [离散化+背包+思维]</li>
-<li><s>D. Vacation</s>[签到]</li>
-<li><s>E. Path</s>[最短路+最小割]</li>
-<li>F. Typewriter[SAM]</li>
-<li>G. Meteor[数学]</li>
-<li>H. Desert[不太可做]</li>
-<li>I. String[贪心]</li>
-<li>J. Kingdom[区间DP]</li>
-<li>K. Function[数论]</li>
-<li>L. Sequence[数学]</li>
-<li>M.Code[计算几何]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-2"><a href="https://vjudge.net/contest/314058">2019 Multi-University Training Contest 2</a> [2/12]</h4>
-<ul>
-<li>A. Another Chess Problem [组合数学+思维]</li>
-<li>B. Beauty Of Unimodal Sequence [DP]</li>
-<li>C. Coefficient [数学]</li>
-<li>D. Double Tree [树分治]</li>
-<li>E. Everything Is Generated In Equal Probability [期望]</li>
-<li>F. Fantastic Magic Cube[FWT]</li>
-<li>G. Game [博弈]</li>
-<li>H. Harmonious Army[网络流]</li>
-<li>I. I Love Palindrome String[字符串]</li>
-<li><s>J. Just Skip The Problem</s>[签到]</li>
-<li><s>K.  Keen On Everything But Triangle</s>[线段树 or 主席树]</li>
-<li>L. Longest Subarray[线段树]</li>
-</ul>
-<h4 id="2019牛客多校第三场"><a href="https://ac.nowcoder.com/acm/contest/883#question">2019牛客多校(第三场)</a> [6/10]</h4>
-<ul>
-<li>A. Graph Games [思维+数据结构]</li>
-<li><s>B. Crazy Binary String</s>[签到]</li>
-<li>C. Guessing ETT [构造]</li>
-<li><s>D. Big Integer</s>[数论]</li>
-<li>E. Trees in the Pocket II [不太可做]</li>
-<li><s>F. Planting Trees</s> [单调队列+暴力]</li>
-<li><s>G. Removing Stones</s>[分治]</li>
-<li><s>H. Magic Line</s>[签到+几何]</li>
-<li>I. Median[DP]</li>
-<li><s>J. LRU management</s>[链表+模拟]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-3"><a href="https://vjudge.net/contest/315536">2019 Multi-University Training Contest 3</a> [2/11]</h4>
-<ul>
-<li>A. Azshara's deep sea [几何.凸包]</li>
-<li><s>B. Blow up the city</s> [支配树]</li>
-<li>C. Yukikaze and Demons [树上问题.分治]</li>
-<li>D. Distribution of books [二分+数据结构优化DP]</li>
-<li>E. Easy Math Problem [数论]</li>
-<li><s>F. Fansblog</s> [打表找规律]</li>
-<li><s>G. Find the answer</s> [数据结构]</li>
-<li>H. Game [三维莫队]</li>
-<li>I. K Subsequence [dijkstra费用流]</li>
-<li>J. Sindar's Art Exhibition [树链剖分]</li>
-<li>K. Squrirrel [DP]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-4"><a href="https://vjudge.net/contest/316142">2019 Multi-University Training Contest 4</a> [0/11]</h4>
-<ul>
-<li><s>A. AND Minimum Spanning Tree</s>   [签到]</li>
-<li>B. Colored Tree</li>
-<li>C. Divide the Stones  [可做]</li>
-<li>D. Enveloping Convex</li>
-<li>E. Good Numbers</li>
-<li>F. Horse</li>
-<li>G. Just an Old Puzzle     [找规律]</li>
-<li><s>H. K-th Closest Distance</s>   [主席树]</li>
-<li>I. Linear Functions</li>
-<li><s>J. Minimal Power of Prime</s> [数学]</li>
-</ul>
-<h4 id="2019牛客多校第五场"><a href="https://ac.nowcoder.com/acm/contest/885#question">2019牛客多校(第五场)</a> [2/10]</h4>
-<ul>
-<li><s>A	digits 2</s>	[签到]</li>
-<li>B	generator 1	 [矩阵快速幂]</li>
-<li>C	generator 2	 [BSGS]</li>
-<li>D	generator 3	 [循环节+凸包+RMQ]</li>
-<li>E	independent set 1 [状压DP]</li>
-<li>F	maximum clique 1 [二分图]</li>
-<li>G	<s>subsequence 1</s>	[DP]</li>
-<li>H	subsequence 2	[Topsort]</li>
-<li>I	three points 1	[计算几何]</li>
-<li>J	three points 2	[扫描线+树状数组]</li>
-</ul>
-<hr>
-<h4 id="the-13th-chinese-northeast-collegiate-programming-contest"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248323">The 13th Chinese Northeast Collegiate Programming Contest</a>  [6/10]</h4>
-<p><a href="https://www.cnblogs.com/clrs97/p/11080565.html">题解</a></p>
-<ul>
-<li>A. Apple Business[不太可做]</li>
-<li><s>B. B. Balanced Diet</s> [贪心]</li>
-<li><s>C. Meeting Bahosain</s>[简单几何]</li>
-<li>D. Master of Data Structure [数据结构]</li>
-<li><s>E. Minimum Spanning Tree</s> [线图的最小生成树]</li>
-<li>F. Mini-game Before Contest [博弈]</li>
-<li><s>G. Radar Scanner</s> [线段中位数]</li>
-<li><s>H. Skyscraper</s> [树状数组]</li>
-<li>I. Temperature Survey [NTT+思维]</li>
-<li><s>J. Time Limit</s> [签到]</li>
-</ul>
-<h4 id="2019牛客多校第四场"><a href="https://ac.nowcoder.com/acm/contest/884#question">2019牛客多校(第四场)</a> [5/11]</h4>
-<ul>
-<li><s>A.	meeting</s>	[DP]</li>
-<li>B.	xor	        [线性基+线段树]</li>
-<li><s>C.	sequence</s>[数据结构]</li>
-<li><s>D.	triples I</s>	  [构造]</li>
-<li>E.	triples II	 [容斥+DP]</li>
-<li>F.	merge	  [平衡树+思维]</li>
-<li>G.	tree	[搜索+树形DP]</li>
-<li>H.	RNGs	[神仙]</li>
-<li>I.	string	[后缀自动机 + 回文树]</li>
-<li><s>J.	free</s>	  [BFS]</li>
-<li><s>K.	number</s>  [DP?]</li>
-</ul>
 ]]></content>
     </entry>
     <entry>
