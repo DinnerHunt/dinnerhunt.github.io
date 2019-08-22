@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-08-15T08:49:32.350Z</updated>
+    <updated>2019-08-22T17:46:22.753Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,188 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[Network Contest]]></title>
+        <id>https://dinnerhunt.cn/post/codeforces</id>
+        <link href="https://dinnerhunt.cn/post/codeforces">
+        </link>
+        <updated>2019-08-22T17:57:46.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+<!-- more --> 
+<h4 id="educational-codeforces-round-70-rated-for-div-2"><a href="http://codeforces.com/contest/1200">Educational Codeforces Round 70 (Rated for Div. 2)</a>[5/7]</h4>
+<h4 id="codeforces-round-581-div-2"><a href="http://codeforces.com/contest/1200">Codeforces Round #581 (Div. 2)</a>[5/6]</h4>
+<h4 id="codeforces-round-580-div-2"><a href="http://codeforces.com/contest/1200">Codeforces Round #580 (Div. 2)</a>[4/6]</h4>
+<h4 id="codeforces-round-579-div-3"><a href="http://codeforces.com/contest/1200">Codeforces Round #579 (Div. 3)</a>[7/8]</h4>
+<h4 id="codeforces-round-578-div-2"><a href="http://codeforces.com/contest/1200">Codeforces Round #578 (Div. 2)</a>[4/6]</h4>
+<h4 id="educational-codeforces-round-70-rated-for-div-2-2"><a href="https://codeforces.com/contest/1202">Educational Codeforces Round 70 (Rated for Div. 2) </a>[4/6]</h4>
+<h4 id="atcoder-beginner-contest-137"><a href="https://atcoder.jp/contests/abc137">AtCoder Beginner Contest 137</a>[0/6]</h4>
+<h4 id="atcoder-beginner-contest-136"><a href="https://atcoder.jp/contests/abc136">AtCoder Beginner Contest 136</a>[1/6]</h4>
+<h4 id="codeforces-round-576-div-2"><a href="http://codeforces.com/contest/1199">Codeforces Round #576 (Div. 2)</a> [0/6]</h4>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2019 Multi-University Training Contest]]></title>
+        <id>https://dinnerhunt.cn/post/2019-multi-university-training-contest</id>
+        <link href="https://dinnerhunt.cn/post/2019-multi-university-training-contest">
+        </link>
+        <updated>2019-08-22T10:07:38.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/451564154055_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/451564154055_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+<!--more-->
+<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
+<!-- more --> 
+<h4 id="2019-multi-university-training-contest-1"><a href="https://vjudge.net/contest/313395">2019 Multi-University Training Contest 1</a> [2/13]</h4>
+<ul>
+<li>A. Blank [DP]</li>
+<li>B. Operation [线性基]</li>
+<li>C. Milk [离散化+背包+思维]</li>
+<li><s>D. Vacation</s>[签到]</li>
+<li><s>E. Path</s>[最短路+最小割]</li>
+<li>F. Typewriter[SAM]</li>
+<li>G. Meteor[数学]</li>
+<li>H. Desert[不太可做]</li>
+<li>I. String[贪心]</li>
+<li>J. Kingdom[区间DP]</li>
+<li>K. Function[数论]</li>
+<li>L. Sequence[数学]</li>
+<li>M.Code[计算几何]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-2"><a href="https://vjudge.net/contest/314058">2019 Multi-University Training Contest 2</a> [5/12]</h4>
+<ul>
+<li>A. Another Chess Problem [组合数学+思维]</li>
+<li>B. Beauty Of Unimodal Sequence [DP]*</li>
+<li>C. Coefficient [数学]</li>
+<li>D. Double Tree [树分治]</li>
+<li><s>E. Everything Is Generated In Equal Probability</s> [期望]</li>
+<li>F. Fantastic Magic Cube[FWT]</li>
+<li>G. Game [博弈]</li>
+<li><s>H. Harmonious Army</s>[网络流]</li>
+<li><s>I. I Love Palindrome String</s>[字符串]</li>
+<li><s>J. Just Skip The Problem</s>[签到]</li>
+<li><s>K.  Keen On Everything But Triangle</s>[线段树 or 主席树]</li>
+<li><s>L. Longest Subarray</s>[线段树]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-3"><a href="https://vjudge.net/contest/315536">2019 Multi-University Training Contest 3</a> [5/11]</h4>
+<ul>
+<li>A. Azshara's deep sea [几何.凸包]</li>
+<li><s>B. Blow up the city</s> [支配树]</li>
+<li>C. Yukikaze and Demons [树上问题.分治]</li>
+<li><s>D. Distribution of books</s> [二分+数据结构优化DP]</li>
+<li>E. Easy Math Problem [数论]</li>
+<li><s>F. Fansblog</s> [打表找规律]</li>
+<li><s>G. Find the answer</s> [数据结构]</li>
+<li>H. Game [三维莫队]</li>
+<li><s>I. K Subsequence</s> [dijkstra费用流]</li>
+<li>J. Sindar's Art Exhibition [树链剖分]</li>
+<li>K. Squrirrel [DP]*</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-4"><a href="https://vjudge.net/contest/316142">2019 Multi-University Training Contest 4</a> [3/11]</h4>
+<ul>
+<li><s>A. AND Minimum Spanning Tree</s>   [签到]</li>
+<li>B. Colored Tree</li>
+<li>C. Divide the Stones  [构造]*</li>
+<li>D. Enveloping Convex</li>
+<li>E. Good Numbers[数位DP + 卷积]</li>
+<li>F. Horse[DP]*</li>
+<li>G. Just an Old Puzzle     [找规律]</li>
+<li><s>H. K-th Closest Distance</s>   [主席树]</li>
+<li>I. Linear Functions</li>
+<li><s>J. Minimal Power of Prime</s> [数学]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-5"><a href="https://vjudge.net/contest/317548">2019 Multi-University Training Contest 5</a> [1/10]</h4>
+<ul>
+<li>A. <s>fraction</s>[数学]</li>
+<li>B. three arrays [思维]</li>
+<li>C. geometric problem[不太可做]</li>
+<li>D. <s>equation</s> [数学+思维]</li>
+<li>E. permutation 1[签到,搜索]*</li>
+<li><s>F. string matching</s> [Exkmp]</li>
+<li><s>G. permutation 2</s> [找规律]</li>
+<li>H. line symmetric [几何]</li>
+<li>I. discrete logarithm problem [Pohlig Hellman]</li>
+<li>J. find hidden array[用力猜？]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-6"><a href="https://vjudge.net/contest/318115">2019 Multi-University Training Contest 6</a> [3/10]</h4>
+<ul>
+<li>A. Salty Fish[网络流+启发式合并]</li>
+<li><s>B. Nonsense Time</s> [暴力+LIS]</li>
+<li>C. Milk Candy[图论]</li>
+<li>D. Speed Dog [数论]*</li>
+<li>E. Snowy Smile[离散化+数据结构]*</li>
+<li>F. Faraway [暴力+思维]*</li>
+<li>G. Support or Not [不太可做的样子]</li>
+<li><s>H. TDL</s>[签到]</li>
+<li>I. Three Investigators[不太可用的样子]</li>
+<li>J. Ridiculous Netizens[树上问题]</li>
+<li>K. 11 Dimensions[DP]</li>
+<li><s>L. Stay Real</s>[贪心]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-7"><a href="https://vjudge.net/contest/319434#overview">2019 Multi-University Training Contest 7</a>[2/10]</h4>
+<ul>
+<li>A. A + B = C [模拟]</li>
+<li>B. Bracket Sequences on Tree[树上问题]</li>
+<li>C. Cuber Occurrence[后缀自动机 + 主席树]</li>
+<li>D. Data Structure Problem [计算几何]</li>
+<li>E. Equation [数论]</li>
+<li>F. Final Exam [签到]</li>
+<li><s>G. Getting Your Money Back</s> [DP]</li>
+<li>H. Halt Hater[大讨论]</li>
+<li>I. Intersection of Prisms[积分+计算几何]</li>
+<li>J. Just Repeat[博弈+贪心]</li>
+<li><s>K. Kejin Player</s> [期望DP]</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-8"><a href="https://vjudge.net/contest/320880">2019 Multi-University Training Contest 8</a>[0/11]</h4>
+<ul>
+<li>A. Acesrc and Cube Hypernet</li>
+<li>B. Acesrc and Girlfriend</li>
+<li>C. Acesrc and Good Numbers</li>
+<li>D. Acesrc and Hunting</li>
+<li>E. Acesrc and String Theory</li>
+<li>F. Acesrc and Travel</li>
+<li>G. Andy and Data Structure</li>
+<li>H. Andy and Maze</li>
+<li>I. Calabash and Landlord</li>
+<li>J. Quailty and CCPC</li>
+<li>K. Roundgod and Milk Tea</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-9"><a href="https://vjudge.net/contest/321422">2019 Multi-University Training Contest 9</a>[0/11]</h4>
+<ul>
+<li>A.  Rikka with Quicksort</li>
+<li>B.  Rikka with Cake</li>
+<li>C.  Rikka with Mista</li>
+<li>D.  Rikka with Geometric Sequence</li>
+<li>E.  Rikka with Game</li>
+<li>F.  Rikka with Coin</li>
+<li>G.  Rikka with Travels</li>
+<li>H.  Rikka with Stable Marriage</li>
+<li>I.  Rikka with Traffic Light</li>
+<li>J.  Rikka with Defensive Line</li>
+<li>K.  Rikka with Segment Tree</li>
+</ul>
+<h4 id="2019-multi-university-training-contest-10"><a href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=2019+Multi-University+Training+Contest+10&amp;source=1&amp;searchmode=source">2019 Multi-University Training Contest 10</a>[0/11]</h4>
+<ul>
+<li>A. Minimum Spanning Trees</li>
+<li>B. Line Graphs</li>
+<li>C. Valentine's Day</li>
+<li>D. Play Games with Rounddog</li>
+<li>E. Welcome Party</li>
+<li>F. Dense Subgraph</li>
+<li>G. Closest Pair of Segments</li>
+<li>H. Coins</li>
+<li>I. Block Breaker</li>
+<li>J. Domino Covering</li>
+<li>K. Make Rounddog Happy</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Training Contest]]></title>
         <id>https://dinnerhunt.cn/post/Training-Contest</id>
@@ -64,37 +246,6 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
 <li>I. Inside A rectangle [DP]</li>
 <li>J. Subarray[数据结构+暴力]</li>
 </ul>
-<h4 id="2019-multi-university-training-contest-1"><a href="https://vjudge.net/contest/313395">2019 Multi-University Training Contest 1</a> [2/13]</h4>
-<ul>
-<li>A. Blank [DP]</li>
-<li>B. Operation [线性基]</li>
-<li>C. Milk [离散化+背包+思维]</li>
-<li><s>D. Vacation</s>[签到]</li>
-<li><s>E. Path</s>[最短路+最小割]</li>
-<li>F. Typewriter[SAM]</li>
-<li>G. Meteor[数学]</li>
-<li>H. Desert[不太可做]</li>
-<li>I. String[贪心]</li>
-<li>J. Kingdom[区间DP]</li>
-<li>K. Function[数论]</li>
-<li>L. Sequence[数学]</li>
-<li>M.Code[计算几何]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-2"><a href="https://vjudge.net/contest/314058">2019 Multi-University Training Contest 2</a> [5/12]</h4>
-<ul>
-<li>A. Another Chess Problem [组合数学+思维]</li>
-<li>B. Beauty Of Unimodal Sequence [DP]*</li>
-<li>C. Coefficient [数学]</li>
-<li>D. Double Tree [树分治]</li>
-<li><s>E. Everything Is Generated In Equal Probability</s> [期望]</li>
-<li>F. Fantastic Magic Cube[FWT]</li>
-<li>G. Game [博弈]</li>
-<li><s>H. Harmonious Army</s>[网络流]</li>
-<li><s>I. I Love Palindrome String</s>[字符串]</li>
-<li><s>J. Just Skip The Problem</s>[签到]</li>
-<li><s>K.  Keen On Everything But Triangle</s>[线段树 or 主席树]</li>
-<li><s>L. Longest Subarray</s>[线段树]</li>
-</ul>
 <h4 id="2019牛客多校第三场"><a href="https://ac.nowcoder.com/acm/contest/883#question">2019牛客多校(第三场)</a> [6/10]</h4>
 <ul>
 <li>A. Graph Games [思维+数据结构]</li>
@@ -107,33 +258,6 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
 <li><s>H. Magic Line</s>[签到+几何]</li>
 <li>I. Median[DP]</li>
 <li><s>J. LRU management</s>[链表+模拟]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-3"><a href="https://vjudge.net/contest/315536">2019 Multi-University Training Contest 3</a> [5/11]</h4>
-<ul>
-<li>A. Azshara's deep sea [几何.凸包]</li>
-<li><s>B. Blow up the city</s> [支配树]</li>
-<li>C. Yukikaze and Demons [树上问题.分治]</li>
-<li><s>D. Distribution of books</s> [二分+数据结构优化DP]</li>
-<li>E. Easy Math Problem [数论]</li>
-<li><s>F. Fansblog</s> [打表找规律]</li>
-<li><s>G. Find the answer</s> [数据结构]</li>
-<li>H. Game [三维莫队]</li>
-<li><s>I. K Subsequence</s> [dijkstra费用流]</li>
-<li>J. Sindar's Art Exhibition [树链剖分]</li>
-<li>K. Squrirrel [DP]*</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-4"><a href="https://vjudge.net/contest/316142">2019 Multi-University Training Contest 4</a> [3/11]</h4>
-<ul>
-<li><s>A. AND Minimum Spanning Tree</s>   [签到]</li>
-<li>B. Colored Tree</li>
-<li>C. Divide the Stones  [可做]</li>
-<li>D. Enveloping Convex</li>
-<li>E. Good Numbers[数位DP + 卷积]</li>
-<li>F. Horse[DP]</li>
-<li>G. Just an Old Puzzle     [找规律]</li>
-<li><s>H. K-th Closest Distance</s>   [主席树]</li>
-<li>I. Linear Functions</li>
-<li><s>J. Minimal Power of Prime</s> [数学]</li>
 </ul>
 <h4 id="2019牛客多校第五场"><a href="https://ac.nowcoder.com/acm/contest/885#question">2019牛客多校(第五场)</a> [2/10]</h4>
 <ul>
@@ -163,45 +287,16 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
 </ul>
 <h4 id="2019-multi-university-training-contest-5"><a href="https://vjudge.net/contest/317548">2019 Multi-University Training Contest 5</a> [1/10]</h4>
 <ul>
-<li>A. fraction[数学]</li>
+<li>A. <s>fraction</s>[数学]</li>
 <li>B. three arrays [思维]</li>
 <li>C. geometric problem[不太可做]</li>
-<li>D. equation [数学+思维]</li>
-<li>E. permutation 1[签到,搜索]</li>
+<li>D. <s>equation</s> [数学+思维]</li>
+<li>E. permutation 1[签到,搜索]*</li>
 <li><s>F. string matching</s> [Exkmp]</li>
-<li>G. permutation 2 [找规律]</li>
+<li><s>G. permutation 2</s> [找规律]</li>
 <li>H. line symmetric [几何]</li>
 <li>I. discrete logarithm problem [Pohlig Hellman]</li>
 <li>J. find hidden array[用力猜？]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-6"><a href="https://vjudge.net/contest/318115">2019 Multi-University Training Contest 6</a> [1/10]</h4>
-<ul>
-<li>A. Salty Fish[网络流+启发式合并]</li>
-<li>B. Nonsense Time [暴力+LIS]</li>
-<li>C. Milk Candy[图论]</li>
-<li>D. Speed Dog [数论]</li>
-<li>E. Snowy Smile[离散化+数据结构]</li>
-<li>F. Faraway [数学]</li>
-<li>G. Support or Not [不太可做的样子]</li>
-<li>H. TDL[签到]</li>
-<li>I. Three Investigators[不太可用的样子]</li>
-<li>J. Ridiculous Netizens[树上问题]</li>
-<li>K. 11 Dimensions[DP]</li>
-<li>L. Stay Real[贪心]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-7"><a href="https://vjudge.net/contest/319434#overview">2019 Multi-University Training Contest 7</a>[0/10]</h4>
-<ul>
-<li>A. A + B = C [模拟]</li>
-<li>B. Bracket Sequences on Tree[树上问题]</li>
-<li>C. Cuber Occurrence[后缀自动机 + 主席树]</li>
-<li>D. Data Structure Problem [计算几何]</li>
-<li>E. Equation [数论]</li>
-<li>F. Final Exam [签到]</li>
-<li>G. Getting Your Money Back [DP]</li>
-<li>H. Halt Hater[线性规划]</li>
-<li>I. Intersection of Prisms[积分+计算几何]</li>
-<li>J. Just Repeat[贪心]</li>
-<li>K. Kejin Player [期望DP]</li>
 </ul>
 <h4 id="2019牛客多校第七场"><a href="https://ac.nowcoder.com/acm/contest/887#question">2019牛客多校(第七场)</a></h4>
 <ul>
@@ -571,24 +666,6 @@ int main()
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Network Contest]]></title>
-        <id>https://dinnerhunt.cn/post/codeforces</id>
-        <link href="https://dinnerhunt.cn/post/codeforces">
-        </link>
-        <updated>2019-08-01T17:57:46.000Z</updated>
-        <summary type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
-]]></summary>
-        <content type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% /></p>
-<!-- more --> 
-<h4 id="codeforces-round-576-div-2"><a href="http://codeforces.com/contest/1199">Codeforces Round #576 (Div. 2)</a> [0/6]</h4>
-<h4 id="atcoder-beginner-contest-136"><a href="https://atcoder.jp/contests/abc136">AtCoder Beginner Contest 136</a>[1/6]</h4>
-<h4 id="atcoder-beginner-contest-137"><a href="https://atcoder.jp/contests/abc137">AtCoder Beginner Contest 137</a>[0/6]</h4>
-<h4 id="codeforces-round-578-div-2"><a href="http://codeforces.com/contest/1200">Codeforces Round #578 (Div. 2)</a>[4/6]</h4>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[「HDU 6621」 K-th Closest Distance]]></title>
         <id>https://dinnerhunt.cn/post/HDU6621</id>
         <link href="https://dinnerhunt.cn/post/HDU6621">
@@ -915,148 +992,6 @@ int main()
     return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「2019 GDCPC 中智杯」游记]]></title>
-        <id>https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji</id>
-        <link href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">
-        </link>
-        <updated>2019-05-19T15:16:49.000Z</updated>
-        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 50% />]]></summary>
-        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 50% />
-<!-- more -->
-<h4 id="前言">前言</h4>
-<p>在老班与王老师的辛苦下，能公费参与此次比赛，与广东各高校优秀的ACMer交流学习，感到十分荣幸</p>
-<h4 id="day-1">Day  -1</h4>
-<p>周五，在中午下课后，去电影院看了 《比卡丘》，以缓解这周学习数论所带来的阴影<br>
-晚上 Xuqing 将板子打印出来，我们的赛前准备也就结束了</p>
-<br>
-<h4 id="day-0">Day 0</h4>
-<p>凌晨被猫叫醒，也许它也担心我是否能赶上早晨的动车</p>
-<p>下楼正好碰到一同前行的队友 WFcong , 在柳园食堂随便吃了点就到了集合地点 （<strong>mark</strong> Xuqing  🐦 * 1）</p>
-<p>在取票的时候，收到了来之 Fann 老师沉重的关爱，每人两支水( WFcong 背了一个来回  )</p>
-<br>
-<p>经过和谐号的过道，穿过七号线的走廊，我们到达了大学城南（我忘了是南还是北来着）</p>
-<p>搭上一趟计程车后，到了华南理工大学的北门</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_564.jpg"  div align=center />
-<br>
-<br>
-<p>然后右边就是我们下榻的酒店</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_565.jpg"  div align=center />
-<br>
-<br>
-<p>酒店从外面看有些陈旧，但是内部无论是环境，还是设计都是无可挑剔的 (听说很贵，我也不知道，我也不敢问)</p>
-<p>房间里布局(老师特意为我们选了带窗的房间)<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_567.jpg"  div align=center /></p>
-<br>
-<p>电梯门口的椅子，有点像爱丽丝梦游仙境里红心女王的椅子<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_57d.jpg"  div align=center /></p>
-<br>
-<br>
-<p>然后就是浴室里的牙膏是小条的黑人牙膏，洗手液是瓶装的蓝月亮，还有发胶和漱口水，除了牙刷牙膏以外，其他都不是一次性的，都是些品质比较好的牌子。这时我从未见过的，当然上面大部分都标了非赠品</p>
-<p>午饭在酒店二楼吃的，帅气的 Fann 老师请我们吃了一顿星级大餐。然而这里的茄子煲没有灵魂，我并没能吃完它，挺愧疚的。</p>
-<br>
-<p>在宿舍眯了一会之后，我们坐车来到了中山大学，提前试机，看看考场 （<strong>mark</strong> Fann 老师填错目的地）</p>
-<p>试机时，看了看 A 题，然后写了个分段打表，WA了一发后发现没去 freopen() ，再次提交时过了<br>
-挺开心的，这应该算是ACM现场赛的第一道题了吧</p>
-<p>然后我们收到了老师的领的队服和赞助商送的礼物&quot;智能触碰护眼3色冷暖光可调节能LED灯&quot;一台，据说WFcong 当晚抱着它睡了一晚<br>
-<br></p>
-<p>幸运的看到了中大的龙舟训练<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_56b.jpg"  div align=center /></p>
-<br>
-<p>在回酒店的路上，拍了许多照</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_56f.jpg"  style="float:left;"  width = 33% height = 20% />
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_572.jpg"  style="float:left;"  width = 33% height = 20%/>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_582.jpg"  style="float:left;" width = 33% height = 20%/></p>
-<br>
-<br>
-<br>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_579.jpg"  style="float:left;" width = 33% height = 20%/>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_576.jpg" style="float:left;"  width = 33% height = 20%/></p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_575.jpg"  style="float:left;"  width = 33% height = 20% />
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p>晚上和 Xqing 叫了一顿丰盛的M记，外加一个榴莲披萨🍕<br>
-(其中，Xqing为了激励自己蓝桥国赛拿特等，特意把电脑显示器的轴承弄坏了点，这种破釜沉舟的精神值得我们学习 )</p>
-<br>
-<br>
-<h4 id="day-1-2">Day 1</h4>
-<p>早早的起了床，洗漱完毕后，成功先于老师到达电梯门口✌️</p>
-<p>酒店的自助早餐特别丰盛，可能是因为有很多外国学者，教授来交流，有特别多的西式早点。</p>
-<br> 
-<p>到了赛场门口，去拿参赛牌时被告知我的并没有打印到，于是给了我一个中大选手的赛牌。挺难过的，第一次参赛没有拿到奖牌，也没有拿到赛牌。</p>
-<p>透过门缝，看到了中大的师兄们在奋力的吹气球。由于他们刚刚开始准备，打算通过猜气球数量猜签到题的想法失败了（wls教的）</p>
-<p>开始觉得带词典进场挺丢人的，看到很多队伍也背了，于是便也大大方方的从包了拿了出来。</p>
-<p>临进比赛时间时，忽然发现旁边的人散开了，回头一看，竟然是楼教主，没想到竟然跟楼教主一个赛场。</p>
-<p>在赛前偷偷拍了几张照片</p>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_57f.jpg"  style="float:left;"  width = 50% height = 25% /></p>
-<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_580.jpg"  style="float:left;"  width =50% height = 25% /></p>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
- <br>
-<br>
-<h5 id="赛中">赛中</h5>
-<p>我从头读题，WFcong从尾读，Xqinger中间。</p>
-<p>A读了几遍题意不太明白具体意思<br>
-然后通过榜单发现E和L是两道签到，然后WFcong 尝试着写E , 在交之前中大系统重启了<br>
-电脑重启后，WA了两法，我发现了这是个错误算法，于是决定自己来写，让他们看L</p>
-<p>写完后一些细节没有处理好，导致程序RE，这时心态有点炸，不过开始以为前8才有牌，所以并没有拿牌的欲望（后来才后悔莫及）</p>
-<p>在做L的时候，因读错题意，WA了两发后，决定不管罚时了（事实证明这个是个错误的决定）   (<strong>mark</strong> Xqinger 读错题)</p>
-<p>在经过几次试探，和重新读题后，L终于过了，接着把E的细节处理好，得到了两个气球，但此时基本垫底</p>
-<p>K是个模拟题，B也是个水题，于是决定让他们读B，我来写K<br>
-写完之后WA了2发，找不到错误。</p>
-<p>正在惆怅时，突然飞来了几个麦当劳外卖袋。特别开心，在赛场上吃到了M记，中大赛场的服务真的好，这次报名费回本了，于是心态调整了回来。</p>
-<p>后面发现了K的题目读错了，修正下过了K以后，一起看了B题  (<strong>mark</strong> 以后不碰雀魂)</p>
-<p>赛前一周一直再看数论，发现手生疏了很多，有点码不动，并且代码错误特别多，在思路正确的情况下，B还WA了两发</p>
-<p>最后以为时间不多了，边随便看了看题，并没有再过题的欲望。过了几分钟后发现刚封榜不久，还有40来分钟，于是打算尝试C，C的想法的想出来了，但之前没做过几道莫队的题，在最后部分卡壳了。原本想在内部二分查找，却发现无法处理，得用平衡树或者主席树，接着大脑陷入了逻辑死循环。赛后听到离散化+树状数组才恍然大悟</p>
-<p>最后因为罚时过高，4题打铁收场</p>
-<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/WechatIMG7981.jpeg"  div align=center />
- <br>
-<br>
- <br>
-<br>
-<p>在总结大会上，看到了气质的主持小姐姐，霸气外漏的楼教主，还有各种上台领奖的大佬</p>
-<p>在等待颁奖的过程中，被幸运的抽到了吐槽的机会。</p>
-<p>在吐槽完后，看到小姐姐从旁边拿着一个灰色的盒子向我走来时，我的笑容逐渐消失 （返程背包负重+20）</p>
-<p>挺可惜的，为了赶车，我们不得不提前离场，错过了滚榜。</p>
-<p>在广州的高铁站，又收获了 Fann 老师的一顿KFC，希望下次还能由Fann带队 😄   ( <strong>mark</strong> Fann 老师走错厕所 🚽)</p>
-<br>
-<br>
-<h4 id="后续">后续</h4>
-<p>特别感谢学校的支持，还有老班，王老师，Fann 老师的帮助 。</p>
-<p>Fann 老师特别可爱，每次去看考点前都跟我们说，待会我就不去了,等你们搞完我去接你们就好了，然后每次都跟着我们去的</p>
-<p>对于成绩还是不太满意的。总共有三个问题，一个读题；一个是做题做少了，码的过程中错误频发；最后就是训练赛打少了，比赛过程中比较紧张。</p>
-<p>争取下次那块牌吧</p>
 ]]></content>
     </entry>
 </feed>
