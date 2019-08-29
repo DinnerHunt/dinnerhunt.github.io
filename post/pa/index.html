@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    「LOJ10157」 皇宫守卫 | dinnerhunt
+    回文自动机 | dinnerhunt
 </title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1567080570183">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -107,78 +107,80 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            「LOJ10157」 皇宫守卫
+                            回文自动机
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-05-05</time>
+                            <time class="post-time">2019-08-29</time>
                             
-                                <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="post-tag i-tag
-                            i-tag-banana">
-                            #树型DP
+                                <a href="https://dinnerhunt.cn/tag/AkQ6DOqOB" class="post-tag i-tag
+                            i-tag-other_1">
+                            #回文自动机
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <p>太平王世子事件后，陆小凤成了皇上特聘的御前一品侍卫。</p>
-<p>皇宫以午门为起点，直到后宫嫔妃们的寝宫，呈一棵树的形状，某些宫殿间可以互相望见。大内保卫森严，三步一岗，五步一哨，每个宫殿都要有人全天候看守，在不同的宫殿安排看守所需的费用不同。</p>
-<!-- more -->
-<p>可是陆小凤手上的经费不足，无论如何也没法在每个宫殿都安置留守侍卫。</p>
-<p>帮助陆小凤布置侍卫，在看守全部宫殿的前提下，使得花费的经费最少。</p>
-<p><a href="https://loj.ac/problem/10157">🔗[LOJ 10157] 皇宫守卫</a></p>
-<h4 id="题解">题解</h4>
-<p>多考虑一步，子节点都安全的情况下，都不选子节点，而选父节点最优 ,因此DP得多开一度<br>
-<strong>dp[i][0]</strong> 当前点被覆盖，但不选的最小代价<br>
-<strong>dp[i][1]</strong> 选这个点的最小代价<br>
-<strong>dp[i][2]</strong> 为被覆盖且不选该点的最小代价(该点的子节点都被覆盖，自身未被覆盖，给父节点多一个选择机会)</p>
-<p><strong>dp[i][1] = min(dp[i][0],dp[i][1],dp[i][2])</strong><br>
-<strong>dp[i][0] = min(dp[i][1],dp[i][0])</strong><br>
-<strong>dp[i][2] = min(dp[i][1],dp[i][0]) + \sum_i min(dp[i][1] - min(dp[i][0],dp[i][1]))</strong><br>
-保证有一个子节点被选的最优情况</p>
-<h4 id="代码">代码</h4>
+                                    <p><a href="https://www.luogu.org/problem/P3649">[APIO2014]回文串</a></p>
+<p>求字符串中，回文子串长度与该串出现次数之积的最大值</p>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 using namespace std;
-const int maxd = 1505;
-int fa[maxd],arr[maxd],n,a,b,c,ans;
-int dp[maxd][3];
-void dfs(int x)
+const int maxd=3e5+10;
+char s[maxd];
+int n,p,q,fail[maxd],cnt[maxd],len[maxd],tot,last,ch[maxd][26];
+//int ans[maxd];
+inline int newnode(int x)
 {
-    dp[x][1] = arr[x];
-    int k = 1e8;
-    for(int i=1;i&lt;=n;i++)
+    len[++tot]=x;
+    return tot;
+}
+inline int getfail(int x,int n)
+{
+    while(s[n-len[x]-1]!=s[n]) x=fail[x];return x;
+}
+inline void init()
+{
+    s[0]=-1,fail[0]=1,last=0;
+    len[0]=0,len[1]=-1,tot=1;
+}
+inline void add(int i)
+{
+    p=getfail(last,i);
+    if(!ch[p][s[i]])
     {
-        if(fa[i]!=x) continue;
-        dfs(i);
-        dp[x][1] += min(dp[i][0],min(dp[i][1],dp[i][2]));
-        dp[x][2] += min(dp[i][0],dp[i][1]);
-        dp[x][0] += min(dp[i][0],dp[i][1]);
-        k = min(k,dp[i][1] - min(dp[i][0],dp[i][1]));
+        q=newnode(len[p]+2);
+        fail[q]=ch[getfail(fail[p],i)][s[i]]; 
+        ch[p][s[i]]=q;
     }
-    dp[x][0] += k;
+    last=ch[p][s[i]];
+    ++cnt[last];
 }
 int main()
 {
     // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
     // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++)
+    while(scanf(&quot;%s&quot;,s+1)!=EOF)
     {
-        scanf(&quot;%d&quot;,&amp;a);
-        scanf(&quot;%d %d&quot;,&amp;arr[a],&amp;b);
-        for(int j=1;j&lt;=b;j++)
+        init();
+        for(int i=1;s[i];++i)
         {
-            scanf(&quot;%d&quot;,&amp;c);
-            fa[c] = a;
+            s[i]-='a'; add(i);
         }
+        long long ans = 0ll;
+        for(int i=tot;i;--i) cnt[fail[i]]+=cnt[i],ans = max(ans,(long long)len[i] * cnt[i]);
+            printf(&quot;%lld\n&quot;,ans);
+        // for(int i=tot;i;--i)
+        //     if(len[i] ==1  || len[fail[i]] == (len[i]+1)/2) ans[len[i]] += cnt[i]; 
+
+        // for(int i=1;i&lt;=l;i++) 
+        // {
+        //     printf(&quot;%d&quot;,ans[i]);
+        //     if(i==l) putchar(10);
+        //     else putchar(' ');
+        // }
     }
-    int root = 1;
-    //for(int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,arr[i]);
-    while(fa[root]) root = fa[root];
-    dfs(root);
-    // printf(&quot;%d %d&quot;,dp[2][0],dp[2][1]);
-    if(dp[root][0]!=0) printf(&quot;%d&quot;,min(dp[root][0],dp[root][1]));
-    else printf(&quot;%d&quot;,dp[root][1]);
     return 0;
 }
 </code></pre>
@@ -187,15 +189,6 @@ int main()
                     </article>
                     <!--  -->
                     
-                        <div class="next-post">
-                            <div class="next">下一篇</div>
-                            <a href="https://dinnerhunt.cn/post/HDU4734">
-                                <h3 class="post-title">
-                                    「HDU 4734」 F(x)
-                                </h3>
-                            </a>
-                        </div>
-                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -204,55 +197,32 @@ int main()
                 <!-- right -->
                 <div id="sidebar" class="main-container-right">
                     
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1567080570183)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            add one&#39;s
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
         </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
     </div>
     
-                            
+                                    
 
                 </div>
 
