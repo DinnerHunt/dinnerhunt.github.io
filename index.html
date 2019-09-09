@@ -7,7 +7,7 @@
 <title>
     dinnerhunt
 </title>
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1567080570183">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1568025841568">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://dinnerhunt.cn">
-                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1567080570183" alt="">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1568025841568" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -105,6 +105,146 @@
                 <div id="content" class="main-container-left">
                     
         
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">
+                        2019 ICPC&amp;CCPC Round Online
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-09-02</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+2019中国大学生程序设计竞赛（CCPC） - 网络选拔赛[3/10]
+The 2019 Asia Yinchuan First Round Online Programming [0/13]
+The Preliminary Contest for ICPC Asia Nanjing 2019 [0/9]
+The Preliminary Contest for ICPC Asia Xuzhou 2019 [6/13]
+The 2019 Asia Nanchang First Round Online Programming Contest[2/9]
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CRT-note">
+                        「学习笔记」CRT &amp; EXCRT
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-08-30</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="post-tag i-tag
+                            i-tag-">
+            #CRT
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            给定同余方程组，其中 mim_imi​两两互质
+{x≡a1(modm1)x≡b2(modm2)⋯x≡cn(modmn)\begin{cases}
+	x≡a_1 (mod m_1) \\
+	x≡b_2 (mod m_2) \\
+	\cdots \\
+	x≡c_n (mod m_n)
+\end{cases} 
+⎩⎪⎪⎪⎨⎪⎪⎪⎧​x≡a1​(modm1​)x≡b2​(modm2​)⋯x≡cn​(modmn​)​
+
+ 
+我们尝试构造出一个式子，使得式子满足上列同余方程组
+
+设
+
+
+M=mi⋅m2⋅⋯⋅mn=∏inmiM = m_i \cdot m_2 \cdot \cdots \cdot m_n = \prod_i^n m_iM=mi​⋅m2​⋅⋯⋅mn​=∏in​mi​
+Mi=M/miM_i = M / m_iMi​=M/mi​
+ti=Mi−1,Miti=1(modmi)t_i = M_i^{-1} , M_i t_i = 1 \pmod{m_i}ti​=Mi−1​,Mi​ti​=1(modmi​)
+
+
+则，方程的一组通解:
+
+x=a1t1M1+a2t2M2+⋯+antnMn+kM=∑i=1naitiMi+kMx = a_1t_1M_1 + a_2t_2M_2 + \cdots +a_nt_nM_n + kM = \sum_{i=1}^n a_it_iM_i + kM
+x=a1​t1​M1​+a2​t2​M2​+⋯+an​tn​Mn​+kM=i=1∑n​ai​ti​Mi​+kM
+
+
+证明
+根据222,我们可以得到 i!=j,Miti=0(modmi)i!=j,M_it_i = 0 \pmod{m_i}i!=j,Mi​ti​=0(modmi​)
+根据333,我们可以得到 i=j,Miti=ai(modmi)i=j,M_it_i = a_i \pmod{m_i}i=j,Mi​ti​=ai​(modmi​)
+很显然，它的循环节为MMM
+
+
+于是我们可以的得出，对于任意iii, x=ai(modmi)x = a_i \pmod{m_i}x=ai​(modmi​)
+
+
+int CRT(int a[], int m[], int n) {
+    int M = 1;
+    int ans = 0;
+    for(int i = 1; i &amp;lt;= n; i++) {
+        M *= m[i];
+    }
+    for(int i = 1; i &amp;lt;= n; i++) {
+        int x, y;
+        int Mi = M / m[i];
+        exgcd(Mi, m[i], x, y);
+        ans = (ans + Mi * x * a[i]) % M;
+    }
+    if(ans &amp;lt; 0) ans += M;
+    return ans;
+}
+
+
+
+为了得到tit_iti​,根据裴蜀定理，我们必须满足gcd(mi,Mi)=1gcd(m_i,M_i) =1gcd(mi​,Mi​)=1 ，但如果mim_imi​不互质，则会出现不存在tit_iti​的情况
+我们考虑当前仅存在两个方程
+{x≡a1(modm1)x≡b2(modm2)\begin{cases}
+	x≡a_1 (mod m_1) \\
+	x≡b_2 (mod m_2) 
+\end{cases}{x≡a1​(modm1​)x≡b2​(modm2​)​
+将其转换成不定方程
+x=mip+a1=m2q+a2x = m_i p + a_1 = m_2 q + a_2
+x=mi​p+a1​=m2​q+a2​
+m1p−m2q=a2−a1m_1p - m_2q = a_2 - a_1
+m1​p−m2​q=a2​−a1​
+如果 a2−a1∣gcd(m1,m2)a_2 - a_1 | gcd(m_1,m_2)a2​−a1​∣gcd(m1​,m2​) ，则可通过扩展欧几里得，得到一组可行解(p,q)(p,q)(p,q)
+则两原方程的组成的新方程组解为 x=m1p(modlcm(m1,m2))x = m_1p \pmod {lcm(m_1,m_2)}x=m1​p(modlcm(m1​,m2​))
+否则由裴蜀定理得知等式无解
+long long crt(long long n) {
+    long long M = b[1], ans = a[1], x, y;
+    for (int i = 2; i &amp;lt;= n; i++) {
+        long long z = (a[i] - ans%b[i]+b[i])%b[i];
+        long long k = exgcd(M, b[i], x, y);
+        if (z % k)
+            return -1;
+        long long c = b[i] / k;   
+        x = mul(x,z/k,c);
+        ans += x * M;  
+        M = M * c;
+        ans = (ans%M+M)%M;
+    }
+    return (ans % M + M) % M;
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CRT-note">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
             <article class="post i-card">
                 <h2 class="post-title">
                     <a href="https://dinnerhunt.cn/post/codeforces">
@@ -190,7 +330,7 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
                     <time class="post-time">2019-08-03</time>
                     
                         <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-error">
             #支配树
         </a>
                         
@@ -221,7 +361,7 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
                     <time class="post-time">2019-08-02</time>
                     
                         <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-primary">
             #主席树
         </a>
                         
@@ -250,12 +390,12 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
                     <time class="post-time">2019-08-02</time>
                     
                         <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-error">
             #TopSort
         </a>
                         
                         <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-error">
             #LCA
         </a>
                         
@@ -286,7 +426,7 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
                     <time class="post-time">2019-08-02</time>
                     
                         <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-error">
             #主席树
         </a>
                         
@@ -323,7 +463,7 @@ For example:</p>
         </a>
                         
                         <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-primary">
             #数论
         </a>
                         
@@ -339,72 +479,6 @@ For example:</p>
                                     </div>
                                     
                                             <a class="btn btn-text" href="https://dinnerhunt.cn/post/NC201903E">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/P2473">
-                        「SCOI2008」奖励关
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-07-20</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="post-tag i-tag
-                            i-tag-other_2">
-            #期望概率
-        </a>
-                        
-                        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="post-tag i-tag
-                            i-tag-success">
-            #状压DP
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>你正在玩你最喜欢的电子游戏，并且刚刚进入一个奖励关。在这个奖励关里，系统将依次随机抛出k次宝物，每次你都可以选择吃或者不吃（必须在抛出下一个宝物之前做出选择，且现在决定不吃的宝物以后也不能再吃）。</p>
-<p>宝物一共有n种，系统每次抛出这n种宝物的概率都相同且相互独立。也就是说，即使前k-1 次系统都抛出宝物1（这种情况是有可能出现的，尽管概率非常小），第k次抛出各个宝物的概率依然均为1/n。</p>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2473">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/LightOJ1027">
-                        「LightOJ 1027」A Dangerous Maze
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-07-18</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="post-tag i-tag
-                            i-tag-other_2">
-            #期望概率
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>You are in a maze; seeing n doors in front of you in beginning. You can choose any door you like. The probability for choosing a door is equal for all doors.</p>
-<p>If you choose the ith door, it can either take you back to the same position where you begun in xi minutes, or can take you out of the maze after xi minutes. If you come back to the same position, you can't remember anything. So, every time you come to the beginning position, you have no past experience.</p>
-<p>Now you want to find the expected time to get out of the maze.</p>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/LightOJ1027">Read More ~</a>
                             </div>
                 </div>
             </article>
@@ -427,7 +501,7 @@ For example:</p>
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1567080570183)">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1568025841568)">
         </div>
         <h1 class="id_card-title">
             dinnerhunt

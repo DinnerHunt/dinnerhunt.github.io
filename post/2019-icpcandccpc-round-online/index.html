@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    Dinic | dinnerhunt
+    2019 ICPC&amp;CCPC Round Online | dinnerhunt
 </title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1568025841568">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -107,109 +107,35 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            Dinic
+                            2019 ICPC&amp;CCPC Round Online
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-05-04</time>
+                            <time class="post-time">2019-09-02</time>
                             
                         </div>
                         
                                 <div class="post-content">
-                                    <p>最大流算法 <strong>Dinic</strong></p>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;queue&gt;
-using namespace std;
-const int maxd = 505;   //点数
-const int maxn = 1e5+10; //边数
-const int inf = 1e9+10;
-struct
-{
-    int v,net,c;
-}e[maxn];
-int f[maxd],eid;
-void init()
-{
-    memset(f,-1,sizeof(f));
-    eid = 0;
-}
-void insert(int x,int y,int c)
-{
-    e[eid].v = y;
-    e[eid].net = f[x];
-    e[eid].c = c;
-    f[x] = eid++;
-}
-void addedge(int x,int y,int z)
-{
-    insert(x,y,z);
-    insert(y,x,0);
-}
-int s,t;
-int d[maxd],in[maxd],out[maxd],k[maxd];
-bool bfs()
-{
-    memset(d,-1,sizeof(d));
-    queue&lt;int&gt; que;
-    que.push(s);
-    d[s] = 0;
-    while(!que.empty())
-    {
-        int x = que.front();
-        que.pop();
-        for(int i=f[x];i!=-1;i=e[i].net)
-        {
-            int v = e[i].v;
-            if(e[i].c &gt; 0 &amp;&amp; d[v] ==-1)
-            {
-                que.push(v);
-                d[v] = d[x] +1;
-            }
-        }
-    }
-    return (d[t] != -1);
-}
-int dfs(int x,int flow)
-{
-    if( x== t) return flow;
-    int res = 0;
-    for(int i = f[x];i+1;i=e[i].net)
-    {
-        int v = e[i].v;
-        if(e[i].c &gt;0 &amp;&amp; d[x]+1 == d[v])
-        {
-            int tmp = dfs(v,min(flow,e[i].c));
-            flow -= tmp;
-            e[i].c -= tmp;
-            res += tmp;
-            e[i^1].c += tmp;
-            if(!flow) break;
-        } 
-    }
-    if(res == 0) d[x] = -1;
-    return res;
-}
-int maxflow()
-{
-    int res = 0;
-    while(bfs()) res += dfs(s,inf);
-    return res;
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    init();
-    return 0;
-}
-
-</code></pre>
+                                    <p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%AF6.jpg"  div align=center width = 100% height = 35% /></p>
+<p><a href="https://vjudge.net/contest/321931">2019中国大学生程序设计竞赛（CCPC） - 网络选拔赛</a>[3/10]</p>
+<p><a href="https://www.jisuanke.com/contest/2991?view=challenges">The 2019 Asia Yinchuan First Round Online Programming</a> [0/13]</p>
+<p><a href="https://www.jisuanke.com/contest/3004?view=challenges">The Preliminary Contest for ICPC Asia Nanjing 2019</a> [0/9]</p>
+<p><a href="https://www.jisuanke.com/contest/3005">The Preliminary Contest for ICPC Asia Xuzhou 2019</a> [6/13]</p>
+<p><a href="https://www.jisuanke.com/contest/3870">The 2019 Asia Nanchang First Round Online Programming Contest</a>[2/9]</p>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://dinnerhunt.cn/post/CRT-note">
+                                <h3 class="post-title">
+                                    「学习笔记」CRT &amp; EXCRT
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>

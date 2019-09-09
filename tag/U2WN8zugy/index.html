@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    Dinic | dinnerhunt
+    CRT | dinnerhunt
 </title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1568025841568">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -19,7 +19,6 @@
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-        
 </head>
 
 <body>
@@ -102,124 +101,136 @@
     });
 </script>
 
-            <div id="main-content" class="post-detail main-container">
-                <!-- left -->
+            <div id="main-content" class="post-container main-container">
                 <div id="content" class="main-container-left">
-                    <article class="post i-card">
-                        <h2 class="post-title">
-                            Dinic
-                        </h2>
-                        <div class="post-info">
-                            <time class="post-time">2019-05-04</time>
-                            
-                        </div>
+                    
+    <div class="i-card">
+        <b>标签：#
+        CRT</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CRT-note">
+                        「学习笔记」CRT &amp; EXCRT
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-08-30</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="post-tag i-tag
+                            i-tag-banana">
+            #CRT
+        </a>
                         
-                                <div class="post-content">
-                                    <p>最大流算法 <strong>Dinic</strong></p>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;queue&gt;
-using namespace std;
-const int maxd = 505;   //点数
-const int maxn = 1e5+10; //边数
-const int inf = 1e9+10;
-struct
-{
-    int v,net,c;
-}e[maxn];
-int f[maxd],eid;
-void init()
-{
-    memset(f,-1,sizeof(f));
-    eid = 0;
-}
-void insert(int x,int y,int c)
-{
-    e[eid].v = y;
-    e[eid].net = f[x];
-    e[eid].c = c;
-    f[x] = eid++;
-}
-void addedge(int x,int y,int z)
-{
-    insert(x,y,z);
-    insert(y,x,0);
-}
-int s,t;
-int d[maxd],in[maxd],out[maxd],k[maxd];
-bool bfs()
-{
-    memset(d,-1,sizeof(d));
-    queue&lt;int&gt; que;
-    que.push(s);
-    d[s] = 0;
-    while(!que.empty())
-    {
-        int x = que.front();
-        que.pop();
-        for(int i=f[x];i!=-1;i=e[i].net)
-        {
-            int v = e[i].v;
-            if(e[i].c &gt; 0 &amp;&amp; d[v] ==-1)
-            {
-                que.push(v);
-                d[v] = d[x] +1;
-            }
-        }
-    }
-    return (d[t] != -1);
-}
-int dfs(int x,int flow)
-{
-    if( x== t) return flow;
-    int res = 0;
-    for(int i = f[x];i+1;i=e[i].net)
-    {
-        int v = e[i].v;
-        if(e[i].c &gt;0 &amp;&amp; d[x]+1 == d[v])
-        {
-            int tmp = dfs(v,min(flow,e[i].c));
-            flow -= tmp;
-            e[i].c -= tmp;
-            res += tmp;
-            e[i^1].c += tmp;
-            if(!flow) break;
-        } 
-    }
-    if(res == 0) d[x] = -1;
-    return res;
-}
-int maxflow()
-{
-    int res = 0;
-    while(bfs()) res += dfs(s,inf);
-    return res;
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    init();
-    return 0;
-}
-
-</code></pre>
-
-                                </div>
-                    </article>
-                    <!--  -->
-                    
-                            <div id="disqus_thread"></div>
-                            <div id="gitalk-container"></div>
                 </div>
-                <!-- middle -->
-                <div class="main-container-middle"></div>
-                <!-- right -->
-                <div id="sidebar" class="main-container-right">
+                <div class="post-article">
                     
-                                <!-- id-card -->
+                            <div class="post-content">
                                 
+                                        <div class="post-content-content">
+                                            给定同余方程组，其中 mim_imi​两两互质
+{x≡a1(modm1)x≡b2(modm2)⋯x≡cn(modmn)\begin{cases}
+	x≡a_1 (mod m_1) \\
+	x≡b_2 (mod m_2) \\
+	\cdots \\
+	x≡c_n (mod m_n)
+\end{cases} 
+⎩⎪⎪⎪⎨⎪⎪⎪⎧​x≡a1​(modm1​)x≡b2​(modm2​)⋯x≡cn​(modmn​)​
+
+ 
+我们尝试构造出一个式子，使得式子满足上列同余方程组
+
+设
+
+
+M=mi⋅m2⋅⋯⋅mn=∏inmiM = m_i \cdot m_2 \cdot \cdots \cdot m_n = \prod_i^n m_iM=mi​⋅m2​⋅⋯⋅mn​=∏in​mi​
+Mi=M/miM_i = M / m_iMi​=M/mi​
+ti=Mi−1,Miti=1(modmi)t_i = M_i^{-1} , M_i t_i = 1 \pmod{m_i}ti​=Mi−1​,Mi​ti​=1(modmi​)
+
+
+则，方程的一组通解:
+
+x=a1t1M1+a2t2M2+⋯+antnMn+kM=∑i=1naitiMi+kMx = a_1t_1M_1 + a_2t_2M_2 + \cdots +a_nt_nM_n + kM = \sum_{i=1}^n a_it_iM_i + kM
+x=a1​t1​M1​+a2​t2​M2​+⋯+an​tn​Mn​+kM=i=1∑n​ai​ti​Mi​+kM
+
+
+证明
+根据222,我们可以得到 i!=j,Miti=0(modmi)i!=j,M_it_i = 0 \pmod{m_i}i!=j,Mi​ti​=0(modmi​)
+根据333,我们可以得到 i=j,Miti=ai(modmi)i=j,M_it_i = a_i \pmod{m_i}i=j,Mi​ti​=ai​(modmi​)
+很显然，它的循环节为MMM
+
+
+于是我们可以的得出，对于任意iii, x=ai(modmi)x = a_i \pmod{m_i}x=ai​(modmi​)
+
+
+int CRT(int a[], int m[], int n) {
+    int M = 1;
+    int ans = 0;
+    for(int i = 1; i &amp;lt;= n; i++) {
+        M *= m[i];
+    }
+    for(int i = 1; i &amp;lt;= n; i++) {
+        int x, y;
+        int Mi = M / m[i];
+        exgcd(Mi, m[i], x, y);
+        ans = (ans + Mi * x * a[i]) % M;
+    }
+    if(ans &amp;lt; 0) ans += M;
+    return ans;
+}
+
+
+
+为了得到tit_iti​,根据裴蜀定理，我们必须满足gcd(mi,Mi)=1gcd(m_i,M_i) =1gcd(mi​,Mi​)=1 ，但如果mim_imi​不互质，则会出现不存在tit_iti​的情况
+我们考虑当前仅存在两个方程
+{x≡a1(modm1)x≡b2(modm2)\begin{cases}
+	x≡a_1 (mod m_1) \\
+	x≡b_2 (mod m_2) 
+\end{cases}{x≡a1​(modm1​)x≡b2​(modm2​)​
+将其转换成不定方程
+x=mip+a1=m2q+a2x = m_i p + a_1 = m_2 q + a_2
+x=mi​p+a1​=m2​q+a2​
+m1p−m2q=a2−a1m_1p - m_2q = a_2 - a_1
+m1​p−m2​q=a2​−a1​
+如果 a2−a1∣gcd(m1,m2)a_2 - a_1 | gcd(m_1,m_2)a2​−a1​∣gcd(m1​,m2​) ，则可通过扩展欧几里得，得到一组可行解(p,q)(p,q)(p,q)
+则两原方程的组成的新方程组解为 x=m1p(modlcm(m1,m2))x = m_1p \pmod {lcm(m_1,m_2)}x=m1​p(modlcm(m1​,m2​))
+否则由裴蜀定理得知等式无解
+long long crt(long long n) {
+    long long M = b[1], ans = a[1], x, y;
+    for (int i = 2; i &amp;lt;= n; i++) {
+        long long z = (a[i] - ans%b[i]+b[i])%b[i];
+        long long k = exgcd(M, b[i], x, y);
+        if (z % k)
+            return -1;
+        long long c = b[i] / k;   
+        x = mul(x,z/k,c);
+        ans += x * M;  
+        M = M * c;
+        ans = (ans%M+M)%M;
+    }
+    return (ans % M + M) % M;
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CRT-note">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
     <div class="id_card i-card">
         <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1568025841568)">
         </div>
@@ -243,14 +254,13 @@ int main()
         </div>
     </div>
     
-                                    
+
+                        <!-- 公告栏 -->
+                        
 
                 </div>
-
-
-
-
             </div>
+
 
 
             <div class="site-footer">
@@ -264,7 +274,6 @@ int main()
   hljs.initHighlightingOnLoad()
 </script>
 
-
     </div>
     <script>
         $('#sidebar').stickySidebar({
@@ -272,7 +281,6 @@ int main()
             // bottomSpacing: 60
         });
     </script>
-    
 </body>
 
 </html>
