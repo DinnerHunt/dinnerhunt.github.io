@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    「HDU 2089」  不要62 | dinnerhunt
+    「CodeForces 1007B」Pave the Parallelepiped  | dinnerhunt
 </title>
 <link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1569154796142">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -107,64 +107,109 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            「HDU 2089」  不要62
+                            「CodeForces 1007B」Pave the Parallelepiped 
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-05-05</time>
+                            <time class="post-time">2019-09-22</time>
                             
-                                <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="post-tag i-tag
-                            i-tag-other_1">
-                            #数位DP
+                                <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="post-tag i-tag
+                            i-tag-other_2">
+                            #组合数学
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <p>杭州人称那些傻乎乎粘嗒嗒的人为62（音：laoer）。<br>
-杭州交通管理局经常会扩充一些的士车牌照，新近出来一个好消息，以后上牌照，不再含有不吉利的数字了，这样一来，就可以消除个别的士司机和乘客的心理障碍，更安全地服务大众。<br>
-不吉利的数字为所有含有4或62的号码。</p>
- <!-- more --> 
-<p>例如： 62315 73418 88914<br>
-都属于不吉利号码。但是，61152虽然含有6和2，但不是62连号，所以不属于不吉利数字之列。<br>
-你的任务是，对于每次给出的一个牌照区间号，推断出交管局今次又要实际上给多少辆新的士车上牌照了。</p>
-<h4 id="题目链接">题目链接🔗</h4>
-<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">[HDU 2089]不要62</a></p>
+                                    <p>You are given a rectangular parallelepiped with sides of positive integer lengths A, B and C.</p>
+<p>Find the number of different groups of three integers (a, b, c) such that 1≤a≤b≤c and parallelepiped A×B×C can be paved with parallelepipeds a×b×c. Note, that all small parallelepipeds have to be rotated in the same direction.</p>
+<p>For example, parallelepiped 1×5×6 can be divided into parallelepipeds 1×3×5, but can not be divided into parallelepipeds 1×2×3.</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped<br>
+</a></p>
 <h4 id="题解">题解</h4>
-<p>数位DP，位内分类讨论</p>
+<p>考虑将每个数的约数分组，然后再通过组合数学求出<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个数中放回取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>个的不同方案数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C(n,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></p>
 <h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
 #include &lt;algorithm&gt;
 using namespace std;
-long long n, arr[12], dp[12][12];
-void init() {
-    dp[0][0] = 1;  // 前i个数首位为j的不包含62和4的个数
-    for (int i = 1; i &lt;= 10; i++)
-        for (int j = 0; j &lt;= 9; j++)
-            for (int k = 0; k &lt;= 9; k++)
-                if (j != 4 &amp;&amp; !(j == 6 &amp;&amp; k == 2))
-                    dp[i][j] += dp[i - 1][k];
-}
-long long solve(long long n) {
-    long long len = 0ll, ans = 0ll;
-    while (n) arr[++len] = n % 10, n /= 10;
-    arr[len + 1] = 0;
-    //printf(&quot;%lld &quot;,dp[len][0]);
-    for (int i = len; i &gt; 0; i--) {
-        for (int j = 0; j &lt; arr[i]; j++)
-            if (arr[i + 1] != 6 || j != 2)
-                ans += dp[i][j];
-        if (arr[i] == 4 || (arr[i + 1] == 6 &amp;&amp; arr[i] == 2))
-            break;
-
-    }
+const int maxd = 1e5+10;
+long long C(int n,int m)
+{
+    long long ans = 1ll;
+    for(int i=1;i&lt;=m;i++) ans *= (n-i+1);
+    for(int i=1;i&lt;=m;i++) ans /= i;
     return ans;
 }
-int main() {
+int gcd(int x,int y)
+{
+    if(!y) return x;
+    return gcd(y,x%y);
+}
+int fac[maxd];
+void init()
+{
+    for(int i=1;i&lt;maxd;i++)
+        for(int j=i;j&lt;maxd;j+=i)
+            fac[j]++;
+}
+bool check(int a,int b,int c)
+{
+    if((a&amp;1)&amp;&amp;(b&amp;2)&amp;&amp;(c&amp;4))
+        return true;
+    if((a&amp;1)&amp;&amp;(c&amp;2)&amp;&amp;(b&amp;4))
+        return true;
+    if((b&amp;1)&amp;&amp;(a&amp;2)&amp;&amp;(c&amp;4))
+        return true;
+    if((b&amp;1)&amp;&amp;(c&amp;2)&amp;&amp;(a&amp;4))
+        return true;
+    if((c&amp;1)&amp;&amp;(a&amp;2)&amp;&amp;(b&amp;4))
+        return true;
+    if((c&amp;1)&amp;&amp;(b&amp;2)&amp;&amp;(a&amp;4))
+        return true;
+    return false;
+}
+int cnt[8],use[8];
+int main()
+{
     // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
     // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    init();
-    long long a, b;
-    while (scanf(&quot;%lld %lld&quot;, &amp;a, &amp;b) != EOF &amp;&amp; a &amp;&amp; b) printf(&quot;%lld\n&quot;, solve(b + 1) - solve(a));
+    int _;scanf(&quot;%d&quot;,&amp;_);init();
+    while(_--)
+    {
+        int a,b,c;
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        int ab = gcd(a,b); int bc = gcd(b,c); int ac = gcd(a,c);
+        int abc = gcd(ab,c);
+        cnt[7] = fac[abc]; // abc
+        cnt[6] = fac[ab] - fac[abc]; // ab
+        cnt[5] = fac[ac] - fac[abc];  // ac
+        cnt[4] = fac[a] -cnt[6] - cnt[5] - cnt[7];  // a (a - ab - ac - abc)
+        cnt[3] = fac[bc] - fac[abc]; // bc
+        cnt[2] = fac[b] - cnt[3] - cnt[6] - cnt[7];      // 010 (b - bc - ab - abc)
+        cnt[1] = fac[c] - cnt[5] - cnt[3] - cnt[7];     
+        // for(int i=1;i&lt;=7;i++) printf(&quot;%d &quot;,cnt[i]);
+        // putchar(10);
+        long long ans = 0ll;
+        for(int a=1;a&lt;8;a++)
+            for(int b=a;b&lt;8;b++)
+                for(int c=b;c&lt;8;c++)
+                    if(check(a,b,c))
+                    {
+                        use[a]++,use[b]++,use[c]++;
+
+                        long long now = 1ll;
+                        for(int i=1;i&lt;8;i++)
+                            if(use[i]) now *= C(cnt[i]+use[i]-1,use[i]);
+                        if(now)
+                        //printf(&quot;%d %d %d %lld\n&quot;,a,b,c,now);
+                        ans += now;
+                        use[a]--,use[b]--,use[c]--;
+                    }
+        printf(&quot;%lld\n&quot;,ans);
+    }
 
     return 0;
 }
@@ -176,9 +221,9 @@ int main() {
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://dinnerhunt.cn/post/P1896">
+                            <a href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">
                                 <h3 class="post-title">
-                                    「SCOI2005」 互不侵犯
+                                    2019 ICPC&amp;CCPC Round Online
                                 </h3>
                             </a>
                         </div>
@@ -203,7 +248,7 @@ int main() {
 <ul>
 <li>
 <ul>
-<li><a href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5">题目链接🔗</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
 <li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
 <li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
 </ul>
