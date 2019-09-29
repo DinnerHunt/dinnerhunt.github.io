@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>/Users/dinnerhunt/Documents/Gridea/output</id>
+    <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-09-29T05:34:04.052Z</updated>
+    <updated>2019-09-29T05:52:53.557Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="/Users/dinnerhunt/Documents/Gridea/output"/>
-    <link rel="self" href="/Users/dinnerhunt/Documents/Gridea/output/atom.xml"/>
+    <link rel="alternate" href="https://dinnerhunt.cn"/>
+    <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
     <subtitle>add one&apos;s</subtitle>
-    <logo>/Users/dinnerhunt/Documents/Gridea/output/images/avatar.png</logo>
-    <icon>/Users/dinnerhunt/Documents/Gridea/output/favicon.ico</icon>
+    <logo>https://dinnerhunt.cn/images/avatar.png</logo>
+    <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1007B」Pave the Parallelepiped ]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/CF1007B/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/CF1007B/index.html">
+        <id>https://dinnerhunt.cn/post/CF1007B</id>
+        <link href="https://dinnerhunt.cn/post/CF1007B">
         </link>
         <updated>2019-09-22T12:13:43.000Z</updated>
         <summary type="html"><![CDATA[<p>You are given a rectangular parallelepiped with sides of positive integer lengths A, B and C.</p>
@@ -118,16 +118,11 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[2019 ICPC&CCPC Round Online]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/2019-icpcandccpc-round-online/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/2019-icpcandccpc-round-online/index.html">
+        <id>https://dinnerhunt.cn/post/2019-icpcandccpc-round-online</id>
+        <link href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">
         </link>
         <updated>2019-09-02T12:50:24.000Z</updated>
-        <summary type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%AF6.jpg"  div align=center width = 100% height = 35% /></p>
-]]></summary>
-        <content type="html"><![CDATA[<p><img src="
-https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%AF6.jpg"  div align=center width = 100% height = 35% /></p>
-<!-- more --> 
+        <content type="html"><![CDATA[<!-- more --> 
 <p><a href="https://vjudge.net/contest/321931">2019中国大学生程序设计竞赛（CCPC） - 网络选拔赛</a>[3/10]</p>
 <p><a href="https://www.jisuanke.com/contest/2991?view=challenges">The 2019 Asia Yinchuan First Round Online Programming</a> [0/13]</p>
 <p><a href="https://www.jisuanke.com/contest/3004?view=challenges">The Preliminary Contest for ICPC Asia Nanjing 2019</a> [0/9]</p>
@@ -137,8 +132,8 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%A
     </entry>
     <entry>
         <title type="html"><![CDATA[「学习笔记」CRT & EXCRT]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/CRT-note/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/CRT-note/index.html">
+        <id>https://dinnerhunt.cn/post/CRT-note</id>
+        <link href="https://dinnerhunt.cn/post/CRT-note">
         </link>
         <updated>2019-08-30T00:45:16.000Z</updated>
         <content type="html"><![CDATA[<h4 id="给定同余方程组其中-m_i两两互质">给定同余方程组，其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>m</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">m_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>两两互质</h4>
@@ -228,8 +223,8 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%A
     </entry>
     <entry>
         <title type="html"><![CDATA[Network Contest]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/codeforces/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/codeforces/index.html">
+        <id>https://dinnerhunt.cn/post/codeforces</id>
+        <link href="https://dinnerhunt.cn/post/codeforces">
         </link>
         <updated>2019-08-22T17:57:46.000Z</updated>
         <summary type="html"><![CDATA[<p><img src="
@@ -252,8 +247,8 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic
     </entry>
     <entry>
         <title type="html"><![CDATA[2019 Multi-University Training Contest]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/2019-multi-university-training-contest/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/2019-multi-university-training-contest/index.html">
+        <id>https://dinnerhunt.cn/post/2019-multi-university-training-contest</id>
+        <link href="https://dinnerhunt.cn/post/2019-multi-university-training-contest">
         </link>
         <updated>2019-08-22T10:07:38.000Z</updated>
         <summary type="html"><![CDATA[<p><img src="
@@ -408,8 +403,8 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/451564154055_.pic
     </entry>
     <entry>
         <title type="html"><![CDATA[Training Contest]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/Training-Contest/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/Training-Contest/index.html">
+        <id>https://dinnerhunt.cn/post/Training-Contest</id>
+        <link href="https://dinnerhunt.cn/post/Training-Contest">
         </link>
         <updated>2019-08-02T17:36:27.000Z</updated>
         <summary type="html"><![CDATA[<p><img src="
@@ -572,8 +567,8 @@ https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic
     </entry>
     <entry>
         <title type="html"><![CDATA[「HDU 6604」Blow up the city ]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/HDU6604/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/HDU6604/index.html">
+        <id>https://dinnerhunt.cn/post/HDU6604</id>
+        <link href="https://dinnerhunt.cn/post/HDU6604">
         </link>
         <updated>2019-08-02T17:30:29.000Z</updated>
         <summary type="html"><![CDATA[<p>Country A and B are at war. Country A needs to organize transport teams to deliver supplies toward some command center cities.</p>
@@ -679,8 +674,8 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[「CQOI 2015」 任务查询系统]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/P3168/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/P3168/index.html">
+        <id>https://dinnerhunt.cn/post/P3168</id>
+        <link href="https://dinnerhunt.cn/post/P3168">
         </link>
         <updated>2019-08-02T15:54:50.000Z</updated>
         <summary type="html"><![CDATA[<p>最近实验室正在为其管理的超级计算机编制一套任务管理系统，而你被安排完成其中的查询部分。超级计算机中的任务用三元组(Si,Ei,Pi)描述，(Si,Ei,Pi)表示任务从第Si秒开始，在第Ei秒后结束（第Si秒和Ei秒任务也在运行），其优先级为Pi。同一时间可能有多个任务同时执行，它们的优先级可能相同，也可能不同。调度系统会经常向查询系统询问，第Xi秒正在运行的任务中，优先级最小的Ki个任务（即将任务按照优先级从小到大排序后取前Ki个）的优先级之和是多少。特别的，如果Ki大于第Xi秒正在运行的任务总数，则直接回答第Xi秒正在运行的任务优先级之和。上述所有参数均为整数，时间的范围在1到n之间（包含1和n）。</p>
@@ -774,8 +769,8 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[「ZJOI 2012」 灾难]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/P2597/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/P2597/index.html">
+        <id>https://dinnerhunt.cn/post/P2597</id>
+        <link href="https://dinnerhunt.cn/post/P2597">
         </link>
         <updated>2019-08-01T18:46:23.000Z</updated>
         <summary type="html"><![CDATA[<p>阿米巴是小强的好朋友。</p>
@@ -881,8 +876,8 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[「HDU 6621」 K-th Closest Distance]]></title>
-        <id>/Users/dinnerhunt/Documents/Gridea/output/post/HDU6621/index.html</id>
-        <link href="/Users/dinnerhunt/Documents/Gridea/output/post/HDU6621/index.html">
+        <id>https://dinnerhunt.cn/post/HDU6621</id>
+        <link href="https://dinnerhunt.cn/post/HDU6621">
         </link>
         <updated>2019-08-01T17:33:24.000Z</updated>
         <summary type="html"><![CDATA[<p>You have an array: a1, a2, ......, an and you must answer for some queries.<br>
