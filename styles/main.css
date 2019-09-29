@@ -1009,3 +1009,9 @@ article .article-title,
 h2 {
   font-size: 2.5rem;
 }
+
+      html
+{
+ zoom: .75;
+}
+    
