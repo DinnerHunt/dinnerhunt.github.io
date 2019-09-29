@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    回文自动机 | dinnerhunt
+    「Template」 曼哈顿最小生成树 | dinnerhunt
 </title>
 <link rel="shortcut icon" href="/Users/dinnerhunt/Documents/Gridea/output/favicon.ico?v=1569735227354">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -107,77 +107,130 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            回文自动机
+                            「Template」 曼哈顿最小生成树
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-08-29</time>
+                            <time class="post-time">2019-09-29</time>
                             
-                                <a href="/Users/dinnerhunt/Documents/Gridea/output/tag/AkQ6DOqOB/index.html" class="post-tag i-tag
+                                <a href="/Users/dinnerhunt/Documents/Gridea/output/tag/template/index.html" class="post-tag i-tag
                             i-tag-banana">
-                            #回文自动机
+                            #template
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <p><a href="https://www.luogu.org/problem/P3649">[APIO2014]回文串</a></p>
-<p>求字符串中，回文子串长度与该串出现次数之积的最大值</p>
-<pre><code class="language-cpp">#include &lt;cstring&gt;
-#include &lt;iostream&gt;
+                                    <p>Mannattan_minimum_spanning_tree 为添边操作</p>
+<pre><code>#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
 #include &lt;algorithm&gt;
 using namespace std;
-const int maxd=3e5+10;
-char s[maxd];
-int n,p,q,fail[maxd],cnt[maxd],len[maxd],tot,last,ch[maxd][26],pos[maxd];
-//int ans[maxd];
-// fail[i] 表示该串失信匹配的上一个串的cnt位置
-// cnt[i] 第i个本质不同回文串的个数
-// len[i] 表示该回文串的长度
-// pos[i] 表示该串在原回文串中出现位置
-inline int newnode(int x)
-{
-    len[++tot]=x;
-    return tot;
+typedef long long ll;
+const ll mod = 1e9+7;
+const int maxd = 2e5+10;
+const int inf = 0x3f3f3f3f;
+struct Point{
+    int x,y,id;
+    bool operator &lt; (const Point &amp;b) const
+    { return b.x == x? y &lt; b.y: x&lt;b.x; }
+}p[maxd],tmp[maxd];
+struct Edge
+{ 
+    int u,v,d; 
+    bool operator &lt; (const Edge &amp;b) const
+    { return d &lt; b.d;}
+} e[maxd&lt;&lt;2];
+int tot;
+int fa[maxd],t[maxd],pos[maxd];
+int gf(int x){
+    if(fa[x] == x) return x;
+    else return fa[x] = gf(fa[x]);
 }
-inline int getfail(int x,int n)
+void update(int x,int v,int pp)
 {
-    while(s[n-len[x]-1]!=s[n]) x=fail[x];return x;
+    for(;x; x -=(x&amp;-x))
+        if(v &lt; t[x]) t[x] = v,pos[x] = pp;
 }
-inline void init()
+int query(int x,int m)
 {
-    s[0]=-1,fail[0]=1,last=0;
-    len[0]=0,len[1]=-1,tot=1;
+    int ans = inf,pp = -1;
+    for(;x&lt;=m; x+=(x&amp;-x))
+        if(t[x] &lt; ans)  ans = t[x], pp = pos[x];
+    return pp;
 }
-inline void add(int i)
+int dis(Point a,Point b)
 {
-    p=getfail(last,i);
-    if(!ch[p][s[i]])
+    return abs(a.x - b.x) + abs(a.y - b.y);
+}
+void Mannattan_minimum_spanning_tree(int n, Point p[])
+{
+    int a[maxd],b[maxd];
+    for(int dir = 0; dir &lt; 4;dir++)
     {
-        q=newnode(len[p]+2);
-        pos[q] = i; //该回文串出现的位置
-        fail[q]=ch[getfail(fail[p],i)][s[i]]; 
-        ch[p][s[i]]=q;
+        if(dir == 1 || dir == 3) for(int i = 0;i &lt; n;i++) swap(p[i].x,p[i].y);
+        else if(dir == 2) for(int i = 0;i &lt; n;i++) p[i].x = -p[i].x;
+        sort(p,p+n);
+        for(int i = 0;i &lt; n;i++) a[i] = b[i] = p[i].y - p[i].x;
+        sort(b,b+n);
+        int m = unique(b,b+n) - b;
+        for(int i = 1;i &lt;= m;i++) t[i] = inf,pos[i] = -1;
+        for(int i = n-1 ;i &gt;= 0;i--)
+        {
+            int pos = lower_bound(b,b+m,a[i]) - b + 1;
+            int ans = query(pos,m);
+            if(ans != -1) e[++tot] = (Edge) {p[i].id,p[ans].id,dis(p[i],p[ans])};
+            //addedge(p[i].id,p[ans].id,dis(p[i],p[ans]));
+
+            update(pos,p[i].x+p[i].y,i);
+        }
     }
-    last=ch[p][s[i]];
-    ++cnt[last];
 }
+int n,m;
 int main()
 {
     // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
     // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    while(scanf(&quot;%s&quot;,s+1)!=EOF)
+    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
     {
-        init();
-        for(int i=1;s[i];++i)
+        for(int i = 1;i&lt;=n;i++)
+            for(int j = 1;j&lt;=m;j++)
+            {
+                p[(i-1)*m+j].id = (i-1)*m+j;
+                scanf(&quot;%d&quot;,&amp;p[(i-1)*m+j].x);
+            }
+        for(int i = 1;i&lt;=n;i++)
+            for(int j = 1;j&lt;=m;j++)
+                scanf(&quot;%d&quot;,&amp;p[(i-1)*m+j].y);
+        tot = 0;
+        for(int i = 1;i&lt;=n;i++)
         {
-            s[i]-='a'; add(i);
+            int C = 0;
+            for(int j = 1;j&lt;=m;j++)
+                tmp[C++] = p[(i-1)*m+j];
+            Mannattan_minimum_spanning_tree(C,tmp);
         }
-        long long ans = 0ll;
-        for(int i=tot;i;--i) cnt[fail[i]]+=cnt[i],ans = max(ans,(long long)len[i] * cnt[i]);
-            printf(&quot;%lld\n&quot;,ans);
+        for(int j = 1;j&lt;=m;j++)
+        {
+            int C = 0;
+            for(int i = 1;i&lt;=n;i++)
+                tmp[C++] = p[(i-1)*m+j];
+            Mannattan_minimum_spanning_tree(C,tmp);
+        }
 
+        for(int i=1;i&lt;=n*m;i++) fa[i] = i;
+        sort(e+1,e+tot+1);
+        ll ans = 0ll;
+        for(int i = 1;i &lt;= tot;i++)
+        {
+            int x = gf(e[i].u) , y = gf(e[i].v);
+            if(x!=y)
+            {
+                fa[x] = y;
+                ans += e[i].d;
+            }
+        }
+        printf(&quot;%lld\n&quot;,ans);
     }
-    return 0;
 }
 </code></pre>
 
