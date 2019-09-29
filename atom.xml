@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-09-29T07:04:48.682Z</updated>
+    <updated>2019-09-29T07:19:43.648Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,107 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「Comet OJ - Contest #11」usiness]]></title>
+        <id>https://dinnerhunt.cn/post/ComeOJ67D</id>
+        <link href="https://dinnerhunt.cn/post/ComeOJ67D">
+        </link>
+        <updated>2019-09-29T07:09:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>一张笑盈盈的脸挡住了替罪羊树的去路，那不怀好意的笑容使困倦的银发少女皱了皱眉。「 sgt ，你有多长时间没打理过那些可怜的节点了？恕我直言，你的本体看上去可不是一般的斜。」</p>
+<p>「只是我今天的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\alphaα</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span> 设得比较大…」替罪羊树辩解的同时，心虚地偏了下身子试图遮住背后长歪二叉树的虚影。</p>
+<p>「要不要尝试一下我新开展的『 splay 节点银行』服务？专为安于现状的拖延症患者设计…」伸展树伸手拉住了抬脚要走的替罪羊树，「这里支持<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 种代存节点的方式，第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 种每次可以存 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+个节点，并在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 天后取出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+个节点。 kdt 生日前的这 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 天我会一直停留在这里，每天你都可以进行任意种，每种任意次的节点存储。」她在自己的右臂上打了个标记，「绝对可靠。」</p>
+<p>见替罪羊树一副迷惑不解的样子，伸展树挥手施放了法术，影影绰绰的画面在触手可及之处凝滞。这是一种去除强制在线的算法，因违逆了时间的自然流逝，其使用也有严格的限制。</p>
+<p>替罪羊树看到了一帧自己囿于贫穷省吃俭用的样子，和一帧自己瘫在床上颓废的样子，发现每天结束时自己若有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个节点，就能赚到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span> 个节点，而 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span> 单调不增，不得不承认伸展树的正确性。但看到再之后一帧的瞬间，她面色一黑：「那么，为什么利息是负的？你能解释一下你所有的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+都小于或等于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+的原因吗？」</p>
+<p>「当然是因为——我帮你承担了 MLE 的风险。」伸展树煞有介事地说道。</p>
+<p>在未引起她们注意的，更远的未来帧里，不祥的黑暗攀附在画面的一角。</p>
+<p>你对这个种族的未来毫无兴趣，只想知道替罪羊树的最优决策，也就是说——</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>一张笑盈盈的脸挡住了替罪羊树的去路，那不怀好意的笑容使困倦的银发少女皱了皱眉。「 sgt ，你有多长时间没打理过那些可怜的节点了？恕我直言，你的本体看上去可不是一般的斜。」</p>
+<p>「只是我今天的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\alphaα</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span> 设得比较大…」替罪羊树辩解的同时，心虚地偏了下身子试图遮住背后长歪二叉树的虚影。</p>
+<p>「要不要尝试一下我新开展的『 splay 节点银行』服务？专为安于现状的拖延症患者设计…」伸展树伸手拉住了抬脚要走的替罪羊树，「这里支持<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 种代存节点的方式，第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 种每次可以存 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+个节点，并在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 天后取出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+个节点。 kdt 生日前的这 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 天我会一直停留在这里，每天你都可以进行任意种，每种任意次的节点存储。」她在自己的右臂上打了个标记，「绝对可靠。」</p>
+<p>见替罪羊树一副迷惑不解的样子，伸展树挥手施放了法术，影影绰绰的画面在触手可及之处凝滞。这是一种去除强制在线的算法，因违逆了时间的自然流逝，其使用也有严格的限制。</p>
+<p>替罪羊树看到了一帧自己囿于贫穷省吃俭用的样子，和一帧自己瘫在床上颓废的样子，发现每天结束时自己若有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个节点，就能赚到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span> 个节点，而 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span> 单调不增，不得不承认伸展树的正确性。但看到再之后一帧的瞬间，她面色一黑：「那么，为什么利息是负的？你能解释一下你所有的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+都小于或等于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+​	<br>
+的原因吗？」</p>
+<p>「当然是因为——我帮你承担了 MLE 的风险。」伸展树煞有介事地说道。</p>
+<p>在未引起她们注意的，更远的未来帧里，不祥的黑暗攀附在画面的一角。</p>
+<p>你对这个种族的未来毫无兴趣，只想知道替罪羊树的最优决策，也就是说——</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.cometoj.com/contest/67/problem/B?problem_id=3796">「Comet OJ - Contest #11」usiness</a></p>
+<h4 id="题解">题解</h4>
+<p><s>题面</s>很有意思的一道DP<br>
+将大于2000的值视为2001，并不会影响最后答案的结果</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;string&gt;
+using namespace std;
+const int maxd = 105;
+int n,m,k;
+long long dp[maxd][maxd*20],a[maxd*20],b[maxd],c[maxd];  // 第i天后，保留j节点的最大节点数
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,m,k;
+    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;k);
+    for(int i=0;i&lt;=k;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
+    for(int i=1;i&lt;=m;i++) scanf(&quot;%lld %lld&quot;,&amp;b[i],&amp;c[i]);
+    memset(dp,-1,sizeof(dp));
+    dp[1][0] = 0;
+    for(int i=1;i&lt;=n+1;i++)
+    {
+        for(int j=2001;j&gt;=0;j--)
+        {
+            if(dp[i][j] == -1) continue;
+            for(int l=1;l&lt;=m;l++)
+            {
+                if(j &gt;= b[l])
+                dp[i][j-b[l]] = max(dp[i][j-b[l]],dp[i][j] + c[l]);
+            }
+        }
+        for(int j=0;j&lt;=2001;j++)
+        {
+            if(dp[i][j] == -1) continue;
+            if(j+a[j] &gt; 2000) dp[i+1][2001] = max(dp[i+1][2001],dp[i][j]+j+a[j]-2000);
+            else dp[i+1][j+a[j]] = max(dp[i+1][j+a[j]],dp[i][j]);
+        }
+    }
+    long long ans = 0ll;
+    // for(int i=1;i&lt;=n+1;i++){
+    //     for(int j=0;j&lt;=k+1;j++)
+    //         printf(&quot;%lld &quot;,dp[i][j]);
+    //     putchar(10);
+    // }
+    for(int i=0;i&lt;=2000;i++)
+    {
+        if(dp[n+1][i] == -1) continue;
+        ans = max(dp[n+1][i]+i,ans);
+    }
+    if(dp[n+1][2001]) max(ans,dp[n+1][2000+1]+2000);
+    printf(&quot;%lld&quot;,ans);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「HDU 6506」Spin A Web]]></title>
         <id>https://dinnerhunt.cn/post/hdu6506</id>
@@ -880,167 +981,6 @@ int main()
 <li>I. Block Breaker</li>
 <li>J. Domino Covering</li>
 <li>K. Make Rounddog Happy</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Training Contest]]></title>
-        <id>https://dinnerhunt.cn/post/Training-Contest</id>
-        <link href="https://dinnerhunt.cn/post/Training-Contest">
-        </link>
-        <updated>2019-08-02T17:36:27.000Z</updated>
-        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% />]]></summary>
-        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% />
-<!-- more --> 
-<h4 id="2019牛客多校第一场"><a href="https://ac.nowcoder.com/acm/contest/881#question">2019牛客多校(第一场)</a>  [4/10]</h4>
-<ul>
-<li><s>A. Equivalent Prefixes</s>            [递归乱搞]</li>
-<li>B. Integration                                   [数学题]</li>
-<li>C. Euclidean Distance                      [拉格兰日乘子法]</li>
-<li>D. Parity of Tuples                            [FWT]</li>
-<li><s>E. ABBA</s>                                 [贪心+DP or 组合数学]</li>
-<li><s>F.  Random Point in Triangle</s>  [暴力跑点猜期望]</li>
-<li>G. Substrings 2                                [可持久化分块]</li>
-<li>H. xor                                               [线性基]</li>
-<li>I. Points Division                              [DP+线段树]</li>
-<li><s>J. Fraction Comparision</s>        [模拟]</li>
-</ul>
-<h4 id="arabellacpc-2019"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248400">ArabellaCPC 2019 </a> [7/13]</h4>
-<ul>
-<li><s>A. Is It Easy ?</s>                        [签到]</li>
-<li><s>B. Road to Arabella</s>               [简单博弈]</li>
-<li><s>C. Check The Text</s>                [模拟]</li>
-<li>D. Meeting Bahosain                       [<strong>可做</strong>]</li>
-<li>E. Longest path Problem                 [未知]</li>
-<li>F. Musical Chairs                             [博弈?]</li>
-<li><s>G. Card Game</s>                                  [简单期望]</li>
-<li><s>H. Steaks</s>                                         [签到]</li>
-<li>I. Bashar and Hamada                     [思维]</li>
-<li><s>J. Thanos Power</s>                              [DP]</li>
-<li>K. Smart Strategies                         [未知]</li>
-<li>L. Burgers                                        [未知]</li>
-<li><s>M. Two Operations</s>                           [签到]</li>
-</ul>
-<h4 id="2019牛客多校第二场"><a href="https://ac.nowcoder.com/acm/contest/882#question">2019牛客多校(第二场)</a>  [1/10]</h4>
-<ul>
-<li>A. Eddy Walker[概率]</li>
-<li>B. Eddy Walker 2[概率]</li>
-<li>C. Go on Strike! [LCT]</li>
-<li>D. Kth Minimum Clique [暴力]</li>
-<li>E.  MAZE [线段树+DP]</li>
-<li>F.	Partition problem [暴力]</li>
-<li>G. 	Polygons[计算几何]</li>
-<li><s>H. Second Large Rectangle</s> [DP+悬线法]</li>
-<li>I. Inside A rectangle [DP]</li>
-<li>J. Subarray[数据结构+暴力]</li>
-</ul>
-<h4 id="2019牛客多校第三场"><a href="https://ac.nowcoder.com/acm/contest/883#question">2019牛客多校(第三场)</a> [6/10]</h4>
-<ul>
-<li>A. Graph Games [思维+数据结构]</li>
-<li><s>B. Crazy Binary String</s>[签到]</li>
-<li>C. Guessing ETT [构造]</li>
-<li><s>D. Big Integer</s>[数论]</li>
-<li>E. Trees in the Pocket II [不太可做]</li>
-<li><s>F. Planting Trees</s> [单调队列+暴力]</li>
-<li><s>G. Removing Stones</s>[分治]</li>
-<li><s>H. Magic Line</s>[签到+几何]</li>
-<li>I. Median[DP]</li>
-<li><s>J. LRU management</s>[链表+模拟]</li>
-</ul>
-<h4 id="2019牛客多校第五场"><a href="https://ac.nowcoder.com/acm/contest/885#question">2019牛客多校(第五场)</a> [2/10]</h4>
-<ul>
-<li><s>A	digits 2</s>	[签到]</li>
-<li>B	generator 1	 [矩阵快速幂]</li>
-<li>C	generator 2	 [BSGS]</li>
-<li>D	generator 3	 [循环节+凸包+RMQ]</li>
-<li>E	independent set 1 [状压DP]</li>
-<li>F	maximum clique 1 [二分图]</li>
-<li>G	<s>subsequence 1</s>	[DP]</li>
-<li>H	subsequence 2	[Topsort]</li>
-<li>I	three points 1	[计算几何]</li>
-<li>J	three points 2	[扫描线+树状数组]</li>
-</ul>
-<h4 id="2019牛客多校第六场"><a href="https://ac.nowcoder.com/acm/contest/886#question">2019牛客多校(第六场)</a></h4>
-<ul>
-<li><s>A.	Garbage Classification</s> [签到]</li>
-<li><s>B.	Shorten IPv6 Address</s> [模拟]</li>
-<li>C.	Palindrome Mouse  [回文树 + 数据结构]</li>
-<li><s>D.	Move</s> [二分]</li>
-<li>E.	Androgynos [思维]</li>
-<li>F.	K-ary Heap [不太可做]</li>
-<li>G.	Is Today Friday? [思维]</li>
-<li>H.	Train Driver [思维 + 最短路?]</li>
-<li>I.	Can They Go to Galar? [概率+图论]</li>
-<li><s>J.	Upgrading Technology</s> [坑题]</li>
-</ul>
-<h4 id="2019-multi-university-training-contest-5"><a href="https://vjudge.net/contest/317548">2019 Multi-University Training Contest 5</a> [1/10]</h4>
-<ul>
-<li>A. <s>fraction</s>[数学]</li>
-<li>B. three arrays [思维]</li>
-<li>C. geometric problem[不太可做]</li>
-<li>D. <s>equation</s> [数学+思维]</li>
-<li>E. permutation 1[签到,搜索]*</li>
-<li><s>F. string matching</s> [Exkmp]</li>
-<li><s>G. permutation 2</s> [找规律]</li>
-<li>H. line symmetric [几何]</li>
-<li>I. discrete logarithm problem [Pohlig Hellman]</li>
-<li>J. find hidden array[用力猜？]</li>
-</ul>
-<h4 id="2019牛客多校第七场"><a href="https://ac.nowcoder.com/acm/contest/887#question">2019牛客多校(第七场)</a></h4>
-<ul>
-<li>A.	String</li>
-<li>B.	Irreducible Polynomial</li>
-<li>C.	Governing sand</li>
-<li>D.	Number</li>
-<li>E.	Find the median</li>
-<li>F.	Energy stones</li>
-<li>G.	Make Shan Happy</li>
-<li>H.	Pair</li>
-<li>I. Chessboard</li>
-<li>J.	A+B problem</li>
-<li>K.	Function</li>
-</ul>
-<h5 id="2019牛客多校第八场"><a href="https://ac.nowcoder.com/acm/contest/888#question">2019牛客多校(第八场)</a></h5>
-<ul>
-<li>A. All-one Matrices</li>
-<li>B. Beauty Values</li>
-<li>C. CDMA</li>
-<li>D. Distance</li>
-<li>E. Explorer</li>
-<li>F. Flower Dance</li>
-<li>G. Gemstones</li>
-<li>H. How Many Schemes</li>
-<li>I. Inner World</li>
-<li>J. Just Jump</li>
-</ul>
-<hr>
-<h4 id="the-13th-chinese-northeast-collegiate-programming-contest"><a href="http://codeforces.com/group/wmhDiB5PTN/contest/248323">The 13th Chinese Northeast Collegiate Programming Contest</a>  [6/10]</h4>
-<p><a href="https://www.cnblogs.com/clrs97/p/11080565.html">题解</a></p>
-<ul>
-<li>A. Apple Business[不太可做]</li>
-<li><s>B. B. Balanced Diet</s> [贪心]</li>
-<li><s>C. Meeting Bahosain</s>[简单几何]</li>
-<li>D. Master of Data Structure [数据结构]</li>
-<li><s>E. Minimum Spanning Tree</s> [线图的最小生成树]</li>
-<li>F. Mini-game Before Contest [博弈]</li>
-<li><s>G. Radar Scanner</s> [线段中位数]</li>
-<li><s>H. Skyscraper</s> [树状数组]</li>
-<li>I. Temperature Survey [NTT+思维]</li>
-<li><s>J. Time Limit</s> [签到]</li>
-</ul>
-<h4 id="2019牛客多校第四场"><a href="https://ac.nowcoder.com/acm/contest/884#question">2019牛客多校(第四场)</a> [5/11]</h4>
-<ul>
-<li><s>A.	meeting</s>	[DP]</li>
-<li>B.	xor	        [线性基+线段树]</li>
-<li><s>C.	sequence</s>[数据结构]</li>
-<li><s>D.	triples I</s>	  [构造]</li>
-<li>E.	triples II	 [容斥+DP]</li>
-<li>F.	merge	  [平衡树+思维]</li>
-<li>G.	tree	[搜索+树形DP]</li>
-<li>H.	RNGs	[神仙]</li>
-<li>I.	string	[后缀自动机 + 回文树]</li>
-<li><s>J.	free</s>	  [BFS]</li>
-<li><s>K.	number</s>  [DP?]</li>
 </ul>
 ]]></content>
     </entry>
