@@ -1,500 +1,753 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    dinnerhunt
-</title>
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1569737123948">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<title>dinnerhunt</title>
+<meta name="description" content="&#34;Ctrl&#34; + &#34;-&#34;  twice">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1569738683195">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-</head>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://dinnerhunt.cn">
-                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1569737123948" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    dinnerhunt
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="/" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/post/about" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/post/friend" class="menu">
-                                    友链
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
-    </div>
-</div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-container main-container">
-                <div id="content" class="main-container-left">
-                    
+  </head>
+  <body>
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/NC201903E">
-                        「NewCode 2019-3」 E. Big Integer
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-07-27</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="post-tag i-tag
-                            i-tag-error">
-            #欧拉定理
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/NC201903E">「NewCode 2019-3」 E. Big Integer</a>
+    </h2>
+    <p class="article-meta">
+      2019-07-27
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
+          欧拉定理
         </a>
-                        
-                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
-                            i-tag-other_1">
-            #数论
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+          数论
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>For little pupils, a very large number usually means an integer with many many digits. Let's define a class of big integers which consists only of the digit one <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>11</mn><mo>⋯</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(11 \cdots 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>. The first few integers in this class are <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>11</mn><mo separator="true">,</mo><mn>111</mn><mo separator="true">,</mo><mn>1111</mn><mo>⋯</mo></mrow><annotation encoding="application/x-tex">1, 11, 111, 1111 \cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span></span></span></span>. Denote <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">A(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>  as the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>-th smallest integer in this class. To make it even larger, we consider integers in the form of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><msup><mi>a</mi><mi>b</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">A(a^b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><br>
+      
+    </p>
+    <p class="text-lead">
+      <p>For little pupils, a very large number usually means an integer with many many digits. Let's define a class of big integers which consists only of the digit one <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>11</mn><mo>⋯</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(11 \cdots 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>. The first few integers in this class are <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>11</mn><mo separator="true">,</mo><mn>111</mn><mo separator="true">,</mo><mn>1111</mn><mo>⋯</mo></mrow><annotation encoding="application/x-tex">1, 11, 111, 1111 \cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span></span></span></span>. Denote <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">A(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>  as the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>-th smallest integer in this class. To make it even larger, we consider integers in the form of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><msup><mi>a</mi><mi>b</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">A(a^b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><br>
 . Now, given a prime number <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> , how many pairs <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(i, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>  are there such that 1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi><mo separator="true">,</mo><mtext> </mtext><mn>1</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><mi>m</mi><mo separator="true">,</mo><mtext> </mtext><mi>A</mi><mo>(</mo><msup><mi>i</mi><mi>j</mi></msup><mo>)</mo><mo>≡</mo><mn>0</mn><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\leq i \leq n,\ 1 \leq j \leq m,\ A(i^j) \equiv 0(mod \ p)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.79549em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.0746639999999998em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/NC201903E">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/P2473">
-                        「SCOI2008」奖励关
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-07-20</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="post-tag i-tag
-                            i-tag-other_2">
-            #期望概率
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/NC201903E" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P2473">「SCOI2008」奖励关</a>
+    </h2>
+    <p class="article-meta">
+      2019-07-20
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
         </a>
-                        
-                        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="post-tag i-tag
-                            i-tag-">
-            #状压DP
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+          状压DP
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>你正在玩你最喜欢的电子游戏，并且刚刚进入一个奖励关。在这个奖励关里，系统将依次随机抛出k次宝物，每次你都可以选择吃或者不吃（必须在抛出下一个宝物之前做出选择，且现在决定不吃的宝物以后也不能再吃）。</p>
+      
+    </p>
+    <p class="text-lead">
+      <p>你正在玩你最喜欢的电子游戏，并且刚刚进入一个奖励关。在这个奖励关里，系统将依次随机抛出k次宝物，每次你都可以选择吃或者不吃（必须在抛出下一个宝物之前做出选择，且现在决定不吃的宝物以后也不能再吃）。</p>
 <p>宝物一共有n种，系统每次抛出这n种宝物的概率都相同且相互独立。也就是说，即使前k-1 次系统都抛出宝物1（这种情况是有可能出现的，尽管概率非常小），第k次抛出各个宝物的概率依然均为1/n。</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2473">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/LightOJ1027">
-                        「LightOJ 1027」A Dangerous Maze
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-07-18</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="post-tag i-tag
-                            i-tag-other_3">
-            #期望概率
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P2473" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/LightOJ1027">「LightOJ 1027」A Dangerous Maze</a>
+    </h2>
+    <p class="article-meta">
+      2019-07-18
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+          期望概率
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>You are in a maze; seeing n doors in front of you in beginning. You can choose any door you like. The probability for choosing a door is equal for all doors.</p>
+      
+    </p>
+    <p class="text-lead">
+      <p>You are in a maze; seeing n doors in front of you in beginning. You can choose any door you like. The probability for choosing a door is equal for all doors.</p>
 <p>If you choose the ith door, it can either take you back to the same position where you begun in xi minutes, or can take you out of the maze after xi minutes. If you come back to the same position, you can't remember anything. So, every time you come to the beginning position, you have no past experience.</p>
 <p>Now you want to find the expected time to get out of the maze.</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/LightOJ1027">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">
-                        「2019 GDCPC 中智杯」游记
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-19</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="post-tag i-tag
-                            i-tag-other_2">
-            #个人经历
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 50% />
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula">
-                        「学习笔记」莫比乌斯反演
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-07</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="post-tag i-tag
-                            i-tag-info">
-            #学习笔记
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>莫比乌斯反演是数论数学中很重要的内容，可以用于解决很多<s>组合数学</s>数论的问题。</p>
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/LightOJ1027" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/Möbius-inversion-formula">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/P3327">
-                        「SDOI2015」约数和个数
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-07</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="post-tag i-tag
-                            i-tag-info">
-            #莫比乌斯反演
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji">「2019 GDCPC 中智杯」游记</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-19
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+          个人经历
         </a>
-                        
-                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
-                            i-tag-other_3">
-            #数论
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">d(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的约数个数，给定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi mathvariant="normal">、</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">N、M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord cjk_fallback">、</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>，求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></msubsup><mi>d</mi><mo>(</mo><mi>i</mi><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^N \sum_{j=1}^M d(ij)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.417049em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></p>
+      
+    </p>
+    <p class="text-lead">
+      <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 50% />
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P3327">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/P2557">
-                        「Luogu-P2257」YY的GCD
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-07</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="post-tag i-tag
-                            i-tag-other_4">
-            #莫比乌斯反演
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula">「学习笔记」莫比乌斯反演</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-07
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+          学习笔记
         </a>
-                        
-                        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="post-tag i-tag
-                            i-tag-other_4">
-            #数论
+      
+    </p>
+    <p class="text-lead">
+      <p>莫比乌斯反演是数论数学中很重要的内容，可以用于解决很多<s>组合数学</s>数论的问题。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/Möbius-inversion-formula" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P3327">「SDOI2015」约数和个数</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-07
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge warning">
+          莫比乌斯反演
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>神犇YY虐完数论后给傻×kAc出了一题</p>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
+          数论
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">d(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的约数个数，给定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi mathvariant="normal">、</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">N、M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord cjk_fallback">、</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>，求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></msubsup><mi>d</mi><mo>(</mo><mi>i</mi><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^N \sum_{j=1}^M d(ij)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.417049em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P3327" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P2557">「Luogu-P2257」YY的GCD</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-07
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+          数论
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>神犇YY虐完数论后给傻×kAc出了一题</p>
 <p>给定N, M,求1&lt;=x&lt;=N, 1&lt;=y&lt;=M且gcd(x, y)为质数的(x, y)有多少对</p>
 <p>kAc这种傻×必然不会了，于是向你来请教……</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2557">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/math1">
-                        「学习笔记」 数论 (1)
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-06</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="post-tag i-tag
-                            i-tag-other_1">
-            #学习笔记
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P2557" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/math1">「学习笔记」 数论 (1)</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-06
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
+          学习笔记
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>主要记录在算法竞赛中常用的数论知识中的一些定理</p>
+      
+    </p>
+    <p class="text-lead">
+      <p>主要记录在算法竞赛中常用的数论知识中的一些定理</p>
 <p>这部分主要记录整除部分的概念</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/math1">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/2018-CCPC-Summer-Camp">
-                        「2018 CCPC Wannafly Summer Camp」 游记
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-05</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="post-tag i-tag
-                            i-tag-other_3">
-            #个人经历
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/math1" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/2018-CCPC-Summer-Camp">「2018 CCPC Wannafly Summer Camp」 游记</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-05
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge success">
+          个人经历
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6813.JPG"  div align=center width = 100% height = 50% />
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/2018-CCPC-Summer-Camp">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/BZOJ3620">
-                        「BZOJ 3620」似乎在梦中见过的样子
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-05</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="post-tag i-tag
-                            i-tag-other_3">
-            #KMP
+      
+    </p>
+    <p class="text-lead">
+      <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6813.JPG"  div align=center width = 100% height = 50% />
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/2018-CCPC-Summer-Camp" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/BZOJ3620">「BZOJ 3620」似乎在梦中见过的样子</a>
+    </h2>
+    <p class="article-meta">
+      2019-05-05
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
+          KMP
         </a>
-                        
-                        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="post-tag i-tag
-                            i-tag-banana">
-            #字符串
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
+          字符串
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>“Madoka,不要相信 QB！”伴随着 Homura 的失望地喊叫,Madoka 与 QB 签订了契约.<br>
+      
+    </p>
+    <p class="text-lead">
+      <p>“Madoka,不要相信 QB！”伴随着 Homura 的失望地喊叫,Madoka 与 QB 签订了契约.<br>
 这是 Modoka 的一个噩梦,也同时是上个轮回中所发生的事.为了使这一次 Madoka 不再与 QB签订契约,Homura 决定在刚到学校的第一天就解决 QB.然而,QB 也是有许多替身的(但在第八话中的剧情显示它也有可能是无限重生的),不过,意志坚定的 Homura 是不会放弃的——她决定</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/BZOJ3620">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-                <!-- 翻页 -->
-                
-    <div class="pagination-container">
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/BZOJ3620" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
+        </div>
         
-            <a href="https://dinnerhunt.cn/" class="page-btn btn">上一页</a>
-            
-                
-                    <a href="https://dinnerhunt.cn/page/3/" class="page-btn btn">下一页</a>
-                    
-    </div>
-    
-                </div>
-                <!--  -->
-                <div class="main-container-middle"></div>
-                <!--  -->
-                <div id="sidebar" class="main-container-right">
-
-                    <!-- 个人信息 -->
-                    
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1569737123948)">
-        </div>
-        <h1 class="id_card-title">
-            dinnerhunt
-        </h1>
-        <h2 class="id_card-description">
-            add one&#39;s
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                    <!-- twitter -->
-                    
-                            <!-- weibo -->
-                            
-                                    <!-- facebook -->
-                                    
-
-        </div>
-    </div>
-    
-
-                        <!-- 公告栏 -->
-                        
-
-                </div>
-            </div>
-
-
-
-            <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
-  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+        <div class="row flex-edges">
+  
+    <a href="https://dinnerhunt.cn/" class="paper-btn">
+      上一页
+    </a>
+  
+  
+    <a href="https://dinnerhunt.cn/page/3/" class="paper-btn">
+      下一页
+    </a>
+  
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
+      </div>
+      
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1569738683195" class="no-responsive avatar">
+    <div class="text-muted">"Ctrl" + "-"  twice</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1007B">「CodeForces 1007B」Pave the Parallelepiped </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">2019 ICPC&amp;CCPC Round Online</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CRT-note">「学习笔记」CRT &amp; EXCRT</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/codeforces">Network Contest</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2019-multi-university-training-contest">2019 Multi-University Training Contest</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/Training-Contest">Training Contest</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU6604">「HDU 6604」Blow up the city </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3168">「CQOI 2015」 任务查询系统</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2597">「ZJOI 2012」 灾难</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU6621">「HDU 6621」 K-th Closest Distance</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge secondary">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge ">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge secondary">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge success">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge ">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge ">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge success">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge ">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge ">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
 
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-</body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
 </html>

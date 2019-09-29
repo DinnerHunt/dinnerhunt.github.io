@@ -1,539 +1,723 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    dinnerhunt
-</title>
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1569737123948">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<title>dinnerhunt</title>
+<meta name="description" content="&#34;Ctrl&#34; + &#34;-&#34;  twice">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1569738683195">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
 <link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-</head>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://dinnerhunt.cn">
-                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1569737123948" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    dinnerhunt
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="/" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/post/about" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/post/friend" class="menu">
-                                    友链
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
-    </div>
-</div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-container main-container">
-                <div id="content" class="main-container-left">
-                    
+  </head>
+  <body>
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/CF1007B">
-                        「CodeForces 1007B」Pave the Parallelepiped 
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-09-22</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="post-tag i-tag
-                            i-tag-info">
-            #组合数学
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/CF1007B">「CodeForces 1007B」Pave the Parallelepiped </a>
+    </h2>
+    <p class="article-meta">
+      2019-09-22
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+          组合数学
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>You are given a rectangular parallelepiped with sides of positive integer lengths A, B and C.</p>
+      
+    </p>
+    <p class="text-lead">
+      <p>You are given a rectangular parallelepiped with sides of positive integer lengths A, B and C.</p>
 <p>Find the number of different groups of three integers (a, b, c) such that 1≤a≤b≤c and parallelepiped A×B×C can be paved with parallelepipeds a×b×c. Note, that all small parallelepipeds have to be rotated in the same direction.</p>
 <p>For example, parallelepiped 1×5×6 can be divided into parallelepipeds 1×3×5, but can not be divided into parallelepipeds 1×2×3.</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CF1007B">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">
-                        2019 ICPC&amp;CCPC Round Online
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-09-02</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%AF6.jpg"  div align=center width = 100% height = 35% />
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/CRT-note">
-                        「学习笔记」CRT &amp; EXCRT
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-30</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="post-tag i-tag
-                            i-tag-error">
-            #CRT
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/CF1007B" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">2019 ICPC&amp;CCPC Round Online</a>
+    </h2>
+    <p class="article-meta">
+      2019-09-02
+      
+    </p>
+    <p class="text-lead">
+      <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%AF6.jpg"  div align=center width = 100% height = 35% />
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/CRT-note">「学习笔记」CRT &amp; EXCRT</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-30
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge success">
+          CRT
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            给定同余方程组，其中 mim_imi​两两互质
-{x≡a1(modm1)x≡b2(modm2)⋯x≡cn(modmn)\begin{cases}
+      
+    </p>
+    <p class="text-lead">
+      <h4 id="给定同余方程组其中-m_i两两互质">给定同余方程组，其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>m</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">m_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>两两互质</h4>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>≡</mo><msub><mi>a</mi><mn>1</mn></msub><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><msub><mi>m</mi><mn>1</mn></msub><mo>)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>≡</mo><msub><mi>b</mi><mn>2</mn></msub><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><msub><mi>m</mi><mn>2</mn></msub><mo>)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mo>⋯</mo></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>≡</mo><msub><mi>c</mi><mi>n</mi></msub><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><msub><mi>m</mi><mi>n</mi></msub><mo>)</mo></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
 	x≡a_1 (mod m_1) \\
 	x≡b_2 (mod m_2) \\
 	\cdots \\
 	x≡c_n (mod m_n)
 \end{cases} 
-⎩⎪⎪⎪⎨⎪⎪⎪⎧​x≡a1​(modm1​)x≡b2​(modm2​)⋯x≡cn​(modmn​)​
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:5.76em;vertical-align:-2.63em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9500200000000003em;"><span style="top:-1.59999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-1.59999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.89999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-3.1500100000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.30001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.60001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.90001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-5.20002em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.45002em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1300000000000003em;"><span style="top:-5.130000000000001em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.6900000000000004em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="minner">⋯</span></span></span><span style="top:-0.8100000000000002em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.63em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
 
- 
-我们尝试构造出一个式子，使得式子满足上列同余方程组
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/CRT-note" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-设
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/codeforces">Network Contest</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-23
+      
+    </p>
+    <p class="text-lead">
+      <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% />
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/codeforces" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/2019-multi-university-training-contest">2019 Multi-University Training Contest</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-22
+      
+    </p>
+    <p class="text-lead">
+      <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/451564154055_.pic_hd.jpg"  div align=center width = 100% height = 35% />
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/2019-multi-university-training-contest" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-M=mi⋅m2⋅⋯⋅mn=∏inmiM = m_i \cdot m_2 \cdot \cdots \cdot m_n = \prod_i^n m_iM=mi​⋅m2​⋅⋯⋅mn​=∏in​mi​
-Mi=M/miM_i = M / m_iMi​=M/mi​
-ti=Mi−1,Miti=1(modmi)t_i = M_i^{-1} , M_i t_i = 1 \pmod{m_i}ti​=Mi−1​,Mi​ti​=1(modmi​)
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/Training-Contest">Training Contest</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-03
+      
+    </p>
+    <p class="text-lead">
+      <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% />
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/Training-Contest" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-
-则，方程的一组通解:
-
-x=a1t1M1+a2t2M2+⋯+antnMn+kM=∑i=1naitiMi+kMx = a_1t_1M_1 + a_2t_2M_2 + \cdots +a_nt_nM_n + kM = \sum_{i=1}^n a_it_iM_i + kM
-x=a1​t1​M1​+a2​t2​M2​+⋯+an​tn​Mn​+kM=i=1∑n​ai​ti​Mi​+kM
-
-
-证明
-根据222,我们可以得到 i!=j,Miti=0(modmi)i!=j,M_it_i = 0 \pmod{m_i}i!=j,Mi​ti​=0(modmi​)
-根据333,我们可以得到 i=j,Miti=ai(modmi)i=j,M_it_i = a_i \pmod{m_i}i=j,Mi​ti​=ai​(modmi​)
-很显然，它的循环节为MMM
-
-
-于是我们可以的得出，对于任意iii, x=ai(modmi)x = a_i \pmod{m_i}x=ai​(modmi​)
-
-
-int CRT(int a[], int m[], int n) {
-    int M = 1;
-    int ans = 0;
-    for(int i = 1; i &amp;lt;= n; i++) {
-        M *= m[i];
-    }
-    for(int i = 1; i &amp;lt;= n; i++) {
-        int x, y;
-        int Mi = M / m[i];
-        exgcd(Mi, m[i], x, y);
-        ans = (ans + Mi * x * a[i]) % M;
-    }
-    if(ans &amp;lt; 0) ans += M;
-    return ans;
-}
-
-
-
-为了得到tit_iti​,根据裴蜀定理，我们必须满足gcd(mi,Mi)=1gcd(m_i,M_i) =1gcd(mi​,Mi​)=1 ，但如果mim_imi​不互质，则会出现不存在tit_iti​的情况
-我们考虑当前仅存在两个方程
-{x≡a1(modm1)x≡b2(modm2)\begin{cases}
-	x≡a_1 (mod m_1) \\
-	x≡b_2 (mod m_2) 
-\end{cases}{x≡a1​(modm1​)x≡b2​(modm2​)​
-将其转换成不定方程
-x=mip+a1=m2q+a2x = m_i p + a_1 = m_2 q + a_2
-x=mi​p+a1​=m2​q+a2​
-m1p−m2q=a2−a1m_1p - m_2q = a_2 - a_1
-m1​p−m2​q=a2​−a1​
-如果 a2−a1∣gcd(m1,m2)a_2 - a_1 | gcd(m_1,m_2)a2​−a1​∣gcd(m1​,m2​) ，则可通过扩展欧几里得，得到一组可行解(p,q)(p,q)(p,q)
-则两原方程的组成的新方程组解为 x=m1p(modlcm(m1,m2))x = m_1p \pmod {lcm(m_1,m_2)}x=m1​p(modlcm(m1​,m2​))
-否则由裴蜀定理得知等式无解
-long long crt(long long n) {
-    long long M = b[1], ans = a[1], x, y;
-    for (int i = 2; i &amp;lt;= n; i++) {
-        long long z = (a[i] - ans%b[i]+b[i])%b[i];
-        long long k = exgcd(M, b[i], x, y);
-        if (z % k)
-            return -1;
-        long long c = b[i] / k;   
-        x = mul(x,z/k,c);
-        ans += x * M;  
-        M = M * c;
-        ans = (ans%M+M)%M;
-    }
-    return (ans % M + M) % M;
-}
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CRT-note">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/codeforces">
-                        Network Contest
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-23</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/431564154048_.pic_hd.jpg"  div align=center width = 100% height = 35% />
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/codeforces">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/2019-multi-university-training-contest">
-                        2019 Multi-University Training Contest
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-22</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/451564154055_.pic_hd.jpg"  div align=center width = 100% height = 35% />
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/2019-multi-university-training-contest">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/Training-Contest">
-                        Training Contest
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-03</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/441564154051_.pic_hd.jpg"  div align=center width = 100% height = 35% />
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/Training-Contest">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/HDU6604">
-                        「HDU 6604」Blow up the city 
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-03</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="post-tag i-tag
-                            i-tag-other_4">
-            #支配树
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/HDU6604">「HDU 6604」Blow up the city </a>
+    </h2>
+    <p class="article-meta">
+      2019-08-03
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge success">
+          支配树
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>Country A and B are at war. Country A needs to organize transport teams to deliver supplies toward some command center cities.</p>
+      
+    </p>
+    <p class="text-lead">
+      <p>Country A and B are at war. Country A needs to organize transport teams to deliver supplies toward some command center cities.</p>
 <p>In order to ensure the delivery works efficiently, all the roads in country A work only one direction. Therefore, map of country A can be regarded as DAG( Directed Acyclic Graph ). Command center cities only received supplies and not send out supplies.</p>
 <p>Intelligence agency of country B is credibly informed that there will be two cities carrying out a critical transporting task in country A.</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/HDU6604">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/P3168">
-                        「CQOI 2015」 任务查询系统
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-02</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="post-tag i-tag
-                            i-tag-other_1">
-            #主席树
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>最近实验室正在为其管理的超级计算机编制一套任务管理系统，而你被安排完成其中的查询部分。超级计算机中的任务用三元组(Si,Ei,Pi)描述，(Si,Ei,Pi)表示任务从第Si秒开始，在第Ei秒后结束（第Si秒和Ei秒任务也在运行），其优先级为Pi。同一时间可能有多个任务同时执行，它们的优先级可能相同，也可能不同。调度系统会经常向查询系统询问，第Xi秒正在运行的任务中，优先级最小的Ki个任务（即将任务按照优先级从小到大排序后取前Ki个）的优先级之和是多少。特别的，如果Ki大于第Xi秒正在运行的任务总数，则直接回答第Xi秒正在运行的任务优先级之和。上述所有参数均为整数，时间的范围在1到n之间（包含1和n）。</p>
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/HDU6604" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P3168">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/P2597">
-                        「ZJOI 2012」 灾难
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-02</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="post-tag i-tag
-                            i-tag-info">
-            #TopSort
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P3168">「CQOI 2015」 任务查询系统</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-02
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+          主席树
         </a>
-                        
-                        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="post-tag i-tag
-                            i-tag-other_1">
-            #LCA
+      
+    </p>
+    <p class="text-lead">
+      <p>最近实验室正在为其管理的超级计算机编制一套任务管理系统，而你被安排完成其中的查询部分。超级计算机中的任务用三元组(Si,Ei,Pi)描述，(Si,Ei,Pi)表示任务从第Si秒开始，在第Ei秒后结束（第Si秒和Ei秒任务也在运行），其优先级为Pi。同一时间可能有多个任务同时执行，它们的优先级可能相同，也可能不同。调度系统会经常向查询系统询问，第Xi秒正在运行的任务中，优先级最小的Ki个任务（即将任务按照优先级从小到大排序后取前Ki个）的优先级之和是多少。特别的，如果Ki大于第Xi秒正在运行的任务总数，则直接回答第Xi秒正在运行的任务优先级之和。上述所有参数均为整数，时间的范围在1到n之间（包含1和n）。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P3168" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P2597">「ZJOI 2012」 灾难</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-02
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge secondary">
+          TopSort
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>阿米巴是小强的好朋友。</p>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
+          LCA
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>阿米巴是小强的好朋友。</p>
 <p>阿米巴和小强在草原上捉蚂蚱。小强突然想，如果蚂蚱被他们捉灭绝了，那么吃蚂蚱的小鸟就会饿死，而捕食小鸟的猛禽也会跟着灭绝，从而引发一系列的生态灾难。</p>
 <p>学过生物的阿米巴告诉小强，草原是一个极其稳定的生态系统。如果蚂蚱灭绝了，小鸟照样可以吃别的虫子，所以一个物种的灭绝并不一定会引发重大的灾难。</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P2597">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dinnerhunt.cn/post/HDU6621">
-                        「HDU 6621」 K-th Closest Distance
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-02</time>
-                    
-                        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="post-tag i-tag
-                            i-tag-other_3">
-            #主席树
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P2597" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/HDU6621">「HDU 6621」 K-th Closest Distance</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-02
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge success">
+          主席树
         </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>You have an array: a1, a2, ......, an and you must answer for some queries.<br>
+      
+    </p>
+    <p class="text-lead">
+      <p>You have an array: a1, a2, ......, an and you must answer for some queries.<br>
 For each query, you are given an interval [L, R] and two numbers p and K. Your goal is to find the Kth closest distance between p and aL, aL+1, ..., aR.<br>
 The distance between p and ai is equal to |p - ai|.<br>
 For example:</p>
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/HDU6621">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-                <!-- 翻页 -->
-                
-    <div class="pagination-container">
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/HDU6621" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
+        </div>
         
-                
-                    <a href="https://dinnerhunt.cn/page/2/" class="page-btn btn">下一页</a>
-                    
-    </div>
-    
-                </div>
-                <!--  -->
-                <div class="main-container-middle"></div>
-                <!--  -->
-                <div id="sidebar" class="main-container-right">
-
-                    <!-- 个人信息 -->
-                    
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1569737123948)">
-        </div>
-        <h1 class="id_card-title">
-            dinnerhunt
-        </h1>
-        <h2 class="id_card-description">
-            add one&#39;s
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                    <!-- twitter -->
-                    
-                            <!-- weibo -->
-                            
-                                    <!-- facebook -->
-                                    
-
-        </div>
-    </div>
-    
-
-                        <!-- 公告栏 -->
-                        
-
-                </div>
-            </div>
-
-
-
-            <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
-  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+        <div class="row flex-edges">
+  
+  
+    <a href="https://dinnerhunt.cn/page/2/" class="paper-btn">
+      下一页
+    </a>
+  
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
+      </div>
+      
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1569738683195" class="no-responsive avatar">
+    <div class="text-muted">"Ctrl" + "-"  twice</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1007B">「CodeForces 1007B」Pave the Parallelepiped </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">2019 ICPC&amp;CCPC Round Online</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CRT-note">「学习笔记」CRT &amp; EXCRT</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/codeforces">Network Contest</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2019-multi-university-training-contest">2019 Multi-University Training Contest</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/Training-Contest">Training Contest</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU6604">「HDU 6604」Blow up the city </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3168">「CQOI 2015」 任务查询系统</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2597">「ZJOI 2012」 灾难</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU6621">「HDU 6621」 K-th Closest Distance</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge secondary">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge success">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge ">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge success">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge warning">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge ">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge success">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge ">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
 
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-</body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
 </html>
