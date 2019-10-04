@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>「AHOI2009」 中国象棋 | dinnerhunt</title>
+<title>「模版」线性基 | dinnerhunt</title>
 <meta name="description" content="So Nice Chicken">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,61 +88,77 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>「AHOI2009」 中国象棋</h1>
+            <h1>「模版」线性基</h1>
             <p class="article-meta">
-              2019-05-04
+              2019-10-04
               
-                <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
-                  状压DP
+                <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
+                  线性基
                 </a>
               
             </p>
             
             <div class="post-content">
-              <p>这次小可可想解决的难题和中国象棋有关，在一个N行M列的棋盘上，让你放若干个炮（可以是0个），使得没有一个炮可以攻击到另一个炮，请问有多少种放置方法。大家肯定很清楚，在中国象棋中炮的行走方式是：一个炮攻击到另一个炮，当且仅当它们在同一行或同一列中，且它们之间恰好 有一个棋子。你也来和小可可一起锻炼一下思维吧！</p>
-<!-- more -->
-<h4 id="题目链接">题目链接🔗</h4>
-<p><a href="https://www.luogu.org/problemnew/show/P2051">[AHOI2009]中国象棋</a></p>
-<h4 id="题解">题解</h4>
-<p>不像状压DP的多维DP<br>
-因为每行每列都最多只能摆两个炮<br>
-<strong>DP[i][j][k]</strong> 表示前i行,其中j列有1个炮，k列有两个炮的摆法方案数<br>
-然后一列列往下，每次位置加1或者2个炮，由当前位置推后面位置炮的个数</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
+              <pre><code class="language-cpp">#include &lt;cstdio&gt;
 using namespace std;
-const int mod = 9999973;
-const int maxd = 105;
-int n,m;
-long long dp[maxd][maxd][maxd],ans;
-int C(int n)
+typedef long long ll; 
+struct Line_base 
 {
-    return n*(n-1)/2;
-}
-int main()
-{	
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    dp[0][0][0] = 1;
-    for(int i=0;i&lt;n;i++)
-        for(int j=0;j&lt;=m;j++)
-            for(int k=0;k+j&lt;=m;k++)
-                if(dp[i][j][k])
-                {
-                    (dp[i+1][j][k] += dp[i][j][k])%=mod;//不放
-                    if(m-j-k)(dp[i+1][j+1][k] += dp[i][j][k]*(m-j-k))%=mod;
-                    if(j)(dp[i+1][j-1][k+1] += dp[i][j][k]*j) %=mod;
-                    if(m-j-k&gt;=2)(dp[i+1][j+2][k] += dp[i][j][k]*C(m-j-k))%=mod;
-                    if(j&amp;&amp;(m-j-k))(dp[i+1][j][k+1] += dp[i][j][k] * j *(m-j-k))%=mod;
-                    if(j&gt;=2)(dp[i+1][j-2][k+2] += dp[i][j][k] *C(j)) %=mod;
-                }
-    for( int i = 0; i &lt;= m; ++i ) // 有1个棋子的列
-    for( int j = 0; i+j &lt;= m; ++j ) { // 2个棋子的列
-        ans = ( ans + dp[n][i][j] ) % mod;
+    ll b[64],cnt;
+    Line_base() 
+    {
+        memset(b, 0, sizeof(b));
+        cnt = 0;
     }
-    printf(&quot;%lld&quot;,ans);
+    void Insert(ll x) 
+    {
+        for (int i = 62; i &gt;= 0; i--) 
+        {
+            if (x&amp;(1LL &lt;&lt; i)) 
+            {
+                if (b[i])x ^= b[i];
+                else 
+                {
+                    b[i] = x; cnt++;
+                    break;
+                }
+            }
+        }
+    }
+    bool check(ll x) 
+    {
+        for (int i = 62; i &gt;= 0; i--) 
+        {
+            if (x&amp;(1LL &lt;&lt; i)) 
+            {
+                if (!b[i])return false;
+                else x ^= b[i];
+            }
+        }
+        return true;
+    }
+    //交集
+    friend Line_base operator &amp; (const Line_base &amp;a, const Line_base &amp;b) 
+    {
+        Line_base ans, c = b, d = b;
+        for (int i = 0; i &lt; 62; i++)
+        {
+            ll x = a.b[i];
+            if (!x)continue;
+            int j = i; ll T = 0;
+            for (; j &gt;= 0; --j)
+                if ((x &gt;&gt; j) &amp; 1)
+                    if (c.b[j]) { x ^= c.b[j]; T ^= d.b[j]; }
+                    else break;
+            if (!x)ans.b[i] = T,ans.cnt++;
+            else  c.b[j] = x,d.b[j] = T; 
+        }
+        return ans;
+    }
+};
+int main() 
+{
+ 
     return 0;
 }
 </code></pre>
@@ -151,17 +167,6 @@ int main()
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://dinnerhunt.cn/post/P2704">
-                <h3 class="post-title">
-                  「NOI2001」 炮兵阵地
-                </h3>
-              </a>
-            </div>
           
         </div>
         
@@ -381,7 +386,7 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
           普通DP
         </a>
       
@@ -389,15 +394,15 @@ int main()
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge ">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge ">
           DFS
         </a>
       
@@ -405,15 +410,15 @@ int main()
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge secondary">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge warning">
           TopSort
         </a>
       
@@ -421,7 +426,7 @@ int main()
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
           欧拉定理
         </a>
       
@@ -433,7 +438,7 @@ int main()
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
           状压DP
         </a>
       
@@ -441,15 +446,15 @@ int main()
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge ">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge warning">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
           KMP
         </a>
       
@@ -457,27 +462,27 @@ int main()
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
           线段树
         </a>
       
@@ -489,19 +494,19 @@ int main()
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
           中国剩余定理
         </a>
       
@@ -509,7 +514,7 @@ int main()
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
           计算几何
         </a>
       
@@ -517,7 +522,7 @@ int main()
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
           数位DP
         </a>
       
