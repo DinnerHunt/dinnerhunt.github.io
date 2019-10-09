@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-10-07T03:14:33.920Z</updated>
+    <updated>2019-10-09T16:08:59.338Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,248 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「AtCoder 138F」Coincidence]]></title>
+        <id>https://dinnerhunt.cn/post/atcoder138f</id>
+        <link href="https://dinnerhunt.cn/post/atcoder138f">
+        </link>
+        <updated>2019-10-09T16:03:42.000Z</updated>
+        <summary type="html"><![CDATA[<p>Given are integers L and R. Find the number, modulo <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>, of pairs of integers <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>(</mo><mi>L</mi><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>R</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,y) (L≤x≤y≤R)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8304100000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">)</span></span></span></span> such that the remainder when y is divided by x is equal to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>[</mo><mi>m</mi><mi>b</mi><mi>o</mi><mi>x</mi><mo>]</mo><mi>X</mi><mi>O</mi><mi>R</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y[mbox]XORx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">[</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">x</span></span></span></span>.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Given are integers L and R. Find the number, modulo <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>, of pairs of integers <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>(</mo><mi>L</mi><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>R</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,y) (L≤x≤y≤R)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8304100000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">)</span></span></span></span> such that the remainder when y is divided by x is equal to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>[</mo><mi>m</mi><mi>b</mi><mi>o</mi><mi>x</mi><mo>]</mo><mi>X</mi><mi>O</mi><mi>R</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y[mbox]XORx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">[</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">x</span></span></span></span>.</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://abc138.contest.atcoder.jp/tasks/abc138_f?lang=en#">「AtCoder 138F」Coincidence</a></p>
+<h4 id="题解">题解</h4>
+<p><a href="https://blog.csdn.net/nflsjxc/article/details/99738023">题解源于</a><br>
+直接看原文题解好了，讲的特别清楚<br>
+我这里对于原博主的代码进行了一些优化，因为 x&amp;y = x的缘故，所以 x 每一位都会小于等于 y,所以原文中的s是没有必要的</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 64;
+const int mod = 1e9+7;
+int a[maxd],b[maxd];
+long long dp[maxd][2][2][2],n,m;
+long long dfs(int p,int l,int r,int f)
+{
+	//位数，是否填过小于m的值,是否填过大于n的值 ,最高位是否都为1(当前位是否为首位)
+	if(p &lt; 0) return 1;
+	long long &amp;ans = dp[p][l][r][f];
+	// 记忆化搜索
+	if(ans) return ans;
+	for(int i=0;i&lt;2;i++)  // y
+		for(int j=0;j&lt;2;j++) // x
+		{
+			int nl = l,nr = r,nf = f;
+			if(!nf &amp;&amp; i &amp;&amp; i!=j) continue;
+			if((j&amp;i)!=j) continue;		// x&amp;y = 
+			if(!nl &amp;&amp; j &lt; a[p]) continue; // 如果值小于n了
+			if(!nr &amp;&amp; i &gt; b[p]) continue; // 如果值大于m了
+			if(j &gt; a[p]) nl = 1;
+			if(i &lt; b[p]) nr = 1;
+			if(j) nf = 1;	
+
+			ans += dfs(p-1,nl,nr,nf);
+			ans %= mod;
+		}
+	return ans;
+}
+int main()
+{
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	scanf(&quot;%lld %lld&quot;,&amp;n,&amp;m);
+	for(int i=0;i&lt;=63;i++) a[i] = (n&gt;&gt;i)&amp;1 , b[i] = (m&gt;&gt;i)&amp;1;
+	long long ans = dfs(63,0,0,0);
+	printf(&quot;%lld&quot;,ans);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1238E」Keyboard Purchase]]></title>
+        <id>https://dinnerhunt.cn/post/cf1238e</id>
+        <link href="https://dinnerhunt.cn/post/cf1238e">
+        </link>
+        <updated>2019-10-09T12:09:14.000Z</updated>
+        <summary type="html"><![CDATA[<p>You have a password which you often type — a string 𝑠 of length 𝑛. Every character of this string is one of the first 𝑚 lowercase Latin letters.</p>
+<p>Since you spend a lot of time typing it, you want to buy a new keyboard.</p>
+<p>A keyboard is a permutation of the first 𝑚 Latin letters. For example, if 𝑚=3, then there are six possible keyboards: abc, acb, bac, bca, cab and cba.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You have a password which you often type — a string 𝑠 of length 𝑛. Every character of this string is one of the first 𝑚 lowercase Latin letters.</p>
+<p>Since you spend a lot of time typing it, you want to buy a new keyboard.</p>
+<p>A keyboard is a permutation of the first 𝑚 Latin letters. For example, if 𝑚=3, then there are six possible keyboards: abc, acb, bac, bca, cab and cba.</p>
+<!--more-->
+<p>Since you type your password with one finger, you need to spend time moving your finger from one password character to the next. The time to move from character 𝑠𝑖 to character 𝑠𝑖+1 is equal to the distance between these characters on keyboard. The total time you have to spend typing the password with a keyboard is called the slowness of this keyboard.</p>
+<p>More formaly, the slowness of keyboard is equal to ∑𝑖=2𝑛|𝑝𝑜𝑠𝑠𝑖−1−𝑝𝑜𝑠𝑠𝑖|, where 𝑝𝑜𝑠𝑥 is position of letter 𝑥 in keyboard.</p>
+<p>For example, if 𝑠 is aacabc and the keyboard is bac, then the total time of typing this password is |𝑝𝑜𝑠𝑎−𝑝𝑜𝑠𝑎|+|𝑝𝑜𝑠𝑎−𝑝𝑜𝑠𝑐|+|𝑝𝑜𝑠𝑐−𝑝𝑜𝑠𝑎|+|𝑝𝑜𝑠𝑎−𝑝𝑜𝑠𝑏|+|𝑝𝑜𝑠𝑏−𝑝𝑜𝑠𝑐| = |2−2|+|2−3|+|3−2|+|2−1|+|1−3| = 0+1+1+1+2=5.</p>
+<p>Before buying a new keyboard you want to know the minimum possible slowness that the keyboard can have.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1238/E">「CodeForces 1238E」Keyboard Purchase</a></p>
+<h4 id="题解">题解</h4>
+<p>因为 m 很小，所以我们可以考虑状压DP<br>
+我们用1表示选，0表示不选，进行位压缩,bit()表示选取的状态<br>
+DP[i] 表示选取 bit(i) 需要的最少花费</p>
+<p>转移有点难想，需要提前处理出相邻字符的数量 ch[i][j]<br>
+每次转移时取上一次状态花费最小的，然后这次的花费为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><msub><mi>m</mi><mrow><mi>i</mi><mo>∈</mo><mi>b</mi><mi>i</mi><mi>t</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>=</mo><mn>1</mn></mrow></msub><msub><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><mi>b</mi><mi>i</mi><mi>t</mi><mo>(</mo><mi>j</mi><mo>)</mo><mo>=</mo><mn>0</mn></mrow></msub><mi>c</mi><mi>h</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">sum_{i \in bit(i)=1} \sum_{j \in bit(j) = 0}  ch[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.22471em;vertical-align:-0.47471em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight">b</span><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">t</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.22528999999999993em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight">b</span><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">t</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mclose mtight">)</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.47471em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+char s[maxd];
+int a[maxd],cnt[25][25],dp[1&lt;&lt;20];
+int n,m;
+int main()
+{
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	scanf(&quot;%d %d %s&quot;,&amp;n,&amp;m,s+1); 
+	int k = m;m=1&lt;&lt;m;
+	for(int i=2;i&lt;=n;i++)
+	{
+		int a = s[i-1] - 'a';
+		int b = s[i] - 'a';
+		if(a!=b)
+		{
+			cnt[a][b]++;
+			cnt[b][a]++;
+		}
+	}
+	dp[0]=0;
+	for(int i=1;i&lt;m;i++)
+	{
+		dp[i] = 1e9;
+		for(int j=0;j&lt;k;j++)
+			if(((i&gt;&gt;j)&amp;1))  dp[i] = min(dp[i^(1&lt;&lt;j)],dp[i]);	
+		for(int j=0;j&lt;k;j++)
+			if((i&gt;&gt;j)&amp;1)
+				for(int l=0;l&lt;k;l++)
+					if(!((i&gt;&gt;l)&amp;1)) dp[i] += cnt[j][l];
+	}
+	printf(&quot;%d&quot;,dp[m-1]);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「P2664」 树上游戏]]></title>
+        <id>https://dinnerhunt.cn/post/p2664</id>
+        <link href="https://dinnerhunt.cn/post/p2664">
+        </link>
+        <updated>2019-10-08T03:46:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>lrb有一棵树，树的每个节点有个颜色。给一个长度为n的颜色序列，定义<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的颜色数量。以及</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i) = \sum_{i=1}^n s(i,j)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span></p>
+<p>求出所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>lrb有一棵树，树的每个节点有个颜色。给一个长度为n的颜色序列，定义<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的颜色数量。以及</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i) = \sum_{i=1}^n s(i,j)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span></p>
+<p>求出所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P2664">「P2664」 树上游戏</a></p>
+<h4 id="题解">题解</h4>
+<p>我们可以用某种颜色的点将树切割成块，块内任意两点不会有该颜色的贡献<br>
+所以我们可以得到以下结论<br>
+1. 某个颜色对于一个点的贡献值为 n - size<br>
+2. 某一个点，所有颜色对其的贡献为，n * 颜色数 - 每种颜色节点时所在块的节点数<br>
+因为每个点的颜色，对于每个块，我们可以通过差分的思想，得到块的大小 (dfs) 函数</p>
+<p>val 表示以该节点父亲为切割点时，该节点的块的大小<br>
+root 表示当前所在节点，所有包含次节点的颜色块大小<br>
+num 表示第i个颜色块，当前点的贡献</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+struct node
+{
+	int v,net;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void insert(int x,int y)
+{
+	e[eid].net = f[x];
+	e[eid].v = y;
+	f[x] = eid++; 
+}
+void init()
+{
+	memset(f,-1,sizeof(f));
+	eid = 0;
+}
+int n,sum; //总颜色数，根结点被所有颜色块包含块的总大小
+int sz[maxd],vis[maxd],col[maxd],del[maxd],val[maxd],num[maxd];
+// 子树大小，该颜色是否出现过，颜色,该点颜色删除点数,所在点被父亲颜色切割的块的大小,根所在块被分割的大小
+long long ans[maxd],root;
+void get_ans(int x,int fa=0)
+{
+	long long tmp = num[col[fa]];
+	root += 1ll * val[x] - num[col[fa]];
+	num[col[fa]] = val[x];
+	ans[x] = 1ll * n * sum - root + num[col[x]]; // 因为当前点一定会被包含，所以要加上当前颜色
+	for(int i = f[x];i+1;i = e[i].net)
+	{
+		int v = e[i].v;
+		if(v == fa) continue;
+		get_ans(v,x);
+	}
+	num[col[fa]] = tmp;
+	root -= val[x] - num[col[fa]];
+}
+void dfs(int x,int fa = 0)
+{
+	sz[x] = 1;
+	int tmp = del[col[fa]]; // 在这之前就已经删除的 父亲颜色
+	for(int i=f[x];i+1;i=e[i].net)
+	{
+		int v = e[i].v;
+		if(v == fa) continue;
+		dfs(v,x);
+		sz[x] += sz[v];
+	}
+	del[col[x]]++; // 该点颜色删除了
+	if(fa)
+	{
+		val[x] = sz[x] - del[col[fa]] + tmp; // 减去所以删除的点 + 之前删除的点，就是该子树下删除的点
+		del[col[fa]] += val[x]; // 将该区块的点加入删除的点
+	}
+}
+int main()
+{
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	init();
+	scanf(&quot;%d&quot;,&amp;n);
+	for(int i=1;i&lt;=n;i++) 
+	{
+		scanf(&quot;%d&quot;,&amp;col[i]);
+		if(!vis[col[i]]) vis[col[i]]=1,sum++;
+	}
+	for(int i=1;i&lt;n;i++)
+	{	
+		int x,y; scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+		insert(x,y); insert(y,x);
+	}
+	dfs(1);
+	for(int i=1;i&lt;maxd;i++) 
+		if(vis[i])  root += 1ll * n - del[i],num[i] = n-del[i]; // 
+	get_ans(1);
+	for(int i=1;i&lt;=n;i++) printf(&quot;%lld\n&quot;,ans[i]);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「AHOI2008」矩形藏宝地]]></title>
         <id>https://dinnerhunt.cn/post/P4793</id>
@@ -710,209 +952,6 @@ int main()
     return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「AtCoder 133E」 Virus Tree 2]]></title>
-        <id>https://dinnerhunt.cn/post/atcoder133e</id>
-        <link href="https://dinnerhunt.cn/post/atcoder133e">
-        </link>
-        <updated>2019-09-29T06:38:09.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are given a tree with N vertices and N−1 edges. The vertices are numbered 1 to N, and the i-th edge connects Vertex ai and bi.</p>
-<p>You have coloring materials of K colors. For each vertex in the tree, you will choose one of the K colors to paint it, so that the following condition is satisfied:</p>
-<p>If the distance between two different vertices x and y is less than or equal to two, x and y have different colors.<br>
-How many ways are there to paint the tree? Find the count modulo 1 000 000 007.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are given a tree with N vertices and N−1 edges. The vertices are numbered 1 to N, and the i-th edge connects Vertex ai and bi.</p>
-<p>You have coloring materials of K colors. For each vertex in the tree, you will choose one of the K colors to paint it, so that the following condition is satisfied:</p>
-<p>If the distance between two different vertices x and y is less than or equal to two, x and y have different colors.<br>
-How many ways are there to paint the tree? Find the count modulo 1 000 000 007.</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://abc133.contest.atcoder.jp/tasks/abc133_e?lang=en">「AtCoder 133E」 Virus Tree 2</a></p>
-<h4 id="题解">题解</h4>
-<p>在DFS中考虑每个节点的可选择方案数，最后统计即可</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+10;
-int t[maxd],flag,v[maxd];
-vector&lt;int&gt; g[maxd];
-int n,m;
-const int mod =1e9+7;
-void dfs(int x,int fa = 0,int d = 1)
-{
-    int now = m-1; 
-    if(d &gt; 2) v[x]--;
-    if(v[x]&lt;=0) 
-    {
-        flag=1;
-        return;
-    }
-    //printf(&quot;%d %d\n&quot;,x,v[x]);
-    for(int i=0;i&lt;g[x].size();i++)
-    {
-        int k = g[x][i];
-        if(k==fa) continue;
-        v[k] = now;
-        //printf(&quot;    %d %d\n&quot;,k,v[x]);
-        dfs(k,x,d+1);
-        now--;
-    }
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    for(int i=1;i&lt;n;i++)
-    {
-        int a,b;
-        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
-        g[a].push_back(b);
-        g[b].push_back(a);
-    }
-    v[1] = m;dfs(1);
-    long long ans = 1ll;
-    // for(int i=1;i&lt;=n;i++)
-    // {
-    //     printf(&quot;%d &quot;,v[i]);
-    // }
-    if(flag) printf(&quot;0\n&quot;);
-    else 
-    {
-        for(int i=1;i&lt;=n;i++)
-            ans = 1ll*ans * v[i] %mod;
-        printf(&quot;%lld\n&quot;,ans);
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1007B」Pave the Parallelepiped ]]></title>
-        <id>https://dinnerhunt.cn/post/CF1007B</id>
-        <link href="https://dinnerhunt.cn/post/CF1007B">
-        </link>
-        <updated>2019-09-22T12:13:43.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are given a rectangular parallelepiped with sides of positive integer lengths A, B and C.</p>
-<p>Find the number of different groups of three integers (a, b, c) such that 1≤a≤b≤c and parallelepiped A×B×C can be paved with parallelepipeds a×b×c. Note, that all small parallelepipeds have to be rotated in the same direction.</p>
-<p>For example, parallelepiped 1×5×6 can be divided into parallelepipeds 1×3×5, but can not be divided into parallelepipeds 1×2×3.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are given a rectangular parallelepiped with sides of positive integer lengths A, B and C.</p>
-<p>Find the number of different groups of three integers (a, b, c) such that 1≤a≤b≤c and parallelepiped A×B×C can be paved with parallelepipeds a×b×c. Note, that all small parallelepipeds have to be rotated in the same direction.</p>
-<p>For example, parallelepiped 1×5×6 can be divided into parallelepipeds 1×3×5, but can not be divided into parallelepipeds 1×2×3.</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped<br>
-</a></p>
-<h4 id="题解">题解</h4>
-<p>考虑将每个数的约数分组，然后再通过组合数学求出<br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个数中放回取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>个的不同方案数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C(n,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+10;
-long long C(int n,int m)
-{
-    long long ans = 1ll;
-    for(int i=1;i&lt;=m;i++) ans *= (n-i+1);
-    for(int i=1;i&lt;=m;i++) ans /= i;
-    return ans;
-}
-int gcd(int x,int y)
-{
-    if(!y) return x;
-    return gcd(y,x%y);
-}
-int fac[maxd];
-void init()
-{
-    for(int i=1;i&lt;maxd;i++)
-        for(int j=i;j&lt;maxd;j+=i)
-            fac[j]++;
-}
-bool check(int a,int b,int c)
-{
-    if((a&amp;1)&amp;&amp;(b&amp;2)&amp;&amp;(c&amp;4))
-        return true;
-    if((a&amp;1)&amp;&amp;(c&amp;2)&amp;&amp;(b&amp;4))
-        return true;
-    if((b&amp;1)&amp;&amp;(a&amp;2)&amp;&amp;(c&amp;4))
-        return true;
-    if((b&amp;1)&amp;&amp;(c&amp;2)&amp;&amp;(a&amp;4))
-        return true;
-    if((c&amp;1)&amp;&amp;(a&amp;2)&amp;&amp;(b&amp;4))
-        return true;
-    if((c&amp;1)&amp;&amp;(b&amp;2)&amp;&amp;(a&amp;4))
-        return true;
-    return false;
-}
-int cnt[8],use[8];
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int _;scanf(&quot;%d&quot;,&amp;_);init();
-    while(_--)
-    {
-        int a,b,c;
-        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
-        int ab = gcd(a,b); int bc = gcd(b,c); int ac = gcd(a,c);
-        int abc = gcd(ab,c);
-        cnt[7] = fac[abc]; // abc
-        cnt[6] = fac[ab] - fac[abc]; // ab
-        cnt[5] = fac[ac] - fac[abc];  // ac
-        cnt[4] = fac[a] -cnt[6] - cnt[5] - cnt[7];  // a (a - ab - ac - abc)
-        cnt[3] = fac[bc] - fac[abc]; // bc
-        cnt[2] = fac[b] - cnt[3] - cnt[6] - cnt[7];      // 010 (b - bc - ab - abc)
-        cnt[1] = fac[c] - cnt[5] - cnt[3] - cnt[7];     
-        // for(int i=1;i&lt;=7;i++) printf(&quot;%d &quot;,cnt[i]);
-        // putchar(10);
-        long long ans = 0ll;
-        for(int a=1;a&lt;8;a++)
-            for(int b=a;b&lt;8;b++)
-                for(int c=b;c&lt;8;c++)
-                    if(check(a,b,c))
-                    {
-                        use[a]++,use[b]++,use[c]++;
-
-                        long long now = 1ll;
-                        for(int i=1;i&lt;8;i++)
-                            if(use[i]) now *= C(cnt[i]+use[i]-1,use[i]);
-                        if(now)
-                        //printf(&quot;%d %d %d %lld\n&quot;,a,b,c,now);
-                        ans += now;
-                        use[a]--,use[b]--,use[c]--;
-                    }
-        printf(&quot;%lld\n&quot;,ans);
-    }
-
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2019 ICPC&CCPC Round Online]]></title>
-        <id>https://dinnerhunt.cn/post/2019-icpcandccpc-round-online</id>
-        <link href="https://dinnerhunt.cn/post/2019-icpcandccpc-round-online">
-        </link>
-        <updated>2019-09-02T12:50:24.000Z</updated>
-        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%AF6.jpg"  div align=center width = 100% height = 35% />]]></summary>
-        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/%E8%83%8C%E6%99%AF6.jpg"  div align=center width = 100% height = 35% />
-<!-- more --> 
-<p><a href="https://vjudge.net/contest/321931">2019中国大学生程序设计竞赛（CCPC） - 网络选拔赛</a>[3/10]</p>
-<p><a href="https://www.jisuanke.com/contest/2991?view=challenges">The 2019 Asia Yinchuan First Round Online Programming</a> [0/13]</p>
-<p><a href="https://www.jisuanke.com/contest/3004?view=challenges">The Preliminary Contest for ICPC Asia Nanjing 2019</a> [0/9]</p>
-<p><a href="https://www.jisuanke.com/contest/3005">The Preliminary Contest for ICPC Asia Xuzhou 2019</a> [6/13]</p>
-<p><a href="https://www.jisuanke.com/contest/3870">The 2019 Asia Nanchang First Round Online Programming Contest</a>[2/9]</p>
 ]]></content>
     </entry>
 </feed>
