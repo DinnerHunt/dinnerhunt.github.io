@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-10-25T15:18:29.487Z</updated>
+    <updated>2019-10-25T16:47:27.783Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,89 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CF1239B」 The World Is Just a Programming Task]]></title>
+        <id>https://dinnerhunt.cn/post/CF1239B</id>
+        <link href="https://dinnerhunt.cn/post/CF1239B">
+        </link>
+        <updated>2019-10-25T16:45:28.000Z</updated>
+        <summary type="html"><![CDATA[<p>outputstandard output<br>
+This is a harder version of the problem. In this version, 𝑛≤300000.</p>
+<p>Vasya is an experienced developer of programming competitions' problems. As all great minds at some time, Vasya faced a creative crisis. To improve the situation, Petya gifted him a string consisting of opening and closing brackets only. Petya believes, that the beauty of the bracket string is a number of its cyclical shifts, which form a correct bracket sequence.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>outputstandard output<br>
+This is a harder version of the problem. In this version, 𝑛≤300000.</p>
+<p>Vasya is an experienced developer of programming competitions' problems. As all great minds at some time, Vasya faced a creative crisis. To improve the situation, Petya gifted him a string consisting of opening and closing brackets only. Petya believes, that the beauty of the bracket string is a number of its cyclical shifts, which form a correct bracket sequence.</p>
+<!--more-->
+<p>To digress from his problems, Vasya decided to select two positions of the string (not necessarily distinct) and swap characters located at this positions with each other. Vasya will apply this operation exactly once. He is curious what is the maximum possible beauty he can achieve this way. Please help him.</p>
+<p>We remind that bracket sequence 𝑠 is called correct if:</p>
+<p>𝑠 is empty;<br>
+𝑠 is equal to &quot;(𝑡)&quot;, where 𝑡 is correct bracket sequence;<br>
+𝑠 is equal to 𝑡1𝑡2, i.e. concatenation of 𝑡1 and 𝑡2, where 𝑡1 and 𝑡2 are correct bracket sequences.<br>
+For example, &quot;(()())&quot;, &quot;()&quot; are correct, while &quot;)(&quot; and &quot;())&quot; are not.</p>
+<p>The cyclical shift of the string 𝑠 of length 𝑛 by 𝑘 (0≤𝑘&lt;𝑛) is a string formed by a concatenation of the last 𝑘 symbols of the string 𝑠 with the first 𝑛−𝑘 symbols of string 𝑠. For example, the cyclical shift of string &quot;(())()&quot; by 2 equals &quot;()(())&quot;.</p>
+<p>Cyclical shifts 𝑖 and 𝑗 are considered different, if 𝑖≠𝑗.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1239/problem/B">「CF1239B」 The World Is Just a Programming Task</a></p>
+<h4 id="题解">题解</h4>
+<p><a href="https://www.cnblogs.com/LLTYYC/p/11718968.html">原博客</a></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int maxd = 3e5+10;
+char s[maxd],tmp[maxd];
+int pre[maxd];
+int cnt;
+vector&lt;int&gt; a;
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n; scanf(&quot;%d %s&quot;,&amp;n,s+1);
+    int now = 0,pos = 0,mi = 0;
+    for(int i=1;s[i];i++)
+    {
+        now += ((s[i] == '(') ? 1 : -1 );
+        if(now &lt; mi) mi = now ,pos = i;
+    }
+    if(now)
+    {
+        printf(&quot;0\n1 1&quot;);
+        return 0;
+    }
+    for(int i=1;i&lt;=n;i++) tmp[i] = s[(pos+i-1)%n+1];
+    a.push_back(0);
+    for(int i=1;i&lt;=n;i++)
+    {
+        s[i] = tmp[i]; pre[i] = pre[i-1] + ((s[i] == '(') ? 1 : -1 );
+        if(!pre[i]) cnt++,a.push_back(i);
+    }
+    int ans = cnt,ls=1,rs=1,len = a.size();
+    for(int i=1;i&lt;len;i++)
+    {
+        int l = a[i-1]+1, r = a[i],t=0;
+        for(int j=l;j&lt;=r;j++) t+= (pre[j] == 1);
+        if(t&gt;ans) ans = t,ls = l,rs = r; 
+    }
+    a.clear();
+    for(int i=1;i&lt;=n;i++)
+        if(pre[i]==1) a.push_back(i);
+    len = a.size();
+    for(int i=1;i&lt;len;i++)
+    {
+        int l = a[i-1]+1,r = a[i],t = cnt;
+        if(pre[l] == 0) continue;
+        for(int j =l;j&lt;=r;j++) t+= (pre[j] == 2);
+        if(t &gt; ans) ans = t,ls = l ,rs = r;
+    }
+    printf(&quot;%d\n%d %d&quot;,ans,(ls+pos-1)%n+1,(rs+pos-1)%n+1);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1251E2」Voting]]></title>
         <id>https://dinnerhunt.cn/post/CF1251E2</id>
@@ -697,66 +780,6 @@ int main()
     for(int i=1;i&lt;2*maxd;i++) t[i] = 1e9; // 初始化
     cdq(1,n);
     printf(&quot;%d&quot;,ans);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「2017 四川省赛」2017 Revenge]]></title>
-        <id>https://dinnerhunt.cn/post/2017SC-2017revenge</id>
-        <link href="https://dinnerhunt.cn/post/2017SC-2017revenge">
-        </link>
-        <updated>2019-10-05T11:42:44.000Z</updated>
-        <summary type="html"><![CDATA[<p>Bobo has n integers <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_1, a_2, \dots, a_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
-He would like to choose some of the integers and calculate their product (the product of the empty set is defined as 1).</p>
-<p>Bobo would like to know the number of products whose remainder divided by 2017 is r. As the exact number is too large, he only asks for the number modulo 2.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Bobo has n integers <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_1, a_2, \dots, a_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
-He would like to choose some of the integers and calculate their product (the product of the empty set is defined as 1).</p>
-<p>Bobo would like to know the number of products whose remainder divided by 2017 is r. As the exact number is too large, he only asks for the number modulo 2.</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://ac.nowcoder.com/acm/contest/1110/K">「2017 四川省赛」2017 Revenge</a></p>
-<h4 id="题解">题解</h4>
-<p>首先能想到一个2017 * 1e6 的DP<br>
-因为答案%2的原因，我们考虑用bitset进行状压优化<br>
-但是乘法不方便进行状态方程的转移<br>
-我们发现模数2017是存在原根<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>的<br>
-因此我们可以将每个数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>映射到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>,表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><msup><mn>5</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">a_i = 5^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span><br>
-然后转移的时候，就可以将乘法转化为加法操作</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
-#include &lt;bitset&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 2100;
-int I[maxd],n,m; // I[i]表示i第个数是5的I[i]次方
-void init()
-{
-    int now = 1;
-    for(int i=0;i&lt;2016;i++) I[now] = i,now = 5*now%2017;
-}
-bitset&lt;2016&gt; dp;
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot; ,stdout);
-    init();
-    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
-    {
-        dp.reset();
-        dp.set(0);
-        for(int i=1;i&lt;=n;i++)
-        {
-            int x;scanf(&quot;%d&quot;,&amp;x); x = I[x];
-            //dp[i+1][j] = dp[i][j] + dp[i][(j+x)%2017]
-            dp^=(dp&lt;&lt;x)|(dp &gt;&gt; (2016 - x));
-        }
-        printf(&quot;%d\n&quot;,(int)dp[I[m]]);
-    }
     return 0;
 }
 </code></pre>
