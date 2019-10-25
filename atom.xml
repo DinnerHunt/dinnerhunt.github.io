@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-10-23T12:23:58.468Z</updated>
+    <updated>2019-10-25T15:18:29.487Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,78 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1251E2」Voting]]></title>
+        <id>https://dinnerhunt.cn/post/CF1251E2</id>
+        <link href="https://dinnerhunt.cn/post/CF1251E2">
+        </link>
+        <updated>2019-10-25T15:04:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>The only difference between easy and hard versions is constraints.</p>
+<p>Now elections are held in Berland and you want to win them. More precisely, you want everyone to vote for you.</p>
+<p>There are 𝑛 voters, and two ways to convince each of them to vote for you. The first way to convince the 𝑖-th voter is to pay him 𝑝𝑖 coins. The second way is to make 𝑚𝑖 other voters vote for you, and the 𝑖-th voter will vote for free.</p>
+<p>Moreover, the process of such voting takes place in several steps. For example, if there are five voters with 𝑚1=1, 𝑚2=2, 𝑚3=2, 𝑚4=4, 𝑚5=5, then you can buy the vote of the fifth voter, and eventually everyone will vote for you. Set of people voting for you will change as follows: 5→1,5→1,2,3,5→1,2,3,4,5.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>The only difference between easy and hard versions is constraints.</p>
+<p>Now elections are held in Berland and you want to win them. More precisely, you want everyone to vote for you.</p>
+<p>There are 𝑛 voters, and two ways to convince each of them to vote for you. The first way to convince the 𝑖-th voter is to pay him 𝑝𝑖 coins. The second way is to make 𝑚𝑖 other voters vote for you, and the 𝑖-th voter will vote for free.</p>
+<p>Moreover, the process of such voting takes place in several steps. For example, if there are five voters with 𝑚1=1, 𝑚2=2, 𝑚3=2, 𝑚4=4, 𝑚5=5, then you can buy the vote of the fifth voter, and eventually everyone will vote for you. Set of people voting for you will change as follows: 5→1,5→1,2,3,5→1,2,3,4,5.</p>
+<!-- more -->
+<p>Calculate the minimum number of coins you have to spend so that everyone votes for you.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1251/problem/E2">「CodeForces 1251E2」Voting</a></p>
+<h4 id="题解">题解</h4>
+<p>代码很好理解～</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int maxd = 2e5+10;
+vector&lt;int&gt; a[maxd];
+priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; que;
+int b[maxd];
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        int n;scanf(&quot;%d&quot;,&amp;n);
+        for(int i=0;i&lt;n;i++) a[i].clear();
+        for(int i=1;i&lt;=n;i++)
+        {
+            int x,y;
+            scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+            a[x].push_back(y);
+        }
+        int now = 0;
+        for(int i=0;i&lt;n;i++)
+        {
+            b[i] = max(0,i-now);
+            now += a[i].size();
+            //printf(&quot;%d %d\n&quot;,i,b[i]);
+        }
+
+        now = 0;
+        long long ans = 0ll;
+        for(int i=n-1;i&gt;=0;i--)
+        {
+            for(int x:a[i]) que.push(x);
+            while(now &lt; b[i])
+            {
+                ans += que.top(); que.pop();
+                now++;
+            }
+        }
+        while(!que.empty()) que.pop();
+        printf(&quot;%lld\n&quot;,ans);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 407C」 Curious Array]]></title>
         <id>https://dinnerhunt.cn/post/CF407c</id>
@@ -685,68 +757,6 @@ int main()
         }
         printf(&quot;%d\n&quot;,(int)dp[I[m]]);
     }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「AtCoder 141F」Xor Sum 3]]></title>
-        <id>https://dinnerhunt.cn/post/atcoder141f</id>
-        <link href="https://dinnerhunt.cn/post/atcoder141f">
-        </link>
-        <updated>2019-10-05T10:51:08.000Z</updated>
-        <summary type="html"><![CDATA[<p>We have N non-negative integers: A1,A2,…,AN.</p>
-<p>Consider painting at least one and at most N−1 integers among them in red, and painting the rest in blue.</p>
-<p>Let the beauty of the painting be the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>m</mi><mi>b</mi><mi>o</mi><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[mbox]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>XOR of the integers painted in red, plus the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>m</mi><mi>b</mi><mi>o</mi><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[mbox]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>XOR of the integers painted in blue.</p>
-<p>Find the maximum possible beauty of the painting.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>We have N non-negative integers: A1,A2,…,AN.</p>
-<p>Consider painting at least one and at most N−1 integers among them in red, and painting the rest in blue.</p>
-<p>Let the beauty of the painting be the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>m</mi><mi>b</mi><mi>o</mi><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[mbox]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>XOR of the integers painted in red, plus the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>m</mi><mi>b</mi><mi>o</mi><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[mbox]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>XOR of the integers painted in blue.</p>
-<p>Find the maximum possible beauty of the painting.</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://abc141.contest.atcoder.jp/tasks/abc141_f?lang=en">「AtCoder 141F」Xor Sum 3</a></p>
-<h4 id="题解">题解</h4>
-<p>线性基<br>
-我们先将1-n所有值的异或和sum求出来<br>
-然后因为要将该堆分为两堆，值位1的位只能分为0和1，但是值位0的位能分为1和1，意味着可以<s>白嫖</s><br>
-所以在线性基中，我们优先考虑从0的位，由高到底开始选</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-typedef long long ll;
-const int maxd = 1e5+10;
-ll p[maxd],a[maxd],sum,ans;
-int t[maxd],tot,n;
-void insert(ll x)
-{
-    for(int i=1;i&lt;=tot;i++)
-        if((x&gt;&gt;t[i])&amp;1)
-        {
-            if(p[i]) x^= p[i];
-            else
-            {
-                p[i]=x;
-                break;
-            }
-        }
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
-    for(int i=1;i&lt;=n;i++) sum ^= a[i];
-    for(int i=60;i&gt;=0;i--) if(( (sum&gt;&gt;i)&amp;1) == 0) t[++tot]=i;
-    for(int i=1;i&lt;=n;i++) insert(a[i]);
-    for(int i=1;i&lt;=tot;i++) 
-        if(((ans &gt;&gt;t[i])&amp;1) == 0) ans ^=p[i];
-    printf(&quot;%lld\n&quot;,ans+(sum^ans));
     return 0;
 }
 </code></pre>
