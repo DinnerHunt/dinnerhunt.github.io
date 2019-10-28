@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「NOI2017」游戏 | dinnerhunt</title>
+<meta name="description" content="So Nice Chicken">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1572243289576">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「NOI2017」游戏</h1>
+            <p class="article-meta">
+              2019-10-28
+              
+                <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge warning">
+                  2-SAT
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>小 L 计划进行nn场游戏，每场游戏使用一张地图，小 L 会选择一辆车在该地图上完成游戏。</p>
+<p>小 L 的赛车有三辆，分别用大写字母A、B、C表示。地图一共有四种，分别用小写字母x、a、b、c表示。其中，赛车A不适合在地图a上使用，赛车B不适合在地图b上使用，赛车C不适合在地图c上使用，而地图x则适合所有赛车参加。适合所有赛车参加的地图并不多见，最多只会有d张。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>场游戏的地图可以用一个小写字母组成的字符串描述。例如：S=xaabxcbc表示小 L 计划进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场游戏，其中第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>场的地图类型是x，适合所有赛车，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>场的地图是a，不适合赛车A，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>场的地图是b，不适合赛车B，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场的地图是c，不适合赛车C。</p>
+<p>小 L 对游戏有一些特殊的要求，这些要求可以用四元组 (i, h_i, j, h_j)来描述，表示若在第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 场使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的车子，则第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>场游戏要使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">h_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><br>
+的车子。</p>
+<p>你能帮小 L 选择每场游戏使用的赛车吗？如果有多种方案，输出任意一种方案。如果无解，输出 “-1’’（不含双引号）。</p>
+<p>输入格式</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P3825">P3825 [NOI2017]游戏</a></p>
+<h4 id="题解">题解</h4>
+<p>因为每个地形只能选2种颜色的车，考虑2-SAT<br>
+因为x可选3种，不好处理，我们考虑枚举x的颜色，因为每次可以选择两种颜色，所以对于每个x，枚举两种不同颜色即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 2e5+10;
+struct node
+{
+    int v,net;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid = 0;
+}
+void insert(int a,int b)
+{
+    //printf(&quot;%d %d\n&quot;,a,b);
+    e[eid].v = b;
+    e[eid].net = f[a];
+    f[a] = eid++;
+}
+int dfn[maxd],low[maxd],idx;
+int belong[maxd],scc;
+int stk[maxd],top;
+bool in_stack[maxd];
+void tarjan(int u)
+{
+    dfn[u] = low[u] = ++idx;
+    stk[top++] = u;
+    in_stack[u] = true;
+    for(int i=f[u];i+1;i=e[i].net)
+    {
+        int v = e[i].v;
+        if(!dfn[v])
+        {
+            tarjan(v);
+            low[u]= min(low[u],low[v]);
+        }
+        else if(in_stack[v]) 
+            low[u] = min(low[u],dfn[v]);
+    }
+    if(dfn[u] == low[u])
+    {
+        ++scc;
+        do
+        {
+            belong[stk[--top]] = scc;
+            in_stack[stk[top]] = false;
+        }while(stk[top] != u);
+    }
+}
+struct
+{
+    int i,j;
+    char hi,hj;
+}a[maxd];
+char s[maxd];
+vector&lt;int&gt; pp;
+int n,d,len;
+char pos[2][maxd];
+int re(int x){
+    if(x &gt; len) return x-len;
+    return x + len;
+}
+void print()
+{
+    for(int i=1;i&lt;=len;i++)
+    {
+        if(belong[i] &lt; belong[re(i)] )
+            printf(&quot;%c&quot;,pos[0][i]);
+        else printf(&quot;%c&quot;,pos[1][i]);
+    }
+}
+bool check()
+{
+    //memset(belong,0,sizeof(belong));
+    memset(dfn,0,sizeof(dfn));
+    memset(low,0,sizeof(low));  
+    memset(belong,0,sizeof(belong));  
+    init();
+    top = scc = idx = 0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(s[a[i].i] == a[i].hi) continue;
+        int tt = (a[i].hi == pos[0][a[i].i]?a[i].i:a[i].i+len);
+        if(s[a[i].j] == a[i].hj) insert(tt,re(tt));
+        else
+        {
+            int ttt = (a[i].hj== pos[0][a[i].j]?a[i].j:a[i].j+len);
+            insert(tt,ttt),insert(re(ttt),re(tt));
+        }
+    }
+    for(int i=1;i&lt;=2*len;i++)
+        if(!dfn[i]) tarjan(i);
+    for(int i=1;i&lt;=len;i++)
+        if(belong[i] == belong[i+len]) return 0;
+    return print(),1;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    
+    scanf(&quot;%d %d %s&quot;,&amp;n,&amp;d,s+1);
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+        scanf(&quot;%d %c %d %c&quot;,&amp;a[i].i,&amp;a[i].hi,&amp;a[i].j,&amp;a[i].hj);
+    for(int i=1;s[i];i++)
+    {
+       if(s[i] == 'x') pp.push_back(i);
+       s[i] = s[i] - ('a' - 'A');
+    }
+    len = strlen(s+1);
+    //printf(&quot;%s\n&quot;,s+1);
+    for(int i=0;i&lt;(1&lt;&lt;d);i++)
+    {
+        for(int j=0;j&lt;d;j++)
+        {
+            if(((i&gt;&gt;j)&amp;1) == 1) s[pp[j]] = 'A';
+            else s[pp[j]] = 'B';
+        }
+        //printf(&quot;\n%s\n&quot;,s+1);
+        for(int j=1;s[j];j++)
+        {
+            if(s[j] == 'A') pos[0][j] = 'B',pos[1][j] = 'C';
+            if(s[j] == 'B') pos[0][j] = 'A',pos[1][j] = 'C';
+            if(s[j] == 'C') pos[0][j] = 'A',pos[1][j] = 'B';
+            //printf(&quot;%c %c\n&quot;,pos[0][j],pos[1][j]);
+        }
+
+        
+        if(check()) return 0;
+    }
+    printf(&quot;-1&quot;);
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/CF1239C">
+                <h3 class="post-title">
+                  「CodeForces  1239C」 Queue in the Train
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1572243289576" class="no-responsive avatar">
+    <div class="text-muted">So Nice Chicken</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3825">「NOI2017」游戏</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1239C">「CodeForces  1239C」 Queue in the Train</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1239B">「CodeForces 1239B」 The World Is Just a Programming Task</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1251E2">「CodeForces 1251E2」Voting</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF407c">「CodeForces 407C」 Curious Array</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/atcoder131e">「AtCoder 131E」 Friendships</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/codeforces1234e">「CodeForces 1234E」Special Permutations</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/codeforces1234f">「CodeForces 1234F」Yet Another Substring Reverse</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/atcoder138f">「AtCoder 138F」Coincidence</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/cf1238e">「CodeForces 1238E」Keyboard Purchase</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge success">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge ">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge ">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge warning">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge warning">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge success">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge ">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge success">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge secondary">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge ">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge warning">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge success">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge warning">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge success">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge warning">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge ">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge ">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge ">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge ">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge success">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge ">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-10-25T16:47:41.592Z</updated>
+    <updated>2019-10-28T06:14:53.764Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,252 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「NOI2017」游戏]]></title>
+        <id>https://dinnerhunt.cn/post/P3825</id>
+        <link href="https://dinnerhunt.cn/post/P3825">
+        </link>
+        <updated>2019-10-28T06:09:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>小 L 计划进行nn场游戏，每场游戏使用一张地图，小 L 会选择一辆车在该地图上完成游戏。</p>
+<p>小 L 的赛车有三辆，分别用大写字母A、B、C表示。地图一共有四种，分别用小写字母x、a、b、c表示。其中，赛车A不适合在地图a上使用，赛车B不适合在地图b上使用，赛车C不适合在地图c上使用，而地图x则适合所有赛车参加。适合所有赛车参加的地图并不多见，最多只会有d张。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>场游戏的地图可以用一个小写字母组成的字符串描述。例如：S=xaabxcbc表示小 L 计划进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场游戏，其中第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>场的地图类型是x，适合所有赛车，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>场的地图是a，不适合赛车A，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>场的地图是b，不适合赛车B，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场的地图是c，不适合赛车C。</p>
+<p>小 L 对游戏有一些特殊的要求，这些要求可以用四元组 (i, h_i, j, h_j)来描述，表示若在第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 场使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的车子，则第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>场游戏要使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">h_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><br>
+的车子。</p>
+<p>你能帮小 L 选择每场游戏使用的赛车吗？如果有多种方案，输出任意一种方案。如果无解，输出 “-1’’（不含双引号）。</p>
+<p>输入格式</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>小 L 计划进行nn场游戏，每场游戏使用一张地图，小 L 会选择一辆车在该地图上完成游戏。</p>
+<p>小 L 的赛车有三辆，分别用大写字母A、B、C表示。地图一共有四种，分别用小写字母x、a、b、c表示。其中，赛车A不适合在地图a上使用，赛车B不适合在地图b上使用，赛车C不适合在地图c上使用，而地图x则适合所有赛车参加。适合所有赛车参加的地图并不多见，最多只会有d张。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>场游戏的地图可以用一个小写字母组成的字符串描述。例如：S=xaabxcbc表示小 L 计划进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场游戏，其中第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>场的地图类型是x，适合所有赛车，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>场的地图是a，不适合赛车A，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>场的地图是b，不适合赛车B，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场的地图是c，不适合赛车C。</p>
+<p>小 L 对游戏有一些特殊的要求，这些要求可以用四元组 (i, h_i, j, h_j)来描述，表示若在第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 场使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的车子，则第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>场游戏要使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">h_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><br>
+的车子。</p>
+<p>你能帮小 L 选择每场游戏使用的赛车吗？如果有多种方案，输出任意一种方案。如果无解，输出 “-1’’（不含双引号）。</p>
+<p>输入格式</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P3825">P3825 [NOI2017]游戏</a></p>
+<h4 id="题解">题解</h4>
+<p>因为每个地形只能选2种颜色的车，考虑2-SAT<br>
+因为x可选3种，不好处理，我们考虑枚举x的颜色，因为每次可以选择两种颜色，所以对于每个x，枚举两种不同颜色即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 2e5+10;
+struct node
+{
+    int v,net;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid = 0;
+}
+void insert(int a,int b)
+{
+    //printf(&quot;%d %d\n&quot;,a,b);
+    e[eid].v = b;
+    e[eid].net = f[a];
+    f[a] = eid++;
+}
+int dfn[maxd],low[maxd],idx;
+int belong[maxd],scc;
+int stk[maxd],top;
+bool in_stack[maxd];
+void tarjan(int u)
+{
+    dfn[u] = low[u] = ++idx;
+    stk[top++] = u;
+    in_stack[u] = true;
+    for(int i=f[u];i+1;i=e[i].net)
+    {
+        int v = e[i].v;
+        if(!dfn[v])
+        {
+            tarjan(v);
+            low[u]= min(low[u],low[v]);
+        }
+        else if(in_stack[v]) 
+            low[u] = min(low[u],dfn[v]);
+    }
+    if(dfn[u] == low[u])
+    {
+        ++scc;
+        do
+        {
+            belong[stk[--top]] = scc;
+            in_stack[stk[top]] = false;
+        }while(stk[top] != u);
+    }
+}
+struct
+{
+    int i,j;
+    char hi,hj;
+}a[maxd];
+char s[maxd];
+vector&lt;int&gt; pp;
+int n,d,len;
+char pos[2][maxd];
+int re(int x){
+    if(x &gt; len) return x-len;
+    return x + len;
+}
+void print()
+{
+    for(int i=1;i&lt;=len;i++)
+    {
+        if(belong[i] &lt; belong[re(i)] )
+            printf(&quot;%c&quot;,pos[0][i]);
+        else printf(&quot;%c&quot;,pos[1][i]);
+    }
+}
+bool check()
+{
+    //memset(belong,0,sizeof(belong));
+    memset(dfn,0,sizeof(dfn));
+    memset(low,0,sizeof(low));  
+    memset(belong,0,sizeof(belong));  
+    init();
+    top = scc = idx = 0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(s[a[i].i] == a[i].hi) continue;
+        int tt = (a[i].hi == pos[0][a[i].i]?a[i].i:a[i].i+len);
+        if(s[a[i].j] == a[i].hj) insert(tt,re(tt));
+        else
+        {
+            int ttt = (a[i].hj== pos[0][a[i].j]?a[i].j:a[i].j+len);
+            insert(tt,ttt),insert(re(ttt),re(tt));
+        }
+    }
+    for(int i=1;i&lt;=2*len;i++)
+        if(!dfn[i]) tarjan(i);
+    for(int i=1;i&lt;=len;i++)
+        if(belong[i] == belong[i+len]) return 0;
+    return print(),1;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    
+    scanf(&quot;%d %d %s&quot;,&amp;n,&amp;d,s+1);
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+        scanf(&quot;%d %c %d %c&quot;,&amp;a[i].i,&amp;a[i].hi,&amp;a[i].j,&amp;a[i].hj);
+    for(int i=1;s[i];i++)
+    {
+       if(s[i] == 'x') pp.push_back(i);
+       s[i] = s[i] - ('a' - 'A');
+    }
+    len = strlen(s+1);
+    //printf(&quot;%s\n&quot;,s+1);
+    for(int i=0;i&lt;(1&lt;&lt;d);i++)
+    {
+        for(int j=0;j&lt;d;j++)
+        {
+            if(((i&gt;&gt;j)&amp;1) == 1) s[pp[j]] = 'A';
+            else s[pp[j]] = 'B';
+        }
+        //printf(&quot;\n%s\n&quot;,s+1);
+        for(int j=1;s[j];j++)
+        {
+            if(s[j] == 'A') pos[0][j] = 'B',pos[1][j] = 'C';
+            if(s[j] == 'B') pos[0][j] = 'A',pos[1][j] = 'C';
+            if(s[j] == 'C') pos[0][j] = 'A',pos[1][j] = 'B';
+            //printf(&quot;%c %c\n&quot;,pos[0][j],pos[1][j]);
+        }
+
+        
+        if(check()) return 0;
+    }
+    printf(&quot;-1&quot;);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces  1239C」 Queue in the Train]]></title>
+        <id>https://dinnerhunt.cn/post/CF1239C</id>
+        <link href="https://dinnerhunt.cn/post/CF1239C">
+        </link>
+        <updated>2019-10-26T03:08:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>There are 𝑛 seats in the train's car and there is exactly one passenger occupying every seat. The seats are numbered from 1 to 𝑛 from left to right. The trip is long, so each passenger will become hungry at some moment of time and will go to take boiled water for his noodles. The person at seat 𝑖 (1≤𝑖≤𝑛) will decide to go for boiled water at minute 𝑡𝑖.</p>
+<p>Tank with a boiled water is located to the left of the 1-st seat. In case too many passengers will go for boiled water simultaneously, they will form a queue, since there can be only one passenger using the tank at each particular moment of time. Each passenger uses the tank for exactly 𝑝 minutes. We assume that the time it takes passengers to go from their seat to the tank is negligibly small.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>There are 𝑛 seats in the train's car and there is exactly one passenger occupying every seat. The seats are numbered from 1 to 𝑛 from left to right. The trip is long, so each passenger will become hungry at some moment of time and will go to take boiled water for his noodles. The person at seat 𝑖 (1≤𝑖≤𝑛) will decide to go for boiled water at minute 𝑡𝑖.</p>
+<p>Tank with a boiled water is located to the left of the 1-st seat. In case too many passengers will go for boiled water simultaneously, they will form a queue, since there can be only one passenger using the tank at each particular moment of time. Each passenger uses the tank for exactly 𝑝 minutes. We assume that the time it takes passengers to go from their seat to the tank is negligibly small.</p>
+<!--more-->
+<p>Nobody likes to stand in a queue. So when the passenger occupying the 𝑖-th seat wants to go for a boiled water, he will first take a look on all seats from 1 to 𝑖−1. In case at least one of those seats is empty, he assumes that those people are standing in a queue right now, so he would be better seating for the time being. However, at the very first moment he observes that all seats with numbers smaller than 𝑖 are busy, he will go to the tank.</p>
+<p>There is an unspoken rule, that in case at some moment several people can go to the tank, than only the leftmost of them (that is, seating on the seat with smallest number) will go to the tank, while all others will wait for the next moment.</p>
+<p>Your goal is to find for each passenger, when he will receive the boiled water for his noodles.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1239/problem/C">「CodeForces  1239C」 Queue in the Train</a></p>
+<h4 id="题解">题解</h4>
+<p>有点点绕的模拟题，主要维护好，在座位上等待和在打水口排队的人的队列就好</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+int n,k;
+typedef pair&lt;int,int&gt; P;
+priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; sma;
+queue&lt;int&gt; que;
+vector&lt;P&gt; a;
+long long ans[maxd];
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);
+    for(int i=0;i&lt;n;i++)
+    {
+        int x;scanf(&quot;%d&quot;,&amp;x);
+        a.push_back(P(x,i));
+    }
+    sort(a.begin(),a.end());
+    long long now = 0ll;
+    int cnt=0,idx=0;
+    while(cnt &lt; n)
+    {
+        if(que.empty() &amp;&amp; sma.empty()) now = a[idx].first;
+        //如果当前队列都为空，那么起始时间为 a[idx].first;
+        while(idx &lt; n &amp;&amp; a[idx].first &lt;= now+k)
+        {
+            //编号没有编号小于他的在排队
+            // 因为每次选编号最小的入排队队列，所以que保证是个单调递减队列
+            if(que.empty() || que.back() &gt; a[idx].second)
+                que.push(a[idx++].second);
+            // 不然在座位上等待
+            else sma.push(a[idx++].second);
+        }
+        //接水时间
+        now += k;
+        ans[que.front()] = now; que.pop();
+        cnt++;
+        //如果没人排队，那么座位上编号最小的人上去排队
+        if(que.empty() &amp;&amp; !sma.empty())
+        {
+            que.push(sma.top()); 
+            sma.pop();
+        }
+    }
+    for(int i=0;i&lt;n;i++)
+        printf(&quot;%lld &quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1239B」 The World Is Just a Programming Task]]></title>
         <id>https://dinnerhunt.cn/post/CF1239B</id>
@@ -572,215 +818,6 @@ int main()
 	}
 	printf(&quot;%d&quot;,dp[m-1]);
 	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「P2664」 树上游戏]]></title>
-        <id>https://dinnerhunt.cn/post/p2664</id>
-        <link href="https://dinnerhunt.cn/post/p2664">
-        </link>
-        <updated>2019-10-08T03:46:08.000Z</updated>
-        <summary type="html"><![CDATA[<p>lrb有一棵树，树的每个节点有个颜色。给一个长度为n的颜色序列，定义<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的颜色数量。以及</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i) = \sum_{i=1}^n s(i,j)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span></p>
-<p>求出所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
-]]></summary>
-        <content type="html"><![CDATA[<p>lrb有一棵树，树的每个节点有个颜色。给一个长度为n的颜色序列，定义<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的颜色数量。以及</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i) = \sum_{i=1}^n s(i,j)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span></p>
-<p>求出所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://www.luogu.org/problem/P2664">「P2664」 树上游戏</a></p>
-<h4 id="题解">题解</h4>
-<p>我们可以用某种颜色的点将树切割成块，块内任意两点不会有该颜色的贡献<br>
-所以我们可以得到以下结论<br>
-1. 某个颜色对于一个点的贡献值为 n - size<br>
-2. 某一个点，所有颜色对其的贡献为，n * 颜色数 - 每种颜色节点时所在块的节点数<br>
-因为每个点的颜色，对于每个块，我们可以通过差分的思想，得到块的大小 (dfs) 函数</p>
-<p>val 表示以该节点父亲为切割点时，该节点的块的大小<br>
-root 表示当前所在节点，所有包含次节点的颜色块大小<br>
-num 表示第i个颜色块，当前点的贡献</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+10;
-struct node
-{
-	int v,net;
-}e[maxd&lt;&lt;1];
-int f[maxd],eid;
-void insert(int x,int y)
-{
-	e[eid].net = f[x];
-	e[eid].v = y;
-	f[x] = eid++; 
-}
-void init()
-{
-	memset(f,-1,sizeof(f));
-	eid = 0;
-}
-int n,sum; //总颜色数，根结点被所有颜色块包含块的总大小
-int sz[maxd],vis[maxd],col[maxd],del[maxd],val[maxd],num[maxd];
-// 子树大小，该颜色是否出现过，颜色,该点颜色删除点数,所在点被父亲颜色切割的块的大小,根所在块被分割的大小
-long long ans[maxd],root;
-void get_ans(int x,int fa=0)
-{
-	long long tmp = num[col[fa]];
-	root += 1ll * val[x] - num[col[fa]];
-	num[col[fa]] = val[x];
-	ans[x] = 1ll * n * sum - root + num[col[x]]; // 因为当前点一定会被包含，所以要加上当前颜色
-	for(int i = f[x];i+1;i = e[i].net)
-	{
-		int v = e[i].v;
-		if(v == fa) continue;
-		get_ans(v,x);
-	}
-	num[col[fa]] = tmp;
-	root -= val[x] - num[col[fa]];
-}
-void dfs(int x,int fa = 0)
-{
-	sz[x] = 1;
-	int tmp = del[col[fa]]; // 在这之前就已经删除的 父亲颜色
-	for(int i=f[x];i+1;i=e[i].net)
-	{
-		int v = e[i].v;
-		if(v == fa) continue;
-		dfs(v,x);
-		sz[x] += sz[v];
-	}
-	del[col[x]]++; // 该点颜色删除了
-	if(fa)
-	{
-		val[x] = sz[x] - del[col[fa]] + tmp; // 减去所以删除的点 + 之前删除的点，就是该子树下删除的点
-		del[col[fa]] += val[x]; // 将该区块的点加入删除的点
-	}
-}
-int main()
-{
-	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-	init();
-	scanf(&quot;%d&quot;,&amp;n);
-	for(int i=1;i&lt;=n;i++) 
-	{
-		scanf(&quot;%d&quot;,&amp;col[i]);
-		if(!vis[col[i]]) vis[col[i]]=1,sum++;
-	}
-	for(int i=1;i&lt;n;i++)
-	{	
-		int x,y; scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
-		insert(x,y); insert(y,x);
-	}
-	dfs(1);
-	for(int i=1;i&lt;maxd;i++) 
-		if(vis[i])  root += 1ll * n - del[i],num[i] = n-del[i]; // 
-	get_ans(1);
-	for(int i=1;i&lt;=n;i++) printf(&quot;%lld\n&quot;,ans[i]);
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「AHOI2008」矩形藏宝地]]></title>
-        <id>https://dinnerhunt.cn/post/P4793</id>
-        <link href="https://dinnerhunt.cn/post/P4793">
-        </link>
-        <updated>2019-10-05T13:10:39.000Z</updated>
-        <summary type="html"><![CDATA[<p>欢乐岛上最著名的游戏是一个寻宝游戏，小可可来到宝藏的埋藏地，这是一块开阔地，宝藏被分散的埋藏在这块地下，现在要做的是一件件的把宝藏挖出来。为了提示宝藏的埋藏点，游戏的主办方把这块开阔地当作第一象限，将所有可能埋藏宝藏的地方划成一个个矩形的土地，并把这些矩形土地的坐标都告诉了参赛者。挖宝的提示很简单，只要某一个矩阵土地至少被另外一个矩阵土地所包含，那么这个矩阵土地里肯定埋有宝藏。其实这些宝藏都是一些精美的纪念品，如果谁挖出来了纪念品就归谁了，小可可很想为这次旅程画上完美的句号，有你的帮助他信心十足，你只要告诉他：有多少个矩形土地里肯定埋有宝藏就行了。胜利就在眼前，加油吧！</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>欢乐岛上最著名的游戏是一个寻宝游戏，小可可来到宝藏的埋藏地，这是一块开阔地，宝藏被分散的埋藏在这块地下，现在要做的是一件件的把宝藏挖出来。为了提示宝藏的埋藏点，游戏的主办方把这块开阔地当作第一象限，将所有可能埋藏宝藏的地方划成一个个矩形的土地，并把这些矩形土地的坐标都告诉了参赛者。挖宝的提示很简单，只要某一个矩阵土地至少被另外一个矩阵土地所包含，那么这个矩阵土地里肯定埋有宝藏。其实这些宝藏都是一些精美的纪念品，如果谁挖出来了纪念品就归谁了，小可可很想为这次旅程画上完美的句号，有你的帮助他信心十足，你只要告诉他：有多少个矩形土地里肯定埋有宝藏就行了。胜利就在眼前，加油吧！</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://www.luogu.org/problem/P4793">「AHOI2008」矩形藏宝地</a></p>
-<h4 id="题解">题解</h4>
-<p>CDQ分治<br>
-排序维护 x2 降序<br>
-归并维护 y2 降序<br>
-树状数组中用 x1的坐标，存y1的值<br>
-然后树状数组求前缀和最小值与当前y1比较</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 2e5+10;
-struct node
-{
-    int x1,y1,x2,y2,f;
-}e[maxd];
-int cmp(const node a,const node b)
-{
-    return a.x2 &gt; b.x2;
-}
-int cmp1(const node a,const node b)
-{
-    return a.y2 &gt; b.y2;
-}
-int fx[maxd&lt;&lt;1],fy[maxd&lt;&lt;1],totx,toty;
-int t[maxd&lt;&lt;1],ans;
-void clear(int x)
-{
-    for(;x&lt;maxd*2;x+=(x&amp;-x)) t[x] = 1e9;
-}
-void update(int x,int y)
-{
-    for(;x&lt;maxd*2;x+=(x&amp;-x)) t[x] = min(t[x],y);
-}
-int query(int x)
-{
-    int ans = 1e9;
-    for(;x;x-=(x&amp;-x)) ans = min(t[x],ans);
-    return ans;
-}
-void cdq(int l,int r)
-{
-    if(l==r) return;
-    int mid = (l+r)/2;
-    cdq(l,mid),cdq(mid+1,r);
-    sort(e+l,e+mid+1,cmp1); sort(e+mid+1,e+r+1,cmp1); //懒得手动归并，直接排序
-    int j = l;
-    for(int i=mid+1;i&lt;=r;i++) // 此时j的x2 一定大于i的x2
-    {
-        if(e[i].f) continue;
-        while(j &lt;= mid&amp;&amp;e[j].y2 &gt; e[i].y2) 
-            update(e[j].x1,e[j].y1),j++; // 把y1插入数组x1的位置
-        int tmp = query(e[i].x1); // 因为查询比 x1小的值，所以查询x1一定小于i的x1;
-        if(tmp &lt; e[i].y1) e[i].f = 1,ans++; 
-    }
-    while(--j&gt;=l) clear(e[j].x1); // 重置
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n;scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++) 
-    {
-        scanf(&quot;%d %d %d %d&quot;,&amp;e[i].x1,&amp;e[i].y1,&amp;e[i].x2,&amp;e[i].y2);
-        fx[++totx] = e[i].x1,fx[++totx] = e[i].x2;
-        fy[++toty] = e[i].y1,fy[++toty] = e[i].y2;
-    }
-    sort(fx+1,fx+1+totx);sort(fy+1,fy+1+toty); //离散化 因为不存在相同的，不需要去重复
-    for(int i=1;i&lt;=n;i++)
-    {
-        e[i].x1 = lower_bound(fx+1,fx+1+totx,e[i].x1) - fx;
-        e[i].x2 = lower_bound(fx+1,fx+1+totx,e[i].x2) - fx;
-        e[i].y1 = lower_bound(fy+1,fy+1+toty,e[i].y1) - fy;
-        e[i].y2 = lower_bound(fy+1,fy+1+toty,e[i].y2) - fy;
-    }
-    sort(e+1,e+1+n,cmp); // 第一维对右x进行排序
-    for(int i=1;i&lt;2*maxd;i++) t[i] = 1e9; // 初始化
-    cdq(1,n);
-    printf(&quot;%d&quot;,ans);
-    return 0;
 }
 </code></pre>
 ]]></content>
