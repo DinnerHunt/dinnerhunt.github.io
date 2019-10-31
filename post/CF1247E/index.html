@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「CodeForces 1247E」Rock Is Push | dinnerhunt</title>
+<meta name="description" content="So Nice Chicken">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1572510228962">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「CodeForces 1247E」Rock Is Push</h1>
+            <p class="article-meta">
+              2019-10-31
+              
+                <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge ">
+                  前缀和
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge success">
+                  普通DP
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>You are at the top left cell (1,1) of an 𝑛×𝑚 labyrinth. Your goal is to get to the bottom right cell (𝑛,𝑚). You can only move right or down, one cell per step. Moving right from a cell (𝑥,𝑦) takes you to the cell (𝑥,𝑦+1), while moving down takes you to the cell (𝑥+1,𝑦).</p>
+<!--more-->
+<p>Some cells of the labyrinth contain rocks. When you move to a cell with rock, the rock is pushed to the next cell in the direction you're moving. If the next cell contains a rock, it gets pushed further, and so on.</p>
+<p>The labyrinth is surrounded by impenetrable walls, thus any move that would put you or any rock outside of the labyrinth is illegal.</p>
+<p>Count the number of different legal paths you can take from the start to the goal modulo 109+7. Two paths are considered different if there is at least one cell that is visited in one path, but not visited in the other.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1247/problem/E">「CodeForces 1247E」Rock Is Push</a></p>
+<h4 id="题解">题解</h4>
+<p><a href="https://www.cnblogs.com/LLTYYC/p/11750207.html">LLTYYC的思路</a></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int mod = 1e9+7;
+const int maxd = 2e3+10;
+int n,m;
+char s[maxd][maxd];
+int a[maxd][maxd],b[maxd][maxd]; // 行前缀和，列前缀和
+int fx[maxd][maxd],fy[maxd][maxd];//  下走方案数，右走方案数
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%s&quot;,s[i]+1);
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=m;j++)
+            a[i][j] = b[i][j] = (s[i][j] == 'R');
+    for(int i=n;i&gt;=1;i--)
+        for(int j=m;j&gt;=1;j--)
+        {
+            b[i][j] += b[i][j+1];
+            a[i][j] += a[i+1][j];
+        }
+    for(int i=1;i&lt;m;i++) if(!b[n][i]) fy[n][i] = 1;
+    for(int i=1;i&lt;n;i++) if(!a[i][m]) fx[i][m] = 1;
+
+    for(int i=n-1;i;i--)
+        for(int j=m-1;j;j--)
+        {
+            fx[i][j]= (fx[i+1][j]+fy[i+1][j]) %mod;
+            if(s[i+1][j]=='R') fx[i][j]= (fx[i][j]- fy[ n-a[i+1][j]+1 ][j] +mod) %mod;
+            fy[i][j]= (fx[i][j+1]+fy[i][j+1]) %mod;
+            if(s[i][j+1]=='R') fy[i][j]=(fy[i][j]- fx[i][ m-b[i][j+1]+1 ] +mod) %mod;
+        }
+    long long ans;
+    if(n==1&amp;&amp;m==1 &amp;&amp; s[1][1] == '.') ans=1ll;
+    else ans = (1ll * fx[1][1] + fy[1][1]) %mod;
+    printf(&quot;%lld&quot;,ans);
+    return 0;
+}
+
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/Gym10092k">
+                <h3 class="post-title">
+                  「Gym 10092K」King&#39;s Rout
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1572510228962" class="no-responsive avatar">
+    <div class="text-muted">So Nice Chicken</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1247E">「CodeForces 1247E」Rock Is Push</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/Gym10092k">「Gym 10092K」King&#39;s Rout</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1249F">「CodeForces 1249E」Maximum Weight Subset</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF600E">「CodeForces 600E」 Lomsat gelral</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1236E">「CodeForces 1236E」Alice and the Unfair Game</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1250E">「CodeForces 1250E」 The Coronation</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1239D">「CodeForces 1239D」Catowice City</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/BZOJ2199">「Usaco2011 Jan」奶牛议会</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3825">「NOI2017」游戏</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1239C">「CodeForces  1239C」 Queue in the Train</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge ">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge success">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge ">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge ">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge success">
+          树上启发式合并
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge secondary">
+          DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge secondary">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge secondary">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge success">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge warning">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge warning">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge warning">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge ">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge warning">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge secondary">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge warning">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge warning">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge warning">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge success">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge warning">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge success">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

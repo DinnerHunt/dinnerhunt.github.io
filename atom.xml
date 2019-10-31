@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-10-31T08:18:44.993Z</updated>
+    <updated>2019-10-31T08:25:04.062Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,70 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1247E」Rock Is Push]]></title>
+        <id>https://dinnerhunt.cn/post/CF1247E</id>
+        <link href="https://dinnerhunt.cn/post/CF1247E">
+        </link>
+        <updated>2019-10-31T08:19:50.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are at the top left cell (1,1) of an 𝑛×𝑚 labyrinth. Your goal is to get to the bottom right cell (𝑛,𝑚). You can only move right or down, one cell per step. Moving right from a cell (𝑥,𝑦) takes you to the cell (𝑥,𝑦+1), while moving down takes you to the cell (𝑥+1,𝑦).</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are at the top left cell (1,1) of an 𝑛×𝑚 labyrinth. Your goal is to get to the bottom right cell (𝑛,𝑚). You can only move right or down, one cell per step. Moving right from a cell (𝑥,𝑦) takes you to the cell (𝑥,𝑦+1), while moving down takes you to the cell (𝑥+1,𝑦).</p>
+<!--more-->
+<p>Some cells of the labyrinth contain rocks. When you move to a cell with rock, the rock is pushed to the next cell in the direction you're moving. If the next cell contains a rock, it gets pushed further, and so on.</p>
+<p>The labyrinth is surrounded by impenetrable walls, thus any move that would put you or any rock outside of the labyrinth is illegal.</p>
+<p>Count the number of different legal paths you can take from the start to the goal modulo 109+7. Two paths are considered different if there is at least one cell that is visited in one path, but not visited in the other.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1247/problem/E">「CodeForces 1247E」Rock Is Push</a></p>
+<h4 id="题解">题解</h4>
+<p><a href="https://www.cnblogs.com/LLTYYC/p/11750207.html">LLTYYC的思路</a></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int mod = 1e9+7;
+const int maxd = 2e3+10;
+int n,m;
+char s[maxd][maxd];
+int a[maxd][maxd],b[maxd][maxd]; // 行前缀和，列前缀和
+int fx[maxd][maxd],fy[maxd][maxd];//  下走方案数，右走方案数
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%s&quot;,s[i]+1);
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=m;j++)
+            a[i][j] = b[i][j] = (s[i][j] == 'R');
+    for(int i=n;i&gt;=1;i--)
+        for(int j=m;j&gt;=1;j--)
+        {
+            b[i][j] += b[i][j+1];
+            a[i][j] += a[i+1][j];
+        }
+    for(int i=1;i&lt;m;i++) if(!b[n][i]) fy[n][i] = 1;
+    for(int i=1;i&lt;n;i++) if(!a[i][m]) fx[i][m] = 1;
+
+    for(int i=n-1;i;i--)
+        for(int j=m-1;j;j--)
+        {
+            fx[i][j]= (fx[i+1][j]+fy[i+1][j]) %mod;
+            if(s[i+1][j]=='R') fx[i][j]= (fx[i][j]- fy[ n-a[i+1][j]+1 ][j] +mod) %mod;
+            fy[i][j]= (fx[i][j+1]+fy[i][j+1]) %mod;
+            if(s[i][j+1]=='R') fy[i][j]=(fy[i][j]- fx[i][ m-b[i][j+1]+1 ] +mod) %mod;
+        }
+    long long ans;
+    if(n==1&amp;&amp;m==1 &amp;&amp; s[1][1] == '.') ans=1ll;
+    else ans = (1ll * fx[1][1] + fy[1][1]) %mod;
+    printf(&quot;%lld&quot;,ans);
+    return 0;
+}
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「Gym 10092K」King's Rout]]></title>
         <id>https://dinnerhunt.cn/post/Gym10092k</id>
@@ -894,89 +958,6 @@ int main()
     }
     for(int i=0;i&lt;n;i++)
         printf(&quot;%lld &quot;,ans[i]);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1239B」 The World Is Just a Programming Task]]></title>
-        <id>https://dinnerhunt.cn/post/CF1239B</id>
-        <link href="https://dinnerhunt.cn/post/CF1239B">
-        </link>
-        <updated>2019-10-25T16:45:28.000Z</updated>
-        <summary type="html"><![CDATA[<p>outputstandard output<br>
-This is a harder version of the problem. In this version, 𝑛≤300000.</p>
-<p>Vasya is an experienced developer of programming competitions' problems. As all great minds at some time, Vasya faced a creative crisis. To improve the situation, Petya gifted him a string consisting of opening and closing brackets only. Petya believes, that the beauty of the bracket string is a number of its cyclical shifts, which form a correct bracket sequence.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>outputstandard output<br>
-This is a harder version of the problem. In this version, 𝑛≤300000.</p>
-<p>Vasya is an experienced developer of programming competitions' problems. As all great minds at some time, Vasya faced a creative crisis. To improve the situation, Petya gifted him a string consisting of opening and closing brackets only. Petya believes, that the beauty of the bracket string is a number of its cyclical shifts, which form a correct bracket sequence.</p>
-<!--more-->
-<p>To digress from his problems, Vasya decided to select two positions of the string (not necessarily distinct) and swap characters located at this positions with each other. Vasya will apply this operation exactly once. He is curious what is the maximum possible beauty he can achieve this way. Please help him.</p>
-<p>We remind that bracket sequence 𝑠 is called correct if:</p>
-<p>𝑠 is empty;<br>
-𝑠 is equal to &quot;(𝑡)&quot;, where 𝑡 is correct bracket sequence;<br>
-𝑠 is equal to 𝑡1𝑡2, i.e. concatenation of 𝑡1 and 𝑡2, where 𝑡1 and 𝑡2 are correct bracket sequences.<br>
-For example, &quot;(()())&quot;, &quot;()&quot; are correct, while &quot;)(&quot; and &quot;())&quot; are not.</p>
-<p>The cyclical shift of the string 𝑠 of length 𝑛 by 𝑘 (0≤𝑘&lt;𝑛) is a string formed by a concatenation of the last 𝑘 symbols of the string 𝑠 with the first 𝑛−𝑘 symbols of string 𝑠. For example, the cyclical shift of string &quot;(())()&quot; by 2 equals &quot;()(())&quot;.</p>
-<p>Cyclical shifts 𝑖 and 𝑗 are considered different, if 𝑖≠𝑗.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1239/problem/B">「CF1239B」 The World Is Just a Programming Task</a></p>
-<h4 id="题解">题解</h4>
-<p><a href="https://www.cnblogs.com/LLTYYC/p/11718968.html">原博客</a></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;queue&gt;
-#include &lt;vector&gt;
-using namespace std;
-const int maxd = 3e5+10;
-char s[maxd],tmp[maxd];
-int pre[maxd];
-int cnt;
-vector&lt;int&gt; a;
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n; scanf(&quot;%d %s&quot;,&amp;n,s+1);
-    int now = 0,pos = 0,mi = 0;
-    for(int i=1;s[i];i++)
-    {
-        now += ((s[i] == '(') ? 1 : -1 );
-        if(now &lt; mi) mi = now ,pos = i;
-    }
-    if(now)
-    {
-        printf(&quot;0\n1 1&quot;);
-        return 0;
-    }
-    for(int i=1;i&lt;=n;i++) tmp[i] = s[(pos+i-1)%n+1];
-    a.push_back(0);
-    for(int i=1;i&lt;=n;i++)
-    {
-        s[i] = tmp[i]; pre[i] = pre[i-1] + ((s[i] == '(') ? 1 : -1 );
-        if(!pre[i]) cnt++,a.push_back(i);
-    }
-    int ans = cnt,ls=1,rs=1,len = a.size();
-    for(int i=1;i&lt;len;i++)
-    {
-        int l = a[i-1]+1, r = a[i],t=0;
-        for(int j=l;j&lt;=r;j++) t+= (pre[j] == 1);
-        if(t&gt;ans) ans = t,ls = l,rs = r; 
-    }
-    a.clear();
-    for(int i=1;i&lt;=n;i++)
-        if(pre[i]==1) a.push_back(i);
-    len = a.size();
-    for(int i=1;i&lt;len;i++)
-    {
-        int l = a[i-1]+1,r = a[i],t = cnt;
-        if(pre[l] == 0) continue;
-        for(int j =l;j&lt;=r;j++) t+= (pre[j] == 2);
-        if(t &gt; ans) ans = t,ls = l ,rs = r;
-    }
-    printf(&quot;%d\n%d %d&quot;,ans,(ls+pos-1)%n+1,(rs+pos-1)%n+1);
     return 0;
 }
 </code></pre>
