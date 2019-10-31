@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-10-28T17:51:14.550Z</updated>
+    <updated>2019-10-31T08:18:44.993Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,252 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「Gym 10092K」King's Rout]]></title>
+        <id>https://dinnerhunt.cn/post/Gym10092k</id>
+        <link href="https://dinnerhunt.cn/post/Gym10092k">
+        </link>
+        <updated>2019-10-29T16:44:45.000Z</updated>
+        <summary type="html"><![CDATA[<p>The great rout will be held this evening in the palace of his majesty Nassah II, the king of Occorom. There are n guests invited. While they are preparing evening dresses and collecting fresh rumors to talk about, the chief valet of the palace has a tricky task to solve: choose the right order for persons to arrive to the palace.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>The great rout will be held this evening in the palace of his majesty Nassah II, the king of Occorom. There are n guests invited. While they are preparing evening dresses and collecting fresh rumors to talk about, the chief valet of the palace has a tricky task to solve: choose the right order for persons to arrive to the palace.</p>
+<!--more-->
+<p>Guests always arrive one by one, that is, no two guests may arrive at the same moment of time. Due to the court etiquette, there are some limitations on the order of the arrival. For example, a notable landlord should arrive later than all his vassals, but should be earlier than his wives. After reading &quot;Etiquette guide for dummies&quot; the valet found out m order conditions to be satisfied. Each of them has a form: ai must come before bi. Rules are so complicated that some conditions may appear in the list two or more times.</p>
+<p>So far the problem seems to be easy and familiar. But some guests (actually, all of them) tried to bribe valet to allow them arrive before others. So valet sorted guests according to their payoffs amounts and decided that guest number 1 should arrive as early as possible (without violating etiquette rules), among all such options valet chooses the one with the guest number 2 arriving as early as possible, and so on. All payoffs were different, so valet has no problem in selecting guests priority.</p>
+<p>Help valet to find the best possible schedule. Guests already have numbers in valet's private list of priority, so you will not know bribes amounts and will not be accused in complicity in corruption.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped</a></p>
+<h4 id="题解">题解</h4>
+<p>考虑反向建边，然后根据拓扑序将点丢大大根堆，依次选取最大的点，答案就是选取顺序的倒序</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 2e5+10;
+int in[maxd];
+vector&lt;int&gt; G[maxd],ans;
+priority_queue&lt;int&gt; que;
+int main() {
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,k;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);
+    for (int i = 1; i &lt;= k; i++)
+    {
+        int a, b;
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        G[b].push_back(a); in[a]++;
+    }
+    for(int i=1;i&lt;=n;i++) if(!in[i]) que.push(i);
+    for(int i=1;i&lt;=n;i++)
+    {
+        int x = que.top(); que.pop();
+        ans.push_back(x);
+        for(int v:G[x])
+        {
+            in[v]--;
+            if(!in[v]) que.push(v);
+        }
+    }
+    //printf(&quot;%d %d&quot;)
+    //printf(&quot;%d &quot;,ans.size());
+    for(int i=n-1;i&gt;=0;i--)
+    {
+        printf(&quot;%d&quot;,ans[i]);
+        if(i) printf(&quot; &quot;);
+        else putchar(10);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1249E」Maximum Weight Subset]]></title>
+        <id>https://dinnerhunt.cn/post/CF1249F</id>
+        <link href="https://dinnerhunt.cn/post/CF1249F">
+        </link>
+        <updated>2019-10-29T15:29:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given a tree, which consists of 𝑛 vertices. Recall that a tree is a connected undirected graph without cycles.</p>
+<p>Example of a tree.<br>
+Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of the vertex 𝑣 is 𝑎𝑣.</p>
+<p>Recall that the distance between two vertices in the tree is the number of edges on a simple path between them.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given a tree, which consists of 𝑛 vertices. Recall that a tree is a connected undirected graph without cycles.</p>
+<p>Example of a tree.<br>
+Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of the vertex 𝑣 is 𝑎𝑣.</p>
+<p>Recall that the distance between two vertices in the tree is the number of edges on a simple path between them.</p>
+<!--more-->
+<p>Your task is to find the subset of vertices with the maximum total weight (the weight of the subset is the sum of weights of all vertices in it) such that there is no pair of vertices with the distance 𝑘 or less between them in this subset.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1249/F">「CodeForces 1249E」Maximum Weight Subset</a></p>
+<h4 id="题解">题解</h4>
+<p>DP[i][j] 表示以i为根，最小选j层的最大权值<br>
+考虑每个节点选不选，如果选则更新DP[i][0]<br>
+不选则枚举距离层次j,依次选取子儿子进行更新答案，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 205;
+ 
+int n, k;
+vector&lt;int&gt; G[maxn];
+int dp[maxn][maxn], a[maxn];
+ 
+void dfs(int x, int f = 0)
+{
+    dp[x][0] = a[x];
+    for(int v:G[x])
+    {
+        if(v == f) continue;
+        dfs(v, x);
+        dp[x][0] += dp[v][k];
+    }
+    for(int i = 1; i &lt; n; i++)
+    {
+        for(auto it : G[x])
+        {
+            if(it == f) continue;
+            int cnt = dp[it][i-1];
+            for(auto other:G[x])
+            {
+                if(other == it || other == f) continue;
+                cnt += dp[other][max(i-1,k-i)];
+            }
+            dp[x][i] = max(dp[x][i],cnt);
+        }
+    }
+    for(int i = n-1; i &gt;= 0; i--)
+        dp[x][i-1] = max(dp[x][i-1], dp[x][i]);
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);
+    for(int i = 1; i &lt;= n; i++) scanf(&quot;%d&quot;, &amp;a[i]);
+    for(int i = 1; i &lt; n; i++)
+    {
+        int a,b;
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        G[a].push_back(b);G[b].push_back(a);
+    }
+    dfs(1);
+    printf(&quot;%d\n&quot;, dp[1][0]);
+    return 0;
+}
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 600E」 Lomsat gelral]]></title>
+        <id>https://dinnerhunt.cn/post/CF600E</id>
+        <link href="https://dinnerhunt.cn/post/CF600E">
+        </link>
+        <updated>2019-10-29T02:32:55.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given a rooted tree with root in vertex 1. Each vertex is coloured in some colour.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given a rooted tree with root in vertex 1. Each vertex is coloured in some colour.</p>
+<!--more-->
+<p>Let's call colour c dominating in the subtree of vertex v if there are no other colours that appear in the subtree of vertex v more times than colour c. So it's possible that two or more colours will be dominating in the subtree of some vertex.</p>
+<p>The subtree of vertex v is the vertex v and all other vertices that contains vertex v in each path to the root.</p>
+<p>For each vertex v find the sum of all dominating colours in the subtree of vertex v.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/600/E">「CodeForces 600E」 Lomsat gelral</a></p>
+<h4 id="题解">题解</h4>
+<p>树上启发式合并<br>
+先重轻链剖分，对于轻儿子暴力统计答案，重儿子保存答案<br>
+因为每个节点到根经过的轻链不会超过 logn 个，所以时间复杂度O(n log n)</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;map&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+struct node
+{
+    int v,net;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void insert(int x,int y)
+{
+    e[eid].v = y;
+    e[eid].net = f[x];
+    f[x] = eid++;
+}
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid = 0;
+}
+int col[maxd],sz[maxd],son[maxd],cnt[maxd],mx,s;
+long long sum = 0ll,ans[maxd];
+void dfs(int x,int fa = 0)
+{
+    sz[x] = 1;
+    for(int i=f[x];i+1;i=e[i].net)
+    {
+        int v = e[i].v;
+        if(v == fa) continue;
+        dfs(v,x);
+        sz[x] += sz[v];
+        if(sz[v] &gt; sz[son[x]]) son[x] = v;
+    }
+}
+void add(int x,int fa,int val)
+{
+    cnt[col[x]] += val;
+    if(cnt[col[x]] &gt; mx) mx = cnt[col[x]],sum = col[x];
+    else if(cnt[col[x]] == mx) sum += col[x];
+    for(int i=f[x];i+1;i = e[i].net)
+    {
+        int v= e[i].v;
+        if(v == fa || v == s)  continue;// 重儿子不需要重复统计
+        add(v,x,val);
+    }
+}
+void dfs1(int x,int fa=0,int opt=0)
+{
+    for(int i=f[x];i+1;i=e[i].net) // 先统计其他轻儿子
+    {
+        int v = e[i].v;
+        if(v==fa) continue;
+        if(v!=son[x]) dfs1(v,x,0);
+    }
+    if(son[x]) dfs1(son[x],x,1), s = son[x];
+    // s用来标记当前重儿子，因为重儿子不会删除贡献，所以不需要统计重儿子
+    add(x,fa,1); s = 0; 
+    ans[x] = sum; 
+    if(!opt) add(x,fa,-1),sum=0ll,mx=0;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n; scanf(&quot;%d&quot;,&amp;n);init();
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;col[i]);
+    for(int i=1;i&lt;n;i++)
+    {
+        int a,b; scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+        insert(a,b),insert(b,a);
+    }
+    dfs(1);dfs1(1);
+    for(int i=1;i&lt;=n;i++)
+        printf(&quot;%lld &quot;,ans[i]);
+
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1236E」Alice and the Unfair Game]]></title>
         <id>https://dinnerhunt.cn/post/CF1236E</id>
@@ -731,197 +977,6 @@ int main()
         if(t &gt; ans) ans = t,ls = l ,rs = r;
     }
     printf(&quot;%d\n%d %d&quot;,ans,(ls+pos-1)%n+1,(rs+pos-1)%n+1);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1251E2」Voting]]></title>
-        <id>https://dinnerhunt.cn/post/CF1251E2</id>
-        <link href="https://dinnerhunt.cn/post/CF1251E2">
-        </link>
-        <updated>2019-10-25T15:04:37.000Z</updated>
-        <summary type="html"><![CDATA[<p>The only difference between easy and hard versions is constraints.</p>
-<p>Now elections are held in Berland and you want to win them. More precisely, you want everyone to vote for you.</p>
-<p>There are 𝑛 voters, and two ways to convince each of them to vote for you. The first way to convince the 𝑖-th voter is to pay him 𝑝𝑖 coins. The second way is to make 𝑚𝑖 other voters vote for you, and the 𝑖-th voter will vote for free.</p>
-<p>Moreover, the process of such voting takes place in several steps. For example, if there are five voters with 𝑚1=1, 𝑚2=2, 𝑚3=2, 𝑚4=4, 𝑚5=5, then you can buy the vote of the fifth voter, and eventually everyone will vote for you. Set of people voting for you will change as follows: 5→1,5→1,2,3,5→1,2,3,4,5.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>The only difference between easy and hard versions is constraints.</p>
-<p>Now elections are held in Berland and you want to win them. More precisely, you want everyone to vote for you.</p>
-<p>There are 𝑛 voters, and two ways to convince each of them to vote for you. The first way to convince the 𝑖-th voter is to pay him 𝑝𝑖 coins. The second way is to make 𝑚𝑖 other voters vote for you, and the 𝑖-th voter will vote for free.</p>
-<p>Moreover, the process of such voting takes place in several steps. For example, if there are five voters with 𝑚1=1, 𝑚2=2, 𝑚3=2, 𝑚4=4, 𝑚5=5, then you can buy the vote of the fifth voter, and eventually everyone will vote for you. Set of people voting for you will change as follows: 5→1,5→1,2,3,5→1,2,3,4,5.</p>
-<!-- more -->
-<p>Calculate the minimum number of coins you have to spend so that everyone votes for you.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1251/problem/E2">「CodeForces 1251E2」Voting</a></p>
-<h4 id="题解">题解</h4>
-<p>代码很好理解～</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;queue&gt;
-#include &lt;vector&gt;
-using namespace std;
-const int maxd = 2e5+10;
-vector&lt;int&gt; a[maxd];
-priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; que;
-int b[maxd];
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t;scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        int n;scanf(&quot;%d&quot;,&amp;n);
-        for(int i=0;i&lt;n;i++) a[i].clear();
-        for(int i=1;i&lt;=n;i++)
-        {
-            int x,y;
-            scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
-            a[x].push_back(y);
-        }
-        int now = 0;
-        for(int i=0;i&lt;n;i++)
-        {
-            b[i] = max(0,i-now);
-            now += a[i].size();
-            //printf(&quot;%d %d\n&quot;,i,b[i]);
-        }
-
-        now = 0;
-        long long ans = 0ll;
-        for(int i=n-1;i&gt;=0;i--)
-        {
-            for(int x:a[i]) que.push(x);
-            while(now &lt; b[i])
-            {
-                ans += que.top(); que.pop();
-                now++;
-            }
-        }
-        while(!que.empty()) que.pop();
-        printf(&quot;%lld\n&quot;,ans);
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 407C」 Curious Array]]></title>
-        <id>https://dinnerhunt.cn/post/CF407c</id>
-        <link href="https://dinnerhunt.cn/post/CF407c">
-        </link>
-        <updated>2019-10-15T03:36:04.000Z</updated>
-        <summary type="html"><![CDATA[<p>You've got an array consisting of n integers: a[1], a[2], ..., a[n]. Moreover, there are m queries, each query can be described by three integers li, ri, ki. Query li, ri, ki means that we should add  to each element a[j], where li ≤ j ≤ ri.</p>
-<p>Record  means the binomial coefficient, or the number of combinations from y elements into groups of x elements.</p>
-<p>You need to fulfil consecutively all queries and then print the final array.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You've got an array consisting of n integers: a[1], a[2], ..., a[n]. Moreover, there are m queries, each query can be described by three integers li, ri, ki. Query li, ri, ki means that we should add  to each element a[j], where li ≤ j ≤ ri.</p>
-<p>Record  means the binomial coefficient, or the number of combinations from y elements into groups of x elements.</p>
-<p>You need to fulfil consecutively all queries and then print the final array.</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/407/C">「CodeForces 407C」Curious Array</a></p>
-<h4 id="题解">题解</h4>
-<p><a href="https://www.luogu.org/blog/MILLOPE/solution-cf407c">MILLOPE 的题解</a></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+100;
-const int mod = 1e9+7;
-typedef long long LL;
-int n,m;
-long long a[maxd],c[maxd][105],ans[maxd][105];
-void init()
-{
-    c[0][0] = 1ll; 
-    for (int i = 1; i &lt; maxd; ++i) {
-        c[i][0] = 1ll; 
-        for (int j = 1; j &lt;= i &amp;&amp; j &lt; 105; ++j) {
-            c[i][j] = (1ll * c[i-1][j-1] + c[i-1][j]) % mod; 
-        }
-    }
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    init();
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
-    for(int j=1;j&lt;=m;j++)
-    {
-        int l,r,k;
-        scanf(&quot;%d %d %d&quot;,&amp;l,&amp;r,&amp;k);
-        // 
-        for(int i=0;i&lt;=k;i++) ans[l][i] =  (1ll * ans[l][i] + c[k][k-i]) %mod;
-        // 减去前缀和
-        for(int i=0;i&lt;=k;i++) ans[r+1][i] =  (1ll *ans[r+1][i] - c[r-l+k+1][k-i]) %mod;
-    }
-    for (int i = 1; i &lt; n; ++i) 
-        for (int j = 101; j &gt;= 1; --j) 
-            ans[i+1][j-1] = (1ll * ans[i+1][j-1] + ans[i][j] + ans[i][j-1]) % mod; 
-    for (int i = 1; i &lt;= n; ++i)  printf(&quot;%lld &quot;,((ans[i][0] + a[i]) % mod + mod) % mod); 
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「AtCoder 131E」 Friendships]]></title>
-        <id>https://dinnerhunt.cn/post/atcoder131e</id>
-        <link href="https://dinnerhunt.cn/post/atcoder131e">
-        </link>
-        <updated>2019-10-11T16:14:57.000Z</updated>
-        <summary type="html"><![CDATA[<p>Does there exist an undirected graph with N vertices satisfying the following conditions?</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Does there exist an undirected graph with N vertices satisfying the following conditions?</p>
-<!--more-->
-<p>The graph is simple and connected.<br>
-The vertices are numbered 1,2,…,N.<br>
-Let M be the number of edges in the graph. The edges are numbered 1,2,…,M, the length of each edge is 1, and Edge i connects Vertex ui and Vertex vi.<br>
-There are exactly K pairs of vertices (i, j) (i &lt; j) such that the shortest distance between them is 2.<br>
-If there exists such a graph, construct an example.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://abc131.contest.atcoder.jp/tasks/abc131_e?lang=en">「AtCoder 131E」 Friendships</a></p>
-<h4 id="题解">题解</h4>
-<p>考虑菊花图，能得到最大点的值，因为没有边的限制，所以在菊花图上，枚举非菊花心以外的任意两点，即可将贡献-1，这样便能构造出所有点</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n,k;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);
-    int ans = (n-1)*(n-2)/2;
-    if(ans &lt; k)
-    {
-        printf(&quot;-1&quot;);
-    }
-    else
-    {
-        printf(&quot;%d\n&quot;,n-1 + ans - k );
-        for(int i=2;i&lt;=n;i++)
-            printf(&quot;%d %d\n&quot;,1,i);
-
-        for(int i=2;i&lt;=n;i++)
-            for(int j=i+1;j&lt;=n;j++)
-            {
-                if(ans == k) return 0;
-                printf(&quot;%d %d\n&quot;,i,j);
-                ans--;
-                
-            }
-    }
     return 0;
 }
 </code></pre>

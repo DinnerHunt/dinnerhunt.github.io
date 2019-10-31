@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「CodeForces 1249E」Maximum Weight Subset | dinnerhunt</title>
+<meta name="description" content="So Nice Chicken">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1572404195698">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「CodeForces 1249E」Maximum Weight Subset</h1>
+            <p class="article-meta">
+              2019-10-29
+              
+                <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+                  树型DP
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>You are given a tree, which consists of 𝑛 vertices. Recall that a tree is a connected undirected graph without cycles.</p>
+<p>Example of a tree.<br>
+Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of the vertex 𝑣 is 𝑎𝑣.</p>
+<p>Recall that the distance between two vertices in the tree is the number of edges on a simple path between them.</p>
+<!--more-->
+<p>Your task is to find the subset of vertices with the maximum total weight (the weight of the subset is the sum of weights of all vertices in it) such that there is no pair of vertices with the distance 𝑘 or less between them in this subset.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1249/F">「CodeForces 1249E」Maximum Weight Subset</a></p>
+<h4 id="题解">题解</h4>
+<p>DP[i][j] 表示以i为根，最小选j层的最大权值<br>
+考虑每个节点选不选，如果选则更新DP[i][0]<br>
+不选则枚举距离层次j,依次选取子儿子进行更新答案，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 205;
+ 
+int n, k;
+vector&lt;int&gt; G[maxn];
+int dp[maxn][maxn], a[maxn];
+ 
+void dfs(int x, int f = 0)
+{
+    dp[x][0] = a[x];
+    for(int v:G[x])
+    {
+        if(v == f) continue;
+        dfs(v, x);
+        dp[x][0] += dp[v][k];
+    }
+    for(int i = 1; i &lt; n; i++)
+    {
+        for(auto it : G[x])
+        {
+            if(it == f) continue;
+            int cnt = dp[it][i-1];
+            for(auto other:G[x])
+            {
+                if(other == it || other == f) continue;
+                cnt += dp[other][max(i-1,k-i)];
+            }
+            dp[x][i] = max(dp[x][i],cnt);
+        }
+    }
+    for(int i = n-1; i &gt;= 0; i--)
+        dp[x][i-1] = max(dp[x][i-1], dp[x][i]);
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);
+    for(int i = 1; i &lt;= n; i++) scanf(&quot;%d&quot;, &amp;a[i]);
+    for(int i = 1; i &lt; n; i++)
+    {
+        int a,b;
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        G[a].push_back(b);G[b].push_back(a);
+    }
+    dfs(1);
+    printf(&quot;%d\n&quot;, dp[1][0]);
+    return 0;
+}
+
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/CF600E">
+                <h3 class="post-title">
+                  「CodeForces 600E」 Lomsat gelral
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1572404195698" class="no-responsive avatar">
+    <div class="text-muted">So Nice Chicken</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/Gym10092k">「Gym 10092K」King&#39;s Rout</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1249F">「CodeForces 1249E」Maximum Weight Subset</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF600E">「CodeForces 600E」 Lomsat gelral</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1236E">「CodeForces 1236E」Alice and the Unfair Game</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1250E">「CodeForces 1250E」 The Coronation</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1239D">「CodeForces 1239D」Catowice City</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/BZOJ2199">「Usaco2011 Jan」奶牛议会</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P3825">「NOI2017」游戏</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1239C">「CodeForces  1239C」 Queue in the Train</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1239B">「CodeForces 1239B」 The World Is Just a Programming Task</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge secondary">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge secondary">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge ">
+          树上启发式合并
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge warning">
+          DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge warning">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge ">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge success">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge ">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge warning">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge ">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge secondary">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge warning">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge secondary">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge secondary">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge success">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge ">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
