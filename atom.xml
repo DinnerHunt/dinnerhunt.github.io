@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-11-19T11:34:46.202Z</updated>
+    <updated>2019-11-25T07:35:51.781Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,86 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[2019 年比赛总结]]></title>
+        <id>https://dinnerhunt.cn/post/2019-icpc</id>
+        <link href="https://dinnerhunt.cn/post/2019-icpc">
+        </link>
+        <updated>2019-11-25T05:04:08.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>在熟悉的深航音乐响起后没，飞机抵达了深圳机场。窗外闪烁着的灯光，意味着今年的比赛终要告一段落了</p>
+</blockquote>
+<h4 id="今年的历程">今年的历程</h4>
+<ul>
+<li>2月       广东工业大学集训</li>
+<li>3月       蓝桥杯省赛</li>
+<li>4月       团体程序程序设计天梯赛</li>
+<li>5月       GDCPC，蓝桥国赛</li>
+<li>7月    中山大学集训</li>
+<li>9月       ICPC&amp;CCPC 网络赛</li>
+<li>10月      银川站</li>
+<li>11月      上海站</li>
+</ul>
+<p>看着Vjudge的Register 30 months ago，我的竞赛经历也走过了两年了。想起去年ccpc camp wls的十年竞赛经历， 以及前天八年经验的清华选手，我都现的无比稚嫩。但还是感觉自己已经在圈子里呆了许久，但却依然菜的真实。</p>
+<p>无论是上半年的蓝桥国赛，CPC省赛，还是年末的两场区域赛，都挺让老师失望的吧。</p>
+<hr>
+<h4 id="银川站">银川站</h4>
+<p>本着为了拿牌推动校内竞赛发展的想法，老班带领我们来到了石嘴山，开启了第一次ICPC之旅<br>
+在机场有幸见到了北大的队伍，他们在等巴士时仍然开着电脑在学习(这可能是就是我们之间的差距吧)。<br>
+在坐了将近一个钟的大巴之后，我们到达了酒店，10月底的石嘴山并没有想象中的那么冷。<br>
+可能是因为第一次坐飞机太激动了，到达酒店后又迷迷糊糊睡了一下午。<br>
+晚上逛了逛石嘴山市区吧，发现这里有万达还是挺意外的，交通挺便宜的，基本都是5块钱(除了去学校吧)<br>
+现场有400支队伍，比较的挤，不过桌面空间挺大的，还能接受。热身赛调了调编译器，是Ubuntu 环境，也是第一次用吧。<br>
+晚上吃了食堂的饭，饭票给的有点多，有点没吃完。</p>
+<p>正式赛<br>
+开场快速过了签到，然后把另外一道之前做过的B切了，接着发现了一道进制转化的题目<br>
+发现了该题需要高精度后，便叫同学开始抄高精度的板子，接着看到了一道之前在书上见到过的原题<br>
+板子抄完后一堆编译报错(平时练习赛全是copy的)<br>
+调完以后交上去返回TLE，于是开始怀疑时间复杂度是否过高(对板子的时间复杂度不是彻底理解，于是开始怀疑正确做法是否是一步公式法转化)<br>
+在短暂的僵局之后，迅速把线段树给切了,之后就开始决定搞进制转化or原题。<br>
+在抉择之后，决定尝试先用python把进制转换过了，然后再码另一题<br>
+接着又暴露了问题，对python不熟，在python中没有字符类型，需要用函数转化，但是并不知道。接着提出一个100多行的if else赋值的傻办法，但否定了。(赛后这里应该是最大的决策失误)<br>
+在最后一个半钟的时间，把原题码了，但wa了。(练习做少了，没有考虑到图论的一些坑点)<br>
+最后依然无法解决这两个问题，当然也没有去尝试后面的题，于是遗憾打铁。</p>
+<p>总结<br>
+组队训练比较少，赛中做了很多错误决策，也有点紧张<br>
+平时练习copy多，赛场上抄板子容易抄错<br>
+过多的口胡一些题目，导致一些坑点没有经历过</p>
+<p>赛后提前离场了，比较失落吧。晚上老班请我们到万达吃了饭。<br>
+第二天起床便赶往了机场</p>
+<h4 id="上海站">上海站</h4>
+<p>今年能拿到上海站的资格也是挺幸运的把，擦边+CCSP竞赛<br>
+因为一些原因，行程订的挺赶的，周六前往，周日返程<br>
+飞机落地后就直接地铁来到了上海大学报道，上大的午饭非常好吃。</p>
+<p>热身赛<br>
+场馆相比于宁夏宽敞很多，应该是最后一场区域赛的原因吧，周围坐满了各种985/211高校，不过相较于上次比赛，并没有那么紧张。<br>
+热身赛开场读题读错，导致排名倒数。第二题因为不了解bitset时间复杂度，导致否定了bitset做法。第四题本想暴力搞，但因为某些原因从而放弃。不过这是热身赛吧，也并不是很重要。</p>
+<p>晚上跟广工的闷骚Inctry面基，去吃了一顿老北京火锅(羊肉有点骚，不过味道还是不错的)</p>
+<p>现场赛<br>
+因为路过气球室，发现粉色气球很多，于是开场便叫同学阅读A题，但发现上当了，A不太可做。<br>
+接着看到一血K产生了，于是看了看K题面，发现并没有啥想法。<br>
+转头开始尝试做B，花了一点时间把B做完以后。就开始了将近4小时的垃圾时间。<br>
+K题其实已经想出了正确解法，但因为最后如果枚举边判断是M时间复杂度，而如果尝试优化一下，只枚举二分图左边的点，可能会少一些常数，但总体最大时间复杂度是不变的。因此我们的K被关了。<br>
+D题没啥想法，但是由于周围队都过了，于是便决定在该题上花费些许时间，但却没有任何进展。<br>
+E题因该是最需要反省的，很简单的应用，但没有找到问题的本质是要我们求什么，也因为剩余时间是在不多了，心态可能有点轻微放弃吧。<br>
+H题比较薄弱，如果前面题都挺顺利的，花点时间应该是可以突破一下<br>
+F题赛中没有看到了，挺裸的一道树剖吧，不过立方和需要推下公式。</p>
+<p>也许也许多交几次或者加个快读K就过了吧，也许多看看E的图就能发现题目的本质吧<br>
+但终究还是菜，一如既往的菜。</p>
+<p>赛后没有见到老班，可能真的令他太失望了吧。</p>
+<p>闭幕式滚榜的时候，技术支持做的很好，老师的主持也十分有趣。<br>
+平时不喜欢拍照，却有点羡慕滚榜时赛场上的队伍照片。<br>
+铜牌就能在屏幕上看到自己队伍的照片了吧。</p>
+<p>临走之前，在上大逛了一会，见了下上大的初中同学，感觉彼此都没啥变化。<br>
+想看看东方明珠，想去去陆家嘴。但去了应该也不会开心吧。</p>
+<hr>
+<p>努力点，再努力点，我不会放弃的。<br>
+因为它实在是太迷人了<br>
+赛场周围的志愿者穿梭的身影，桌面上的队伍台历，电脑旁飘着的彩色气球。<br>
+赛后滚榜的时刻，以及拿牌后的喜悦。<br>
+加油吧，&quot;So Nice Chicken , Fighting For Au&quot;</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1247E」Rock Is Push]]></title>
         <id>https://dinnerhunt.cn/post/CF1247E</id>
@@ -882,82 +962,6 @@ int main()
         if(check()) return 0;
     }
     printf(&quot;-1&quot;);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces  1239C」 Queue in the Train]]></title>
-        <id>https://dinnerhunt.cn/post/CF1239C</id>
-        <link href="https://dinnerhunt.cn/post/CF1239C">
-        </link>
-        <updated>2019-10-26T03:08:47.000Z</updated>
-        <summary type="html"><![CDATA[<p>There are 𝑛 seats in the train's car and there is exactly one passenger occupying every seat. The seats are numbered from 1 to 𝑛 from left to right. The trip is long, so each passenger will become hungry at some moment of time and will go to take boiled water for his noodles. The person at seat 𝑖 (1≤𝑖≤𝑛) will decide to go for boiled water at minute 𝑡𝑖.</p>
-<p>Tank with a boiled water is located to the left of the 1-st seat. In case too many passengers will go for boiled water simultaneously, they will form a queue, since there can be only one passenger using the tank at each particular moment of time. Each passenger uses the tank for exactly 𝑝 minutes. We assume that the time it takes passengers to go from their seat to the tank is negligibly small.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>There are 𝑛 seats in the train's car and there is exactly one passenger occupying every seat. The seats are numbered from 1 to 𝑛 from left to right. The trip is long, so each passenger will become hungry at some moment of time and will go to take boiled water for his noodles. The person at seat 𝑖 (1≤𝑖≤𝑛) will decide to go for boiled water at minute 𝑡𝑖.</p>
-<p>Tank with a boiled water is located to the left of the 1-st seat. In case too many passengers will go for boiled water simultaneously, they will form a queue, since there can be only one passenger using the tank at each particular moment of time. Each passenger uses the tank for exactly 𝑝 minutes. We assume that the time it takes passengers to go from their seat to the tank is negligibly small.</p>
-<!--more-->
-<p>Nobody likes to stand in a queue. So when the passenger occupying the 𝑖-th seat wants to go for a boiled water, he will first take a look on all seats from 1 to 𝑖−1. In case at least one of those seats is empty, he assumes that those people are standing in a queue right now, so he would be better seating for the time being. However, at the very first moment he observes that all seats with numbers smaller than 𝑖 are busy, he will go to the tank.</p>
-<p>There is an unspoken rule, that in case at some moment several people can go to the tank, than only the leftmost of them (that is, seating on the seat with smallest number) will go to the tank, while all others will wait for the next moment.</p>
-<p>Your goal is to find for each passenger, when he will receive the boiled water for his noodles.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1239/problem/C">「CodeForces  1239C」 Queue in the Train</a></p>
-<h4 id="题解">题解</h4>
-<p>有点点绕的模拟题，主要维护好，在座位上等待和在打水口排队的人的队列就好</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;queue&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+10;
-int n,k;
-typedef pair&lt;int,int&gt; P;
-priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; sma;
-queue&lt;int&gt; que;
-vector&lt;P&gt; a;
-long long ans[maxd];
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);
-    for(int i=0;i&lt;n;i++)
-    {
-        int x;scanf(&quot;%d&quot;,&amp;x);
-        a.push_back(P(x,i));
-    }
-    sort(a.begin(),a.end());
-    long long now = 0ll;
-    int cnt=0,idx=0;
-    while(cnt &lt; n)
-    {
-        if(que.empty() &amp;&amp; sma.empty()) now = a[idx].first;
-        //如果当前队列都为空，那么起始时间为 a[idx].first;
-        while(idx &lt; n &amp;&amp; a[idx].first &lt;= now+k)
-        {
-            //编号没有编号小于他的在排队
-            // 因为每次选编号最小的入排队队列，所以que保证是个单调递减队列
-            if(que.empty() || que.back() &gt; a[idx].second)
-                que.push(a[idx++].second);
-            // 不然在座位上等待
-            else sma.push(a[idx++].second);
-        }
-        //接水时间
-        now += k;
-        ans[que.front()] = now; que.pop();
-        cnt++;
-        //如果没人排队，那么座位上编号最小的人上去排队
-        if(que.empty() &amp;&amp; !sma.empty())
-        {
-            que.push(sma.top()); 
-            sma.pop();
-        }
-    }
-    for(int i=0;i&lt;n;i++)
-        printf(&quot;%lld &quot;,ans[i]);
     return 0;
 }
 </code></pre>

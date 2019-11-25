@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>树型DP | dinnerhunt</title>
+<title>2019 年比赛总结 | dinnerhunt</title>
 <meta name="description" content="So Nice Chicken">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -22,6 +22,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
@@ -86,96 +87,111 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: 树型DP</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/CF1249F">「CodeForces 1249E」Maximum Weight Subset</a>
-    </h2>
-    <p class="article-meta">
-      2019-10-29
-      
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
-          树型DP
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>You are given a tree, which consists of 𝑛 vertices. Recall that a tree is a connected undirected graph without cycles.</p>
-<p>Example of a tree.<br>
-Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of the vertex 𝑣 is 𝑎𝑣.</p>
-<p>Recall that the distance between two vertices in the tree is the number of edges on a simple path between them.</p>
+          <article class="article">
+            <h1>2019 年比赛总结</h1>
+            <p class="article-meta">
+              2019-11-25
+              
+                <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+                  个人经历
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <blockquote>
+<p>在熟悉的深航音乐响起后没，飞机抵达了深圳机场。窗外闪烁着的灯光，意味着今年的比赛终要告一段落了</p>
+</blockquote>
+<h4 id="今年的历程">今年的历程</h4>
+<ul>
+<li>2月       广东工业大学集训</li>
+<li>3月       蓝桥杯省赛</li>
+<li>4月       团体程序程序设计天梯赛</li>
+<li>5月       GDCPC，蓝桥国赛</li>
+<li>7月    中山大学集训</li>
+<li>9月       ICPC&amp;CCPC 网络赛</li>
+<li>10月      银川站</li>
+<li>11月      上海站</li>
+</ul>
+<p>看着Vjudge的Register 30 months ago，我的竞赛经历也走过了两年了。想起去年ccpc camp wls的十年竞赛经历， 以及前天八年经验的清华选手，我都现的无比稚嫩。但还是感觉自己已经在圈子里呆了许久，但却依然菜的真实。</p>
+<p>无论是上半年的蓝桥国赛，CPC省赛，还是年末的两场区域赛，都挺让老师失望的吧。</p>
+<hr>
+<h4 id="银川站">银川站</h4>
+<p>本着为了拿牌推动校内竞赛发展的想法，老班带领我们来到了石嘴山，开启了第一次ICPC之旅<br>
+在机场有幸见到了北大的队伍，他们在等巴士时仍然开着电脑在学习(这可能是就是我们之间的差距吧)。<br>
+在坐了将近一个钟的大巴之后，我们到达了酒店，10月底的石嘴山并没有想象中的那么冷。<br>
+可能是因为第一次坐飞机太激动了，到达酒店后又迷迷糊糊睡了一下午。<br>
+晚上逛了逛石嘴山市区吧，发现这里有万达还是挺意外的，交通挺便宜的，基本都是5块钱(除了去学校吧)<br>
+现场有400支队伍，比较的挤，不过桌面空间挺大的，还能接受。热身赛调了调编译器，是Ubuntu 环境，也是第一次用吧。<br>
+晚上吃了食堂的饭，饭票给的有点多，有点没吃完。</p>
+<p>正式赛<br>
+开场快速过了签到，然后把另外一道之前做过的B切了，接着发现了一道进制转化的题目<br>
+发现了该题需要高精度后，便叫同学开始抄高精度的板子，接着看到了一道之前在书上见到过的原题<br>
+板子抄完后一堆编译报错(平时练习赛全是copy的)<br>
+调完以后交上去返回TLE，于是开始怀疑时间复杂度是否过高(对板子的时间复杂度不是彻底理解，于是开始怀疑正确做法是否是一步公式法转化)<br>
+在短暂的僵局之后，迅速把线段树给切了,之后就开始决定搞进制转化or原题。<br>
+在抉择之后，决定尝试先用python把进制转换过了，然后再码另一题<br>
+接着又暴露了问题，对python不熟，在python中没有字符类型，需要用函数转化，但是并不知道。接着提出一个100多行的if else赋值的傻办法，但否定了。(赛后这里应该是最大的决策失误)<br>
+在最后一个半钟的时间，把原题码了，但wa了。(练习做少了，没有考虑到图论的一些坑点)<br>
+最后依然无法解决这两个问题，当然也没有去尝试后面的题，于是遗憾打铁。</p>
+<p>总结<br>
+组队训练比较少，赛中做了很多错误决策，也有点紧张<br>
+平时练习copy多，赛场上抄板子容易抄错<br>
+过多的口胡一些题目，导致一些坑点没有经历过</p>
+<p>赛后提前离场了，比较失落吧。晚上老班请我们到万达吃了饭。<br>
+第二天起床便赶往了机场</p>
+<h4 id="上海站">上海站</h4>
+<p>今年能拿到上海站的资格也是挺幸运的把，擦边+CCSP竞赛<br>
+因为一些原因，行程订的挺赶的，周六前往，周日返程<br>
+飞机落地后就直接地铁来到了上海大学报道，上大的午饭非常好吃。</p>
+<p>热身赛<br>
+场馆相比于宁夏宽敞很多，应该是最后一场区域赛的原因吧，周围坐满了各种985/211高校，不过相较于上次比赛，并没有那么紧张。<br>
+热身赛开场读题读错，导致排名倒数。第二题因为不了解bitset时间复杂度，导致否定了bitset做法。第四题本想暴力搞，但因为某些原因从而放弃。不过这是热身赛吧，也并不是很重要。</p>
+<p>晚上跟广工的闷骚Inctry面基，去吃了一顿老北京火锅(羊肉有点骚，不过味道还是不错的)</p>
+<p>现场赛<br>
+因为路过气球室，发现粉色气球很多，于是开场便叫同学阅读A题，但发现上当了，A不太可做。<br>
+接着看到一血K产生了，于是看了看K题面，发现并没有啥想法。<br>
+转头开始尝试做B，花了一点时间把B做完以后。就开始了将近4小时的垃圾时间。<br>
+K题其实已经想出了正确解法，但因为最后如果枚举边判断是M时间复杂度，而如果尝试优化一下，只枚举二分图左边的点，可能会少一些常数，但总体最大时间复杂度是不变的。因此我们的K被关了。<br>
+D题没啥想法，但是由于周围队都过了，于是便决定在该题上花费些许时间，但却没有任何进展。<br>
+E题因该是最需要反省的，很简单的应用，但没有找到问题的本质是要我们求什么，也因为剩余时间是在不多了，心态可能有点轻微放弃吧。<br>
+H题比较薄弱，如果前面题都挺顺利的，花点时间应该是可以突破一下<br>
+F题赛中没有看到了，挺裸的一道树剖吧，不过立方和需要推下公式。</p>
+<p>也许也许多交几次或者加个快读K就过了吧，也许多看看E的图就能发现题目的本质吧<br>
+但终究还是菜，一如既往的菜。</p>
+<p>赛后没有见到老班，可能真的令他太失望了吧。</p>
+<p>闭幕式滚榜的时候，技术支持做的很好，老师的主持也十分有趣。<br>
+平时不喜欢拍照，却有点羡慕滚榜时赛场上的队伍照片。<br>
+铜牌就能在屏幕上看到自己队伍的照片了吧。</p>
+<p>临走之前，在上大逛了一会，见了下上大的初中同学，感觉彼此都没啥变化。<br>
+想看看东方明珠，想去去陆家嘴。但去了应该也不会开心吧。</p>
+<hr>
+<p>努力点，再努力点，我不会放弃的。<br>
+因为它实在是太迷人了<br>
+赛场周围的志愿者穿梭的身影，桌面上的队伍台历，电脑旁飘着的彩色气球。<br>
+赛后滚榜的时刻，以及拿牌后的喜悦。<br>
+加油吧，&quot;So Nice Chicken , Fighting For Au&quot;</p>
 
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/CF1249F" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/LOJ10157">「LOJ10157」 皇宫守卫</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
-          树型DP
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>太平王世子事件后，陆小凤成了皇上特聘的御前一品侍卫。</p>
-<p>皇宫以午门为起点，直到后宫嫔妃们的寝宫，呈一棵树的形状，某些宫殿间可以互相望见。大内保卫森严，三步一岗，五步一哨，每个宫殿都要有人全天候看守，在不同的宫殿安排看守所需的费用不同。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/LOJ10157" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P2607">「ZJOI2008」 骑士</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-04
-      
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
-          树型DP
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Z国的骑士团是一个很有势力的组织，帮会中汇聚了来自各地的精英。他们劫富济贫，惩恶扬善，受到社会各界的赞扬。</p>
-<p>最近发生了一件可怕的事情，邪恶的Y国发动了一场针对Z国的侵略战争。战火绵延五百里，在和平环境中安逸了数百年的Z国又怎能抵挡的住Y国的军队。于是人们把所有的希望都寄托在了骑士团的身上，就像期待有一个真龙天子的降生，带领正义打败邪恶。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P2607" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/CF1247E">
+                <h3 class="post-title">
+                  「CodeForces 1247E」Rock Is Push
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://dinnerhunt.cn/images/avatar.png?v=1574667346441" class="no-responsive avatar">
@@ -438,15 +454,15 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge secondary">
           前缀和
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge warning">
           思维
         </a>
       
@@ -458,23 +474,23 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge success">
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge success">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge warning">
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge warning">
           模拟
         </a>
       
@@ -482,75 +498,75 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge success">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge secondary">
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge secondary">
           枚举
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge warning">
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge success">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge success">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge ">
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge ">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
           线性基
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge success">
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge warning">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge ">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge ">
           支配树
         </a>
       
@@ -562,11 +578,11 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
           期望概率
         </a>
       
@@ -574,11 +590,11 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
           KMP
         </a>
       
@@ -594,7 +610,7 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
           搜索
         </a>
       
@@ -606,7 +622,7 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
           图论
         </a>
       
@@ -626,23 +642,23 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge ">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge success">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
           Gridea
         </a>
       
@@ -654,6 +670,7 @@ Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of t
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
   </div>
 </div>
+
 
     </div>
 
