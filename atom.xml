@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-11-25T07:48:43.534Z</updated>
+    <updated>2019-11-25T08:00:31.767Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -16,7 +16,11 @@
         <link href="https://dinnerhunt.cn/post/2019-icpc">
         </link>
         <updated>2019-11-25T05:04:08.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
+        <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/deck.jpg" alt="图文不符"></figure>
+]]></summary>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/deck.jpg" alt="图文不符"></figure>
+<!--more-->
+<blockquote>
 <p>在熟悉的深航音乐响起后没，飞机抵达了深圳机场。窗外闪烁着的灯光，意味着今年的比赛终要告一段落了</p>
 </blockquote>
 <h3 id="今年的历程">今年的历程</h3>
@@ -62,7 +66,7 @@
 赛后提前离场了，比较失落吧。晚上老班请我们到万达吃了饭。<br>
 第二天起床便赶往了机场</p>
 </br>
-### 上海站
+<h3 id="上海站">上海站</h3>
 <p>今年能拿到上海站的资格也是挺幸运的把，擦边+CCSP竞赛<br>
 因为一些原因，行程订的挺赶的，周六前往，周日返程<br>
 飞机落地后就直接地铁来到了上海大学报道，上大的午饭非常好吃。</p>
