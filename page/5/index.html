@@ -7,7 +7,7 @@
 <meta name="description" content="So Nice Chicken">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1574669035511">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1575018772961">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -90,12 +90,72 @@
           
   <article class="article">
     <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/NC201903E">「NewCode 2019-3」 E. Big Integer</a>
+    </h2>
+    <p class="article-meta">
+      2019-07-27
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
+          数论
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>For little pupils, a very large number usually means an integer with many many digits. Let's define a class of big integers which consists only of the digit one <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>11</mn><mo>⋯</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(11 \cdots 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>. The first few integers in this class are <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>11</mn><mo separator="true">,</mo><mn>111</mn><mo separator="true">,</mo><mn>1111</mn><mo>⋯</mo></mrow><annotation encoding="application/x-tex">1, 11, 111, 1111 \cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span></span></span></span>. Denote <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">A(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>  as the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>-th smallest integer in this class. To make it even larger, we consider integers in the form of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><msup><mi>a</mi><mi>b</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">A(a^b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><br>
+. Now, given a prime number <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> , how many pairs <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(i, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>  are there such that 1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi><mo separator="true">,</mo><mtext> </mtext><mn>1</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><mi>m</mi><mo separator="true">,</mo><mtext> </mtext><mi>A</mi><mo>(</mo><msup><mi>i</mi><mi>j</mi></msup><mo>)</mo><mo>≡</mo><mn>0</mn><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\leq i \leq n,\ 1 \leq j \leq m,\ A(i^j) \equiv 0(mod \ p)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.79549em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.0746639999999998em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/NC201903E" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P2473">「SCOI2008」奖励关</a>
+    </h2>
+    <p class="article-meta">
+      2019-07-20
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+          状压DP
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>你正在玩你最喜欢的电子游戏，并且刚刚进入一个奖励关。在这个奖励关里，系统将依次随机抛出k次宝物，每次你都可以选择吃或者不吃（必须在抛出下一个宝物之前做出选择，且现在决定不吃的宝物以后也不能再吃）。</p>
+<p>宝物一共有n种，系统每次抛出这n种宝物的概率都相同且相互独立。也就是说，即使前k-1 次系统都抛出宝物1（这种情况是有可能出现的，尽管概率非常小），第k次抛出各个宝物的概率依然均为1/n。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P2473" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
       <a href="https://dinnerhunt.cn/post/LightOJ1027">「LightOJ 1027」A Dangerous Maze</a>
     </h2>
     <p class="article-meta">
       2019-07-18
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge warning">
           期望概率
         </a>
       
@@ -122,7 +182,7 @@
     <p class="article-meta">
       2019-05-19
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
           个人经历
         </a>
       
@@ -146,7 +206,7 @@
     <p class="article-meta">
       2019-05-07
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
           学习笔记
         </a>
       
@@ -171,7 +231,7 @@
     <p class="article-meta">
       2019-05-07
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
           莫比乌斯反演
         </a>
       
@@ -200,11 +260,11 @@
     <p class="article-meta">
       2019-05-07
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
           数论
         </a>
       
@@ -281,11 +341,11 @@
     <p class="article-meta">
       2019-05-05
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge warning">
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
           字符串
         </a>
       
@@ -297,64 +357,6 @@
     </p>
     <div class="row">
       <a href="https://dinnerhunt.cn/post/BZOJ3620" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P3498">「POI2010」KOR-Beads</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
-          Hash
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
-          字符串
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Zxl有一次决定制造一条项链，她以非常便宜的价格买了一长条鲜艳的珊瑚珠子，她现在也有一个机器，能把这条珠子切成很多块（子串），每块有k（k&gt;0）个珠子，如果这条珠子的长度不是k的倍数，最后一块小于k的就不要拉（nc真浪费），保证珠子的长度为正整数。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P3498" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/P5231">「JSOI2012」玄武密码</a>
-    </h2>
-    <p class="article-meta">
-      2019-05-05
-      
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
-          字符串
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
-          AC自动机
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>在美丽的玄武湖畔，鸡鸣寺边，鸡笼山前，有一块富饶而秀美的土地，人们唤作进香河。相传一日，一缕紫气从天而至，只一瞬间便消失在了进香河中。老人们说，这是玄武神灵将天书藏匿在此。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/P5231" class="readmore-link">
         <button>
           Read More
         </button>
@@ -382,7 +384,7 @@
       
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1574669035511" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1575018772961" class="no-responsive avatar">
     <div class="text-muted">So Nice Chicken</div>
     <div class="social-container">
       
@@ -404,6 +406,18 @@
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/Combinatorics">组合数学公式</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU6185">「HDU 6185」Covering</a>
+            </li>
+          
         
           
             <li>
@@ -454,15 +468,7 @@
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/BZOJ2199">「Usaco2011 Jan」奶牛议会</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P3825">「NOI2017」游戏</a>
-            </li>
           
         
           
@@ -638,15 +644,23 @@
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge warning">
           前缀和
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
           普通DP
         </a>
       
@@ -654,11 +668,11 @@
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge success">
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
           树型DP
         </a>
       
@@ -666,19 +680,19 @@
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge success">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge ">
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge warning">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge success">
           模拟
         </a>
       
@@ -686,19 +700,15 @@
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge success">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge warning">
-          组合数学
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
           构造
         </a>
       
@@ -710,7 +720,7 @@
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
           状压DP
         </a>
       
@@ -718,19 +728,19 @@
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge warning">
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge warning">
           原根
         </a>
       
@@ -742,11 +752,11 @@
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge success">
           DFS
         </a>
       
@@ -754,7 +764,7 @@
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge success">
           支配树
         </a>
       
@@ -762,23 +772,23 @@
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
           莫比乌斯反演
         </a>
       
@@ -786,47 +796,47 @@
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge success">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge success">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge success">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge warning">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge success">
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
           二分图
         </a>
       
@@ -834,11 +844,7 @@
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
-          矩阵乘法
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
           计算几何
         </a>
       
@@ -846,7 +852,7 @@
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
           Gridea
         </a>
       
