@@ -7,7 +7,7 @@
 <meta name="description" content="So Nice Chicken">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1575018772961">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1575172211803">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -92,14 +92,15 @@
             <p class="article-meta">
               2019-11-29
               
-                <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+                <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
                   template
                 </a>
               
             </p>
             
             <div class="post-content">
-              <pre><code class="language-cpp">#include&lt;iostream&gt;
+              <p>整型版本</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
 #include&lt;cstring&gt;
@@ -111,15 +112,14 @@
 #include &lt;map&gt;
 using namespace std;
 typedef long long ll;
-const int inf = 0x3f3f3f3f;
+const int inf = 2e9;
 const int maxd = 5e3+10;
 struct Edge
 {
     int to, rev;
     int flow, cost;;
 };
-
-int n, m, k;
+int num;
 vector&lt;Edge&gt; edge[maxd];
 int h[maxd];
 int dis[maxd];
@@ -133,14 +133,14 @@ void add(int u, int v, int flow, int cost)
 typedef pair&lt;int,int&gt; P;
 void min_cost_flow(int s, int t, int&amp; min_cost, int&amp; max_flow)
 {
-    fill(h + 1, h + 1 + n, 0);
+    fill(h + 1, h + 1 + num, 0);
     min_cost = max_flow = 0;
     int tot = inf;
     while (tot &gt; 0)
     {
         priority_queue&lt;P, vector&lt;P&gt;, greater&lt;P&gt; &gt; q;
-        memset(dis, inf, sizeof(dis));
-        dis[s] = 0;q.push(pair&lt;int,int&gt;(0,s));
+        fill(dis, dis + 1 +  num, inf);
+        dis[s] = 0;q.push(P(0,s));
         while (!q.empty())
         {
             int u = q.top().second;
@@ -160,7 +160,8 @@ void min_cost_flow(int s, int t, int&amp; min_cost, int&amp; max_flow)
             }
         }
         if (dis[t] == inf)break;
-        for (int i = 1;i &lt;= n;i++) h[i] += dis[i];
+        //这里要注意点的范围
+        for (int i = 0;i &lt;= num;i++) h[i] += dis[i];
         int flow = tot;
         for (int i = t; i != s; i = pre_node[i])
             flow = min(flow, edge[pre_node[i]][pre_edge[i]].flow);
@@ -177,21 +178,126 @@ void min_cost_flow(int s, int t, int&amp; min_cost, int&amp; max_flow)
 }
 void init()
 {
-    for(int i=1;i&lt;=n+n+3;i++) edge[i].clear();
+    for(int i=1;i&lt;=num;i++) edge[i].clear();
 }
-int arr[maxd];
 int main()
 {
-    int s, t , T;
+    int s, t ,n,m, T;
     scanf(&quot;%d&quot;,&amp;T);
     while(T--)
     {
-        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);init();
-
+        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);s = 0, t= n+1, num= t; init();
         int min_cost, max_flow;
         min_cost_flow(s, t, min_cost, max_flow);
         printf(&quot;%d\n&quot;, min_cost);
 
+    }
+    return 0;
+}
+</code></pre>
+<p>浮点型版本</p>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+typedef long long ll;
+const int inf = 0x3f3f3f3f;
+const int maxd = 205;
+const double eps = 0.000001;
+struct Edge
+{
+    int to, rev;
+    int flow;
+    double cost;
+};
+
+int num; // 默认点的范围从0开始，num为最大点数
+vector&lt;Edge&gt; edge[maxd];
+double h[maxd],dis[maxd];
+int pre_node[maxd], pre_edge[maxd];
+
+void add(int u, int v, int flow, double cost)
+{
+    edge[u].push_back((Edge){ v,(int)edge[v].size(),flow,cost });
+    edge[v].push_back((Edge){ u,(int)edge[u].size() - 1,0,-cost });
+
+}
+typedef pair&lt;double,int&gt; P;
+void min_cost_flow(int s, int t, double&amp; min_cost, int&amp; max_flow)
+{
+    fill(h, h + num+1, 0.0);
+    min_cost = 0.0 ; max_flow = 0.0;
+    int tot = inf;
+    while (tot &gt; 0)
+    {
+        priority_queue&lt;P, vector&lt;P&gt;, greater&lt;P&gt; &gt; q;
+        fill(dis, dis + num +1, inf);
+        dis[s] = 0.0; q.push(P( dis[s],s));
+        while (!q.empty())
+        {
+            int u = q.top().second;
+            int dist = q.top().first;
+            q.pop();
+            if (dis[u] &lt; dist)continue;
+            for (int i = 0;i &lt; edge[u].size(); i++)
+            {
+                Edge e = edge[u][i];
+                if (e.flow &gt; 0 &amp;&amp; dis[e.to] - (dis[u] + e.cost + h[u] - h[e.to]) &gt;= eps )
+                {
+
+                    dis[e.to] = dis[u] +e.cost + h[u] - h[e.to];
+                    pre_node[e.to] = u;
+                    pre_edge[e.to] = i;
+                    q.push(P(dis[e.to],e.to ));
+
+                }
+            }
+        }
+
+        if (fabs(dis[t] - inf) &lt;= eps) return;
+        //  这里注意点的范围
+        for (int i = 0;i &lt;= num;i++) {
+            h[i] += dis[i];
+            printf(&quot;%lf &quot;,dis[i]);
+        }
+        putchar(10);
+        int flow = tot;
+        for (int i = t; i != s; i = pre_node[i])
+            flow = min(flow, edge[pre_node[i]][pre_edge[i]].flow);
+
+        for (int i = t; i != s; i = pre_node[i])
+        {
+            Edge&amp; e = edge[pre_node[i]][pre_edge[i]];
+            e.flow -= flow;
+            edge[i][e.rev].flow += flow;
+        }
+        tot -= flow;
+        max_flow += flow;
+        min_cost += flow * h[t];
+
+        //printf(&quot;%d %lf %d %lf %d %lf\n&quot;,tot,dis[t],flow,min_cost,t,h[t]);
+    }
+}
+void init()
+{
+    for(int i=0;i&lt;=num;i++) edge[i].clear();
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int s,t,n,m,T;
+
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        int max_flow = 0; double min_cost = 0;
+        scanf(&quot;%d %d&quot;,&amp;n,&amp;m); s=0,t=n+1,num = t;init();
+        min_cost_flow(s,t,min_cost,max_flow);
+        printf(&quot;%lf\n&quot;,1.0 - exp(-min_cost));
     }
     return 0;
 }
@@ -208,7 +314,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1575018772961" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1575172211803" class="no-responsive avatar">
     <div class="text-muted">So Nice Chicken</div>
     <div class="social-container">
       
@@ -230,6 +336,24 @@ int main()
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU6184">「HDU 6184」Counting Stars</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU5985">「HDU 5985」Lucky Coins </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/HDU5988">「HDU 5988」Coding Contest</a>
+            </li>
+          
         
           
             <li>
@@ -274,21 +398,9 @@ int main()
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1236E">「CodeForces 1236E」Alice and the Unfair Game</a>
-            </li>
-          
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1250E">「CodeForces 1250E」 The Coronation</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1239D">「CodeForces 1239D」Catowice City</a>
-            </li>
           
         
           
@@ -468,27 +580,39 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge secondary">
+          三元环
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge secondary">
+          最小费用最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge ">
           前缀和
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge secondary">
           思维
         </a>
       
@@ -496,23 +620,23 @@ int main()
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge ">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge ">
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge secondary">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
           并查集
         </a>
       
@@ -520,23 +644,23 @@ int main()
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge ">
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge ">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge warning">
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge ">
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge secondary">
           枚举
         </a>
       
@@ -544,15 +668,15 @@ int main()
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
           数位DP
         </a>
       
@@ -560,15 +684,15 @@ int main()
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge warning">
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge warning">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
           线性基
         </a>
       
@@ -576,51 +700,47 @@ int main()
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge ">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge warning">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge ">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge warning">
-          期望概率
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
           字符串
         </a>
       
@@ -628,23 +748,23 @@ int main()
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge warning">
           图论
         </a>
       
@@ -660,23 +780,23 @@ int main()
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge ">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
           Gridea
         </a>
       

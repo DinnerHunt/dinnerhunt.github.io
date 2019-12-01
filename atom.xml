@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-11-29T09:12:57.982Z</updated>
+    <updated>2019-12-01T03:50:17.102Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,321 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「HDU 6184」Counting Stars]]></title>
+        <id>https://dinnerhunt.cn/post/HDU6184</id>
+        <link href="https://dinnerhunt.cn/post/HDU6184">
+        </link>
+        <updated>2019-12-01T03:44:38.000Z</updated>
+        <summary type="html"><![CDATA[<p>Little A is an astronomy lover, and he has found that the sky was so beautiful!</p>
+<p>So he is counting stars now!</p>
+<p>There are n stars in the sky, and little A has connected them by m non-directional edges.</p>
+<p>It is guranteed that no edges connect one star with itself, and every two edges connect different pairs of stars.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Little A is an astronomy lover, and he has found that the sky was so beautiful!</p>
+<p>So he is counting stars now!</p>
+<p>There are n stars in the sky, and little A has connected them by m non-directional edges.</p>
+<p>It is guranteed that no edges connect one star with itself, and every two edges connect different pairs of stars.</p>
+<!--more-->
+<p>Now little A wants to know that how many different &quot;A-Structure&quot;s are there in the sky, can you help him?</p>
+<p>An &quot;A-structure&quot; can be seen as a non-directional subgraph G, with a set of four nodes V and a set of five edges E.</p>
+<p>If V=(A,B,C,D) and E=(AB,BC,CD,DA,AC), we call G as an &quot;A-structure&quot;.</p>
+<p>It is defined that &quot;A-structure&quot; G1=V1+E1 and G2=V2+E2 are same only in the condition that V1=V2 and E1=E2.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/HDU-6184">「HDU 6184」Counting Stars</a></p>
+<h4 id="题解">题解</h4>
+<p>给定的图可以看成是两个共单边的三元环<br>
+所以题目转化为求三元环的方案数<br>
+统计每条边被多少三元环覆盖，计为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">cnt[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span><br>
+通过组合排列，可得到答案为</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><munderover><mo>∑</mo><mi>i</mi><mi>n</mi></munderover><msubsup><mi>C</mi><mrow><mi>c</mi><mi>n</mi><mi>t</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">ans = \sum_i^n C_{cnt[i]}^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-2.428em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">t</span><span class="mopen mtight">[</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">]</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4469999999999999em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 2e5+10;
+int d[maxd],vis[maxd],cnt[maxd],n,m;
+typedef pair&lt;int,int&gt; P;
+vector&lt;P&gt; G[maxd],e;
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
+    {
+        for (int i = 1; i &lt;= m; i++)
+        {
+            int u,v;scanf(&quot;%d %d&quot;, &amp;u, &amp;v);
+            e.push_back(P(u,v));
+            ++d[u], ++d[v];
+        }
+        for (int i = 0; i &lt; m; i++)
+        {
+            int u = e[i].first, v = e[i].second;
+            if (d[u] &lt; d[v] || (d[u] == d[v] &amp;&amp; u &gt; v)) swap(u, v);
+
+            G[u].push_back(P(v, i+1));
+        }
+        for (int i = 1; i &lt;= n; i++)
+        {
+            for (P u:G[i]) vis[u.first] = u.second;
+            for (P u:G[i])
+                for (P v:G[u.first])
+                    if (vis[v.first])
+                        ++cnt[v.second], ++cnt[u.second], ++cnt[vis[v.first]];
+
+            for (P u:G[i]) vis[u.first] = 0;
+        }
+        long long ans = 0ll;
+        for (int i = 1; i &lt;= m; i++)
+        {
+            ans += 1ll * cnt[i] * (cnt[i] - 1) / 2;
+            cnt[i] = 0;
+        }
+
+        for(int i=1;i&lt;=n;i++) G[i].clear(),d[i] = 0; e.clear();
+        printf(&quot;%lld\n&quot;, ans);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「HDU 5985」Lucky Coins ]]></title>
+        <id>https://dinnerhunt.cn/post/HDU5985</id>
+        <link href="https://dinnerhunt.cn/post/HDU5985">
+        </link>
+        <updated>2019-11-30T06:16:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>Bob has collected a lot of coins in different kinds. He wants to know which kind of coins is lucky. He finds out a lucky kind of coins by the following way. He tosses all the coins simultaneously, and then removes the coins that come up tails. He then tosses all the remaining coins and removes the coins that come up tails. He repeats the previous step until there is one kind of coins remaining or there are no coins remaining. If there is one kind of coins remaining, then this kind of coins is lucky. Given the number of coins and the probability that the coins come up heads after tossing for each kind, your task is to calculate the probability for each kind of coins that will be lucky.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Bob has collected a lot of coins in different kinds. He wants to know which kind of coins is lucky. He finds out a lucky kind of coins by the following way. He tosses all the coins simultaneously, and then removes the coins that come up tails. He then tosses all the remaining coins and removes the coins that come up tails. He repeats the previous step until there is one kind of coins remaining or there are no coins remaining. If there is one kind of coins remaining, then this kind of coins is lucky. Given the number of coins and the probability that the coins come up heads after tossing for each kind, your task is to calculate the probability for each kind of coins that will be lucky.</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/HDU-5985">「HDU 5985」Lucky Coins </a></p>
+<h4 id="题解">题解</h4>
+<p>第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>种硬币,有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>n</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">n_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>枚，前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>次以内全部反面的概率为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>i</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo><mo>=</mo><mo>(</mo><mn>1</mn><mo>−</mo><msubsup><mi>p</mi><mi>i</mi><mi>k</mi></msubsup><msup><mo>)</mo><msub><mi>n</mi><mi>i</mi></msub></msup></mrow><annotation encoding="application/x-tex">die[i][k] = (1-p_i^k)^{n_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.107772em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>p</mi><mi>i</mi><mi>k</mi></msubsup></mrow><annotation encoding="application/x-tex">p_i^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.107772em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span></span></span></span> 表示这个硬币抛<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>次全都正面的概率，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>−</mo><msubsup><mi>p</mi><mi>i</mi><mi>k</mi></msubsup></mrow><annotation encoding="application/x-tex">1-p_i^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.107772em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span></span></span></span> 表示至少出现一次反面的概率<br>
+然后 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>d</mi><mi>i</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">live[i][k] = 1 - die[i][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> ,表示前第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>种硬币<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>次至少有一枚没有全部反面的概率<br>
+那么第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>枚硬币的答案等于</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mn>200</mn></munderover><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mi>k</mi><mo>!</mo><mo>=</mo><mi>i</mi></mrow><mi>n</mi></munderover><mo>(</mo><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>−</mo><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo>]</mo><mo>)</mo><mo>×</mo><mi>d</mi><mi>i</mi><mi>e</mi><mo>[</mo><mi>k</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">ans[i] = \sum_{j=1}^{200} \sum_{k=1,k!=i}^n (live[i][j] - live[i][j+1]) \times die[k][j]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.2393340000000004em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011130000000004em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4137769999999998em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">!</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight">i</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></span></p>
+<p>表示第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>轮存活的概率加上其他所有硬币前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>轮抛弃的概率,然后答案就是每一轮存活概率的总和</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+using namespace std;
+const int maxd = 205;
+int n,m,t;
+int a[11];
+double b[11];
+double die[11][maxd],live[11][maxd];
+double pow(double x,int y)
+{
+    double now = 1.0;
+    while(y)
+    {
+        if(y%2 == 1) now *= x;
+        x = x * x;
+        y/=2;
+    }
+    return now;
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        scanf(&quot;%d&quot;,&amp;n);
+        for(int i=1;i&lt;=n;i++) scanf(&quot;%d %lf&quot;,&amp;a[i],&amp;b[i]);
+        if(n == 1)
+        {
+            printf(&quot;1.000000\n&quot;);
+            continue;
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            for(int j=1;j&lt;=201;j++)
+            {
+                double k = pow(b[i],j);
+                k = 1.0 - k;
+
+                die[i][j] = pow(k,a[i]);
+                live[i][j] = 1.0 - die[i][j];
+            }
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            double ans = 0.0;
+            for(int j=1;j&lt;=200;j++)
+            {
+                double now = live[i][j] - live[i][j+1];
+                for(int k=1;k&lt;=n;k++)
+                {
+                    if(i == k) continue;
+                    now *= die[k][j];
+                }
+                ans += now;
+            }
+            printf(&quot;%.6lf&quot;,ans);
+            if(i!=n) putchar(' ');
+        }
+        putchar(10);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「HDU 5988」Coding Contest]]></title>
+        <id>https://dinnerhunt.cn/post/HDU5988</id>
+        <link href="https://dinnerhunt.cn/post/HDU5988">
+        </link>
+        <updated>2019-11-29T14:12:14.000Z</updated>
+        <summary type="html"><![CDATA[<p>A coding contest will be held in this university, in a huge playground. The whole playground would be divided into N blocks, and there would be M directed paths linking these blocks. The i-th path goes from the ui-th block to the vi-th block. Your task is to solve the lunch issue. According to the arrangement, there are si competitors in the i-th block. Limited to the size of table, bi bags of lunch including breads, sausages and milk would be put in the i-th block. As a result, some competitors need to move to another block to access lunch. However, the playground is temporary, as a result there would be so many wires on the path.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>A coding contest will be held in this university, in a huge playground. The whole playground would be divided into N blocks, and there would be M directed paths linking these blocks. The i-th path goes from the ui-th block to the vi-th block. Your task is to solve the lunch issue. According to the arrangement, there are si competitors in the i-th block. Limited to the size of table, bi bags of lunch including breads, sausages and milk would be put in the i-th block. As a result, some competitors need to move to another block to access lunch. However, the playground is temporary, as a result there would be so many wires on the path.</p>
+<!--more-->
+<p>For the i-th path, the wires have been stabilized at first and the first competitor who walker through it would not break the wires. Since then, however, when a person go through the i - th path, there is a chance of pi to touch<br>
+the wires and affect the whole networks. Moreover, to protect these wires, no more than ci competitors are allowed to walk through the i-th path.<br>
+Now you need to find a way for all competitors to get their lunch, and minimize the possibility of network crashing.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5988">「HDU 5988」Coding Contest</a></p>
+<h4 id="题解">题解</h4>
+<p>按最小费用最大流建边<br>
+然后因为概率是乘法，但是费用流部分统计答案用的是加法，所以先取个对数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>∗</mo><mi>y</mi><mo>=</mo><mi>e</mi><mi>x</mi><mi>p</mi><mo>(</mo><mi>l</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>l</mi><mi>n</mi><mo>(</mo><mi>y</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">x * y = exp(lg(x) + ln(y))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span> 等于对数的数加，然后再跑费用流</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+typedef long long ll;
+const int inf = 0x3f3f3f3f;
+const int maxd = 205;
+const double eps = 0.000001;
+struct Edge
+{
+    int to, rev;
+    int flow;
+    double cost;
+};
+
+int num; // 默认点的范围从0开始，num为最大点数
+vector&lt;Edge&gt; edge[maxd];
+double h[maxd],dis[maxd];
+int pre_node[maxd], pre_edge[maxd];
+
+void add(int u, int v, int flow, double cost)
+{
+    edge[u].push_back((Edge){ v,(int)edge[v].size(),flow,cost });
+    edge[v].push_back((Edge){ u,(int)edge[u].size() - 1,0,-cost });
+
+}
+typedef pair&lt;double,int&gt; P;
+void min_cost_flow(int s, int t, double&amp; min_cost, int&amp; max_flow)
+{
+    fill(h, h + num+1, 0.0);
+    min_cost = 0.0 ; max_flow = 0.0;
+    int tot = inf;
+    while (tot &gt; 0)
+    {
+        priority_queue&lt;P, vector&lt;P&gt;, greater&lt;P&gt; &gt; q;
+        fill(dis, dis + num +1, inf);
+        dis[s] = 0.0; q.push(P( dis[s],s));
+        while (!q.empty())
+        {
+            int u = q.top().second;
+            int dist = q.top().first;
+            q.pop();
+            if (dis[u] &lt; dist)continue;
+            for (int i = 0;i &lt; edge[u].size(); i++)
+            {
+                Edge e = edge[u][i];
+                if (e.flow &gt; 0 &amp;&amp; dis[e.to] - (dis[u] + e.cost + h[u] - h[e.to]) &gt;= eps )
+                {
+
+                    dis[e.to] = dis[u] +e.cost + h[u] - h[e.to];
+                    pre_node[e.to] = u;
+                    pre_edge[e.to] = i;
+                    q.push(P(dis[e.to],e.to ));
+
+                }
+            }
+        }
+
+        if (fabs(dis[t] - inf) &lt;= eps) return;
+        //  这里注意点的范围
+        for (int i = 0;i &lt;= num;i++) {
+            h[i] += dis[i];
+            //printf(&quot;%lf &quot;,dis[i]);
+        }
+        //putchar(10);
+        int flow = tot;
+        for (int i = t; i != s; i = pre_node[i])
+            flow = min(flow, edge[pre_node[i]][pre_edge[i]].flow);
+
+        for (int i = t; i != s; i = pre_node[i])
+        {
+            Edge&amp; e = edge[pre_node[i]][pre_edge[i]];
+            e.flow -= flow;
+            edge[i][e.rev].flow += flow;
+        }
+        tot -= flow;
+        max_flow += flow;
+        min_cost += flow * h[t];
+
+        //printf(&quot;%d %lf %d %lf %d %lf\n&quot;,tot,dis[t],flow,min_cost,t,h[t]);
+    }
+}
+void init()
+{
+    for(int i=0;i&lt;=num;i++) edge[i].clear();
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int s,t,T;
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        int n,m;
+        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);init();
+        s = 0, t = n+1; num =  t;
+        for(int i=1;i&lt;=n;i++)
+        {
+            int a,b;scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+            int x=min(a,b);
+            a-=x,b-=x;
+            if(a&gt;0) add(s,i,a,0);
+            else if(b&gt;0) add(i,t,b,0);
+            //printf(&quot;%d %d %d\n&quot;,a,b,a-b);
+        }
+        for(int i=1;i&lt;=m;i++)
+        {
+            int a,b,c; double d;
+            scanf(&quot;%d %d %d %lf&quot;,&amp;a,&amp;b,&amp;c,&amp;d);
+            if(c) add(a,b,1,0);
+            if(c&gt;1)add(a,b,c-1,-1*log(1.0-d));
+        }
+        double min_cost = 0.0;
+        int max_flow= 0;
+        min_cost_flow(s,t,min_cost,max_flow);
+        printf(&quot;%.2lf\n&quot;,1.0 - exp(-1.0 * min_cost));
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[组合数学公式]]></title>
         <id>https://dinnerhunt.cn/post/Combinatorics</id>
@@ -593,319 +908,6 @@ int main()
     for(int i=1;i&lt;=n;i++)
         printf(&quot;%lld &quot;,ans[i]);
 
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1236E」Alice and the Unfair Game]]></title>
-        <id>https://dinnerhunt.cn/post/CF1236E</id>
-        <link href="https://dinnerhunt.cn/post/CF1236E">
-        </link>
-        <updated>2019-10-28T17:46:20.000Z</updated>
-        <summary type="html"><![CDATA[<p>Alice is playing a game with her good friend, Marisa.</p>
-<p>There are 𝑛 boxes arranged in a line, numbered with integers from 1 to 𝑛 from left to right. Marisa will hide a doll in one of the boxes. Then Alice will have 𝑚 chances to guess where the doll is. If Alice will correctly guess the number of box, where doll is now, she will win the game, otherwise, her friend will win the game.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Alice is playing a game with her good friend, Marisa.</p>
-<p>There are 𝑛 boxes arranged in a line, numbered with integers from 1 to 𝑛 from left to right. Marisa will hide a doll in one of the boxes. Then Alice will have 𝑚 chances to guess where the doll is. If Alice will correctly guess the number of box, where doll is now, she will win the game, otherwise, her friend will win the game.</p>
-<!--more-->
-<p>In order to win, Marisa will use some unfair tricks. After each time Alice guesses a box, she can move the doll to the neighboring box or just keep it at its place. Boxes 𝑖 and 𝑖+1 are neighboring for all 1≤𝑖≤𝑛−1. She can also use this trick once before the game starts.</p>
-<p>So, the game happens in this order: the game starts, Marisa makes the trick, Alice makes the first guess, Marisa makes the trick, Alice makes the second guess, Marisa makes the trick, …, Alice makes 𝑚-th guess, Marisa makes the trick, the game ends.</p>
-<p>Alice has come up with a sequence 𝑎1,𝑎2,…,𝑎𝑚. In the 𝑖-th guess, she will ask if the doll is in the box 𝑎𝑖. She wants to know the number of scenarios (𝑥,𝑦) (for all 1≤𝑥,𝑦≤𝑛), such that Marisa can win the game if she will put the doll at the 𝑥-th box at the beginning and at the end of the game, the doll will be at the 𝑦-th box. Help her and calculate this number.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/1236/E">「CodeForces 1236E」Alice and the Unfair Game</a></p>
-<h4 id="题解">题解</h4>
-<p><a href="https://www.cnblogs.com/bxd123/p/11699162.html">代码理解来至</a><br>
-很抽象，上面题解讲的很好，考虑画图理解一下</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;map&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5;
-
-int a[maxd*3+10],n,m,l[maxd*3+10],r[maxd*3+10];
-//3倍方便处理左右
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n,m;scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    if(n==1){printf(&quot;0\n&quot;); return 0;}
-    for(int i=1;i&lt;=m;i++) scanf(&quot;%d&quot;,&amp;a[i]);
-    for(int i=m;i&gt;=1;i--)
-    {
-        l[i+a[i]+maxd] = l[i+a[i]+1+maxd] +1;
-        r[a[i]-i+maxd] = r[a[i]-i-1+maxd] +1;
-    }
-    long long ans = 0ll;
-    for(int i=1;i&lt;=n;i++)
-    {
-        int ll = max(1,i-(m+1)+l[i+maxd]);
-        int rr = min(n,i+(m+1)-r[i+maxd]);
-        ans += 1ll * (rr-ll+1);
-    }
-    printf(&quot;%lld\n&quot;,ans);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1250E」 The Coronation]]></title>
-        <id>https://dinnerhunt.cn/post/CF1250E</id>
-        <link href="https://dinnerhunt.cn/post/CF1250E">
-        </link>
-        <updated>2019-10-28T17:33:56.000Z</updated>
-        <summary type="html"><![CDATA[<p>The coronation of King Berl XXII is soon! The whole royal family, including 𝑛 daughters of Berl XXII, will be present.</p>
-<p>The King has ordered his jeweler to assemble 𝑛 beautiful necklaces, so each of the princesses could wear exactly one necklace during the ceremony — and now these necklaces are finished. Each necklace consists of 𝑚 gems attached to a gold chain. There are two types of gems used in the necklaces — emeralds and sapphires. So, each necklace can be represented by a sequence of 𝑚 gems (listed from left to right), and each gem is either an emerald or a sapphire. Formally, the 𝑖-th necklace can be represented by a binary string 𝑠𝑖 of length 𝑚; if the 𝑗-th character of 𝑠𝑖 is 0, then the 𝑗-th gem in the 𝑖-th necklace is an emerald; otherwise, this gem is a sapphire.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>The coronation of King Berl XXII is soon! The whole royal family, including 𝑛 daughters of Berl XXII, will be present.</p>
-<p>The King has ordered his jeweler to assemble 𝑛 beautiful necklaces, so each of the princesses could wear exactly one necklace during the ceremony — and now these necklaces are finished. Each necklace consists of 𝑚 gems attached to a gold chain. There are two types of gems used in the necklaces — emeralds and sapphires. So, each necklace can be represented by a sequence of 𝑚 gems (listed from left to right), and each gem is either an emerald or a sapphire. Formally, the 𝑖-th necklace can be represented by a binary string 𝑠𝑖 of length 𝑚; if the 𝑗-th character of 𝑠𝑖 is 0, then the 𝑗-th gem in the 𝑖-th necklace is an emerald; otherwise, this gem is a sapphire.</p>
-<!--more-->
-<p>Now, looking at the necklaces, the King is afraid that some of his daughters may envy the other daughters' necklaces. He wants all necklaces to look similar. Two necklaces are considered similar if there are at least 𝑘 positions where these necklaces contain the same type of gems.</p>
-<p>For example, if there is a necklace represented by a sequence 01010111 and a necklace represented by a sequence 01100000, then there are 3 positions where these necklaces contain the same type of gems (both first gems are emeralds, both second gems are sapphires, and both fifth gems are emeralds). So if 𝑘=3, these necklaces are similar, and if 𝑘=4, they are not similar.</p>
-<p>The King thinks that if two of his daughters notice that their necklaces are not similar, then they may have a conflict — and, obviously, he doesn't want any conflicts during the coronation! So Berl XXII wants to tell some of his daughters to wear their necklaces backward. If a necklace is worn backward, then the sequence of gems in this necklace is reversed. For example, if a necklace is represented by a sequence 01100, then, if worn backward, it would be represented by a sequence 00110. The King wants to find the minimum number of necklaces to be worn backward during the coronation so that there are no conflicts.</p>
-<p>Berl XXII is too busy with preparation for the coronation, so he ordered you to resolve this issue for him. Help him — and he will give you a truly royal reward!</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/1250/E">「CodeForces 1250E」 The Coronation</a></p>
-<h4 id="题解">题解</h4>
-<p>2-SAT的模型，考虑并查集<br>
-因为所有点都是对立的，所以我们可以用并查集维护连通块中反转的数量<br>
-然后枚举每个点，选择块中反转数量小的点</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd= 1e3+10;
-int n,m,k;
-int fa[maxd],sz[maxd],vis[maxd];
- 
-long long a[maxd];
-char str[maxd];
-void init()
-{
-    for(int i=1;i&lt;=n*2;i++) fa[i] = i,vis[i] = 0,a[i]=0;
-    for(int i=n+1;i&lt;=n*2;i++) sz[i] = 1;
-    for(int i=1;i&lt;=n;i++) sz[i]=0;
-}
-void print(long long x)
-{
-    for(int i=0;i&lt;m;i++)
-        printf(&quot;%d&quot;,(int)(((1ll &lt;&lt; i)&amp;x)&gt;0));
-    putchar(10);
-}
-bool check(long long x,long long y)
-{
- 
-    long long z = x ^ y;
-    int now = 0;
-    for(int i=0;i&lt;m;i++)
-        if(((1ll &lt;&lt; i)&amp;z) == 0) now++;
-    if(now &lt; k) return true;
-    return false;
-}
-int gf(int x)
-{
-    if(fa[x] == x) return x;
-    return fa[x] = gf(fa[x]);
-}
-void insert(int x,int y)
-{
-    if(gf(x) != gf(y))
-    {
-        sz[gf(y)] += sz[gf(x)];
-        fa[gf(x)] = gf(y);
-    }
-}
-void solve()
-{
-    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;k);
-    init();
-    for(int i=1;i&lt;=n;i++) 
-    {
-        scanf(&quot;%s&quot;,str);
-        for(int j=0;str[j];j++)  
-        {
-            a[i] |= ( (1ll *(str[j]=='1') )&lt;&lt; j);
-            a[i+n] |= ( (1ll * (str[j]=='1') )&lt;&lt; (m-j-1));
-        }
-    }
-    //for(int i=1;i&lt;=n*2;i++) printf(&quot;%d %d\n&quot;,gf(i),sz[gf(i)]);
-    for(int i=1;i&lt;=n;i++)
-        for(int j=i+1;j&lt;=n;j++)
-        {
-            bool aa = 0,bb = 0;
-            if(check(a[i],a[j])) 
-            {
-                aa = 1;
-                insert(i,j+n);
-                insert(j,i+n);
-            }
-            if(check(a[i],a[j+n])) 
-            {
-                bb =1;
-                insert(i,j);
-                insert(j+n,i+n);
-            }
-       }
-    //for(int i=1;i&lt;=n*2;i++) printf(&quot;%d %d\n&quot;,gf(i),sz[gf(i)]);
-    vector&lt;int&gt; ans;
-    for(int i=1;i&lt;=n;i++)
-    {
-        if(gf(i) == gf(i+n))
-        {
-            printf(&quot;-1\n&quot;);
-            return;
-        }
-        else if(vis[gf(i)]); 
-        else if(vis[gf(i+n)]) ans.push_back(i);
-        else if(sz[gf(i)] &gt; sz[gf(i+n)])
-        {
-            vis[gf(i+n)] = 1;
-            ans.push_back(i);
-        }
-        else vis[gf(i)] = 1;
-    }
-    printf(&quot;%lu\n&quot;,ans.size());
-    for(int i=0;i&lt;ans.size();i++) printf(&quot;%d &quot;,ans[i]);
-    printf(&quot;\n&quot;);
-}
-int main()
-{
-     // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-     // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t;scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        solve();
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1239D」Catowice City]]></title>
-        <id>https://dinnerhunt.cn/post/CF1239D</id>
-        <link href="https://dinnerhunt.cn/post/CF1239D">
-        </link>
-        <updated>2019-10-28T07:40:13.000Z</updated>
-        <summary type="html"><![CDATA[<p>In the Catowice city next weekend the cat contest will be held. However, the jury members and the contestants haven't been selected yet. There are 𝑛 residents and 𝑛 cats in the Catowice, and each resident has exactly one cat living in his house. The residents and cats are numbered with integers from 1 to 𝑛, where the 𝑖-th cat is living in the house of 𝑖-th resident.</p>
-<p>Each Catowice resident is in friendship with several cats, including the one living in his house. In order to conduct a contest, at least one jury member is needed and at least one cat contestant is needed. Of course, every jury member should know none of the contestants. For the contest to be successful, it's also needed that the number of jury members plus the number of contestants is equal to 𝑛.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>In the Catowice city next weekend the cat contest will be held. However, the jury members and the contestants haven't been selected yet. There are 𝑛 residents and 𝑛 cats in the Catowice, and each resident has exactly one cat living in his house. The residents and cats are numbered with integers from 1 to 𝑛, where the 𝑖-th cat is living in the house of 𝑖-th resident.</p>
-<p>Each Catowice resident is in friendship with several cats, including the one living in his house. In order to conduct a contest, at least one jury member is needed and at least one cat contestant is needed. Of course, every jury member should know none of the contestants. For the contest to be successful, it's also needed that the number of jury members plus the number of contestants is equal to 𝑛.</p>
-<!--more-->
-<p>Please help Catowice residents to select the jury and the contestants for the upcoming competition, or determine that it's impossible to do.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/1239/D">「CodeForces 1239D」Catowice City</a></p>
-<h4 id="题解">题解</h4>
-<p>第i个人，肯定认识第i只猫，又因为必须选的人和猫总数为n，所以该问题可以抽象成2-sat问题<br>
-考虑建边，如果i认识第j只猫，那么选了i人必须选j人，因为无法选j猫，同理连上 j猫和i猫的边<br>
-(i -&gt; j) 与 ( j' -&gt; i')<br>
-我们发现，人不会有到猫的边，并且猫的边与人的边是相反的，所以强联通缩点后构成的DAG一定也是相反的，我们考虑构造出一个选法，使得至少一个人，一个猫<br>
-我们考虑从人的图中选出无入边的一个连通块，那么该连通块在猫图中，一定无出边，所以不会产生互斥反应<br>
-接着考虑无解情况，很显然当且近当存在两个连通块时，无解</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;iostream&gt;
-using namespace std;
-const int maxd = 2e6+10;
-struct edge 
-{
-    int v, net;
-} e[maxd&lt;&lt;1];
-int f[maxd], eid;
-
-void insert(int a,int b)
-{
-    e[eid].v = b;
-    e[eid].net = f[a];
-    f[a] = eid++;
-}
-int dfn[maxd], low[maxd],idx = 0;
-int belong[maxd], scc = 0; 
-int s[maxd], top = 0,n,m,sz[2],ans[maxd]; 
-bool in_stack[maxd];
-void init(int n)
-{
-    fill(f,f+1+n,-1);
-    fill(dfn,dfn+1+n,0);
-    sz[1] =sz[0] = scc = idx = eid = 0;
-}
-void tarjan(int u) 
-{
-    dfn[u] = low[u] = ++idx;
-    s[top++] = u;
-    in_stack[u] = true;
-    for (int i = f[u]; i != -1; i = e[i].net) 
-    {
-        int v = e[i].v;
-        if (!dfn[v]) 
-        {
-            tarjan(v);
-            low[u] = min(low[u], low[v]);
-        } 
-        else if (in_stack[v])
-            low[u] = min(low[u], dfn[v]);
-    }
-    if(dfn[u] == low[u]) 
-    {
-        ++scc;
-        do 
-        {
-            belong[s[--top]] = scc;
-            in_stack[s[top]] = false;
-        } while (s[top] != u);
-    }
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t; scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-        init(n*2);
-        for(int i=1;i&lt;=m;i++)
-        {
-            int x,y; scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
-            if(x == y) continue;
-            insert(x,y),insert(y+n,x+n);
-        }
-        for(int i=1;i&lt;=2*n;i++)
-            if(!dfn[i]) tarjan(i);
-        // for(int i=1;i&lt;=2*n;i++)
-        // {
-        //     printf(&quot;%d %d\n&quot;,i,belong[i]);
-        // }
-        if(scc == 2)
-        {
-            printf(&quot;No\n&quot;);
-            continue;
-        }
-        int now = 1;
-        for(int i=1;i&lt;=n;i++)
-            if(belong[i] == 1) now=0;
-        for(int i=1;i&lt;=n;i++)
-        {
-            if(belong[i+now*n] == 1) ans[i] = now,sz[now]++;
-            else sz[now^1]++, ans[i]=now^1;
-        }
-        printf(&quot;Yes\n%d %d\n&quot;,sz[0],sz[1]);
-        for(int i=1;i&lt;=n;i++) if(!ans[i]) printf(&quot;%d &quot;,i);
-        putchar(10);
-        for(int i=1;i&lt;=n;i++) if(ans[i]) printf(&quot;%d &quot;,i);
-        putchar(10);
-    }
     return 0;
 }
 </code></pre>
