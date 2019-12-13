@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-13T05:44:56.631Z</updated>
+    <updated>2019-12-13T06:03:36.124Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,95 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CF1263F」Economic Difficulties]]></title>
+        <id>https://dinnerhunt.cn/post/CF1263F</id>
+        <link href="https://dinnerhunt.cn/post/CF1263F">
+        </link>
+        <updated>2019-12-13T05:55:31.000Z</updated>
+        <summary type="html"><![CDATA[<p>An electrical grid in Berland palaces consists of 2 grids: main and reserve. Wires in palaces are made of expensive material, so selling some of them would be a good idea!</p>
+<p>Each grid (main and reserve) has a head node (its number is 1). Every other node gets electricity from the head node. Each node can be reached from the head node by a unique path. Also, both grids have exactly n nodes, which do not spread electricity further.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>An electrical grid in Berland palaces consists of 2 grids: main and reserve. Wires in palaces are made of expensive material, so selling some of them would be a good idea!</p>
+<p>Each grid (main and reserve) has a head node (its number is 1). Every other node gets electricity from the head node. Each node can be reached from the head node by a unique path. Also, both grids have exactly n nodes, which do not spread electricity further.</p>
+<!--more-->
+<p>In other words, every grid is a rooted directed tree on n leaves with a root in the node, which number is 1. Each tree has independent enumeration and nodes from one grid are not connected with nodes of another grid.</p>
+<p>Also, the palace has n electrical devices. Each device is connected with one node of the main grid and with one node of the reserve grid. Devices connect only with nodes, from which electricity is not spread further (these nodes are the tree's leaves). Each grid's leaf is connected with exactly one device.</p>
+<p>In this example the main grid contains 6 nodes (the top tree) and the reserve grid contains 4 nodes (the lower tree). There are 3 devices with numbers colored in blue.<br>
+It is guaranteed that the whole grid (two grids and 𝑛 devices) can be shown in this way (like in the picture above):</p>
+<p>main grid is a top tree, whose wires are directed 'from the top to the down',<br>
+reserve grid is a lower tree, whose wires are directed 'from the down to the top',<br>
+devices — horizontal row between two grids, which are numbered from 1 to 𝑛 from the left to the right,<br>
+wires between nodes do not intersect.<br>
+Formally, for each tree exists a depth-first search from the node with number 1, that visits leaves in order of connection to devices 1,2,…,𝑛 (firstly, the node, that is connected to the device 1, then the node, that is connected to the device 2, etc.).</p>
+<p>Businessman wants to sell (remove) maximal amount of wires so that each device will be powered from at least one grid (main or reserve). In other words, for each device should exist at least one path to the head node (in the main grid or the reserve grid), which contains only nodes from one grid.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1263/problem/F">「CodeForces 1263F」Economic Difficulties</a></p>
+<h4 id="题解">题解</h4>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&lt;</mo><mo>=</mo><mn>2000</mn></mrow><annotation encoding="application/x-tex">n&lt;=2000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>，考虑DP做法,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi><mo>[</mo><mi>t</mi><mo>]</mo><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">DP[t][i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">[</span><span class="mord mathdefault">t</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>,表示第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span> 棵树将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i-j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 区间断电最多能删除多少边<br>
+然后<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo separator="true">,</mo><mi>R</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">L[i],R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>用来维护该节点维护下面覆盖了那些子节点，最后再用DP合并一些即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+using namespace std;
+const int maxd = 2e3+10;
+vector&lt;int&gt; G[2][maxd];
+int dp[maxd],v[2][maxd][maxd],l[2][maxd],r[2][maxd],sz[2][maxd];
+// L[i]，R[i]表示将盖以i节点为根子树删掉，最多能使得[L,R]区间内的发电机停电
+int n,a;
+void dfs(int id,int x)
+{
+    if(x!=1) sz[id][x] = 1; // N个点n-1条边，根节点无父边
+    for(int v :G[id][x])
+    {
+        dfs(id,v);
+        l[id][x] = min(l[id][x],l[id][v]);
+        r[id][x] = max(r[id][x],r[id][v]);
+        sz[id][x] += sz[id][v];
+    }
+    int ll = l[id][x],rr = r[id][x];
+    v[id][ll][rr] = max(v[id][ll][rr],sz[id][x]);    // 代价是该子树的大小
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n;scanf(&quot;%d&quot;,&amp;n);
+    for(int t=0;t &lt; 2;t++)
+    {
+        int m;scanf(&quot;%d&quot;,&amp;m);
+        for(int i=1;i&lt;=m;i++)
+        {
+            l[t][i] = m+1;
+            r[t][i] = 0;
+        }
+        for(int i=2;i&lt;=m;i++)
+        {
+            int x; scanf(&quot;%d&quot;,&amp;x);
+            G[t][x].push_back(i);
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            int x;scanf(&quot;%d&quot;,&amp;x);
+            l[t][x] = r[t][x] = i;
+        }
+        dfs(t,1);
+    }
+    for(int i=1;i&lt;=n;i++)
+        for(int j=i;j&lt;=n;j++)
+            dp[j] = max(dp[j], dp[i-1] + max(v[0][i][j],v[1][i][j]));
+    printf(&quot;%d\n&quot;,dp[n]);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1261D」Wrong Answer on test 233]]></title>
         <id>https://dinnerhunt.cn/post/CF1261D</id>
@@ -834,70 +923,6 @@ F题赛中没有看到了，挺裸的一道树剖吧，不过立方和需要推�
 赛场周围的志愿者穿梭的身影，桌面上的队伍台历，电脑旁飘着的彩色气球<br>
 赛后的滚榜，以及拿牌后的喜悦。<br>
 <strong>加油吧，&quot;So Nice Chicken , Fighting For Au 2020&quot;</strong></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1247E」Rock Is Push]]></title>
-        <id>https://dinnerhunt.cn/post/CF1247E</id>
-        <link href="https://dinnerhunt.cn/post/CF1247E">
-        </link>
-        <updated>2019-10-31T08:19:50.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are at the top left cell (1,1) of an 𝑛×𝑚 labyrinth. Your goal is to get to the bottom right cell (𝑛,𝑚). You can only move right or down, one cell per step. Moving right from a cell (𝑥,𝑦) takes you to the cell (𝑥,𝑦+1), while moving down takes you to the cell (𝑥+1,𝑦).</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are at the top left cell (1,1) of an 𝑛×𝑚 labyrinth. Your goal is to get to the bottom right cell (𝑛,𝑚). You can only move right or down, one cell per step. Moving right from a cell (𝑥,𝑦) takes you to the cell (𝑥,𝑦+1), while moving down takes you to the cell (𝑥+1,𝑦).</p>
-<!--more-->
-<p>Some cells of the labyrinth contain rocks. When you move to a cell with rock, the rock is pushed to the next cell in the direction you're moving. If the next cell contains a rock, it gets pushed further, and so on.</p>
-<p>The labyrinth is surrounded by impenetrable walls, thus any move that would put you or any rock outside of the labyrinth is illegal.</p>
-<p>Count the number of different legal paths you can take from the start to the goal modulo 109+7. Two paths are considered different if there is at least one cell that is visited in one path, but not visited in the other.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1247/problem/E">「CodeForces 1247E」Rock Is Push</a></p>
-<h4 id="题解">题解</h4>
-<p><a href="https://www.cnblogs.com/LLTYYC/p/11750207.html">LLTYYC的思路</a></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int mod = 1e9+7;
-const int maxd = 2e3+10;
-int n,m;
-char s[maxd][maxd];
-int a[maxd][maxd],b[maxd][maxd]; // 行前缀和，列前缀和
-int fx[maxd][maxd],fy[maxd][maxd];//  下走方案数，右走方案数
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%s&quot;,s[i]+1);
-    for(int i=1;i&lt;=n;i++)
-        for(int j=1;j&lt;=m;j++)
-            a[i][j] = b[i][j] = (s[i][j] == 'R');
-    for(int i=n;i&gt;=1;i--)
-        for(int j=m;j&gt;=1;j--)
-        {
-            b[i][j] += b[i][j+1];
-            a[i][j] += a[i+1][j];
-        }
-    for(int i=1;i&lt;m;i++) if(!b[n][i]) fy[n][i] = 1;
-    for(int i=1;i&lt;n;i++) if(!a[i][m]) fx[i][m] = 1;
-
-    for(int i=n-1;i;i--)
-        for(int j=m-1;j;j--)
-        {
-            fx[i][j]= (fx[i+1][j]+fy[i+1][j]) %mod;
-            if(s[i+1][j]=='R') fx[i][j]= (fx[i][j]- fy[ n-a[i+1][j]+1 ][j] +mod) %mod;
-            fy[i][j]= (fx[i][j+1]+fy[i][j+1]) %mod;
-            if(s[i][j+1]=='R') fy[i][j]=(fy[i][j]- fx[i][ m-b[i][j+1]+1 ] +mod) %mod;
-        }
-    long long ans;
-    if(n==1&amp;&amp;m==1 &amp;&amp; s[1][1] == '.') ans=1ll;
-    else ans = (1ll * fx[1][1] + fy[1][1]) %mod;
-    printf(&quot;%lld&quot;,ans);
-    return 0;
-}
-
-</code></pre>
 ]]></content>
     </entry>
 </feed>
