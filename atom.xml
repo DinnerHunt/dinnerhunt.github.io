@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-01T03:50:17.102Z</updated>
+    <updated>2019-12-13T05:42:59.322Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,239 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1261D」Wrong Answer on test 233]]></title>
+        <id>https://dinnerhunt.cn/post/CF1261D</id>
+        <link href="https://dinnerhunt.cn/post/CF1261D">
+        </link>
+        <updated>2019-12-13T05:10:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤2⋅105. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems.</p>
+<p>The problem is to finish 𝑛 one-choice-questions. Each of the questions contains 𝑘 options, and only one of them is correct. The answer to the 𝑖-th question is ℎ𝑖, and if your answer of the question 𝑖 is ℎ𝑖, you earn 1 point, otherwise, you earn 0 points for this question. The values ℎ1,ℎ2,…,ℎ𝑛 are known to you in this problem.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤2⋅105. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems.</p>
+<p>The problem is to finish 𝑛 one-choice-questions. Each of the questions contains 𝑘 options, and only one of them is correct. The answer to the 𝑖-th question is ℎ𝑖, and if your answer of the question 𝑖 is ℎ𝑖, you earn 1 point, otherwise, you earn 0 points for this question. The values ℎ1,ℎ2,…,ℎ𝑛 are known to you in this problem.</p>
+<!--more-->
+<p>However, you have a mistake in your program. It moves the answer clockwise! Consider all the 𝑛 answers are written in a circle. Due to the mistake in your program, they are shifted by one cyclically.</p>
+<p>Formally, the mistake moves the answer for the question 𝑖 to the question 𝑖mod𝑛+1. So it moves the answer for the question 1 to question 2, the answer for the question 2 to the question 3, ..., the answer for the question 𝑛 to the question 1.</p>
+<p>We call all the 𝑛 answers together an answer suit. There are 𝑘𝑛 possible answer suits in total.</p>
+<p>You're wondering, how many answer suits satisfy the following condition: after moving clockwise by 1, the total number of points of the new answer suit is strictly larger than the number of points of the old one. You need to find the answer modulo 998244353.</p>
+<p>For example, if 𝑛=5, and your answer suit is 𝑎=[1,2,3,4,5], it will submitted as 𝑎′=[5,1,2,3,4] because of a mistake. If the correct answer suit is ℎ=[5,2,2,3,4], the answer suit 𝑎 earns 1 point and the answer suite 𝑎′ earns 4 points. Since 4&gt;1, the answer suit 𝑎=[1,2,3,4,5] should be counted.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1261/problem/D2">「CodeForces 1261D」Wrong Answer on test 233</a></p>
+<h4 id="题解">题解</h4>
+<p>考虑每个位置所填答案对正确数量的影响。如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i] == s[i+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>，那么正确数量无论如何都不会发生变化，因为 如果所填答案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">x== s[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span> 那么 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">x == s[i+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> ，反之亦然。<br>
+如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>!</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i] != s[i+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 那么就会出现3种情况<br>
+正确数量加1，<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 11: x != s[i] &amp;̲&amp; x == s[i+1]'>x != s[i] &amp;&amp; x == s[i+1]</span><br>
+正确数量减1，<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 11: x == s[i] &amp;̲&amp; x != s[i+1]'>x == s[i] &amp;&amp; x != s[i+1]</span><br>
+正确数量不变, other<br>
+所有位置填写答案的不同方案总数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>k</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">k^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>,会有正确答案多于原先的，正确答案少于原先的，正确答案等于原先的三种情况，思考后可以发现，多于原先和少于原先的方案数是相等的，所以我们所求多于原先的方案数可以转化为求(总方案数 - 答案等于原先方案数)/2，<br>
+因为要求答案数等于原先方案数，所以当选取了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个正确数量+1的方案数时，就必须选对应的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个正确数量-1的方案数，所以我们可以考虑枚举<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>,然后通过组合原理求出总数</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 2e5+10;
+typedef long long ll;
+const int mod = 998244353;
+int n,k,num,a[maxd];
+long long fac[maxd];
+ll pow(ll a,ll b)
+{
+    ll ans = 1ll;
+    while(b)
+    {
+        if(b&amp;1) ans = ans * a %mod;
+        a = a * a % mod;
+        b /= 2;
+    }
+    return ans;
+}
+ll C(ll a,ll b)
+{
+    return 1ll* (fac[a] * pow(fac[b],1ll * mod-2) % mod) * pow(fac[a-b],mod-2) %mod;
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);
+    if(k == 1) {printf(&quot;0&quot;);return 0;}
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+    for(int i=1;i&lt;n;i++) if(a[i] != a[i+1]) num++; num += (a[1] != a[n]);
+ 
+    fac[0] = 1ll;for(int i=1;i&lt;maxd;i++) fac[i] = 1ll * fac[i-1] * i %mod;
+ 
+//    for(int i=1;i&lt;=n;i++)
+//
+    long long ans = 0ll;
+ 
+    for(int i=0;i * 2 &lt;= num;i++) {
+        long long tmp = C(num, i) * C(num - i, i) % mod * pow(k - 2, num - i - i) % mod * pow(k, n-num) % mod;
+        ans = (tmp + ans) % mod;
+    }
+    //for(int i=1;i&lt;=10;i++) printf(&quot;%lld \n&quot;,pow(2,i));
+    printf(&quot;%lld\n&quot;,((pow(k,n) - ans)%mod  + mod ) %mod * pow(2,mod-2) %mod );
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「Gym 101775L」SOS]]></title>
+        <id>https://dinnerhunt.cn/post/GYM101775L</id>
+        <link href="https://dinnerhunt.cn/post/GYM101775L">
+        </link>
+        <updated>2019-12-04T14:41:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>Mr. Panda and Mr. Sheep are playing a game on a 1 × N game board. Initially, all the cells are empty. Mr. Panda and Mr. Sheep take alternate moves and Mr.Panda moves first.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Mr. Panda and Mr. Sheep are playing a game on a 1 × N game board. Initially, all the cells are empty. Mr. Panda and Mr. Sheep take alternate moves and Mr.Panda moves first.</p>
+<!--more-->
+<p>On each move, a player must fill an 'S' or 'O' into an empty cell. After the move, if there are 3 consecutive cells from left to right form the word &quot;SOS&quot;, the player wins the game and the game finished.</p>
+<p>If the board gets filled up without SOS appearing consecutively, no one wins the game, the game end with draw.</p>
+<p>Now, if both Mr. Panda and Mr. Sheep play optimally, find out the result of the game.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/Gym-101775L">「Gym 101775L」SOS</a></p>
+<h4 id="题解">题解</h4>
+<p>最短的分出胜利的结构是 S _ _ S _ ,但是如果先手S _ _ _ _ 后手肯定不可能放S 因为只要S _ _ S _,S _ _ _ S ,S _ S _ _ 最后都是都是先手赢。<br>
+那么最短的就是 _ _ _ S _ _ _ 因为不管后手破坏哪一边都能在另外一边构造出S _ _ S,那么最短出现结果的就是7,如果是偶数的话,由于Mr.熊猫是先手,他不能获得胜利那么就要破坏别人的,能推脱平局,比如10 --&gt; _ _ _ _ S _ _ _ _ _  4,5。两边都分不出结果。<br>
+当N=15的时候 _ _ _ _ _ _ _ S _ _ _ _ _ _ _ 7,7 ,但是n等于15是奇数,所以从16开始就是Mr.羊获胜,否则就能给Mr.熊猫拖成平局</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+int a[maxd];
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    //printf(&quot;%lld\n&quot;,t);
+    for(int tt = 1;tt &lt;= t;tt++)
+    {
+        int n;scanf(&quot;%d&quot;,&amp;n);
+        int flag;
+        if(n &lt; 7) flag = 1;
+        else if(n %2 == 0 &amp;&amp; n &lt; 16)  flag =1;
+        else if(n %2 == 0 )flag =0;
+        else flag = 2;
+        if(flag == 1) printf(&quot;Case #%d: Draw\n&quot;,tt);
+        else if(flag == 2) printf(&quot;Case #%d: Panda\n&quot;,tt);
+        else printf(&quot;Case #%d: Sheep\n&quot;,tt);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「HDU 6191 」Query on A Tree]]></title>
+        <id>https://dinnerhunt.cn/post/HDU6191</id>
+        <link href="https://dinnerhunt.cn/post/HDU6191">
+        </link>
+        <updated>2019-12-03T05:36:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>Monkey A lives on a tree, he always plays on this tree.</p>
+<p>One day, monkey A learned about one of the bit-operations, xor. He was keen of this interesting operation and wanted to practise it at once.</p>
+<p>Monkey A gave a value to each node on the tree. And he was curious about a problem.</p>
+<p>The problem is how large the xor result of number x and one node value of label y can be, when giving you a non-negative integer x and a node label u indicates that node y is in the subtree whose root is u(y can be equal to u).</p>
+<p>Can you help him?</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Monkey A lives on a tree, he always plays on this tree.</p>
+<p>One day, monkey A learned about one of the bit-operations, xor. He was keen of this interesting operation and wanted to practise it at once.</p>
+<p>Monkey A gave a value to each node on the tree. And he was curious about a problem.</p>
+<p>The problem is how large the xor result of number x and one node value of label y can be, when giving you a non-negative integer x and a node label u indicates that node y is in the subtree whose root is u(y can be equal to u).</p>
+<p>Can you help him?</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/HDU-6191">「HDU 6191 」Query on A Tree</a></p>
+<h4 id="题解">题解</h4>
+<p>可持久化trie? 有点感觉01Tri有点像线段树<br>
+主要技巧在用dfs序维护trie，然后子树范围等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>d</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">id[x]-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 至 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>d</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>+</mo><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">id[x] + size[x]-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+int t[maxd*32][2],val[maxd*32][2],sz[maxd];
+int rt[maxd],tot,num;
+int v[maxd],id[maxd];
+vector&lt;int&gt; G[maxd];
+void insert(int &amp;now,int last,int x,int p)
+{   
+    now = ++tot;if(p&lt;0) return;
+    int c = (x &gt;&gt; p) &amp; 1;
+    t[now][0] = t[last][0];
+    t[now][1] = t[last][1];
+    val[now][c] = val[last][c]+1;
+    val[now][c^1] = val[last][c^1];
+    insert(t[now][c],t[last][c],x,p-1);
+}
+int query(int now,int last,int x)
+{
+    int ans = 0;
+    for(int i=30;i&gt;=0;i--)
+    {
+        int c = (x &gt;&gt; i) &amp; 1;
+        if(val[now][c^1] - val[last][c^1] &gt; 0) ans += (1&lt;&lt;i),c^=1;
+        now = t[now][c], last = t[last][c];
+    }
+    return ans;
+}
+void dfs(int x)
+{
+    id[x] = ++num;sz[x]=1;
+    insert(rt[id[x]],rt[id[x]-1],v[x],30);
+    for(int i= 0;i&lt;G[x].size();i++)
+    {
+        int v = G[x][i];dfs(v);
+        sz[x] += sz[v];
+    }
+}
+
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+
+    int n,m;
+    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
+    {
+        memset(t,0,sizeof(t));
+        memset(rt,0,sizeof(rt));
+        memset(val,0,sizeof(val));
+        num  = tot = 0;
+
+        for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;v[i]);
+        //printf(&quot;%d %d\n&quot;,n,m);
+        for(int i=2;i&lt;=n;i++)
+        {
+           int x;scanf(&quot;%d&quot;,&amp;x);
+           G[x].push_back(i);
+        }
+        int root  = 1;
+        dfs(root);
+        // for(int i=1;i&lt;=n;i++)
+        //     printf(&quot;%d %d\n&quot;,i,rt[i]);
+
+        for(int i=1;i&lt;=m;i++)
+        {
+           int x,y;scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+           //printf(&quot;%d %d\n&quot;,id[x]+sz[x]-1,id[x]-1);
+           printf(&quot;%d\n&quot;,query(rt[id[x]+sz[x]-1],rt[id[x]-1],y));
+        }
+        for(int i=1;i&lt;=n;i++) G[i].clear();
+    }
+    return 0;
+}
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「HDU 6184」Counting Stars]]></title>
         <id>https://dinnerhunt.cn/post/HDU6184</id>
@@ -664,252 +897,6 @@ int main()
     return 0;
 }
 
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「Gym 10092K」King's Rout]]></title>
-        <id>https://dinnerhunt.cn/post/Gym10092k</id>
-        <link href="https://dinnerhunt.cn/post/Gym10092k">
-        </link>
-        <updated>2019-10-29T16:44:45.000Z</updated>
-        <summary type="html"><![CDATA[<p>The great rout will be held this evening in the palace of his majesty Nassah II, the king of Occorom. There are n guests invited. While they are preparing evening dresses and collecting fresh rumors to talk about, the chief valet of the palace has a tricky task to solve: choose the right order for persons to arrive to the palace.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>The great rout will be held this evening in the palace of his majesty Nassah II, the king of Occorom. There are n guests invited. While they are preparing evening dresses and collecting fresh rumors to talk about, the chief valet of the palace has a tricky task to solve: choose the right order for persons to arrive to the palace.</p>
-<!--more-->
-<p>Guests always arrive one by one, that is, no two guests may arrive at the same moment of time. Due to the court etiquette, there are some limitations on the order of the arrival. For example, a notable landlord should arrive later than all his vassals, but should be earlier than his wives. After reading &quot;Etiquette guide for dummies&quot; the valet found out m order conditions to be satisfied. Each of them has a form: ai must come before bi. Rules are so complicated that some conditions may appear in the list two or more times.</p>
-<p>So far the problem seems to be easy and familiar. But some guests (actually, all of them) tried to bribe valet to allow them arrive before others. So valet sorted guests according to their payoffs amounts and decided that guest number 1 should arrive as early as possible (without violating etiquette rules), among all such options valet chooses the one with the guest number 2 arriving as early as possible, and so on. All payoffs were different, so valet has no problem in selecting guests priority.</p>
-<p>Help valet to find the best possible schedule. Guests already have numbers in valet's private list of priority, so you will not know bribes amounts and will not be accused in complicity in corruption.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped</a></p>
-<h4 id="题解">题解</h4>
-<p>考虑反向建边，然后根据拓扑序将点丢大大根堆，依次选取最大的点，答案就是选取顺序的倒序</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstring&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 2e5+10;
-int in[maxd];
-vector&lt;int&gt; G[maxd],ans;
-priority_queue&lt;int&gt; que;
-int main() {
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n,k;
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);
-    for (int i = 1; i &lt;= k; i++)
-    {
-        int a, b;
-        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-        G[b].push_back(a); in[a]++;
-    }
-    for(int i=1;i&lt;=n;i++) if(!in[i]) que.push(i);
-    for(int i=1;i&lt;=n;i++)
-    {
-        int x = que.top(); que.pop();
-        ans.push_back(x);
-        for(int v:G[x])
-        {
-            in[v]--;
-            if(!in[v]) que.push(v);
-        }
-    }
-    //printf(&quot;%d %d&quot;)
-    //printf(&quot;%d &quot;,ans.size());
-    for(int i=n-1;i&gt;=0;i--)
-    {
-        printf(&quot;%d&quot;,ans[i]);
-        if(i) printf(&quot; &quot;);
-        else putchar(10);
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1249E」Maximum Weight Subset]]></title>
-        <id>https://dinnerhunt.cn/post/CF1249F</id>
-        <link href="https://dinnerhunt.cn/post/CF1249F">
-        </link>
-        <updated>2019-10-29T15:29:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are given a tree, which consists of 𝑛 vertices. Recall that a tree is a connected undirected graph without cycles.</p>
-<p>Example of a tree.<br>
-Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of the vertex 𝑣 is 𝑎𝑣.</p>
-<p>Recall that the distance between two vertices in the tree is the number of edges on a simple path between them.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are given a tree, which consists of 𝑛 vertices. Recall that a tree is a connected undirected graph without cycles.</p>
-<p>Example of a tree.<br>
-Vertices are numbered from 1 to 𝑛. All vertices have weights, the weight of the vertex 𝑣 is 𝑎𝑣.</p>
-<p>Recall that the distance between two vertices in the tree is the number of edges on a simple path between them.</p>
-<!--more-->
-<p>Your task is to find the subset of vertices with the maximum total weight (the weight of the subset is the sum of weights of all vertices in it) such that there is no pair of vertices with the distance 𝑘 or less between them in this subset.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/1249/F">「CodeForces 1249E」Maximum Weight Subset</a></p>
-<h4 id="题解">题解</h4>
-<p>DP[i][j] 表示以i为根，最小选j层的最大权值<br>
-考虑每个节点选不选，如果选则更新DP[i][0]<br>
-不选则枚举距离层次j,依次选取子儿子进行更新答案，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstring&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxn = 205;
- 
-int n, k;
-vector&lt;int&gt; G[maxn];
-int dp[maxn][maxn], a[maxn];
- 
-void dfs(int x, int f = 0)
-{
-    dp[x][0] = a[x];
-    for(int v:G[x])
-    {
-        if(v == f) continue;
-        dfs(v, x);
-        dp[x][0] += dp[v][k];
-    }
-    for(int i = 1; i &lt; n; i++)
-    {
-        for(auto it : G[x])
-        {
-            if(it == f) continue;
-            int cnt = dp[it][i-1];
-            for(auto other:G[x])
-            {
-                if(other == it || other == f) continue;
-                cnt += dp[other][max(i-1,k-i)];
-            }
-            dp[x][i] = max(dp[x][i],cnt);
-        }
-    }
-    for(int i = n-1; i &gt;= 0; i--)
-        dp[x][i-1] = max(dp[x][i-1], dp[x][i]);
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);
-    for(int i = 1; i &lt;= n; i++) scanf(&quot;%d&quot;, &amp;a[i]);
-    for(int i = 1; i &lt; n; i++)
-    {
-        int a,b;
-        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-        G[a].push_back(b);G[b].push_back(a);
-    }
-    dfs(1);
-    printf(&quot;%d\n&quot;, dp[1][0]);
-    return 0;
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 600E」 Lomsat gelral]]></title>
-        <id>https://dinnerhunt.cn/post/CF600E</id>
-        <link href="https://dinnerhunt.cn/post/CF600E">
-        </link>
-        <updated>2019-10-29T02:32:55.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are given a rooted tree with root in vertex 1. Each vertex is coloured in some colour.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are given a rooted tree with root in vertex 1. Each vertex is coloured in some colour.</p>
-<!--more-->
-<p>Let's call colour c dominating in the subtree of vertex v if there are no other colours that appear in the subtree of vertex v more times than colour c. So it's possible that two or more colours will be dominating in the subtree of some vertex.</p>
-<p>The subtree of vertex v is the vertex v and all other vertices that contains vertex v in each path to the root.</p>
-<p>For each vertex v find the sum of all dominating colours in the subtree of vertex v.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/600/E">「CodeForces 600E」 Lomsat gelral</a></p>
-<h4 id="题解">题解</h4>
-<p>树上启发式合并<br>
-先重轻链剖分，对于轻儿子暴力统计答案，重儿子保存答案<br>
-因为每个节点到根经过的轻链不会超过 logn 个，所以时间复杂度O(n log n)</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;map&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+10;
-struct node
-{
-    int v,net;
-}e[maxd&lt;&lt;1];
-int f[maxd],eid;
-void insert(int x,int y)
-{
-    e[eid].v = y;
-    e[eid].net = f[x];
-    f[x] = eid++;
-}
-void init()
-{
-    memset(f,-1,sizeof(f));
-    eid = 0;
-}
-int col[maxd],sz[maxd],son[maxd],cnt[maxd],mx,s;
-long long sum = 0ll,ans[maxd];
-void dfs(int x,int fa = 0)
-{
-    sz[x] = 1;
-    for(int i=f[x];i+1;i=e[i].net)
-    {
-        int v = e[i].v;
-        if(v == fa) continue;
-        dfs(v,x);
-        sz[x] += sz[v];
-        if(sz[v] &gt; sz[son[x]]) son[x] = v;
-    }
-}
-void add(int x,int fa,int val)
-{
-    cnt[col[x]] += val;
-    if(cnt[col[x]] &gt; mx) mx = cnt[col[x]],sum = col[x];
-    else if(cnt[col[x]] == mx) sum += col[x];
-    for(int i=f[x];i+1;i = e[i].net)
-    {
-        int v= e[i].v;
-        if(v == fa || v == s)  continue;// 重儿子不需要重复统计
-        add(v,x,val);
-    }
-}
-void dfs1(int x,int fa=0,int opt=0)
-{
-    for(int i=f[x];i+1;i=e[i].net) // 先统计其他轻儿子
-    {
-        int v = e[i].v;
-        if(v==fa) continue;
-        if(v!=son[x]) dfs1(v,x,0);
-    }
-    if(son[x]) dfs1(son[x],x,1), s = son[x];
-    // s用来标记当前重儿子，因为重儿子不会删除贡献，所以不需要统计重儿子
-    add(x,fa,1); s = 0; 
-    ans[x] = sum; 
-    if(!opt) add(x,fa,-1),sum=0ll,mx=0;
-}
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n; scanf(&quot;%d&quot;,&amp;n);init();
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;col[i]);
-    for(int i=1;i&lt;n;i++)
-    {
-        int a,b; scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
-        insert(a,b),insert(b,a);
-    }
-    dfs(1);dfs1(1);
-    for(int i=1;i&lt;=n;i++)
-        printf(&quot;%lld &quot;,ans[i]);
-
-    return 0;
-}
 </code></pre>
 ]]></content>
     </entry>
