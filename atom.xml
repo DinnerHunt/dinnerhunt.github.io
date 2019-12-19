@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-13T06:16:41.433Z</updated>
+    <updated>2019-12-19T18:44:09.004Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,284 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「SCOI2010」股票交易]]></title>
+        <id>https://dinnerhunt.cn/post/P2569</id>
+        <link href="https://dinnerhunt.cn/post/P2569">
+        </link>
+        <updated>2019-12-19T18:39:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近 lxhgww 又迷上了投资股票，通过一段时间的观察和学习，他总结出了股票行情的一些规律。</p>
+<p>通过一段时间的观察，lxhgww 预测到了未来 T 天内某只股票的走势，第 i 天的股票买入价为每股 AP_i，第 ii 天的股票卖出价为每股 BP_i（数据保证对于每个 i，都有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><msub><mi>P</mi><mi>i</mi></msub><mo>≥</mo><mi>B</mi><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">AP_i \geq BP_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault">A</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，但是每天不能无限制地交易，于是股票交易所规定第 i 天的一次买入至多只能购买 AS_i股，一次卖出至多只能卖出 BS_i股。</p>
+<p>另外，股票交易所还制定了两个规定。为了避免大家疯狂交易，股票交易所规定在两次交易（某一天的买入或者卖出均算是一次交易）之间，至少要间隔 WW 天，也就是说如果在第 ii 天发生了交易，那么从第 i+1 天到第 i+W 天，均不能发生交易。同时，为了避免垄断，股票交易所还规定在任何时间，一个人的手里的股票数不能超过 MaxP。</p>
+<p>在第 1 天之前，lxhgww 手里有一大笔钱（可以认为钱的数目无限），但是没有任何股票，当然，T 天以后，lxhgww 想要赚到最多的钱，聪明的程序员们，你们能帮助他吗？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近 lxhgww 又迷上了投资股票，通过一段时间的观察和学习，他总结出了股票行情的一些规律。</p>
+<p>通过一段时间的观察，lxhgww 预测到了未来 T 天内某只股票的走势，第 i 天的股票买入价为每股 AP_i，第 ii 天的股票卖出价为每股 BP_i（数据保证对于每个 i，都有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><msub><mi>P</mi><mi>i</mi></msub><mo>≥</mo><mi>B</mi><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">AP_i \geq BP_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault">A</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，但是每天不能无限制地交易，于是股票交易所规定第 i 天的一次买入至多只能购买 AS_i股，一次卖出至多只能卖出 BS_i股。</p>
+<p>另外，股票交易所还制定了两个规定。为了避免大家疯狂交易，股票交易所规定在两次交易（某一天的买入或者卖出均算是一次交易）之间，至少要间隔 WW 天，也就是说如果在第 ii 天发生了交易，那么从第 i+1 天到第 i+W 天，均不能发生交易。同时，为了避免垄断，股票交易所还规定在任何时间，一个人的手里的股票数不能超过 MaxP。</p>
+<p>在第 1 天之前，lxhgww 手里有一大笔钱（可以认为钱的数目无限），但是没有任何股票，当然，T 天以后，lxhgww 想要赚到最多的钱，聪明的程序员们，你们能帮助他吗？</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.com.cn/problem/P2569">「SCOI2010」股票交易</a></p>
+<h4 id="题解">题解</h4>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+using namespace std;
+const int maxd = 2005;
+int a[maxd],b[maxd],c[maxd],d[maxd];
+int dp[maxd][maxd];
+int que[maxd],l,r;
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,m,k;
+    memset(dp,128,sizeof(dp));
+    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;k);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d %d %d %d&quot;,a+i,b+i,c+i,d+i);
+    for(int i=1;i&lt;=n;i++)
+    {
+        for(int j=0;j&lt;=c[i];j++) dp[i][j] = -1 * j * a[i];
+        for(int j=0;j&lt;=m;j++) dp[i][j] = max(dp[i][j],dp[i-1][j]);
+        if(i&lt;=k) continue;
+        l = 1, r = 0;
+        for(int j=0;j&lt;=m;j++)
+        {
+            while( l&lt;=r &amp;&amp; que[l] &lt; j-c[i]) l++;
+            while( l&lt;=r &amp;&amp; dp[i-k-1][que[r]] + que[r] * a[i] &lt;= dp[i-k-1][j] + j * a[i]) r--;
+            que[++r] = j;
+            if(l &lt;=r ) dp[i][j] = max(dp[i][j],dp[i-k-1][que[l]] + que[l] * a[i] - j * a[i]);
+        }
+        l = 1,r=0;
+        for(int j = m ; j &gt;= 0 ; j--){
+            while(l &lt;= r &amp;&amp; que[l] &gt; j + d[i]) l++;
+            while(l &lt;= r &amp;&amp; dp[i - k - 1][que[r]] + que[r] * b[i] &lt;= dp[i - k - 1][j] + j * b[i]) r--;
+            que[++r] = j;
+            if(l &lt;= r) dp[i][j] = max(dp[i][j] , dp[i - k - 1][que[l]] + que[l] * b[i] - j * b[i]);
+        }
+    }
+    printf(&quot;%d&quot;,dp[n][0]);
+
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「SDOI2009」学校食堂]]></title>
+        <id>https://dinnerhunt.cn/post/P2157</id>
+        <link href="https://dinnerhunt.cn/post/P2157">
+        </link>
+        <updated>2019-12-19T17:28:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>小F 的学校在城市的一个偏僻角落，所有学生都只好在学校吃饭。学校有一个食堂，虽然简陋，但食堂大厨总能做出让同学们满意的菜肴。当然，不同的人口味也不一定相同，但每个人的口味都可以用一个非负整数表示。 由于人手不够，食堂每次只能为一个人做菜。做每道菜所需的时间是和前一道菜有关的，若前一道菜的对应的口味是a，这一道为b，则做这道菜所需的时间为（a or b）-（a and b），而做第一道菜是不需要计算时间的。其中，or 和and 表示整数逐位或运算及逐位与运算，C语言中对应的运算符为“|”和“&amp;”。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>小F 的学校在城市的一个偏僻角落，所有学生都只好在学校吃饭。学校有一个食堂，虽然简陋，但食堂大厨总能做出让同学们满意的菜肴。当然，不同的人口味也不一定相同，但每个人的口味都可以用一个非负整数表示。 由于人手不够，食堂每次只能为一个人做菜。做每道菜所需的时间是和前一道菜有关的，若前一道菜的对应的口味是a，这一道为b，则做这道菜所需的时间为（a or b）-（a and b），而做第一道菜是不需要计算时间的。其中，or 和and 表示整数逐位或运算及逐位与运算，C语言中对应的运算符为“|”和“&amp;”。</p>
+<!--more-->
+<p>学生数目相对于这个学校还是比较多的，吃饭做菜往往就会花去不少时间。因此，学校食堂偶尔会不按照大家的排队顺序做菜，以缩短总的进餐时间。</p>
+<p>虽然同学们能够理解学校食堂的这种做法，不过每个同学还是有一定容忍度的。也就是说，队伍中的第i 个同学，最多允许紧跟他身后的Bi 个人先拿到饭菜。一旦在此之后的任意同学比当前同学先拿到饭，当前同学将会十分愤怒。因此，食堂做菜还得照顾到同学们的情绪。 现在，小F 想知道在满足所有人的容忍度这一前提下，自己的学校食堂做完这些菜最少需要多少时间。</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.com.cn/problem/P2157">「SDOI2009」学校食堂</a></p>
+<h4 id="题解">题解</h4>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+using namespace std;
+const int maxd = 1e6+10;
+int dp[1005][1&lt;&lt;8][20]; //dp[i][j][k] 前i个人都吃过饭了，后面j个人吃饭的状态，最近一个人吃饭的位置是k
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t ; scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        int n;scanf(&quot;%d&quot;,&amp;n);
+        vector&lt;int&gt; a(n+1),b(n+1);
+        for(int i=1;i&lt;=n;i++) scanf(&quot;%d %d&quot;,&amp;a[i],&amp;b[i]);
+        memset(dp,0x3f3f3f3f,sizeof(dp)); dp[1][0][7] = 0;
+        for(int i=1;i&lt;=n;i++)   // 第几个人
+            for(int j=0;j&lt;(1&lt;&lt;8);j++)   // 当前后面人数的打饭状态
+                for(int k=-8;k&lt;=7;k++)      //上一个人打饭的位置
+                    if(dp[i][j][k+8]!=0x3f3f3f3f)
+                    {
+                        // J&amp;1 表示第i位已经打过饭了，所以可以直接整体右移动
+                        if(j&amp;1) dp[i+1][j&gt;&gt;1][k-1+8] = min(dp[i+1][j&gt;&gt;1][k-1],dp[i][j][k+8]);
+                        else
+                        {
+                            int now = 0x3f3f3f3f; // 忍耐值
+                            for(int l = 0; l&lt;=7; l++)
+                            if(!((j&gt;&gt;l)&amp;1))     // 往后第l个人如果没有打饭
+                            {
+                                if(i+l &gt; now) break;
+                                now = min(now,i+l+b[i+l]);
+                                dp[i][j|(1&lt;&lt;l)][l+8] = min(dp[i][j|(1&lt;&lt;l)][l+8],dp[i][j][k+8] + (i + k ?(a[i+k] ^ a[i+l]) : 0));
+                            }
+                        }
+                    }
+        int ans = 0x3f3f3f3f;
+        for(int k=0;k&lt;=8;k++)
+            ans = min(ans,dp[n+1][0][k]);
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1254B」Send Boxes to Alice]]></title>
+        <id>https://dinnerhunt.cn/post/CF1254B</id>
+        <link href="https://dinnerhunt.cn/post/CF1254B">
+        </link>
+        <updated>2019-12-19T14:24:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤106 and 0≤𝑎𝑖≤106. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems</p>
+<p>Christmas is coming, and our protagonist, Bob, is preparing a spectacular present for his long-time best friend Alice. This year, he decides to prepare 𝑛 boxes of chocolate, numbered from 1 to 𝑛. Initially, the 𝑖-th box contains 𝑎𝑖 chocolate pieces.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤106 and 0≤𝑎𝑖≤106. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems</p>
+<p>Christmas is coming, and our protagonist, Bob, is preparing a spectacular present for his long-time best friend Alice. This year, he decides to prepare 𝑛 boxes of chocolate, numbered from 1 to 𝑛. Initially, the 𝑖-th box contains 𝑎𝑖 chocolate pieces.</p>
+<!--more-->
+<p>Since Bob is a typical nice guy, he will not send Alice 𝑛 empty boxes. In other words, at least one of 𝑎1,𝑎2,…,𝑎𝑛 is positive. Since Alice dislikes coprime sets, she will be happy only if there exists some integer 𝑘&gt;1 such that the number of pieces in each box is divisible by 𝑘. Note that Alice won't mind if there exists some empty boxes.</p>
+<p>Charlie, Alice's boyfriend, also is Bob's second best friend, so he decides to help Bob by rearranging the chocolate pieces. In one second, Charlie can pick up a piece in box 𝑖 and put it into either box 𝑖−1 or box 𝑖+1 (if such boxes exist). Of course, he wants to help his friend as quickly as possible. Therefore, he asks you to calculate the minimum number of seconds he would need to make Alice happy.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1254/problem/B2">「CodeForces 1254B」Send Boxes to Alice</a></p>
+<h4 id="题解">题解</h4>
+<p>堆数肯定是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span>的因数，如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi mathvariant="normal">∣</mi><mi>s</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>b</mi><mi mathvariant="normal">∣</mi><mi>s</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>a</mi><mi mathvariant="normal">∣</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">a|sum  , b |sum , a | b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord">∣</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mord">∣</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mord">∣</span><span class="mord mathdefault">b</span></span></span></span>，那么肯定选<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>堆数<br>
+然后枚<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，因为只有可能将该堆数往后移，或者将后面的堆数往前移这两种可能，所以贪心一下就好</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int maxd = 1e6+10;
+int a[maxd];
+long long sum,ans = 1e18;
+vector&lt;long long&gt; b;
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n;scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+    for(int i=1;i&lt;=n;i++) sum+=a[i];
+    if(sum == 1) {printf(&quot;-1\n&quot;);return 0;}
+    for(long long i=2;i*i&lt;=sum;i++)
+    {
+        if(sum%i==0)
+        {
+            b.push_back(i);
+            sum /= i;
+            i--;
+        }
+    }
+    b.push_back(sum);
+    for(auto x : b)
+    {
+        //printf(&quot;%d\n&quot;,x);
+        long long res = 0; sum = 0; // sum 表示当前还未匹配到的数量
+        for(int i=1;i&lt;=n;i++)
+        {
+            sum += a[i];
+            sum %= x;
+            res += min(sum,x - sum);
+            // 可以选择将当前剩下的带到后面一格，或者将还缺多少的部分从后面带回来，因为总数是一定够除以x的
+        }
+        ans = min(res,ans);
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1277E」 Two Fairs]]></title>
+        <id>https://dinnerhunt.cn/post/CF1277e</id>
+        <link href="https://dinnerhunt.cn/post/CF1277e">
+        </link>
+        <updated>2019-12-17T06:53:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>There are 𝑛 cities in Berland and some pairs of them are connected by two-way roads. It is guaranteed that you can pass from any city to any other, moving along the roads. Cities are numerated from 1 to 𝑛.</p>
+<p>Two fairs are currently taking place in Berland — they are held in two different cities 𝑎 and 𝑏 (1≤𝑎,𝑏≤𝑛; 𝑎≠𝑏).</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>There are 𝑛 cities in Berland and some pairs of them are connected by two-way roads. It is guaranteed that you can pass from any city to any other, moving along the roads. Cities are numerated from 1 to 𝑛.</p>
+<p>Two fairs are currently taking place in Berland — they are held in two different cities 𝑎 and 𝑏 (1≤𝑎,𝑏≤𝑛; 𝑎≠𝑏).</p>
+<!--more-->
+<p>Find the number of pairs of cities 𝑥 and 𝑦 (𝑥≠𝑎,𝑥≠𝑏,𝑦≠𝑎,𝑦≠𝑏) such that if you go from 𝑥 to 𝑦 you will have to go through both fairs (the order of visits doesn't matter). Formally, you need to find the number of pairs of cities 𝑥,𝑦 such that any path from 𝑥 to 𝑦 goes through 𝑎 and 𝑏 (in any order).</p>
+<p>Print the required number of pairs. The order of two cities in a pair does not matter, that is, the pairs (𝑥,𝑦) and (𝑦,𝑥) must be taken into account only once.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1277/E">「CodeForces 1007B」Pave the Parallelepiped</a></p>
+<h4 id="题解">题解</h4>
+<p>直接说结论吧<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>i</mi><mi>s</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">visa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span></span></span></span>表示不经过点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>是否能到达点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>i</mi><mi>s</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">visb</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">b</span></span></span></span>表示不经过点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>是否能到达点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span><br>
+如果<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 9: visa[i] &amp;̲&amp; !visb[i]'>visa[i] &amp;&amp; !visb[i]</span> 说明该点被a支配<br>
+如果<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 9: visb[i] &amp;̲&amp; !visa[i]'>visb[i] &amp;&amp; !visa[i]</span> 说明该点被b支配</p>
+<p>答案就是上面两个的乘积</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+const int maxd = 2e5+10;
+int main()
+{
+//     freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//     freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        int n,m,a,b;
+        scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;a,&amp;b);
+        vector&lt;int&gt; G[n+1];
+        for(int i=1;i&lt;=m;i++)
+        {
+            int x,y;scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+            G[x].push_back(y);
+            G[y].push_back(x);
+        }
+        int visa[n+1],visb[n+1];
+        for(int i=1;i&lt;=n;i++) visa[i] = visb[i] = 0;
+        queue&lt;int&gt; que;
+        que.push(a);
+        visa[a] = visa[b] = 1;
+        while(!que.empty())
+        {
+            int x = que.front(); que.pop();
+            for(auto v: G[x])
+                if(v!= b &amp;&amp; !visa[v]) visa[v] = 1,que.push(v);
+        }
+
+        que.push(b);
+        visb[a] = visb[b] = 1;
+        while(!que.empty())
+        {
+            int x = que.front(); que.pop();
+            for(auto v: G[x])
+                if(v!= a &amp;&amp; !visb[v]) visb[v] = 1,que.push(v);
+        }
+
+        long long aa = 0ll;
+        long long bb = 0ll;
+        for(int i=1;i&lt;=n;i++)
+        {
+            if(visa[i] &amp;&amp; !visb[i]) aa++;
+            if(visb[i] &amp;&amp; !visa[i]) bb++;
+        }
+        printf(&quot;%lld\n&quot;,aa*bb);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CF1263F」Economic Difficulties]]></title>
         <id>https://dinnerhunt.cn/post/CF1263F</id>
@@ -500,429 +778,6 @@ int main()
     return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「HDU 5988」Coding Contest]]></title>
-        <id>https://dinnerhunt.cn/post/HDU5988</id>
-        <link href="https://dinnerhunt.cn/post/HDU5988">
-        </link>
-        <updated>2019-11-29T14:12:14.000Z</updated>
-        <summary type="html"><![CDATA[<p>A coding contest will be held in this university, in a huge playground. The whole playground would be divided into N blocks, and there would be M directed paths linking these blocks. The i-th path goes from the ui-th block to the vi-th block. Your task is to solve the lunch issue. According to the arrangement, there are si competitors in the i-th block. Limited to the size of table, bi bags of lunch including breads, sausages and milk would be put in the i-th block. As a result, some competitors need to move to another block to access lunch. However, the playground is temporary, as a result there would be so many wires on the path.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>A coding contest will be held in this university, in a huge playground. The whole playground would be divided into N blocks, and there would be M directed paths linking these blocks. The i-th path goes from the ui-th block to the vi-th block. Your task is to solve the lunch issue. According to the arrangement, there are si competitors in the i-th block. Limited to the size of table, bi bags of lunch including breads, sausages and milk would be put in the i-th block. As a result, some competitors need to move to another block to access lunch. However, the playground is temporary, as a result there would be so many wires on the path.</p>
-<!--more-->
-<p>For the i-th path, the wires have been stabilized at first and the first competitor who walker through it would not break the wires. Since then, however, when a person go through the i - th path, there is a chance of pi to touch<br>
-the wires and affect the whole networks. Moreover, to protect these wires, no more than ci competitors are allowed to walk through the i-th path.<br>
-Now you need to find a way for all competitors to get their lunch, and minimize the possibility of network crashing.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5988">「HDU 5988」Coding Contest</a></p>
-<h4 id="题解">题解</h4>
-<p>按最小费用最大流建边<br>
-然后因为概率是乘法，但是费用流部分统计答案用的是加法，所以先取个对数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>∗</mo><mi>y</mi><mo>=</mo><mi>e</mi><mi>x</mi><mi>p</mi><mo>(</mo><mi>l</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>l</mi><mi>n</mi><mo>(</mo><mi>y</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">x * y = exp(lg(x) + ln(y))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span> 等于对数的数加，然后再跑费用流</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cstring&gt;
-#include&lt;queue&gt;
-#include&lt;vector&gt;
-#include &lt;cmath&gt;
-using namespace std;
-typedef long long ll;
-const int inf = 0x3f3f3f3f;
-const int maxd = 205;
-const double eps = 0.000001;
-struct Edge
-{
-    int to, rev;
-    int flow;
-    double cost;
-};
-
-int num; // 默认点的范围从0开始，num为最大点数
-vector&lt;Edge&gt; edge[maxd];
-double h[maxd],dis[maxd];
-int pre_node[maxd], pre_edge[maxd];
-
-void add(int u, int v, int flow, double cost)
-{
-    edge[u].push_back((Edge){ v,(int)edge[v].size(),flow,cost });
-    edge[v].push_back((Edge){ u,(int)edge[u].size() - 1,0,-cost });
-
-}
-typedef pair&lt;double,int&gt; P;
-void min_cost_flow(int s, int t, double&amp; min_cost, int&amp; max_flow)
-{
-    fill(h, h + num+1, 0.0);
-    min_cost = 0.0 ; max_flow = 0.0;
-    int tot = inf;
-    while (tot &gt; 0)
-    {
-        priority_queue&lt;P, vector&lt;P&gt;, greater&lt;P&gt; &gt; q;
-        fill(dis, dis + num +1, inf);
-        dis[s] = 0.0; q.push(P( dis[s],s));
-        while (!q.empty())
-        {
-            int u = q.top().second;
-            int dist = q.top().first;
-            q.pop();
-            if (dis[u] &lt; dist)continue;
-            for (int i = 0;i &lt; edge[u].size(); i++)
-            {
-                Edge e = edge[u][i];
-                if (e.flow &gt; 0 &amp;&amp; dis[e.to] - (dis[u] + e.cost + h[u] - h[e.to]) &gt;= eps )
-                {
-
-                    dis[e.to] = dis[u] +e.cost + h[u] - h[e.to];
-                    pre_node[e.to] = u;
-                    pre_edge[e.to] = i;
-                    q.push(P(dis[e.to],e.to ));
-
-                }
-            }
-        }
-
-        if (fabs(dis[t] - inf) &lt;= eps) return;
-        //  这里注意点的范围
-        for (int i = 0;i &lt;= num;i++) {
-            h[i] += dis[i];
-            //printf(&quot;%lf &quot;,dis[i]);
-        }
-        //putchar(10);
-        int flow = tot;
-        for (int i = t; i != s; i = pre_node[i])
-            flow = min(flow, edge[pre_node[i]][pre_edge[i]].flow);
-
-        for (int i = t; i != s; i = pre_node[i])
-        {
-            Edge&amp; e = edge[pre_node[i]][pre_edge[i]];
-            e.flow -= flow;
-            edge[i][e.rev].flow += flow;
-        }
-        tot -= flow;
-        max_flow += flow;
-        min_cost += flow * h[t];
-
-        //printf(&quot;%d %lf %d %lf %d %lf\n&quot;,tot,dis[t],flow,min_cost,t,h[t]);
-    }
-}
-void init()
-{
-    for(int i=0;i&lt;=num;i++) edge[i].clear();
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int s,t,T;
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        int n,m;
-        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);init();
-        s = 0, t = n+1; num =  t;
-        for(int i=1;i&lt;=n;i++)
-        {
-            int a,b;scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
-            int x=min(a,b);
-            a-=x,b-=x;
-            if(a&gt;0) add(s,i,a,0);
-            else if(b&gt;0) add(i,t,b,0);
-            //printf(&quot;%d %d %d\n&quot;,a,b,a-b);
-        }
-        for(int i=1;i&lt;=m;i++)
-        {
-            int a,b,c; double d;
-            scanf(&quot;%d %d %d %lf&quot;,&amp;a,&amp;b,&amp;c,&amp;d);
-            if(c) add(a,b,1,0);
-            if(c&gt;1)add(a,b,c-1,-1*log(1.0-d));
-        }
-        double min_cost = 0.0;
-        int max_flow= 0;
-        min_cost_flow(s,t,min_cost,max_flow);
-        printf(&quot;%.2lf\n&quot;,1.0 - exp(-1.0 * min_cost));
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[组合数学公式]]></title>
-        <id>https://dinnerhunt.cn/post/Combinatorics</id>
-        <link href="https://dinnerhunt.cn/post/Combinatorics">
-        </link>
-        <updated>2019-11-28T07:26:22.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>组合数</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>n</mi><mi>m</mi></msubsup><mo>=</mo><mfrac><mrow><mi>n</mi><mo>!</mo></mrow><mrow><mi>m</mi><mo>!</mo><mo>(</mo><mi>n</mi><mo>−</mo><mi>m</mi><mo>)</mo><mo>!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">C^m_{n} = \frac{n!}{m!(n-m)!} 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9613919999999999em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.30744em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mclose">!</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span><span class="mclose">!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mclose">!</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<ul>
-<li>多重集合排列数</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>n</mi><mo>!</mo></mrow><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>!</mo><msub><mi>a</mi><mn>2</mn></msub><mo>!</mo><msub><mi>a</mi><mn>3</mn></msub><mo>!</mo><mo>⋯</mo><msub><mi>a</mi><mi>k</mi></msub><mo>!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{n!}{a_1! a_2! a_3! \cdots a_k!}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.20744em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">!</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">!</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">!</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mclose">!</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<ul>
-<li>多重集合组合数(任意<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>n</mi><mi>i</mi></msub><mo>&gt;</mo><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">n_i &gt;= r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>)</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mrow><mi>k</mi><mo>+</mo><mi>r</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">C^{k-1}_{k+r-1} 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.248878em;vertical-align:-0.3497699999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-2.408561em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3497699999999999em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<ul>
-<li>多重集合组合数</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mrow><mi>k</mi><mo>+</mo><mi>r</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo>−</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><msubsup><mi>C</mi><mrow><mi>k</mi><mo>+</mo><mi>r</mi><mo>−</mo><msub><mi>n</mi><mi>i</mi></msub><mo>−</mo><mn>2</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><msubsup><mi>C</mi><mrow><mi>k</mi><mo>+</mo><mi>r</mi><mo>−</mo><msub><mi>n</mi><mi>i</mi></msub><mo>−</mo><mn>2</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo>+</mo><mo>⋯</mo><mo>+</mo><mo>(</mo><mo>−</mo><mn>1</mn><msup><mo>)</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><msubsup><mi>C</mi><mrow><mi>k</mi><mo>+</mo><mi>r</mi><mo>−</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><msub><mi>n</mi><mi>i</mi></msub><mo>−</mo><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">C_{k+r-1}^{k-1} - \sum_{i=1}^{k} C_{k+r-n_i-2}^{k-1} + \sum_{i=1}^{k} C_{k+r-n_i-2}^{k-1}+\cdots + (-1)^{k+1} C^{k-1}_{k+r -\sum_{i=1}^{k}n_i - (k+1)}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.248878em;vertical-align:-0.3497699999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-2.408561em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3497699999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:3.1137820000000005em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8361130000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-2.408561em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.39153899999999986em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:3.1137820000000005em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8361130000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-2.408561em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.39153899999999986em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.5546659999999999em;vertical-align:-0.6555579999999999em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.899108em;"><span style="top:-2.2694490000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">−</span><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8931714285714285em;"><span style="top:-2.1785614285714283em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.8971428571428572em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32143857142857146em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6555579999999999em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<ul>
-<li>卢卡斯定理</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>n</mi><mi>m</mi></msubsup><mo>≡</mo><msubsup><mi>C</mi><mrow><mo>(</mo><mi>n</mi><mtext> mod </mtext><mi>p</mi><mo>)</mo></mrow><mrow><mo>(</mo><mi>m</mi><mtext> mod </mtext><mi>p</mi><mo>)</mo></mrow></msubsup><mo>×</mo><msubsup><mi>C</mi><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mi>p</mi></mrow><mrow><mi>m</mi><mi mathvariant="normal">/</mi><mi>p</mi></mrow></msubsup><mo>(</mo><mtext> mod </mtext><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C_{n}^{m} \equiv C_{(n \text{ mod } p)}^{(m \text{ mod } p)} \times C_{n / p}^{m / p} ( \text{ mod } p)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9613919999999999em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.5599999999999998em;vertical-align:-0.5151999999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.3598em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">n</span><span class="mord text mtight"><span class="mord mtight"> mod </span></span><span class="mord mathdefault mtight">p</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">m</span><span class="mord text mtight"><span class="mord mtight"> mod </span></span><span class="mord mathdefault mtight">p</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5151999999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.5599999999999998em;vertical-align:-0.5151999999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.3598em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mord mtight">/</span><span class="mord mathdefault mtight">p</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mtight">/</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5151999999999999em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord text"><span class="mord"> mod </span></span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span></p>
-<ul>
-<li>Catalan</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>a</mi><msub><mi>t</mi><mi>n</mi></msub><mo>=</mo><mfrac><msubsup><mi>C</mi><mrow><mn>2</mn><mi>n</mi></mrow><mi>n</mi></msubsup><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">Cat_n = \frac{C_{2n}^{n}}{n+1}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.1296600000000003em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-2.4518920000000004em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24810799999999997em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<hr>
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>∗</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">N * 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 格子中用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>∗</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1 * 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>∗</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2 * 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 填充的方案数</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mn>5</mn><mo>⋅</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n) = f(n-1) + 5 \cdot f(n-2) + f(n-3) - f(n-4) 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span></span></span></span></span></p>
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>∗</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">N * 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 格子中用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>∗</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 * 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>∗</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 * 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 填充的方案数</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>⋅</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mn>3</mn><mo>⋅</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>−</mo><mn>2</mn><mo>⋅</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n) = 2 \cdot f(n-1) + 3 \cdot f(n-2) - 2 \cdot f(n-3)  
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span></span></span></span></span></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「HDU 6185」Covering]]></title>
-        <id>https://dinnerhunt.cn/post/HDU6185</id>
-        <link href="https://dinnerhunt.cn/post/HDU6185">
-        </link>
-        <updated>2019-11-27T14:08:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>Bob's school has a big playground, boys and girls always play games here after school.</p>
-<p>To protect boys and girls from getting hurt when playing happily on the playground, rich boy Bob decided to cover the playground using his carpets.</p>
-<p>Meanwhile, Bob is a mean boy, so he acquired that his carpets can not overlap one cell twice or more.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Bob's school has a big playground, boys and girls always play games here after school.</p>
-<p>To protect boys and girls from getting hurt when playing happily on the playground, rich boy Bob decided to cover the playground using his carpets.</p>
-<p>Meanwhile, Bob is a mean boy, so he acquired that his carpets can not overlap one cell twice or more.</p>
-<!--more-->
-<p>He has infinite carpets with sizes of 1×2 and 2×1, and the size of the playground is 4×n.</p>
-<p>Can you tell Bob the total number of schemes where the carpets can cover the playground completely without overlapping?</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6185">「HDU 6185」Covering</a></p>
-<h4 id="题解">题解</h4>
-<p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mo>∗</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">4*n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 的摆法方案数，<br>
-考<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>的5种情况<br>
-|1|1|   |1|2|   |1|1|   |1|1|   |1|2|<br>
-|2|2|   |1|2|   |2|3|   |2|2|   |1|2|<br>
-|3|3|   |3|4|   |2|3|   |3|4|   |3|3|<br>
-|4|4|   |3|4|   |4|4|   |3|4|   |4|4|</p>
-<p>如果最后两行按照 方案1的摆法，那么剩下部分的摆法方案数为 f(n-2)<br>
-如果最后两行按照 方案2的摆法，因为方案2的摆法，每一列是独立的，所以剩下部分的摆法方案数为f(n-1)<br>
-如果最后两行按照 方案3的摆法，那么方案数为f(n-2)，又因为方案可以进一步错位，变成</p>
-<p>|1|1| -&gt;   |1|1|6|6| （(2,2)与(3,2)的格子旋转一下）<br>
-|2|4| -&gt;   |2|4|4|8|<br>
-|2|4| -&gt;   |2|5|5|8|<br>
-|3|3| -&gt;   |3|3|7|7|</p>
-<p>因为这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mo>∗</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">4*4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>的格子属于一个整体(不能被任意的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mo>∗</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">4*n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>分割)，所以方案数也可以为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n-4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span></span></span></span><br>
-可以发现，这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mo>∗</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">4*4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>的格子也可以扩展到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn><mo>∗</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">6*6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>,所以方案数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>6</mn><mo>)</mo><mo>+</mo><mo>⋯</mo></mrow><annotation encoding="application/x-tex">f(n-2) + f(n-4) + f(n-6)+ \cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.31em;vertical-align:0em;"></span><span class="minner">⋯</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">f(0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>或<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">F(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>)(根据<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>的奇偶性判断)</p>
-<p>方案4，5，情况相同，拓展方式与方案3类似，自己推下就好</p>
-<p>于是可以得到<br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>+</mo><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo><mo>+</mo><mo>⋯</mo><mo>+</mo><mi>f</mi><mo>(</mo><mn>0</mn><mo>)</mo><mo>)</mo><mo>+</mo><mn>2</mn><mo>⋅</mo><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo><mo>+</mo><mo>⋯</mo><mo>+</mo><mi>f</mi><mo>(</mo><mn>0</mn><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n) =  f(n-1) + f(n-2) + ( f(n-2) + f(n-4) + \cdots + f(0) ) + 2 \cdot (f(n-2) + f(n-3) + f(n-4) + \cdots + f(0))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></p>
-<p>接着裂项相减 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">(f(n) - f(n-2))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>代入上式子后合并得到<br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>⋅</mo><mn>5</mn><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n) = f(n-1) + f(n-2) \cdot 5 + f(n-3) - f(n-4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span></span></span></span></p>
-<p>因为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&lt;</mo><mo>=</mo><mn>1</mn><msup><mn>0</mn><mn>18</mn></msup></mrow><annotation encoding="application/x-tex">n&lt;=10^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span><br>
-并且我们发现式子可以转化为矩阵乘法表示</p>
-<p>|1,5,1,-1|   -   |f(n-1)|<br>
-|0,1,5,1|    -  |f(n-2)|<br>
-|1,0,0,0|    *  |f(n-3)|<br>
-|0,0,1,0|    -   |f(n-4)|</p>
-<p>然后用矩阵快速幂即可</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int mod = 1e9+7;
-struct matrix
-{
-    long long a[4][4];
-};
-matrix matrix_mul(matrix A, matrix B,int n)
-{
-    matrix C;
-    for (int i = 0; i &lt; n; ++i)
-        for (int j = 0; j &lt; n; ++j)
-        {
-            C.a[i][j] = 0;
-            for (int k = 0; k &lt; n; ++k) C.a[i][j] = (C.a[i][j] +  (A.a[i][k] * B.a[k][j] % mod)) %mod;
-        }
-    return C;
-}
-matrix unit(int n)
-{
-    matrix res;
-    for (int i = 0; i &lt; n; ++i)
-        for (int j = 0; j &lt; n; ++j)
-            if (i == j) res.a[i][j] = 1;
-            else res.a[i][j] = 0;
-    return res;
-}
-matrix matrix_pow(matrix A, long long b,int n)
-{
-    matrix res = unit(n), temp = A;
-    for (; b; b &gt;&gt;=1) {
-        if (b &amp; 1) res = matrix_mul(res, temp,n);
-        temp = matrix_mul(temp, temp,n);
-    }
-    return res;
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    long long n;
-    while(scanf(&quot;%lld&quot;,&amp;n)!=EOF)
-    {
-        if(n==1)
-        {
-            printf(&quot;1\n&quot;);
-            continue;
-        }
-        if(n==2)
-        {
-            printf(&quot;5\n&quot;);
-            continue;
-        }
-        if(n==3)
-        {
-            printf(&quot;11\n&quot;);
-            continue;
-        }
-        if(n==4)
-        {
-            printf(&quot;36\n&quot;);
-            continue;
-        }
-        matrix x,y;
-        x.a[0][0] = 1; x.a[0][1] = 5; x.a[0][2] = 1; x.a[0][3] = -1;
-        x.a[1][0] = 1; x.a[1][1] = 0; x.a[1][2] = 0; x.a[1][3] = 0;
-        x.a[2][0] = 0; x.a[2][1] = 1; x.a[2][2] = 0; x.a[2][3] = 0;
-        x.a[3][0] = 0; x.a[3][1] = 0; x.a[3][2] = 1; x.a[3][3] = 0;
-
-        y.a[0][0] = 36; y.a[0][1] = 0; y.a[0][2] = 0; y.a[0][3] = 0;
-        y.a[1][0] = 11; y.a[1][1] = 0; y.a[1][2] = 0; y.a[1][3] = 0;
-        y.a[2][0] = 5; y.a[2][1] = 0; y.a[2][2] = 0; y.a[2][3] = 0;
-        y.a[3][0] = 1; y.a[3][1] = 0; y.a[3][2] = 0; y.a[3][3] = 0;
-        matrix z = matrix_pow(x,n-4,4);
-        matrix ans = matrix_mul(z,y,4);
-        long long aa = ans.a[0][0];
-        printf(&quot;%lld\n&quot;,(aa%mod+mod)%mod);
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2019 年比赛总结]]></title>
-        <id>https://dinnerhunt.cn/post/2019-icpc</id>
-        <link href="https://dinnerhunt.cn/post/2019-icpc">
-        </link>
-        <updated>2019-11-25T05:04:08.000Z</updated>
-        <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/deck.jpg" alt="图文不符"></figure>
-]]></summary>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/deck.jpg" alt="图文不符"></figure>
-<!--more-->
-<blockquote>
-<p>在熟悉的深航音乐响起后没，飞机抵达了深圳机场。窗外闪烁着的灯光，意味着今年的比赛终要告一段落了</p>
-</blockquote>
-<h3 id="今年的历程">今年的历程</h3>
-<ul>
-<li>2月       广东工业大学集训</li>
-<li>3月       蓝桥杯省赛</li>
-<li>4月       团体程序程序设计天梯赛</li>
-<li>5月       GDCPC，蓝桥国赛</li>
-<li>7月    中山大学集训</li>
-<li>9月       ICPC&amp;CCPC 网络赛</li>
-<li>10月      银川站</li>
-<li>11月      上海站</li>
-</ul>
-<p>看着Vjudge的Register 30 months ago，我的竞赛经历也走过了两年了。想起去年ccpc camp wls的十年竞赛经历， 以及前天八年经验的清华选手，我都现的无比稚嫩。但还是感觉自己已经在圈子里呆了许久，但却依然菜的真实。</p>
-<p>无论是上半年的蓝桥国赛，CPC省赛，还是年末的两场区域赛，都挺让老师失望的吧。</p>
-</br>
-<hr>
-</br>
-<h3 id="银川站">银川站</h3>
-<p>本着为了拿牌推动校内竞赛发展的想法，老班带领我们来到了石嘴山，开启了第一次ICPC之旅<br>
-在机场有幸见到了北大的队伍，他们在等巴士时仍然开着电脑在学习(这可能是就是我们之间的差距吧)。<br>
-在坐了将近一个钟的大巴之后，我们到达了酒店，10月底的石嘴山并没有想象中的那么冷。<br>
-可能是因为第一次坐飞机太激动了，到达酒店后又迷迷糊糊睡了一下午。<br>
-晚上逛了逛石嘴山市区吧，发现这里有万达还是挺意外的，交通挺便宜的，基本都是5块钱(除了去学校吧)<br>
-现场有400支队伍，比较的挤，不过桌面空间挺大的，还能接受。热身赛调了调编译器，是Ubuntu 环境，也是第一次用吧。<br>
-晚上吃了食堂的饭，饭票给的有点多，有点没吃完。<br>
-</br><br>
-正式赛<br>
-开场快速过了签到，然后把另外一道之前做过的B切了，接着发现了一道进制转化的题目<br>
-发现了该题需要高精度后，便叫同学开始抄高精度的板子，接着看到了一道之前在书上见到过的原题<br>
-板子抄完后一堆编译报错(平时练习赛全是copy的)<br>
-调完以后交上去返回TLE，于是开始怀疑时间复杂度是否过高(对板子的时间复杂度不是彻底理解，于是开始怀疑正确做法是否是一步公式法转化)<br>
-在短暂的僵局之后，迅速把线段树给切了,之后就开始决定搞进制转化or原题。<br>
-在抉择之后，决定尝试先用python把进制转换过了，然后再码另一题<br>
-接着又暴露了问题，对python不熟，在python中没有字符类型，需要用函数转化，但是并不知道。接着提出一个100多行的if else赋值的傻办法，但否定了。(赛后这里应该是最大的决策失误)<br>
-在最后一个半钟的时间，把原题码了，但wa了。(练习做少了，没有考虑到图论的一些坑点)<br>
-最后依然无法解决这两个问题，当然也没有去尝试后面的题，于是遗憾打铁。</p>
-<h4 id="总结">总结</h4>
-<p>组队训练比较少，赛中做了很多错误决策，也有点紧张<br>
-平时练习copy多，赛场上抄板子容易抄错<br>
-过多的口胡一些题目，导致一些坑点没有经历过<br>
-</br><br>
-赛后提前离场了，比较失落吧。晚上老班请我们到万达吃了饭。<br>
-第二天起床便赶往了机场</p>
-</br>
-<h3 id="上海站">上海站</h3>
-<p>今年能拿到上海站的资格也是挺幸运的把，擦边+CCSP竞赛<br>
-因为一些原因，行程订的挺赶的，周六前往，周日返程<br>
-飞机落地后就直接地铁来到了上海大学报道，上大的午饭非常好吃。</p>
-</br>
-热身赛
-场馆相比于宁夏宽敞很多，应该是最后一场区域赛的原因吧，周围坐满了各种985/211高校，不过相较于上次比赛，并没有那么紧张。
-热身赛开场读题读错，导致排名倒数。第二题因为不了解bitset时间复杂度，导致否定了bitset做法。第四题本想暴力搞，但因为某些原因从而放弃。不过这是热身赛吧，也并不是很重要。
-<p>晚上跟广工的闷骚Inctry面基，去吃了一顿老北京火锅(羊肉有点骚，不过味道还是不错的)<br>
-</br><br>
-现场赛<br>
-因为路过气球室，发现粉色气球很多，于是开场便叫同学阅读A题，但发现上当了，A不太可做。<br>
-接着看到一血K产生了，于是看了看K题面，发现并没有啥想法。<br>
-转头开始尝试做B，花了一点时间把B做完以后。就开始了将近4小时的垃圾时间。<br>
-K题其实已经想出了正确解法，但因为最后如果枚举边判断是M时间复杂度，而如果尝试优化一下，只枚举二分图左边的点，可能会少一些常数，但总体最大时间复杂度是不变的。因此我们的K被关了。<br>
-D题没啥想法，但是由于周围队都过了，于是便决定在该题上花费些许时间，但却没有任何进展。<br>
-E题因该是最需要反省的，很简单的应用，但没有找到问题的本质是要我们求什么，也因为剩余时间是在不多了，心态可能有点轻微放弃吧。<br>
-H题比较薄弱，如果前面题都挺顺利的，花点时间应该是可以突破一下<br>
-F题赛中没有看到了，挺裸的一道树剖吧，不过立方和需要推下公式。<br>
-</br><br>
-也许也许多交几次或者加个快读K就过了吧，也许多看看E的图就能发现题目的本质吧<br>
-但终究还是菜，一如既往的菜。<br>
-赛后没有见到老班，可能真的令他太失望了吧。</p>
-<p>闭幕式滚榜的时候，技术支持做的很好，老师的主持也十分有趣。<br>
-平时不喜欢拍照，却有点羡慕滚榜时赛场上的队伍照片。<br>
-铜牌就能在屏幕上看到自己队伍的照片了吧。<br>
-</br><br>
-临走之前，在上大逛了一会，见了下上大的初中同学，感觉彼此都没啥变化。<br>
-想看看东方明珠，想去去陆家嘴。但去了应该也不会开心吧。</p>
-</br>
-<hr>
-</br>
-<p>结束啦，今年的比赛。<br>
-虽然挺失望的，差一点的特等，差一点的牌子。<br>
-但，我不会放弃的。<br>
-它实在是太迷人了<br>
-赛场周围的志愿者穿梭的身影，桌面上的队伍台历，电脑旁飘着的彩色气球<br>
-赛后的滚榜，以及拿牌后的喜悦。<br>
-<strong>加油吧，&quot;So Nice Chicken , Fighting For Au 2020&quot;</strong></p>
 ]]></content>
     </entry>
 </feed>
