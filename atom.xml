@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-19T18:44:09.004Z</updated>
+    <updated>2019-12-23T10:13:35.200Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,158 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces1278D&E」Segment Tree & Tests for problem D]]></title>
+        <id>https://dinnerhunt.cn/post/CF1278D&amp;E</id>
+        <link href="https://dinnerhunt.cn/post/CF1278D&amp;E">
+        </link>
+        <updated>2019-12-23T05:29:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>As the name of the task implies, you are asked to do some work with segments and trees.</p>
+<p>Recall that a tree is a connected undirected graph such that there is exactly one simple path between every pair of its vertices.</p>
+<p>You are given 𝑛 segments [𝑙1,𝑟1],[𝑙2,𝑟2],…,[𝑙𝑛,𝑟𝑛], 𝑙𝑖&lt;𝑟𝑖 for every 𝑖. It is guaranteed that all segments' endpoints are integers, and all endpoints are unique — there is no pair of segments such that they start in the same point, end in the same point or one starts in the same point the other one ends.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>As the name of the task implies, you are asked to do some work with segments and trees.</p>
+<p>Recall that a tree is a connected undirected graph such that there is exactly one simple path between every pair of its vertices.</p>
+<p>You are given 𝑛 segments [𝑙1,𝑟1],[𝑙2,𝑟2],…,[𝑙𝑛,𝑟𝑛], 𝑙𝑖&lt;𝑟𝑖 for every 𝑖. It is guaranteed that all segments' endpoints are integers, and all endpoints are unique — there is no pair of segments such that they start in the same point, end in the same point or one starts in the same point the other one ends.</p>
+<!--more-->
+<p>Let's generate a graph with 𝑛 vertices from these segments. Vertices 𝑣 and 𝑢 are connected by an edge if and only if segments [𝑙𝑣,𝑟𝑣] and [𝑙𝑢,𝑟𝑢] intersect and neither of it lies fully inside the other one.</p>
+<p>For example, pairs ([1,3],[2,4]) and ([5,10],[3,7]) will induce the edges but pairs ([1,2],[3,4]) and ([5,7],[3,10]) will not.</p>
+<p>Determine if the resulting graph is a tree or not.</p>
+<p>&amp;</p>
+<p>We had a really tough time generating tests for problem D. In order to prepare strong tests, we had to solve the following problem.</p>
+<p>Given an undirected labeled tree consisting of 𝑛 vertices, find a set of segments such that:</p>
+<p>both endpoints of each segment are integers from 1 to 2𝑛, and each integer from 1 to 2𝑛 should appear as an endpoint of exactly one segment;<br>
+all segments are non-degenerate;<br>
+for each pair (𝑖,𝑗) such that 𝑖≠𝑗, 𝑖∈[1,𝑛] and 𝑗∈[1,𝑛], the vertices 𝑖 and 𝑗 are connected with an edge if and only if the segments 𝑖 and 𝑗 intersect, but neither segment 𝑖 is fully contained in segment 𝑗, nor segment 𝑗 is fully contained in segment 𝑖.<br>
+Can you solve this problem too?</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1278/problem/D">「CodeForces1278D」Segment Tree</a><br>
+<a href="https://codeforces.com/contest/1278/problem/E">「CodeForces1278E」Tests for problem D</a></p>
+<h4 id="题解">题解</h4>
+<p>D题 意思大概就是，给一堆线段<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，如果两个线段<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>A</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i,A_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>相交（包含不算相交）,那么代表<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">点</mi><mi>i</mi><mi mathvariant="normal">与</mi><mi>j</mi></mrow><annotation encoding="application/x-tex">点i与j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">点</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">与</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 之间有连边，问这些线段是否能构造成一颗树</p>
+<p>E题 就是给树，求构造线段</p>
+<p>D题</p>
+<ol>
+<li>将拆成两个点，丢进数组，排序</li>
+<li>枚举点</li>
+<li>如果点是左端点，丢进堆</li>
+<li>如果是右端点，则从大到小枚举堆中端点，直到遇到该右端点所在线段的左端点，途中经过的点都与该线段有交点，删除该边左端点</li>
+<li>返回第二步</li>
+</ol>
+<p>第4步中，当连边为n时，强行退出，时间复杂度为O(n log n)</p>
+<p>E题 类似先序遍历的形式构造</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">//D
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 5e5+10;
+typedef pair&lt;int,int&gt; P;
+vector&lt;P&gt; a;
+set&lt;P&gt; s;
+int fa[maxd],n,flag;
+P b[maxd];
+int gf(int x)
+{
+    if(fa[x] == x) return x ;
+    return fa[x] = gf(fa[x]);
+}
+void check()
+{
+    int num =0;
+    for(auto p: a)
+    {
+ 
+        //printf(&quot;-- %d %d\n&quot;,p.first,p.second);
+        if(p.second&gt;0)s.insert(P(-p.first,p.second)); // 插入左端点
+        else
+        {
+            int id = -p.second;
+            for(auto x:s)
+            {
+                //printf(&quot;%d %d\n&quot;,x.first,x.second);
+                if(b[id].first == -x.first)
+                {
+                    s.erase(P(x.first,id));
+                    break;
+                }
+                if(gf(id) == gf(x.second)) flag =1;
+                //printf(&quot;!! %d %d\n&quot;,id,x.second);
+                fa[gf(id)] = gf(x.second);
+                num++;
+                if(num == n) return;
+            }
+        }
+    }
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+    {
+        fa[i] = i;scanf(&quot;%d %d&quot;,&amp;b[i].first,&amp;b[i].second);
+        a.push_back(P(b[i].first,i));
+        a.push_back(P(b[i].second,-i));
+    }
+ 
+    sort(a.begin(),a.end());
+    check();
+    for(int i=2;i&lt;=n;i++) if(gf(i) != gf(1)) flag =1;
+    if(flag) printf(&quot;NO\n&quot;);
+    else printf(&quot;YES\n&quot;);
+ 
+    return 0;
+
+//E
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 5e5+10;
+vector&lt;int&gt; G[maxd];
+int n,l[maxd],r[maxd],cnt;
+void dfs(int x,int fa)
+{
+    for(auto v:G[x])
+    {
+        if(v==fa) continue;
+        l[v] = ++cnt;
+    }
+    r[x] = ++cnt;
+    for(int i=G[x].size()-1;i &gt;=0;i--)
+    {
+        int v = G[x][i];
+        if(v == fa) continue;
+        dfs(v,x);
+    }
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n;scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;n;i++)
+    {
+        int x,y;
+        scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+        G[x].push_back(y);
+        G[y].push_back(x);
+    }
+    l[1] = ++cnt;
+    dfs(1,1);
+    for(int i=1;i&lt;=n;i++) printf(&quot;%d %d\n&quot;,l[i],r[i]);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「SCOI2010」股票交易]]></title>
         <id>https://dinnerhunt.cn/post/P2569</id>
@@ -687,93 +839,6 @@ int main()
 
         for(int i=1;i&lt;=n;i++) G[i].clear(),d[i] = 0; e.clear();
         printf(&quot;%lld\n&quot;, ans);
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「HDU 5985」Lucky Coins ]]></title>
-        <id>https://dinnerhunt.cn/post/HDU5985</id>
-        <link href="https://dinnerhunt.cn/post/HDU5985">
-        </link>
-        <updated>2019-11-30T06:16:34.000Z</updated>
-        <summary type="html"><![CDATA[<p>Bob has collected a lot of coins in different kinds. He wants to know which kind of coins is lucky. He finds out a lucky kind of coins by the following way. He tosses all the coins simultaneously, and then removes the coins that come up tails. He then tosses all the remaining coins and removes the coins that come up tails. He repeats the previous step until there is one kind of coins remaining or there are no coins remaining. If there is one kind of coins remaining, then this kind of coins is lucky. Given the number of coins and the probability that the coins come up heads after tossing for each kind, your task is to calculate the probability for each kind of coins that will be lucky.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Bob has collected a lot of coins in different kinds. He wants to know which kind of coins is lucky. He finds out a lucky kind of coins by the following way. He tosses all the coins simultaneously, and then removes the coins that come up tails. He then tosses all the remaining coins and removes the coins that come up tails. He repeats the previous step until there is one kind of coins remaining or there are no coins remaining. If there is one kind of coins remaining, then this kind of coins is lucky. Given the number of coins and the probability that the coins come up heads after tossing for each kind, your task is to calculate the probability for each kind of coins that will be lucky.</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/HDU-5985">「HDU 5985」Lucky Coins </a></p>
-<h4 id="题解">题解</h4>
-<p>第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>种硬币,有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>n</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">n_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>枚，前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>次以内全部反面的概率为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>i</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo><mo>=</mo><mo>(</mo><mn>1</mn><mo>−</mo><msubsup><mi>p</mi><mi>i</mi><mi>k</mi></msubsup><msup><mo>)</mo><msub><mi>n</mi><mi>i</mi></msub></msup></mrow><annotation encoding="application/x-tex">die[i][k] = (1-p_i^k)^{n_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.107772em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>p</mi><mi>i</mi><mi>k</mi></msubsup></mrow><annotation encoding="application/x-tex">p_i^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.107772em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span></span></span></span> 表示这个硬币抛<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>次全都正面的概率，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>−</mo><msubsup><mi>p</mi><mi>i</mi><mi>k</mi></msubsup></mrow><annotation encoding="application/x-tex">1-p_i^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.107772em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span></span></span></span> 表示至少出现一次反面的概率<br>
-然后 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>d</mi><mi>i</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">live[i][k] = 1 - die[i][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> ,表示前第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>种硬币<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>次至少有一枚没有全部反面的概率<br>
-那么第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>枚硬币的答案等于</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mn>200</mn></munderover><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mi>k</mi><mo>!</mo><mo>=</mo><mi>i</mi></mrow><mi>n</mi></munderover><mo>(</mo><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>−</mo><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo>]</mo><mo>)</mo><mo>×</mo><mi>d</mi><mi>i</mi><mi>e</mi><mo>[</mo><mi>k</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">ans[i] = \sum_{j=1}^{200} \sum_{k=1,k!=i}^n (live[i][j] - live[i][j+1]) \times die[k][j]
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.2393340000000004em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011130000000004em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4137769999999998em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">!</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight">i</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></span></p>
-<p>表示第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>轮存活的概率加上其他所有硬币前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>轮抛弃的概率,然后答案就是每一轮存活概率的总和</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-using namespace std;
-const int maxd = 205;
-int n,m,t;
-int a[11];
-double b[11];
-double die[11][maxd],live[11][maxd];
-double pow(double x,int y)
-{
-    double now = 1.0;
-    while(y)
-    {
-        if(y%2 == 1) now *= x;
-        x = x * x;
-        y/=2;
-    }
-    return now;
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        scanf(&quot;%d&quot;,&amp;n);
-        for(int i=1;i&lt;=n;i++) scanf(&quot;%d %lf&quot;,&amp;a[i],&amp;b[i]);
-        if(n == 1)
-        {
-            printf(&quot;1.000000\n&quot;);
-            continue;
-        }
-        for(int i=1;i&lt;=n;i++)
-        {
-            for(int j=1;j&lt;=201;j++)
-            {
-                double k = pow(b[i],j);
-                k = 1.0 - k;
-
-                die[i][j] = pow(k,a[i]);
-                live[i][j] = 1.0 - die[i][j];
-            }
-        }
-        for(int i=1;i&lt;=n;i++)
-        {
-            double ans = 0.0;
-            for(int j=1;j&lt;=200;j++)
-            {
-                double now = live[i][j] - live[i][j+1];
-                for(int k=1;k&lt;=n;k++)
-                {
-                    if(i == k) continue;
-                    now *= die[k][j];
-                }
-                ans += now;
-            }
-            printf(&quot;%.6lf&quot;,ans);
-            if(i!=n) putchar(' ');
-        }
-        putchar(10);
     }
     return 0;
 }

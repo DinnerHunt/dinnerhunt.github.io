@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>「CodeForces 407C」 Curious Array | dinnerhunt</title>
+<title>「CodeForces1278D&amp;E」Segment Tree &amp; Tests for problem D | dinnerhunt</title>
 <meta name="description" content="So Nice Chicken">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,69 +88,162 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>「CodeForces 407C」 Curious Array</h1>
+            <h1>「CodeForces1278D&amp;E」Segment Tree &amp; Tests for problem D</h1>
             <p class="article-meta">
-              2019-10-15
+              2019-12-23
               
-                <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge warning">
-                  差分
+                <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge secondary">
+                  数据结构
                 </a>
               
-                <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge ">
-                  组合数学
+                <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge ">
+                  构造
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge success">
+                  图论
                 </a>
               
             </p>
             
             <div class="post-content">
-              <p>You've got an array consisting of n integers: a[1], a[2], ..., a[n]. Moreover, there are m queries, each query can be described by three integers li, ri, ki. Query li, ri, ki means that we should add  to each element a[j], where li ≤ j ≤ ri.</p>
-<p>Record  means the binomial coefficient, or the number of combinations from y elements into groups of x elements.</p>
-<p>You need to fulfil consecutively all queries and then print the final array.</p>
+              <p>As the name of the task implies, you are asked to do some work with segments and trees.</p>
+<p>Recall that a tree is a connected undirected graph such that there is exactly one simple path between every pair of its vertices.</p>
+<p>You are given 𝑛 segments [𝑙1,𝑟1],[𝑙2,𝑟2],…,[𝑙𝑛,𝑟𝑛], 𝑙𝑖&lt;𝑟𝑖 for every 𝑖. It is guaranteed that all segments' endpoints are integers, and all endpoints are unique — there is no pair of segments such that they start in the same point, end in the same point or one starts in the same point the other one ends.</p>
 <!--more-->
+<p>Let's generate a graph with 𝑛 vertices from these segments. Vertices 𝑣 and 𝑢 are connected by an edge if and only if segments [𝑙𝑣,𝑟𝑣] and [𝑙𝑢,𝑟𝑢] intersect and neither of it lies fully inside the other one.</p>
+<p>For example, pairs ([1,3],[2,4]) and ([5,10],[3,7]) will induce the edges but pairs ([1,2],[3,4]) and ([5,7],[3,10]) will not.</p>
+<p>Determine if the resulting graph is a tree or not.</p>
+<p>&amp;</p>
+<p>We had a really tough time generating tests for problem D. In order to prepare strong tests, we had to solve the following problem.</p>
+<p>Given an undirected labeled tree consisting of 𝑛 vertices, find a set of segments such that:</p>
+<p>both endpoints of each segment are integers from 1 to 2𝑛, and each integer from 1 to 2𝑛 should appear as an endpoint of exactly one segment;<br>
+all segments are non-degenerate;<br>
+for each pair (𝑖,𝑗) such that 𝑖≠𝑗, 𝑖∈[1,𝑛] and 𝑗∈[1,𝑛], the vertices 𝑖 and 𝑗 are connected with an edge if and only if the segments 𝑖 and 𝑗 intersect, but neither segment 𝑖 is fully contained in segment 𝑗, nor segment 𝑗 is fully contained in segment 𝑖.<br>
+Can you solve this problem too?</p>
 <h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/407/C">「CodeForces 407C」Curious Array</a></p>
+<p><a href="https://codeforces.com/contest/1278/problem/D">「CodeForces1278D」Segment Tree</a><br>
+<a href="https://codeforces.com/contest/1278/problem/E">「CodeForces1278E」Tests for problem D</a></p>
 <h4 id="题解">题解</h4>
-<p><a href="https://www.luogu.org/blog/MILLOPE/solution-cf407c">MILLOPE 的题解</a></p>
+<p>D题 意思大概就是，给一堆线段<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，如果两个线段<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>A</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i,A_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>相交（包含不算相交）,那么代表<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">点</mi><mi>i</mi><mi mathvariant="normal">与</mi><mi>j</mi></mrow><annotation encoding="application/x-tex">点i与j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">点</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">与</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 之间有连边，问这些线段是否能构造成一颗树</p>
+<p>E题 就是给树，求构造线段</p>
+<p>D题</p>
+<ol>
+<li>将拆成两个点，丢进数组，排序</li>
+<li>枚举点</li>
+<li>如果点是左端点，丢进堆</li>
+<li>如果是右端点，则从大到小枚举堆中端点，直到遇到该右端点所在线段的左端点，途中经过的点都与该线段有交点，删除该边左端点</li>
+<li>返回第二步</li>
+</ol>
+<p>第4步中，当连边为n时，强行退出，时间复杂度为O(n log n)</p>
+<p>E题 类似先序遍历的形式构造</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
+<pre><code class="language-cpp">//D
+#include &lt;cstdio&gt;
 #include &lt;cstring&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
 #include &lt;algorithm&gt;
 using namespace std;
-const int maxd = 1e5+100;
-const int mod = 1e9+7;
-typedef long long LL;
-int n,m;
-long long a[maxd],c[maxd][105],ans[maxd][105];
-void init()
+const int maxd = 5e5+10;
+typedef pair&lt;int,int&gt; P;
+vector&lt;P&gt; a;
+set&lt;P&gt; s;
+int fa[maxd],n,flag;
+P b[maxd];
+int gf(int x)
 {
-    c[0][0] = 1ll; 
-    for (int i = 1; i &lt; maxd; ++i) {
-        c[i][0] = 1ll; 
-        for (int j = 1; j &lt;= i &amp;&amp; j &lt; 105; ++j) {
-            c[i][j] = (1ll * c[i-1][j-1] + c[i-1][j]) % mod; 
+    if(fa[x] == x) return x ;
+    return fa[x] = gf(fa[x]);
+}
+void check()
+{
+    int num =0;
+    for(auto p: a)
+    {
+ 
+        //printf(&quot;-- %d %d\n&quot;,p.first,p.second);
+        if(p.second&gt;0)s.insert(P(-p.first,p.second)); // 插入左端点
+        else
+        {
+            int id = -p.second;
+            for(auto x:s)
+            {
+                //printf(&quot;%d %d\n&quot;,x.first,x.second);
+                if(b[id].first == -x.first)
+                {
+                    s.erase(P(x.first,id));
+                    break;
+                }
+                if(gf(id) == gf(x.second)) flag =1;
+                //printf(&quot;!! %d %d\n&quot;,id,x.second);
+                fa[gf(id)] = gf(x.second);
+                num++;
+                if(num == n) return;
+            }
         }
     }
 }
 int main()
 {
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    init();
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
-    for(int j=1;j&lt;=m;j++)
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
     {
-        int l,r,k;
-        scanf(&quot;%d %d %d&quot;,&amp;l,&amp;r,&amp;k);
-        // 
-        for(int i=0;i&lt;=k;i++) ans[l][i] =  (1ll * ans[l][i] + c[k][k-i]) %mod;
-        // 减去前缀和
-        for(int i=0;i&lt;=k;i++) ans[r+1][i] =  (1ll *ans[r+1][i] - c[r-l+k+1][k-i]) %mod;
+        fa[i] = i;scanf(&quot;%d %d&quot;,&amp;b[i].first,&amp;b[i].second);
+        a.push_back(P(b[i].first,i));
+        a.push_back(P(b[i].second,-i));
     }
-    for (int i = 1; i &lt; n; ++i) 
-        for (int j = 101; j &gt;= 1; --j) 
-            ans[i+1][j-1] = (1ll * ans[i+1][j-1] + ans[i][j] + ans[i][j-1]) % mod; 
-    for (int i = 1; i &lt;= n; ++i)  printf(&quot;%lld &quot;,((ans[i][0] + a[i]) % mod + mod) % mod); 
+ 
+    sort(a.begin(),a.end());
+    check();
+    for(int i=2;i&lt;=n;i++) if(gf(i) != gf(1)) flag =1;
+    if(flag) printf(&quot;NO\n&quot;);
+    else printf(&quot;YES\n&quot;);
+ 
+    return 0;
+
+//E
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 5e5+10;
+vector&lt;int&gt; G[maxd];
+int n,l[maxd],r[maxd],cnt;
+void dfs(int x,int fa)
+{
+    for(auto v:G[x])
+    {
+        if(v==fa) continue;
+        l[v] = ++cnt;
+    }
+    r[x] = ++cnt;
+    for(int i=G[x].size()-1;i &gt;=0;i--)
+    {
+        int v = G[x][i];
+        if(v == fa) continue;
+        dfs(v,x);
+    }
+}
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n;scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;n;i++)
+    {
+        int x,y;
+        scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+        G[x].push_back(y);
+        G[y].push_back(x);
+    }
+    l[1] = ++cnt;
+    dfs(1,1);
+    for(int i=1;i&lt;=n;i++) printf(&quot;%d %d\n&quot;,l[i],r[i]);
     return 0;
 }
 </code></pre>
@@ -164,9 +257,9 @@ int main()
               <div class="next">
                 下一篇
               </div>
-              <a href="https://dinnerhunt.cn/post/atcoder131e">
+              <a href="https://dinnerhunt.cn/post/P2569">
                 <h3 class="post-title">
-                  「AtCoder 131E」 Friendships
+                  「SCOI2010」股票交易
                 </h3>
               </a>
             </div>
@@ -465,7 +558,7 @@ int main()
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge secondary">
           构造
         </a>
       
@@ -481,7 +574,7 @@ int main()
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
           状压DP
         </a>
       
@@ -489,7 +582,7 @@ int main()
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
           数论
         </a>
       
@@ -497,7 +590,7 @@ int main()
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge success">
           树上问题
         </a>
       
@@ -505,7 +598,7 @@ int main()
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge warning">
           博弈论
         </a>
       
@@ -525,7 +618,7 @@ int main()
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge secondary">
           最小费用最大流
         </a>
       
@@ -533,11 +626,11 @@ int main()
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge ">
           前缀和
         </a>
       
@@ -553,7 +646,7 @@ int main()
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge success">
           树上启发式合并
         </a>
       
@@ -561,11 +654,11 @@ int main()
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge ">
           模拟
         </a>
       
@@ -573,23 +666,23 @@ int main()
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge secondary">
           枚举
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge success">
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge warning">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
           数位DP
         </a>
       
@@ -597,11 +690,11 @@ int main()
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge secondary">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
           线性基
         </a>
       
@@ -609,39 +702,39 @@ int main()
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge warning">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge warning">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
           KMP
         </a>
       
@@ -649,11 +742,11 @@ int main()
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
           AC自动机
         </a>
       
@@ -661,7 +754,7 @@ int main()
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
           Tire
         </a>
       
@@ -669,35 +762,35 @@ int main()
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge success">
           Gridea
         </a>
       
