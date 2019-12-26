@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-24T01:54:55.678Z</updated>
+    <updated>2019-12-26T13:49:51.303Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,220 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1241D」Sequence Sorting]]></title>
+        <id>https://dinnerhunt.cn/post/CF1241D</id>
+        <link href="https://dinnerhunt.cn/post/CF1241D">
+        </link>
+        <updated>2019-12-26T13:38:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given a sequence 𝑎1,𝑎2,…,𝑎𝑛, consisting of integers.</p>
+<p>You can apply the following operation to this sequence: choose some integer 𝑥 and move all elements equal to 𝑥 either to the beginning, or to the end of 𝑎. Note that you have to move all these elements in one direction in one operation.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given a sequence 𝑎1,𝑎2,…,𝑎𝑛, consisting of integers.</p>
+<p>You can apply the following operation to this sequence: choose some integer 𝑥 and move all elements equal to 𝑥 either to the beginning, or to the end of 𝑎. Note that you have to move all these elements in one direction in one operation.</p>
+<!--more-->
+<p>For example, if 𝑎=[2,1,3,1,1,3,2], you can get the following sequences in one operation (for convenience, denote elements equal to 𝑥 as 𝑥-elements):</p>
+<p>[1,1,1,2,3,3,2] if you move all 1-elements to the beginning;<br>
+[2,3,3,2,1,1,1] if you move all 1-elements to the end;<br>
+[2,2,1,3,1,1,3] if you move all 2-elements to the beginning;<br>
+[1,3,1,1,3,2,2] if you move all 2-elements to the end;<br>
+[3,3,2,1,1,1,2] if you move all 3-elements to the beginning;<br>
+[2,1,1,1,2,3,3] if you move all 3-elements to the end;<br>
+You have to determine the minimum number of such operations so that the sequence 𝑎 becomes sorted in non-descending order. Non-descending order means that for all 𝑖 from 2 to 𝑛, the condition 𝑎𝑖−1≤𝑎𝑖 is satisfied.</p>
+<p>Note that you have to answer 𝑞 independent queries.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1241/problem/D">「CodeForces 1241D」Sequence Sorting</a></p>
+<h4 id="题解">题解</h4>
+<p>我们把每个数字分成最左点和最右点，那么该数字边成为了一个区间「L，R」<br>
+连续上升区间就是连续并且相邻两个数字的区间没有相交<br>
+我们的目标则是将整个区间数组变成连续上升的<br>
+答案为N - 未移动前的最长连续上升区间长度</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#define all(x) x.begin(),x.end()
+#define pb push_back
+using namespace std;
+const int maxd = 2e5+10;
+typedef long long ll;
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        int n;scanf(&quot;%d&quot;,&amp;n);
+ 
+        vector&lt;int&gt; a(n),b(n);
+        map&lt;int,int&gt; mp;
+        for(int i=0;i&lt;n;i++)
+        {
+            scanf(&quot;%d&quot;,&amp;a[i]);
+            b[i] = a[i];
+        }
+        sort(all(b));
+        b.erase(unique(all(b)),b.end());
+        int m =b.size();
+        vector&lt;int&gt; l(m),r(m),dp(m);
+ 
+        for(int i=0;i&lt;m;i++) mp[b[i]] = i;
+        for(int i=0;i&lt;n;i++) r[mp[a[i]]] = i;
+        for(int i=n-1;i&gt;=0;i--) l[mp[a[i]]] = i;
+        //for(int i=0;i&lt;m;i++) printf(&quot;%d %d\n&quot;,l[i],r[i]);
+        for(int i=0;i&lt;m;i++) dp[i] = 1;
+        int ans = 1;
+        for(int i=1;i&lt;m;i++)
+        {
+            if(r[i-1] &lt; l[i]) dp[i] = dp[i-1] +1;
+            ans = max(dp[i],ans);
+        }
+        printf(&quot;%d\n&quot;,m-ans);
+ 
+    }
+ 
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1241E」Paint the Tree]]></title>
+        <id>https://dinnerhunt.cn/post/CF1241E</id>
+        <link href="https://dinnerhunt.cn/post/CF1241E">
+        </link>
+        <updated>2019-12-26T13:30:02.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given a weighted tree consisting of 𝑛 vertices. Recall that a tree is a connected graph without cycles. Vertices 𝑢𝑖 and 𝑣𝑖 are connected by an edge with weight 𝑤𝑖.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given a weighted tree consisting of 𝑛 vertices. Recall that a tree is a connected graph without cycles. Vertices 𝑢𝑖 and 𝑣𝑖 are connected by an edge with weight 𝑤𝑖.</p>
+<!--more-->
+<p>Let's define the 𝑘-coloring of the tree as an assignment of exactly 𝑘 colors to each vertex, so that each color is used no more than two times. You can assume that you have infinitely many colors available. We say that an edge is saturated in the given 𝑘-coloring if its endpoints share at least one color (i.e. there exists a color that is assigned to both endpoints).</p>
+<p>Let's also define the value of a 𝑘-coloring as the sum of weights of saturated edges.</p>
+<p>Please calculate the maximum possible value of a 𝑘-coloring of the given tree.</p>
+<p>You have to answer 𝑞 independent queries.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1241/problem/E">「CodeForces 1241E」Paint the Tree</a></p>
+<h4 id="题解">题解</h4>
+<p>树形DP，因为相邻两个点染色才有贡献。<br>
+节点每染一种颜色，表示选了一条边，也就意味着一个点不能选超过k条与之相邻的边<br>
+DP[x][1] 表示该点边选满了的价值<br>
+DP[x][0] 表示未选满的价值<br>
+我们考虑到x时，子树都选好了，先不选与自身链接的边，也就是加上所有DP[v][1]（v为子树节点)<br>
+然后我们依次考虑，DP[v][0]+E{x,v}这条边的权值(也就是是否与该点连边),如果选该边，则要减去DP[v][1]，则与该点连边的贡献为(DP[v][0]+E{x,v}-DP[v][1])</p>
+<p>然后贪心选前k个就好</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(a,b) for(ll i=a;i&lt;=b;i++)
+#define _FOR(a,b) for(ll i=a;i&gt;=b;i--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define st first
+#define nd second
+using namespace std;
+
+
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+
+const int maxd = 5e5+10;
+typedef long long ll;
+
+vector&lt;P&gt; G[maxd];
+vector&lt;ll&gt; a;
+ll n,k,dp[maxd][2];
+// dp[i][0] 表示选满k边的最大价值
+void dfs(ll x,ll fa)
+{
+//    PLL(x);
+//    PN();
+    dp[x][0] = dp[x][1] = 0;
+    for(auto p:G[x])
+    {
+        ll v = p.st;
+        if(v == fa) continue;
+        dfs(v,x);
+        dp[x][0] += dp[v][1];
+        dp[x][1] += dp[v][1]; //先选满的子树
+    }
+    //选满的子树，这样当前节点就无法与子树节点连边，因为子树点已经满K个了
+
+    a.clear();
+    for(auto p:G[x])
+    {
+        ll v = p.st;
+        if(v == fa) continue;
+        a.pb(-(dp[v][0]+ p.nd - dp[v][1]));
+        //这里我们枚举每个节点的差值，也就是如果子树不选满，则可选这条边
+    }
+    sort(all(a)); //贪心选择价格高的
+
+    ll len = min((ll)a.size(),k);
+    F(len)
+    {
+        ll v = -a[i];
+        if(v &lt; 0)break;
+        if(i&lt;k-1) dp[x][0] += v;
+        dp[x][1] += v;
+    }
+}
+
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        RLL(n);RLL(k);
+        F(n-1)
+        {
+            ll a,b,c;
+            RLL(a);RLL(b);RLL(c);
+            //printf(&quot;%lld %lld %lld\n&quot;,a,b,c);
+            G[a].pb(P(b,c));
+            G[b].pb(P(a,c));
+        }
+//        FOR(1,n)
+//        {
+//            for(auto p: G[i]) printf(&quot;%lld &quot;,p.st);
+//            PN();
+//        }
+        dfs(1ll,-1ll);
+        FOR(1,n) G[i].clear();
+        PLL(max(dp[1][0],dp[1][1]));
+        PN();
+
+    }
+
+    return 0;
+}
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces1278D&E」Segment Tree & Tests for problem D]]></title>
         <id>https://dinnerhunt.cn/post/CF1278D&amp;E</id>
@@ -651,194 +865,6 @@ int main()
         if(flag == 1) printf(&quot;Case #%d: Draw\n&quot;,tt);
         else if(flag == 2) printf(&quot;Case #%d: Panda\n&quot;,tt);
         else printf(&quot;Case #%d: Sheep\n&quot;,tt);
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「HDU 6191 」Query on A Tree]]></title>
-        <id>https://dinnerhunt.cn/post/HDU6191</id>
-        <link href="https://dinnerhunt.cn/post/HDU6191">
-        </link>
-        <updated>2019-12-03T05:36:36.000Z</updated>
-        <summary type="html"><![CDATA[<p>Monkey A lives on a tree, he always plays on this tree.</p>
-<p>One day, monkey A learned about one of the bit-operations, xor. He was keen of this interesting operation and wanted to practise it at once.</p>
-<p>Monkey A gave a value to each node on the tree. And he was curious about a problem.</p>
-<p>The problem is how large the xor result of number x and one node value of label y can be, when giving you a non-negative integer x and a node label u indicates that node y is in the subtree whose root is u(y can be equal to u).</p>
-<p>Can you help him?</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Monkey A lives on a tree, he always plays on this tree.</p>
-<p>One day, monkey A learned about one of the bit-operations, xor. He was keen of this interesting operation and wanted to practise it at once.</p>
-<p>Monkey A gave a value to each node on the tree. And he was curious about a problem.</p>
-<p>The problem is how large the xor result of number x and one node value of label y can be, when giving you a non-negative integer x and a node label u indicates that node y is in the subtree whose root is u(y can be equal to u).</p>
-<p>Can you help him?</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/HDU-6191">「HDU 6191 」Query on A Tree</a></p>
-<h4 id="题解">题解</h4>
-<p>可持久化trie? 有点感觉01Tri有点像线段树<br>
-主要技巧在用dfs序维护trie，然后子树范围等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>d</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">id[x]-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 至 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>d</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>+</mo><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">id[x] + size[x]-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+10;
-int t[maxd*32][2],val[maxd*32][2],sz[maxd];
-int rt[maxd],tot,num;
-int v[maxd],id[maxd];
-vector&lt;int&gt; G[maxd];
-void insert(int &amp;now,int last,int x,int p)
-{   
-    now = ++tot;if(p&lt;0) return;
-    int c = (x &gt;&gt; p) &amp; 1;
-    t[now][0] = t[last][0];
-    t[now][1] = t[last][1];
-    val[now][c] = val[last][c]+1;
-    val[now][c^1] = val[last][c^1];
-    insert(t[now][c],t[last][c],x,p-1);
-}
-int query(int now,int last,int x)
-{
-    int ans = 0;
-    for(int i=30;i&gt;=0;i--)
-    {
-        int c = (x &gt;&gt; i) &amp; 1;
-        if(val[now][c^1] - val[last][c^1] &gt; 0) ans += (1&lt;&lt;i),c^=1;
-        now = t[now][c], last = t[last][c];
-    }
-    return ans;
-}
-void dfs(int x)
-{
-    id[x] = ++num;sz[x]=1;
-    insert(rt[id[x]],rt[id[x]-1],v[x],30);
-    for(int i= 0;i&lt;G[x].size();i++)
-    {
-        int v = G[x][i];dfs(v);
-        sz[x] += sz[v];
-    }
-}
-
-int main()
-{
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-
-    int n,m;
-    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
-    {
-        memset(t,0,sizeof(t));
-        memset(rt,0,sizeof(rt));
-        memset(val,0,sizeof(val));
-        num  = tot = 0;
-
-        for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;v[i]);
-        //printf(&quot;%d %d\n&quot;,n,m);
-        for(int i=2;i&lt;=n;i++)
-        {
-           int x;scanf(&quot;%d&quot;,&amp;x);
-           G[x].push_back(i);
-        }
-        int root  = 1;
-        dfs(root);
-        // for(int i=1;i&lt;=n;i++)
-        //     printf(&quot;%d %d\n&quot;,i,rt[i]);
-
-        for(int i=1;i&lt;=m;i++)
-        {
-           int x,y;scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
-           //printf(&quot;%d %d\n&quot;,id[x]+sz[x]-1,id[x]-1);
-           printf(&quot;%d\n&quot;,query(rt[id[x]+sz[x]-1],rt[id[x]-1],y));
-        }
-        for(int i=1;i&lt;=n;i++) G[i].clear();
-    }
-    return 0;
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「HDU 6184」Counting Stars]]></title>
-        <id>https://dinnerhunt.cn/post/HDU6184</id>
-        <link href="https://dinnerhunt.cn/post/HDU6184">
-        </link>
-        <updated>2019-12-01T03:44:38.000Z</updated>
-        <summary type="html"><![CDATA[<p>Little A is an astronomy lover, and he has found that the sky was so beautiful!</p>
-<p>So he is counting stars now!</p>
-<p>There are n stars in the sky, and little A has connected them by m non-directional edges.</p>
-<p>It is guranteed that no edges connect one star with itself, and every two edges connect different pairs of stars.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Little A is an astronomy lover, and he has found that the sky was so beautiful!</p>
-<p>So he is counting stars now!</p>
-<p>There are n stars in the sky, and little A has connected them by m non-directional edges.</p>
-<p>It is guranteed that no edges connect one star with itself, and every two edges connect different pairs of stars.</p>
-<!--more-->
-<p>Now little A wants to know that how many different &quot;A-Structure&quot;s are there in the sky, can you help him?</p>
-<p>An &quot;A-structure&quot; can be seen as a non-directional subgraph G, with a set of four nodes V and a set of five edges E.</p>
-<p>If V=(A,B,C,D) and E=(AB,BC,CD,DA,AC), we call G as an &quot;A-structure&quot;.</p>
-<p>It is defined that &quot;A-structure&quot; G1=V1+E1 and G2=V2+E2 are same only in the condition that V1=V2 and E1=E2.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/HDU-6184">「HDU 6184」Counting Stars</a></p>
-<h4 id="题解">题解</h4>
-<p>给定的图可以看成是两个共单边的三元环<br>
-所以题目转化为求三元环的方案数<br>
-统计每条边被多少三元环覆盖，计为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">cnt[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span><br>
-通过组合排列，可得到答案为</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><munderover><mo>∑</mo><mi>i</mi><mi>n</mi></munderover><msubsup><mi>C</mi><mrow><mi>c</mi><mi>n</mi><mi>t</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">ans = \sum_i^n C_{cnt[i]}^2
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-2.428em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">t</span><span class="mopen mtight">[</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">]</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4469999999999999em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 2e5+10;
-int d[maxd],vis[maxd],cnt[maxd],n,m;
-typedef pair&lt;int,int&gt; P;
-vector&lt;P&gt; G[maxd],e;
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
-    {
-        for (int i = 1; i &lt;= m; i++)
-        {
-            int u,v;scanf(&quot;%d %d&quot;, &amp;u, &amp;v);
-            e.push_back(P(u,v));
-            ++d[u], ++d[v];
-        }
-        for (int i = 0; i &lt; m; i++)
-        {
-            int u = e[i].first, v = e[i].second;
-            if (d[u] &lt; d[v] || (d[u] == d[v] &amp;&amp; u &gt; v)) swap(u, v);
-
-            G[u].push_back(P(v, i+1));
-        }
-        for (int i = 1; i &lt;= n; i++)
-        {
-            for (P u:G[i]) vis[u.first] = u.second;
-            for (P u:G[i])
-                for (P v:G[u.first])
-                    if (vis[v.first])
-                        ++cnt[v.second], ++cnt[u.second], ++cnt[vis[v.first]];
-
-            for (P u:G[i]) vis[u.first] = 0;
-        }
-        long long ans = 0ll;
-        for (int i = 1; i &lt;= m; i++)
-        {
-            ans += 1ll * cnt[i] * (cnt[i] - 1) / 2;
-            cnt[i] = 0;
-        }
-
-        for(int i=1;i&lt;=n;i++) G[i].clear(),d[i] = 0; e.clear();
-        printf(&quot;%lld\n&quot;, ans);
     }
     return 0;
 }
