@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「CodeForces 1220E」 Tourism | dinnerhunt</title>
+<meta name="description" content="练习时长251天且正在被蜗牛追杀的腾讯视频VVVIP会员">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1577432948769">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「CodeForces 1220E」 Tourism</h1>
+            <p class="article-meta">
+              2019-12-27
+              
+                <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge secondary">
+                  双连通分量
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/MdmMK67Rbs" class="badge secondary">
+                  Dp
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>Alex decided to go on a touristic trip over the country.</p>
+<p>For simplicity let's assume that the country has 𝑛 cities and 𝑚 bidirectional roads connecting them. Alex lives in city 𝑠 and initially located in it. To compare different cities Alex assigned each city a score 𝑤𝑖 which is as high as interesting city seems to Alex.</p>
+<!--more-->
+<p>Alex believes that his trip will be interesting only if he will not use any road twice in a row. That is if Alex came to city 𝑣 from city 𝑢, he may choose as the next city in the trip any city connected with 𝑣 by the road, except for the city 𝑢.</p>
+<p>Your task is to help Alex plan his city in a way that maximizes total score over all cities he visited. Note that for each city its score is counted at most once, even if Alex been there several times during his trip.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1220/problem/E">「CodeForces 1220E」 Tourism</a></p>
+<h4 id="题解">题解</h4>
+<p>边双缩点后跑树形DP吧。<br>
+代码巨丑无比，写了好久，看来点双板子得改改了。</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+ 
+#define all(x) (x).begin(),(x).end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(x,a,b) for(ll (x)=(a);(x)&lt;=(b);(x)++)
+#define _FOR(x,a,b) for(ll (x)=(a);(x)&gt;=(b);(x)--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define RS(n) scanf(&quot;%s&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PS(s) printf(&quot;%s\n&quot;,s)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V vector&lt;ll&gt;
+ 
+using namespace std;
+ 
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
+const int maxd = 2e5+10;
+typedef long long ll;
+ll dfn[maxd],low[maxd],tot,stk[maxd],top,n,m,sz[maxd];
+ll belong[maxd],scc,sum[maxd];
+bool use[maxd&lt;&lt;1],inq[maxd];
+ 
+P e[maxd&lt;&lt;4];
+ll eid,f[maxd&lt;&lt;2],v[maxd];
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid = 0;
+}
+void insert(ll x,ll y)
+{
+    e[eid].ST = y, e[eid].ND = f[x] , f[x] = eid++;
+}
+void tarjan(ll x)
+{
+    low[x] = dfn[x] = ++tot;
+    stk[top++] = x, inq[x] = 1;
+//    PLL(x); putchar('-');
+//    PN();
+    for(int i = f[x];i+1; i=e[i].ND)
+    {
+        if(use[i]) continue;
+        ll v = e[i].ST;
+        //PLL(v); PN();
+ 
+        if(!dfn[v])
+        {
+            use[i] = use[(i&amp;1)?i-1:i+1] = 1;
+            tarjan(v);
+            use[i] = use[(i&amp;1)?i-1:i+1] = 0;
+            low[x] = min(low[x],low[v]);
+        }
+        else if(inq[v]) low[x] = min(low[x],dfn[v]);
+    }
+    if(low[x] == dfn[x])
+    {
+        scc++;
+        do
+        {
+            belong[stk[--top]] = scc;
+            sum[scc] += v[stk[top]];
+            sz[scc]++;
+            inq[stk[top]] = false;
+        }while(stk[top]!=x);
+    }
+}
+ll dp[maxd],ans,vis[maxd];
+int dfs(ll x)
+{
+    dp[x-n] += sum[x-n];
+    vis[x-n] = 1;
+    int flag = 0;
+    for(ll i = f[x];i+1;i=e[i].ND)
+    {
+        ll v = e[i].ST;
+        if(vis[v-n]) continue;
+ 
+        if(dfs(v))
+        {
+            flag = 1;
+            dp[x - n] += dp[v - n];
+            dp[v - n] = 0;
+        }
+    }
+    return sz[x-n]&gt;2 || flag;
+}
+void dfs1(ll x)
+{
+    ans = max(ans,dp[x-n]);
+ 
+    //PLL(x-n);PN();
+    vis[x-n] =1;
+    for(ll i = f[x];i+1;i=e[i].ND)
+    {
+        ll v = e[i].ST;
+        //PLL(v-n);PP();PLL(vis[v-n]);PN();
+        if(vis[v-n]) continue;
+        dp[v-n] += dp[x-n];
+        dfs1(v);
+    }
+}
+int main()
+{
+    //__IN;__OUT;
+    RLL(n);RLL(m);
+    init();
+    FOR(i,1,n) RLL(v[i]);
+    FOR(i,1,m)
+    {
+        ll x,y;RLL(x);RLL(y);
+        insert(x,y); insert(y,x);
+    }
+    FOR(i,1,n) if(!dfn[i]) tarjan(i);
+//    FOR(i,1,n)
+//    {
+//        PLL(belong[i]);
+//        PN();
+//    }
+    FOR(i,1,n)
+        for(int j = f[i];j+1;j=e[j].ND)
+        {
+            ll x = belong[e[j].ST],y = belong[i];
+            if(x!=y)
+            {
+                //PLL(x);PP();PLL(y);PN();
+                insert(x+n,y+n);
+                insert(y+n,x+n);
+            }
+        }
+ 
+        //PLL(f1[belong[2]]); PN();
+    ll k; RLL(k);
+    dfs(belong[k]+n);
+    FOR(i,1,scc)
+    {
+        vis[i] = 0;
+//        PLL(dp[i]);
+//        PN();
+    }
+ 
+    dfs1(belong[k]+n);
+    PLL(ans);
+    return 0;
+}
+
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/CF1241F">
+                <h3 class="post-title">
+                  「CodeForces 1241F」Stack Exterminable Arrays
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1577432948769" class="no-responsive avatar">
+    <div class="text-muted">练习时长251天且正在被蜗牛追杀的腾讯视频VVVIP会员</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1220E">「CodeForces 1220E」 Tourism</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1241F">「CodeForces 1241F」Stack Exterminable Arrays</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1241D">「CodeForces 1241D」Sequence Sorting</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1241E">「CodeForces 1241E」Paint the Tree</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1278D&amp;E">「CodeForces1278D&amp;E」Segment Tree &amp; Tests for problem D</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2569">「SCOI2010」股票交易</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/P2157">「SDOI2009」学校食堂</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1254B">「CodeForces 1254B」Send Boxes to Alice</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1277e">「CodeForces 1277E」 Two Fairs</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1263F">「CF1263F」Economic Difficulties</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge secondary">
+          双连通分量
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/MdmMK67Rbs" class="badge secondary">
+          Dp
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge ">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge warning">
+          离散化
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge warning">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge warning">
+          数据结构
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge ">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge warning">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge secondary">
+          单调队列
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge warning">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge success">
+          DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge success">
+          博弈论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge success">
+          DFS序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge secondary">
+          可持久化Trie
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge success">
+          三元环
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge warning">
+          最小费用最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge warning">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge success">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge secondary">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge warning">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge secondary">
+          树上启发式合并
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge warning">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge warning">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge secondary">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge secondary">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge warning">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge warning">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge secondary">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge secondary">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge success">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge ">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge success">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge success">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge success">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge success">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge warning">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge warning">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

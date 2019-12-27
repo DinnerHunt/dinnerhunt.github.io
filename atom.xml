@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-26T13:49:51.303Z</updated>
+    <updated>2019-12-27T07:50:02.731Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,316 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1220E」 Tourism]]></title>
+        <id>https://dinnerhunt.cn/post/CF1220E</id>
+        <link href="https://dinnerhunt.cn/post/CF1220E">
+        </link>
+        <updated>2019-12-27T07:46:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>Alex decided to go on a touristic trip over the country.</p>
+<p>For simplicity let's assume that the country has 𝑛 cities and 𝑚 bidirectional roads connecting them. Alex lives in city 𝑠 and initially located in it. To compare different cities Alex assigned each city a score 𝑤𝑖 which is as high as interesting city seems to Alex.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Alex decided to go on a touristic trip over the country.</p>
+<p>For simplicity let's assume that the country has 𝑛 cities and 𝑚 bidirectional roads connecting them. Alex lives in city 𝑠 and initially located in it. To compare different cities Alex assigned each city a score 𝑤𝑖 which is as high as interesting city seems to Alex.</p>
+<!--more-->
+<p>Alex believes that his trip will be interesting only if he will not use any road twice in a row. That is if Alex came to city 𝑣 from city 𝑢, he may choose as the next city in the trip any city connected with 𝑣 by the road, except for the city 𝑢.</p>
+<p>Your task is to help Alex plan his city in a way that maximizes total score over all cities he visited. Note that for each city its score is counted at most once, even if Alex been there several times during his trip.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1220/problem/E">「CodeForces 1220E」 Tourism</a></p>
+<h4 id="题解">题解</h4>
+<p>边双缩点后跑树形DP吧。<br>
+代码巨丑无比，写了好久，看来点双板子得改改了。</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+ 
+#define all(x) (x).begin(),(x).end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(x,a,b) for(ll (x)=(a);(x)&lt;=(b);(x)++)
+#define _FOR(x,a,b) for(ll (x)=(a);(x)&gt;=(b);(x)--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define RS(n) scanf(&quot;%s&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PS(s) printf(&quot;%s\n&quot;,s)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V vector&lt;ll&gt;
+ 
+using namespace std;
+ 
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
+const int maxd = 2e5+10;
+typedef long long ll;
+ll dfn[maxd],low[maxd],tot,stk[maxd],top,n,m,sz[maxd];
+ll belong[maxd],scc,sum[maxd];
+bool use[maxd&lt;&lt;1],inq[maxd];
+ 
+P e[maxd&lt;&lt;4];
+ll eid,f[maxd&lt;&lt;2],v[maxd];
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid = 0;
+}
+void insert(ll x,ll y)
+{
+    e[eid].ST = y, e[eid].ND = f[x] , f[x] = eid++;
+}
+void tarjan(ll x)
+{
+    low[x] = dfn[x] = ++tot;
+    stk[top++] = x, inq[x] = 1;
+//    PLL(x); putchar('-');
+//    PN();
+    for(int i = f[x];i+1; i=e[i].ND)
+    {
+        if(use[i]) continue;
+        ll v = e[i].ST;
+        //PLL(v); PN();
+ 
+        if(!dfn[v])
+        {
+            use[i] = use[(i&amp;1)?i-1:i+1] = 1;
+            tarjan(v);
+            use[i] = use[(i&amp;1)?i-1:i+1] = 0;
+            low[x] = min(low[x],low[v]);
+        }
+        else if(inq[v]) low[x] = min(low[x],dfn[v]);
+    }
+    if(low[x] == dfn[x])
+    {
+        scc++;
+        do
+        {
+            belong[stk[--top]] = scc;
+            sum[scc] += v[stk[top]];
+            sz[scc]++;
+            inq[stk[top]] = false;
+        }while(stk[top]!=x);
+    }
+}
+ll dp[maxd],ans,vis[maxd];
+int dfs(ll x)
+{
+    dp[x-n] += sum[x-n];
+    vis[x-n] = 1;
+    int flag = 0;
+    for(ll i = f[x];i+1;i=e[i].ND)
+    {
+        ll v = e[i].ST;
+        if(vis[v-n]) continue;
+ 
+        if(dfs(v))
+        {
+            flag = 1;
+            dp[x - n] += dp[v - n];
+            dp[v - n] = 0;
+        }
+    }
+    return sz[x-n]&gt;2 || flag;
+}
+void dfs1(ll x)
+{
+    ans = max(ans,dp[x-n]);
+ 
+    //PLL(x-n);PN();
+    vis[x-n] =1;
+    for(ll i = f[x];i+1;i=e[i].ND)
+    {
+        ll v = e[i].ST;
+        //PLL(v-n);PP();PLL(vis[v-n]);PN();
+        if(vis[v-n]) continue;
+        dp[v-n] += dp[x-n];
+        dfs1(v);
+    }
+}
+int main()
+{
+    //__IN;__OUT;
+    RLL(n);RLL(m);
+    init();
+    FOR(i,1,n) RLL(v[i]);
+    FOR(i,1,m)
+    {
+        ll x,y;RLL(x);RLL(y);
+        insert(x,y); insert(y,x);
+    }
+    FOR(i,1,n) if(!dfn[i]) tarjan(i);
+//    FOR(i,1,n)
+//    {
+//        PLL(belong[i]);
+//        PN();
+//    }
+    FOR(i,1,n)
+        for(int j = f[i];j+1;j=e[j].ND)
+        {
+            ll x = belong[e[j].ST],y = belong[i];
+            if(x!=y)
+            {
+                //PLL(x);PP();PLL(y);PN();
+                insert(x+n,y+n);
+                insert(y+n,x+n);
+            }
+        }
+ 
+        //PLL(f1[belong[2]]); PN();
+    ll k; RLL(k);
+    dfs(belong[k]+n);
+    FOR(i,1,scc)
+    {
+        vis[i] = 0;
+//        PLL(dp[i]);
+//        PN();
+    }
+ 
+    dfs1(belong[k]+n);
+    PLL(ans);
+    return 0;
+}
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1241F」Stack Exterminable Arrays]]></title>
+        <id>https://dinnerhunt.cn/post/CF1241F</id>
+        <link href="https://dinnerhunt.cn/post/CF1241F">
+        </link>
+        <updated>2019-12-27T02:01:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>Let's look at the following process: initially you have an empty stack and an array 𝑠 of the length 𝑙. You are trying to push array elements to the stack in the order 𝑠1,𝑠2,𝑠3,…𝑠𝑙. Moreover, if the stack is empty or the element at the top of this stack is not equal to the current element, then you just push the current element to the top of the stack. Otherwise, you don't push the current element to the stack and, moreover, pop the top element of the stack.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Let's look at the following process: initially you have an empty stack and an array 𝑠 of the length 𝑙. You are trying to push array elements to the stack in the order 𝑠1,𝑠2,𝑠3,…𝑠𝑙. Moreover, if the stack is empty or the element at the top of this stack is not equal to the current element, then you just push the current element to the top of the stack. Otherwise, you don't push the current element to the stack and, moreover, pop the top element of the stack.</p>
+<!--more-->
+<p>If after this process the stack remains empty, the array 𝑠 is considered stack exterminable.</p>
+<p>There are samples of stack exterminable arrays:</p>
+<p>[1,1];<br>
+[2,1,1,2];<br>
+[1,1,2,2];<br>
+[1,3,3,1,2,2];<br>
+[3,1,3,3,1,3];<br>
+[3,3,3,3,3,3];<br>
+[5,1,2,2,1,4,4,5];<br>
+Let's consider the changing of stack more details if 𝑠=[5,1,2,2,1,4,4,5] (the top of stack is highlighted).</p>
+<p>after pushing 𝑠1=5 the stack turn into [5];<br>
+after pushing 𝑠2=1 the stack turn into [5,1];<br>
+after pushing 𝑠3=2 the stack turn into [5,1,2];<br>
+after pushing 𝑠4=2 the stack turn into [5,1];<br>
+after pushing 𝑠5=1 the stack turn into [5];<br>
+after pushing 𝑠6=4 the stack turn into [5,4];<br>
+after pushing 𝑠7=4 the stack turn into [5];<br>
+after pushing 𝑠8=5 the stack is empty.<br>
+You are given an array 𝑎1,𝑎2,…,𝑎𝑛. You have to calculate the number of its subarrays which are stack exterminable.</p>
+<p>Note, that you have to answer 𝑞 independent queries.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1241/problem/F">「CodeForces 1241F」Stack Exterminable Arrays</a></p>
+<h4 id="题解">题解</h4>
+<p>见到一种是否巧妙的方法<br>
+可以发现如果「L,R」区间是合法出栈顺序，那么 「1,L」 和 「1,R」中剩下栈的元素与<strong>顺序</strong>都是<strong>相同</strong>的，因此他们的hash值一定是相同的，所以我们从头到位开始枚举，并用map存该值出现的次数，遇到时统计即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(a,b) for(ll i=a;i&lt;=b;i++)
+#define _FOR(a,b) for(ll i=a;i&gt;=b;i--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V vector&lt;ll&gt;
+using namespace std;
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+
+
+const int maxd = 3e5+10;
+const ull base = 300007;
+typedef long long ll;
+
+ll dp[maxd]; // 从该点开始，最多多少个后缀满足要求
+ll last[maxd]; //该点不匹配的最后一个位置
+map&lt;ull,int&gt;mp;
+stack&lt;ll&gt; st;
+ull has[maxd];
+int main()
+{
+    //__IN;__OUT;
+    ll t;RLL(t);
+    while(t--)
+    {
+        ll n;RLL(n);
+        mp.clear(); mp[0]=1; has[0]=0;
+        while(!st.empty()) st.pop();
+        ll ans = 0,l = 0;
+        FOR(1,n)
+        {
+            ll x;RLL(x);
+            if(st.empty() || st.top()!=x )
+            {
+                has[l+1] = (base * has[l] + x);
+                l++;
+                st.push(x);
+            }
+            else
+            {
+                l--;
+                st.pop();
+            }
+            ans+= mp[has[l]];
+            mp[has[l]]++;
+        }
+        PLL(ans);
+        PN();
+    }
+
+    return 0;
+}
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1241D」Sequence Sorting]]></title>
         <id>https://dinnerhunt.cn/post/CF1241D</id>
@@ -738,134 +1048,6 @@ int main()
         for(int j=i;j&lt;=n;j++)
             dp[j] = max(dp[j], dp[i-1] + max(v[0][i][j],v[1][i][j]));
     printf(&quot;%d\n&quot;,dp[n]);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1261D」Wrong Answer on test 233]]></title>
-        <id>https://dinnerhunt.cn/post/CF1261D</id>
-        <link href="https://dinnerhunt.cn/post/CF1261D">
-        </link>
-        <updated>2019-12-13T05:10:41.000Z</updated>
-        <summary type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤2⋅105. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems.</p>
-<p>The problem is to finish 𝑛 one-choice-questions. Each of the questions contains 𝑘 options, and only one of them is correct. The answer to the 𝑖-th question is ℎ𝑖, and if your answer of the question 𝑖 is ℎ𝑖, you earn 1 point, otherwise, you earn 0 points for this question. The values ℎ1,ℎ2,…,ℎ𝑛 are known to you in this problem.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤2⋅105. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems.</p>
-<p>The problem is to finish 𝑛 one-choice-questions. Each of the questions contains 𝑘 options, and only one of them is correct. The answer to the 𝑖-th question is ℎ𝑖, and if your answer of the question 𝑖 is ℎ𝑖, you earn 1 point, otherwise, you earn 0 points for this question. The values ℎ1,ℎ2,…,ℎ𝑛 are known to you in this problem.</p>
-<!--more-->
-<p>However, you have a mistake in your program. It moves the answer clockwise! Consider all the 𝑛 answers are written in a circle. Due to the mistake in your program, they are shifted by one cyclically.</p>
-<p>Formally, the mistake moves the answer for the question 𝑖 to the question 𝑖mod𝑛+1. So it moves the answer for the question 1 to question 2, the answer for the question 2 to the question 3, ..., the answer for the question 𝑛 to the question 1.</p>
-<p>We call all the 𝑛 answers together an answer suit. There are 𝑘𝑛 possible answer suits in total.</p>
-<p>You're wondering, how many answer suits satisfy the following condition: after moving clockwise by 1, the total number of points of the new answer suit is strictly larger than the number of points of the old one. You need to find the answer modulo 998244353.</p>
-<p>For example, if 𝑛=5, and your answer suit is 𝑎=[1,2,3,4,5], it will submitted as 𝑎′=[5,1,2,3,4] because of a mistake. If the correct answer suit is ℎ=[5,2,2,3,4], the answer suit 𝑎 earns 1 point and the answer suite 𝑎′ earns 4 points. Since 4&gt;1, the answer suit 𝑎=[1,2,3,4,5] should be counted.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1261/problem/D2">「CodeForces 1261D」Wrong Answer on test 233</a></p>
-<h4 id="题解">题解</h4>
-<p>考虑每个位置所填答案对正确数量的影响。如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i] == s[i+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>，那么正确数量无论如何都不会发生变化，因为 如果所填答案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">x== s[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span> 那么 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">x == s[i+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> ，反之亦然。<br>
-如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>!</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i] != s[i+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 那么就会出现3种情况<br>
-正确数量加1，<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 11: x != s[i] &amp;̲&amp; x == s[i+1]'>x != s[i] &amp;&amp; x == s[i+1]</span><br>
-正确数量减1，<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 11: x == s[i] &amp;̲&amp; x != s[i+1]'>x == s[i] &amp;&amp; x != s[i+1]</span><br>
-正确数量不变, other<br>
-所有位置填写答案的不同方案总数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>k</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">k^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>,会有正确答案多于原先的，正确答案少于原先的，正确答案等于原先的三种情况，思考后可以发现，多于原先和少于原先的方案数是相等的，所以我们所求多于原先的方案数可以转化为求(总方案数 - 答案等于原先方案数)/2，<br>
-因为要求答案数等于原先方案数，所以当选取了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个正确数量+1的方案数时，就必须选对应的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个正确数量-1的方案数，所以我们可以考虑枚举<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>,然后通过组合原理求出总数</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 2e5+10;
-typedef long long ll;
-const int mod = 998244353;
-int n,k,num,a[maxd];
-long long fac[maxd];
-ll pow(ll a,ll b)
-{
-    ll ans = 1ll;
-    while(b)
-    {
-        if(b&amp;1) ans = ans * a %mod;
-        a = a * a % mod;
-        b /= 2;
-    }
-    return ans;
-}
-ll C(ll a,ll b)
-{
-    return 1ll* (fac[a] * pow(fac[b],1ll * mod-2) % mod) * pow(fac[a-b],mod-2) %mod;
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);
-    if(k == 1) {printf(&quot;0&quot;);return 0;}
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
-    for(int i=1;i&lt;n;i++) if(a[i] != a[i+1]) num++; num += (a[1] != a[n]);
- 
-    fac[0] = 1ll;for(int i=1;i&lt;maxd;i++) fac[i] = 1ll * fac[i-1] * i %mod;
- 
-//    for(int i=1;i&lt;=n;i++)
-//
-    long long ans = 0ll;
- 
-    for(int i=0;i * 2 &lt;= num;i++) {
-        long long tmp = C(num, i) * C(num - i, i) % mod * pow(k - 2, num - i - i) % mod * pow(k, n-num) % mod;
-        ans = (tmp + ans) % mod;
-    }
-    //for(int i=1;i&lt;=10;i++) printf(&quot;%lld \n&quot;,pow(2,i));
-    printf(&quot;%lld\n&quot;,((pow(k,n) - ans)%mod  + mod ) %mod * pow(2,mod-2) %mod );
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「Gym 101775L」SOS]]></title>
-        <id>https://dinnerhunt.cn/post/GYM101775L</id>
-        <link href="https://dinnerhunt.cn/post/GYM101775L">
-        </link>
-        <updated>2019-12-04T14:41:57.000Z</updated>
-        <summary type="html"><![CDATA[<p>Mr. Panda and Mr. Sheep are playing a game on a 1 × N game board. Initially, all the cells are empty. Mr. Panda and Mr. Sheep take alternate moves and Mr.Panda moves first.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Mr. Panda and Mr. Sheep are playing a game on a 1 × N game board. Initially, all the cells are empty. Mr. Panda and Mr. Sheep take alternate moves and Mr.Panda moves first.</p>
-<!--more-->
-<p>On each move, a player must fill an 'S' or 'O' into an empty cell. After the move, if there are 3 consecutive cells from left to right form the word &quot;SOS&quot;, the player wins the game and the game finished.</p>
-<p>If the board gets filled up without SOS appearing consecutively, no one wins the game, the game end with draw.</p>
-<p>Now, if both Mr. Panda and Mr. Sheep play optimally, find out the result of the game.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/Gym-101775L">「Gym 101775L」SOS</a></p>
-<h4 id="题解">题解</h4>
-<p>最短的分出胜利的结构是 S _ _ S _ ,但是如果先手S _ _ _ _ 后手肯定不可能放S 因为只要S _ _ S _,S _ _ _ S ,S _ S _ _ 最后都是都是先手赢。<br>
-那么最短的就是 _ _ _ S _ _ _ 因为不管后手破坏哪一边都能在另外一边构造出S _ _ S,那么最短出现结果的就是7,如果是偶数的话,由于Mr.熊猫是先手,他不能获得胜利那么就要破坏别人的,能推脱平局,比如10 --&gt; _ _ _ _ S _ _ _ _ _  4,5。两边都分不出结果。<br>
-当N=15的时候 _ _ _ _ _ _ _ S _ _ _ _ _ _ _ 7,7 ,但是n等于15是奇数,所以从16开始就是Mr.羊获胜,否则就能给Mr.熊猫拖成平局</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 1e5+10;
-int a[maxd];
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t;scanf(&quot;%d&quot;,&amp;t);
-    //printf(&quot;%lld\n&quot;,t);
-    for(int tt = 1;tt &lt;= t;tt++)
-    {
-        int n;scanf(&quot;%d&quot;,&amp;n);
-        int flag;
-        if(n &lt; 7) flag = 1;
-        else if(n %2 == 0 &amp;&amp; n &lt; 16)  flag =1;
-        else if(n %2 == 0 )flag =0;
-        else flag = 2;
-        if(flag == 1) printf(&quot;Case #%d: Draw\n&quot;,tt);
-        else if(flag == 2) printf(&quot;Case #%d: Panda\n&quot;,tt);
-        else printf(&quot;Case #%d: Sheep\n&quot;,tt);
-    }
     return 0;
 }
 </code></pre>
