@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-28T10:27:50.148Z</updated>
+    <updated>2019-12-28T12:55:11.522Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,123 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1277F」Beautiful Rectangle]]></title>
+        <id>https://dinnerhunt.cn/post/CF1277F</id>
+        <link href="https://dinnerhunt.cn/post/CF1277F">
+        </link>
+        <updated>2019-12-28T10:28:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given 𝑛 integers. You need to choose a subset and put the chosen numbers in a beautiful rectangle (rectangular matrix). Each chosen number should occupy one of its rectangle cells, each cell must be filled with exactly one chosen number. Some of the 𝑛 numbers may not be chosen.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given 𝑛 integers. You need to choose a subset and put the chosen numbers in a beautiful rectangle (rectangular matrix). Each chosen number should occupy one of its rectangle cells, each cell must be filled with exactly one chosen number. Some of the 𝑛 numbers may not be chosen.</p>
+<!--more-->
+<p>A rectangle (rectangular matrix) is called beautiful if in each row and in each column all values are different.</p>
+<p>What is the largest (by the total number of cells) beautiful rectangle you can construct? Print the rectangle itself.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1277/problem/F">「CodeForces 1277F」Beautiful Rectangle</a></p>
+<h4 id="题解">题解</h4>
+<p>比较麻烦的构造题<br>
+假设行一定小于列，于是我们枚举行 x，然后考虑我们的数是否能构成大于 x*x 的矩阵<br>
+然后统计最大的数量 ，确定行和列<br>
+再用阶梯的形式去构造该矩阵</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
+#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define RLF(n) scanf(&quot;%lf&quot;,&amp;n)
+#define RS(n) scanf(&quot;%s&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PLN(n) printf(&quot;%lld\n&quot;,n)
+#define PLP(n) printf(&quot;%lld &quot;,n)
+#define PS(s) printf(&quot;%s\n&quot;,s)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V&lt;long long&gt; vector&lt;long long&gt;
+#define VP&lt;P&gt; vector&lt;P&gt;
+using namespace std;
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
+typedef long long ll;
+const ll maxd = 4e5+10;
+
+ll cnt[maxd],n,ans[maxd];
+map&lt;ll,ll&gt; mp;
+vector&lt;P&gt; a;
+bool cmp(const P a,const P b)
+{
+    return a.ND &gt; b.ND;
+}
+int main()
+{
+//    __IN;__OUT;
+    RLL(n);
+    FOR(i,1,n)
+    {
+        ll x;RLL(x);
+        mp[x]++;
+    }
+    for(auto p:mp) a.pb(p);
+    sort(all(a),cmp);
+    for(auto x:a) cnt[x.ND]++;
+
+    //确定行数和最大摆放数量
+    ll now = a.size(),mx = 0,row = 0, sum = 0;
+    for(int i=1;i *i&lt;=n;i++)
+    {
+        sum+= cnt[i] * i;
+        now -= cnt[i];
+        ll t = now * i + sum;
+        if(t &lt; i * i) continue; // 数不够
+        if(t / i * i &gt; mx) mx = t/i*i,row = i; //如果选出的最大数量多于当前值，则更新
+    }
+    // 构造方案
+    ll col = mx / row , x = 1, y =1;
+    FOR(i,1,a.size())
+    {
+        ll num = min(row,a[i-1].ND);
+        while(num--)
+        {
+            ans[(x-1)*col + y] = a[i-1].first;
+            x = (x %row) + 1, y = (y%col) + 1;
+            if(ans[(x-1) * col + y]) y = (y%col) + 1;
+        }
+    }
+    PLN(mx);PLP(row); PLN(col);
+    FOR(i,1,row)
+        FOR(j,1,col)
+            if(j== col)  PLN(ans[(i-1) * col +j]);
+            else PLP(ans[(i-1) * col +j]);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1215E」 Marbles]]></title>
         <id>https://dinnerhunt.cn/post/CF1215E</id>
@@ -977,88 +1094,6 @@ int main()
         ans = min(res,ans);
     }
     printf(&quot;%lld\n&quot;,ans);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1277E」 Two Fairs]]></title>
-        <id>https://dinnerhunt.cn/post/CF1277e</id>
-        <link href="https://dinnerhunt.cn/post/CF1277e">
-        </link>
-        <updated>2019-12-17T06:53:19.000Z</updated>
-        <summary type="html"><![CDATA[<p>There are 𝑛 cities in Berland and some pairs of them are connected by two-way roads. It is guaranteed that you can pass from any city to any other, moving along the roads. Cities are numerated from 1 to 𝑛.</p>
-<p>Two fairs are currently taking place in Berland — they are held in two different cities 𝑎 and 𝑏 (1≤𝑎,𝑏≤𝑛; 𝑎≠𝑏).</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>There are 𝑛 cities in Berland and some pairs of them are connected by two-way roads. It is guaranteed that you can pass from any city to any other, moving along the roads. Cities are numerated from 1 to 𝑛.</p>
-<p>Two fairs are currently taking place in Berland — they are held in two different cities 𝑎 and 𝑏 (1≤𝑎,𝑏≤𝑛; 𝑎≠𝑏).</p>
-<!--more-->
-<p>Find the number of pairs of cities 𝑥 and 𝑦 (𝑥≠𝑎,𝑥≠𝑏,𝑦≠𝑎,𝑦≠𝑏) such that if you go from 𝑥 to 𝑦 you will have to go through both fairs (the order of visits doesn't matter). Formally, you need to find the number of pairs of cities 𝑥,𝑦 such that any path from 𝑥 to 𝑦 goes through 𝑎 and 𝑏 (in any order).</p>
-<p>Print the required number of pairs. The order of two cities in a pair does not matter, that is, the pairs (𝑥,𝑦) and (𝑦,𝑥) must be taken into account only once.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/problemset/problem/1277/E">「CodeForces 1007B」Pave the Parallelepiped</a></p>
-<h4 id="题解">题解</h4>
-<p>直接说结论吧<br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>i</mi><mi>s</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">visa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span></span></span></span>表示不经过点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>是否能到达点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span><br>
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>i</mi><mi>s</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">visb</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">b</span></span></span></span>表示不经过点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>是否能到达点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span><br>
-如果<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 9: visa[i] &amp;̲&amp; !visb[i]'>visa[i] &amp;&amp; !visb[i]</span> 说明该点被a支配<br>
-如果<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 9: visb[i] &amp;̲&amp; !visa[i]'>visb[i] &amp;&amp; !visa[i]</span> 说明该点被b支配</p>
-<p>答案就是上面两个的乘积</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-using namespace std;
-const int maxd = 2e5+10;
-int main()
-{
-//     freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//     freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t;scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        int n,m,a,b;
-        scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;a,&amp;b);
-        vector&lt;int&gt; G[n+1];
-        for(int i=1;i&lt;=m;i++)
-        {
-            int x,y;scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
-            G[x].push_back(y);
-            G[y].push_back(x);
-        }
-        int visa[n+1],visb[n+1];
-        for(int i=1;i&lt;=n;i++) visa[i] = visb[i] = 0;
-        queue&lt;int&gt; que;
-        que.push(a);
-        visa[a] = visa[b] = 1;
-        while(!que.empty())
-        {
-            int x = que.front(); que.pop();
-            for(auto v: G[x])
-                if(v!= b &amp;&amp; !visa[v]) visa[v] = 1,que.push(v);
-        }
-
-        que.push(b);
-        visb[a] = visb[b] = 1;
-        while(!que.empty())
-        {
-            int x = que.front(); que.pop();
-            for(auto v: G[x])
-                if(v!= a &amp;&amp; !visb[v]) visb[v] = 1,que.push(v);
-        }
-
-        long long aa = 0ll;
-        long long bb = 0ll;
-        for(int i=1;i&lt;=n;i++)
-        {
-            if(visa[i] &amp;&amp; !visb[i]) aa++;
-            if(visb[i] &amp;&amp; !visa[i]) bb++;
-        }
-        printf(&quot;%lld\n&quot;,aa*bb);
-    }
     return 0;
 }
 </code></pre>

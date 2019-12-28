@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>「HNOI2006」最短母串问题 | dinnerhunt</title>
+<title>「CodeForces 1277F」Beautiful Rectangle | dinnerhunt</title>
 <meta name="description" content="练习时长251天且正在被蜗牛追杀的腾讯视频VVVIP会员">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,133 +88,121 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>「HNOI2006」最短母串问题</h1>
+            <h1>「CodeForces 1277F」Beautiful Rectangle</h1>
             <p class="article-meta">
-              2019-05-05
+              2019-12-28
               
-                <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge secondary">
-                  字符串
-                </a>
-              
-                <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge success">
-                  AC自动机
-                </a>
-              
-                <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
-                  搜索
+                <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
+                  构造
                 </a>
               
             </p>
             
             <div class="post-content">
-              <p>给定 n 个字符串 S1,S2,S3 .... Sn，要求找到一个最短的字符串 T ，使得这 n  个字符串都是  T 的子串。</p>
-<!-- more -->
+              <p>You are given 𝑛 integers. You need to choose a subset and put the chosen numbers in a beautiful rectangle (rectangular matrix). Each chosen number should occupy one of its rectangle cells, each cell must be filled with exactly one chosen number. Some of the 𝑛 numbers may not be chosen.</p>
+<!--more-->
+<p>A rectangle (rectangular matrix) is called beautiful if in each row and in each column all values are different.</p>
+<p>What is the largest (by the total number of cells) beautiful rectangle you can construct? Print the rectangle itself.</p>
 <h4 id="链接">链接🔗</h4>
-<p><a href="https://www.luogu.org/problemnew/show/P2322">「HNOI2006」最短母串问题  </a></p>
+<p><a href="https://codeforces.com/contest/1277/problem/F">「CodeForces 1277F」Beautiful Rectangle</a></p>
+<h4 id="题解">题解</h4>
+<p>比较麻烦的构造题<br>
+假设行一定小于列，于是我们枚举行 x，然后考虑我们的数是否能构成大于 x*x 的矩阵<br>
+然后统计最大的数量 ，确定行和列<br>
+再用阶梯的形式去构造该矩阵</p>
 <h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;queue&gt;
 #include &lt;algorithm&gt;
 #include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
+#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define RLF(n) scanf(&quot;%lf&quot;,&amp;n)
+#define RS(n) scanf(&quot;%s&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PLN(n) printf(&quot;%lld\n&quot;,n)
+#define PLP(n) printf(&quot;%lld &quot;,n)
+#define PS(s) printf(&quot;%s\n&quot;,s)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V&lt;long long&gt; vector&lt;long long&gt;
+#define VP&lt;P&gt; vector&lt;P&gt;
 using namespace std;
-const int maxd = 2e6+10;
-char str[55];
-bool vis[1005][1&lt;&lt;12];
-int n,t,last[maxd],ans[maxd];
-struct node
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
+typedef long long ll;
+const ll maxd = 4e5+10;
+
+ll cnt[maxd],n,ans[maxd];
+map&lt;ll,ll&gt; mp;
+vector&lt;P&gt; a;
+bool cmp(const P a,const P b)
 {
-    int id,sta,k;
-};
-struct 
-{
-    int ch[maxd][26],fail[maxd],cnt[maxd],ans[maxd],tot;
-    void insert(char *str,int k)
-    {
-        int p = 0;
-        for(int i=0;str[i];i++)
-        {
-            if(!ch[p][str[i]-'A']) ch[p][str[i]-'A'] = ++tot;
-            p = ch[p][str[i]-'A'];
-            ans[p]++;
-        }
-        cnt[p] |= 1&lt;&lt;k&gt;&gt;1;
-        //printf(&quot;%d %d\n&quot;,cnt[p],p);
-    }
-    void build()
-    {
-        memset(fail,0,sizeof(fail));
-        queue&lt;int&gt; que;
-        for(int i=0;i&lt;26;i++) if(ch[0][i])
-        {
-            que.push(ch[0][i]);
-        }
-        while(!que.empty())
-        {
-            int p = que.front();que.pop();
-            for(int i=0;i&lt;26;i++)
-            {
-                if(ch[p][i])
-                {
-                    fail[ch[p][i]] = ch[fail[p]][i];
-                    que.push(ch[p][i]);
-                }
-                else ch[p][i] = ch[fail[p]][i];
-            }
-            int i;
-            for(i=fail[p];i&amp;&amp;!cnt[i]; i= fail[i]);
-            cnt[p] |= cnt[i];
-        }
-    }
-    void print(int x)
-    {
-        if(!x) return;
-        print(last[x]);
-        printf(&quot;%c&quot;,ans[x]+'A');
-    }
-    void solve()
-    {
-        queue&lt;node&gt; que;
-        node a; a.id = 0, a.sta =0,a.k=0;
-        que.push(a);
-        vis[0][0] = 1;
-        int id,sta,k,now;
-        while(!que.empty())
-        {
-            node nod = que.front(); que.pop();
-            id = nod.id;
-            k = nod.k;
-            sta = nod.sta;
-            if(sta == (1&lt;&lt;n)-1)
-            {
-                print(k);
-                return;
-            }
-            for(int i=0;i&lt;26;i++)
-            {
-                now = sta|cnt[ch[id][i]];
-                //printf(&quot;%d %d %d\n&quot;,id,i,ch[id][i]);
-                if(vis[ch[id][i]][now]) continue;
-                vis[ch[id][i]][now] = 1;
-                last[++t] = k, ans[t] = i;
-                a.id = ch[id][i],a.sta = now,a.k = t;
-                //printf(&quot;%d %d %d %d %d\n&quot;,id,i,a.id,a.sta,a.k);
-                que.push(a);
-            }
-        }
-    }
-}AC;
+    return a.ND &gt; b.ND;
+}
 int main()
 {
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++)
+//    __IN;__OUT;
+    RLL(n);
+    FOR(i,1,n)
     {
-        scanf(&quot;%s&quot;,str);
-        AC.insert(str,i);
+        ll x;RLL(x);
+        mp[x]++;
     }
-    AC.build();
-    AC.solve();
+    for(auto p:mp) a.pb(p);
+    sort(all(a),cmp);
+    for(auto x:a) cnt[x.ND]++;
+
+    //确定行数和最大摆放数量
+    ll now = a.size(),mx = 0,row = 0, sum = 0;
+    for(int i=1;i *i&lt;=n;i++)
+    {
+        sum+= cnt[i] * i;
+        now -= cnt[i];
+        ll t = now * i + sum;
+        if(t &lt; i * i) continue; // 数不够
+        if(t / i * i &gt; mx) mx = t/i*i,row = i; //如果选出的最大数量多于当前值，则更新
+    }
+    // 构造方案
+    ll col = mx / row , x = 1, y =1;
+    FOR(i,1,a.size())
+    {
+        ll num = min(row,a[i-1].ND);
+        while(num--)
+        {
+            ans[(x-1)*col + y] = a[i-1].first;
+            x = (x %row) + 1, y = (y%col) + 1;
+            if(ans[(x-1) * col + y]) y = (y%col) + 1;
+        }
+    }
+    PLN(mx);PLP(row); PLN(col);
+    FOR(i,1,row)
+        FOR(j,1,col)
+            if(j== col)  PLN(ans[(i-1) * col +j]);
+            else PLP(ans[(i-1) * col +j]);
     return 0;
 }
 </code></pre>
@@ -228,9 +216,9 @@ int main()
               <div class="next">
                 下一篇
               </div>
-              <a href="https://dinnerhunt.cn/post/P3966">
+              <a href="https://dinnerhunt.cn/post/CF1215E">
                 <h3 class="post-title">
-                  「TJOI2013」 单词
+                  「CodeForces 1215E」 Marbles
                 </h3>
               </a>
             </div>
@@ -635,11 +623,11 @@ int main()
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge ">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge success">
           双连通分量
         </a>
       
@@ -647,11 +635,11 @@ int main()
           Dp
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge secondary">
           离散化
         </a>
       
@@ -659,19 +647,19 @@ int main()
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge success">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge secondary">
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge warning">
           单调队列
         </a>
       
@@ -679,19 +667,19 @@ int main()
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge secondary">
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge secondary">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
           树上问题
         </a>
       
@@ -699,35 +687,35 @@ int main()
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge ">
           博弈论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge warning">
           DFS序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge ">
           可持久化Trie
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge warning">
           三元环
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge ">
           最小费用最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge ">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge success">
           个人经历
         </a>
       
@@ -739,7 +727,7 @@ int main()
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge secondary">
           树上启发式合并
         </a>
       
@@ -747,11 +735,11 @@ int main()
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge warning">
           模拟
         </a>
       
@@ -759,11 +747,11 @@ int main()
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge warning">
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge secondary">
           枚举
         </a>
       
@@ -771,11 +759,11 @@ int main()
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
           数位DP
         </a>
       
@@ -787,23 +775,23 @@ int main()
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
           线性基
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge ">
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge success">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge ">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge warning">
           CRT
         </a>
       
@@ -811,15 +799,15 @@ int main()
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge success">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
           学习笔记
         </a>
       
@@ -831,7 +819,7 @@ int main()
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
           字符串
         </a>
       
@@ -839,23 +827,23 @@ int main()
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge warning">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
           二分
         </a>
       
@@ -863,23 +851,23 @@ int main()
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge warning">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge success">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge ">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
           Gridea
         </a>
       
