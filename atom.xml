@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-27T07:50:02.731Z</updated>
+    <updated>2019-12-28T10:27:50.148Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,106 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2019, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1215E」 Marbles]]></title>
+        <id>https://dinnerhunt.cn/post/CF1215E</id>
+        <link href="https://dinnerhunt.cn/post/CF1215E">
+        </link>
+        <updated>2019-12-28T09:28:51.000Z</updated>
+        <summary type="html"><![CDATA[<p>Monocarp has arranged 𝑛 colored marbles in a row. The color of the 𝑖-th marble is 𝑎𝑖. Monocarp likes ordered things, so he wants to rearrange marbles in such a way that all marbles of the same color form a contiguos segment (and there is only one such segment for each color).</p>
+<p>In other words, Monocarp wants to rearrange marbles so that, for every color 𝑗, if the leftmost marble of color 𝑗 is 𝑙-th in the row, and the rightmost marble of this color has position 𝑟 in the row, then every marble from 𝑙 to 𝑟 has color 𝑗.</p>
+<p>To achieve his goal, Monocarp can do the following operation any number of times: choose two neighbouring marbles, and swap them.</p>
+<p>You have to calculate the minimum number of operations Monocarp has to perform to rearrange the marbles. Note that the order of segments of marbles having equal color does not matter, it is only required that, for every color, all the marbles of this color form exactly one contiguous segment.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Monocarp has arranged 𝑛 colored marbles in a row. The color of the 𝑖-th marble is 𝑎𝑖. Monocarp likes ordered things, so he wants to rearrange marbles in such a way that all marbles of the same color form a contiguos segment (and there is only one such segment for each color).</p>
+<p>In other words, Monocarp wants to rearrange marbles so that, for every color 𝑗, if the leftmost marble of color 𝑗 is 𝑙-th in the row, and the rightmost marble of this color has position 𝑟 in the row, then every marble from 𝑙 to 𝑟 has color 𝑗.</p>
+<p>To achieve his goal, Monocarp can do the following operation any number of times: choose two neighbouring marbles, and swap them.</p>
+<p>You have to calculate the minimum number of operations Monocarp has to perform to rearrange the marbles. Note that the order of segments of marbles having equal color does not matter, it is only required that, for every color, all the marbles of this color form exactly one contiguous segment.</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped</a></p>
+<h4 id="题解">题解</h4>
+<p>当我们移动一个数的位置时，除了该数以外的其他数相对位置是不会发生改变的，因此转移时不会产生后效性<br>
+因此我们可以进行DP<br>
+设DP[i] 为 i位置上为1的值都已经在最前面一块了<br>
+然后提前处理好 num[i][j]数组，表示所有数字i移动到数字j前面的代价，然后转移就判断通过判断这些数字是否排好序即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
+#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define RS(n) scanf(&quot;%s&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PS(s) printf(&quot;%s\n&quot;,s)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V vector&lt;ll&gt;
+
+using namespace std;
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
+typedef long long ll;
+const ll maxd = 4e5+10;
+const ll maxn = (1&lt;&lt;20)-1;
+
+ll a[maxd],b[maxd],cnt[27];
+ll num[27][27],dp[(1&lt;&lt;20)+10];
+int main()
+{
+//    __IN;__OUT;
+    ll n;RLL(n);
+    FOR(i,1,n)RLL(a[i]);
+    FOR(i,1,n)
+    {
+        FOR(j, 1, 20)
+            num[a[i]][j] += cnt[j];
+        cnt[a[i]]++;
+    }
+    memset(dp,0x3f,sizeof(dp));
+    dp[0] = 0;
+    FOR(i,1,maxn)
+        FOR(j,0,19)
+        {
+            if(!((i&gt;&gt;j)&amp;1)) continue; //枚举第j个位置
+            ll t=0;
+            FOR(k,0,19)
+            {
+                if((i&gt;&gt;k)&amp;1) continue;  // 位置确定了，跳过
+                t += num[j+1][k+1];
+            }
+            dp[i] = min(dp[i],dp[i^(1&lt;&lt;j)]+t);
+        }
+    PLL(dp[maxn]);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1220E」 Tourism]]></title>
         <id>https://dinnerhunt.cn/post/CF1220E</id>
@@ -959,95 +1059,6 @@ int main()
         }
         printf(&quot;%lld\n&quot;,aa*bb);
     }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CF1263F」Economic Difficulties]]></title>
-        <id>https://dinnerhunt.cn/post/CF1263F</id>
-        <link href="https://dinnerhunt.cn/post/CF1263F">
-        </link>
-        <updated>2019-12-13T05:55:31.000Z</updated>
-        <summary type="html"><![CDATA[<p>An electrical grid in Berland palaces consists of 2 grids: main and reserve. Wires in palaces are made of expensive material, so selling some of them would be a good idea!</p>
-<p>Each grid (main and reserve) has a head node (its number is 1). Every other node gets electricity from the head node. Each node can be reached from the head node by a unique path. Also, both grids have exactly n nodes, which do not spread electricity further.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>An electrical grid in Berland palaces consists of 2 grids: main and reserve. Wires in palaces are made of expensive material, so selling some of them would be a good idea!</p>
-<p>Each grid (main and reserve) has a head node (its number is 1). Every other node gets electricity from the head node. Each node can be reached from the head node by a unique path. Also, both grids have exactly n nodes, which do not spread electricity further.</p>
-<!--more-->
-<p>In other words, every grid is a rooted directed tree on n leaves with a root in the node, which number is 1. Each tree has independent enumeration and nodes from one grid are not connected with nodes of another grid.</p>
-<p>Also, the palace has n electrical devices. Each device is connected with one node of the main grid and with one node of the reserve grid. Devices connect only with nodes, from which electricity is not spread further (these nodes are the tree's leaves). Each grid's leaf is connected with exactly one device.</p>
-<p>In this example the main grid contains 6 nodes (the top tree) and the reserve grid contains 4 nodes (the lower tree). There are 3 devices with numbers colored in blue.<br>
-It is guaranteed that the whole grid (two grids and 𝑛 devices) can be shown in this way (like in the picture above):</p>
-<p>main grid is a top tree, whose wires are directed 'from the top to the down',<br>
-reserve grid is a lower tree, whose wires are directed 'from the down to the top',<br>
-devices — horizontal row between two grids, which are numbered from 1 to 𝑛 from the left to the right,<br>
-wires between nodes do not intersect.<br>
-Formally, for each tree exists a depth-first search from the node with number 1, that visits leaves in order of connection to devices 1,2,…,𝑛 (firstly, the node, that is connected to the device 1, then the node, that is connected to the device 2, etc.).</p>
-<p>Businessman wants to sell (remove) maximal amount of wires so that each device will be powered from at least one grid (main or reserve). In other words, for each device should exist at least one path to the head node (in the main grid or the reserve grid), which contains only nodes from one grid.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1263/problem/F">「CodeForces 1263F」Economic Difficulties</a></p>
-<h4 id="题解">题解</h4>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&lt;</mo><mo>=</mo><mn>2000</mn></mrow><annotation encoding="application/x-tex">n&lt;=2000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>，考虑DP做法,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi><mo>[</mo><mi>t</mi><mo>]</mo><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">DP[t][i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">[</span><span class="mord mathdefault">t</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>,表示第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span> 棵树将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i-j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 区间断电最多能删除多少边<br>
-然后<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo separator="true">,</mo><mi>R</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">L[i],R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>用来维护该节点维护下面覆盖了那些子节点，最后再用DP合并一些即可</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-#include &lt;queue&gt;
-#include &lt;map&gt;
-#include &lt;string&gt;
-using namespace std;
-const int maxd = 2e3+10;
-vector&lt;int&gt; G[2][maxd];
-int dp[maxd],v[2][maxd][maxd],l[2][maxd],r[2][maxd],sz[2][maxd];
-// L[i]，R[i]表示将盖以i节点为根子树删掉，最多能使得[L,R]区间内的发电机停电
-int n,a;
-void dfs(int id,int x)
-{
-    if(x!=1) sz[id][x] = 1; // N个点n-1条边，根节点无父边
-    for(int v :G[id][x])
-    {
-        dfs(id,v);
-        l[id][x] = min(l[id][x],l[id][v]);
-        r[id][x] = max(r[id][x],r[id][v]);
-        sz[id][x] += sz[id][v];
-    }
-    int ll = l[id][x],rr = r[id][x];
-    v[id][ll][rr] = max(v[id][ll][rr],sz[id][x]);    // 代价是该子树的大小
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n;scanf(&quot;%d&quot;,&amp;n);
-    for(int t=0;t &lt; 2;t++)
-    {
-        int m;scanf(&quot;%d&quot;,&amp;m);
-        for(int i=1;i&lt;=m;i++)
-        {
-            l[t][i] = m+1;
-            r[t][i] = 0;
-        }
-        for(int i=2;i&lt;=m;i++)
-        {
-            int x; scanf(&quot;%d&quot;,&amp;x);
-            G[t][x].push_back(i);
-        }
-        for(int i=1;i&lt;=n;i++)
-        {
-            int x;scanf(&quot;%d&quot;,&amp;x);
-            l[t][x] = r[t][x] = i;
-        }
-        dfs(t,1);
-    }
-    for(int i=1;i&lt;=n;i++)
-        for(int j=i;j&lt;=n;j++)
-            dp[j] = max(dp[j], dp[i-1] + max(v[0][i][j],v[1][i][j]));
-    printf(&quot;%d\n&quot;,dp[n]);
     return 0;
 }
 </code></pre>
