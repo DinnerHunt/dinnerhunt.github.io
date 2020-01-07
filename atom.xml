@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-01-07T14:44:20.216Z</updated>
+    <updated>2020-01-07T15:05:25.006Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -51,7 +51,7 @@ ll solve()
     {
         for(ll x:l[i]) L.insert(sb[x]), R.insert(eb[x]); // 因为会议x开始了，所以将再另一边的会议丢进集合，也表示开始了
         if(L.size() &amp;&amp; *L.begin() &gt; *R.begin()) return 1ll; // 如果在集合中出现了断点，说明没有相交，而此时我们枚举的会议都是相交的，所以这里会出现 venue-sensitive
-        for(ll x:r[i]) L.erase(sb[x]),R.erase(eb[x]);// 会议结束了，去掉
+        for(ll x:r[i]) L.erase(sb[x]),R.erase(eb[x]);
     }
     return 0ll;
 }
