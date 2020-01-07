@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>「Template」 杜教筛 | dinnerhunt</title>
+<title>「CodeForces 1215F」 Radio Stations | dinnerhunt</title>
 <meta name="description" content="练习时长251天且正在被蜗牛追杀的腾讯视频VVVIP会员">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,87 +88,165 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>「Template」 杜教筛</h1>
+            <h1>「CodeForces 1215F」 Radio Stations</h1>
             <p class="article-meta">
-              2019-05-07
+              2019-12-28
+              
+                <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+                  2-SAT
+                </a>
               
             </p>
             
             <div class="post-content">
-              <p><a href="https://www.luogu.org/problemnew/show/P4213">P4213 杜教筛(Sum)</a></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi>ϕ</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{n} \phi(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">ϕ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi>μ</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{n} \mu(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">μ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
+              <p>In addition to complaints about lighting, a lot of complaints about insufficient radio signal covering has been received by Bertown city hall recently. 𝑛 complaints were sent to the mayor, all of which are suspiciosly similar to each other: in the 𝑖-th complaint, one of the radio fans has mentioned that the signals of two radio stations 𝑥𝑖 and 𝑦𝑖 are not covering some parts of the city, and demanded that the signal of at least one of these stations can be received in the whole city.</p>
+<!--more-->
+<p>Of cousre, the mayor of Bertown is currently working to satisfy these complaints. A new radio tower has been installed in Bertown, it can transmit a signal with any integer power from 1 to 𝑀 (let's denote the signal power as 𝑓). The mayor has decided that he will choose a set of radio stations and establish a contract with every chosen station. To establish a contract with the 𝑖-th station, the following conditions should be met:</p>
+<p>the signal power 𝑓 should be not less than 𝑙𝑖, otherwise the signal of the 𝑖-th station won't cover the whole city;<br>
+the signal power 𝑓 should be not greater than 𝑟𝑖, otherwise the signal will be received by the residents of other towns which haven't established a contract with the 𝑖-th station.<br>
+All this information was already enough for the mayor to realise that choosing the stations is hard. But after consulting with specialists, he learned that some stations the signals of some stations may interfere with each other: there are 𝑚 pairs of stations (𝑢𝑖, 𝑣𝑖) that use the same signal frequencies, and for each such pair it is impossible to establish contracts with both stations. If stations 𝑥 and 𝑦 use the same frequencies, and 𝑦 and 𝑧 use the same frequencies, it does not imply that 𝑥 and 𝑧 use the same frequencies.</p>
+<p>The mayor finds it really hard to analyze this situation, so he hired you to help him. You have to choose signal power 𝑓 and a set of stations to establish contracts with such that:</p>
+<p>all complaints are satisfied (formally, for every 𝑖∈[1,𝑛] the city establishes a contract either with station 𝑥𝑖, or with station 𝑦𝑖);<br>
+no two chosen stations interfere with each other (formally, for every 𝑖∈[1,𝑚] the city does not establish a contract either with station 𝑢𝑖, or with station 𝑣𝑖);<br>
+for each chosen station, the conditions on signal power are met (formally, for each chosen station 𝑖 the condition 𝑙𝑖≤𝑓≤𝑟𝑖 is met).</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped</a></p>
+<h4 id="题解">题解</h4>
+<p>参见blog<br>
+<a href="https://www.luogu.com.cn/blog/Sooke/solution-cf1215f">Sooke巨佬</a></p>
+<h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
 #include &lt;algorithm&gt;
-#include &lt;unordered_map&gt;
-#define ll long long
-#define N 5000005
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
+#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define RLF(n) scanf(&quot;%lf&quot;,&amp;n)
+#define RS(n) scanf(&quot;%s&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PLN(n) printf(&quot;%lld\n&quot;,n)
+#define PLP(n) printf(&quot;%lld &quot;,n)
+#define PS(s) printf(&quot;%s\n&quot;,s)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V vector&lt;long long&gt;
+#define VP vector&lt;P&gt;
 using namespace std;
-ll mu[N],prime[N],cnt,phi[N];
-bool vis[N];
-unordered_map&lt;int,long long&gt; mpmu,mpphi;
-void init()
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
+typedef long long ll;
+const ll maxd = 2e6+10;
+
+V G[maxd];
+ll dfn[maxd],low[maxd],belong[maxd],s[maxd],top,scc,idx;
+ll m0,n,m,m1;
+bool ins[maxd];
+
+void tarjan(int u)
 {
-	mu[1] =1; phi[1] = 1;
-	for(int i=2;i&lt;N;i++)
-	{
-		if(!vis[i])
-		{
-			prime[++cnt] = i;
-			mu[i] = -1;
-			phi[i] = i-1;
-		}
-		for(int j=1;j&lt;=cnt &amp;&amp; i * prime[j] &lt; N;j++)
-		{
-			int p = i * prime[j]; 
-			vis[p] = 1;
-			if(i%prime[j] == 0)  
-			{
-				mu[p] = 0;
-				phi[p] = phi[i] * prime[j];
-				break;
-			}
-			phi[p] = phi[i] * (prime[j] - 1);
-			mu[p] = -mu[i]; 
-		}
-	}
-	for(int i=1;i&lt;N;i++) mu[i] += mu[i-1];
-	for(int i=1;i&lt;N;i++) phi[i] += phi[i-1];
+    dfn[u] = low[u] = ++idx;
+    s[top++] = u;
+    ins[u] = true;
+    for(auto v:G[u])
+    {
+        if (!dfn[v])
+        {
+            tarjan(v);
+            low[u] = min(low[u], low[v]);
+        }
+        else if (ins[v])
+            low[u] = min(low[u], dfn[v]);
+    }
+    if(dfn[u] == low[u])
+    {
+        ++scc;
+        do
+        {
+            belong[s[--top]] = scc;
+            ins[s[top]] = false;
+        } while (s[top] != u);
+    }
 }
-ll getsummu(int n)
+ll yes(ll x){ return x&lt;&lt;1; }
+ll no(ll x){ return x&lt;&lt;1|1; }
+
+void insert(ll x,ll y)
 {
-	if(n &lt; N) return mu[n];
-	if(mpmu[n]) return mpmu[n];
-	ll ans = 1ll;
-	for(int l=2,r;l&lt;=n;l = r+1)
-	{
-		r = n/(n/l);
-		ans -= (r - l + 1) * getsummu(n/l);
-	}
-	return mpmu[n] = ans;
+    //PLP(x);PLN(y);
+    G[x].pb(y);
+    G[y^1].pb(x^1);
 }
-ll getsumphi(int n)
+bool solve()
 {
-	if(n &lt; N) return phi[n];
-	if(mpphi[n]) return mpphi[n];
-	ll ans = 1ll * (1+n)*n/2;
-	for(int l=2,r;l&lt;=n;l = r+1)
-	{
-		r = n/(n/l);
-		ans -= (r - l + 1) * getsumphi(n/l);
-	}
-	return mpphi[n] = ans;
+    FOR(i,0,no(n+m)) if(!dfn[i]) tarjan(i);
+    FOR(i,0,n+m)
+    {
+        //PLN(belong[i]);
+        if(belong[yes(i)] == belong[no(i)]) return false;
+    }
+    return true;
 }
 int main()
 {
-    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    init();
-    int n,x,y;scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++)
+    //__IN;__OUT;
+    ll x,y;
+    RLL(m0);RLL(n);RLL(m);RLL(m1);
+    F(m0)
     {
-    	scanf(&quot;%d&quot;,&amp;x);
-    	printf(&quot;%lld %lld\n&quot;,getsumphi(x),getsummu(x));
+        RLL(x);RLL(y);x--,y--;
+        insert(no(x),yes(y)); // 如果不选x，则必须选y
     }
+    F(m) insert(yes(n+i),yes(n+i+1)); //
+    insert(yes(n),no(n)); // 使 0 不合法
+    F(n)
+    {
+        RLL(x);RLL(y);
+        insert(yes(i),no(n+x-1)); // 如果选i，则频段不在 n+x-1范围内
+        insert(yes(i),yes(n+y)); // 且频段在 n+y范围内
+    }
+    F(m1)
+    {
+        RLL(x);RLL(y); x--,y--;
+        insert(yes(x),no(y)); // 如果选了x，则不能选y
+    }
+    ll k = 0;
+    if(solve())
+    {
+        F(n) if(belong[yes(i)] &lt; belong[no(i)]) k++;
+        FOR(i,1,m)
+            if(belong[yes(n+i)] &lt; belong[no(n+i)]) // 遇到合法选项
+            {
+                printf(&quot;%lld %lld\n&quot;,k,i);
+                break;
+            }
+
+        F(n) if(belong[yes(i)] &lt; belong[no(i)]) PLP(i+1);
+    }
+    else PS(&quot;-1&quot;);
+
     return 0;
 }
 </code></pre>
@@ -177,6 +255,17 @@ int main()
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/CF1277F">
+                <h3 class="post-title">
+                  「CodeForces 1277F」Beautiful Rectangle
+                </h3>
+              </a>
+            </div>
           
         </div>
         
@@ -576,11 +665,11 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
           构造
         </a>
       
@@ -588,11 +677,11 @@ int main()
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge ">
           双连通分量
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/MdmMK67Rbs" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/MdmMK67Rbs" class="badge secondary">
           Dp
         </a>
       
@@ -600,7 +689,7 @@ int main()
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge success">
           离散化
         </a>
       
@@ -608,63 +697,63 @@ int main()
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge ">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge success">
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge success">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge warning">
           单调队列
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge success">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge success">
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge ">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge ">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge warning">
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge success">
           博弈论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge success">
           DFS序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge secondary">
           可持久化Trie
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge success">
           三元环
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
           期望概率
         </a>
       
@@ -672,11 +761,11 @@ int main()
           最小费用最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge ">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
           个人经历
         </a>
       
@@ -688,23 +777,23 @@ int main()
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge success">
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge ">
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge warning">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
           差分
         </a>
       
@@ -716,15 +805,15 @@ int main()
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge success">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge success">
           CDQ分治
         </a>
       
@@ -732,7 +821,7 @@ int main()
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge warning">
           线性基
         </a>
       
@@ -744,15 +833,15 @@ int main()
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge success">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge success">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
           支配树
         </a>
       
@@ -764,15 +853,15 @@ int main()
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge ">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
           KMP
         </a>
       
@@ -780,43 +869,43 @@ int main()
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge success">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge success">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge warning">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge warning">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
           计算几何
         </a>
       

@@ -2,14 +2,175 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2019-12-28T12:55:11.522Z</updated>
+    <updated>2020-01-07T09:22:39.899Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
     <subtitle>练习时长251天且正在被蜗牛追杀的腾讯视频VVVIP会员</subtitle>
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
-    <rights>All rights reserved 2019, dinnerhunt</rights>
+    <rights>All rights reserved 2020, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1215F」 Radio Stations]]></title>
+        <id>https://dinnerhunt.cn/post/CF1215F</id>
+        <link href="https://dinnerhunt.cn/post/CF1215F">
+        </link>
+        <updated>2019-12-28T14:07:33.000Z</updated>
+        <summary type="html"><![CDATA[<p>In addition to complaints about lighting, a lot of complaints about insufficient radio signal covering has been received by Bertown city hall recently. 𝑛 complaints were sent to the mayor, all of which are suspiciosly similar to each other: in the 𝑖-th complaint, one of the radio fans has mentioned that the signals of two radio stations 𝑥𝑖 and 𝑦𝑖 are not covering some parts of the city, and demanded that the signal of at least one of these stations can be received in the whole city.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>In addition to complaints about lighting, a lot of complaints about insufficient radio signal covering has been received by Bertown city hall recently. 𝑛 complaints were sent to the mayor, all of which are suspiciosly similar to each other: in the 𝑖-th complaint, one of the radio fans has mentioned that the signals of two radio stations 𝑥𝑖 and 𝑦𝑖 are not covering some parts of the city, and demanded that the signal of at least one of these stations can be received in the whole city.</p>
+<!--more-->
+<p>Of cousre, the mayor of Bertown is currently working to satisfy these complaints. A new radio tower has been installed in Bertown, it can transmit a signal with any integer power from 1 to 𝑀 (let's denote the signal power as 𝑓). The mayor has decided that he will choose a set of radio stations and establish a contract with every chosen station. To establish a contract with the 𝑖-th station, the following conditions should be met:</p>
+<p>the signal power 𝑓 should be not less than 𝑙𝑖, otherwise the signal of the 𝑖-th station won't cover the whole city;<br>
+the signal power 𝑓 should be not greater than 𝑟𝑖, otherwise the signal will be received by the residents of other towns which haven't established a contract with the 𝑖-th station.<br>
+All this information was already enough for the mayor to realise that choosing the stations is hard. But after consulting with specialists, he learned that some stations the signals of some stations may interfere with each other: there are 𝑚 pairs of stations (𝑢𝑖, 𝑣𝑖) that use the same signal frequencies, and for each such pair it is impossible to establish contracts with both stations. If stations 𝑥 and 𝑦 use the same frequencies, and 𝑦 and 𝑧 use the same frequencies, it does not imply that 𝑥 and 𝑧 use the same frequencies.</p>
+<p>The mayor finds it really hard to analyze this situation, so he hired you to help him. You have to choose signal power 𝑓 and a set of stations to establish contracts with such that:</p>
+<p>all complaints are satisfied (formally, for every 𝑖∈[1,𝑛] the city establishes a contract either with station 𝑥𝑖, or with station 𝑦𝑖);<br>
+no two chosen stations interfere with each other (formally, for every 𝑖∈[1,𝑚] the city does not establish a contract either with station 𝑢𝑖, or with station 𝑣𝑖);<br>
+for each chosen station, the conditions on signal power are met (formally, for each chosen station 𝑖 the condition 𝑙𝑖≤𝑓≤𝑟𝑖 is met).</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped</a></p>
+<h4 id="题解">题解</h4>
+<p>参见blog<br>
+<a href="https://www.luogu.com.cn/blog/Sooke/solution-cf1215f">Sooke巨佬</a></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ls (p&lt;&lt;1)
+#define rs (p&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+#define F(n) for(ll i=0;i&lt;n;i++)
+#define _F(n) for(ll i=n-1;i&gt;=0;i--)
+#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
+#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
+#define RI(n) scanf(&quot;%d&quot;,&amp;n)
+#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
+#define RLF(n) scanf(&quot;%lf&quot;,&amp;n)
+#define RS(n) scanf(&quot;%s&quot;,&amp;n)
+#define PLL(n) printf(&quot;%lld&quot;,n)
+#define PLN(n) printf(&quot;%lld\n&quot;,n)
+#define PLP(n) printf(&quot;%lld &quot;,n)
+#define PS(s) printf(&quot;%s\n&quot;,s)
+#define PP() putchar(' ')
+#define PN() putchar(10)
+#define ST first
+#define ND second
+#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
+#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+#define V vector&lt;long long&gt;
+#define VP vector&lt;P&gt;
+using namespace std;
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef pair&lt;ll,ll&gt; P;
+typedef pair&lt;P,ll&gt; PI;
+typedef pair&lt;ll,P&gt; IP;
+ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
+typedef long long ll;
+const ll maxd = 2e6+10;
+
+V G[maxd];
+ll dfn[maxd],low[maxd],belong[maxd],s[maxd],top,scc,idx;
+ll m0,n,m,m1;
+bool ins[maxd];
+
+void tarjan(int u)
+{
+    dfn[u] = low[u] = ++idx;
+    s[top++] = u;
+    ins[u] = true;
+    for(auto v:G[u])
+    {
+        if (!dfn[v])
+        {
+            tarjan(v);
+            low[u] = min(low[u], low[v]);
+        }
+        else if (ins[v])
+            low[u] = min(low[u], dfn[v]);
+    }
+    if(dfn[u] == low[u])
+    {
+        ++scc;
+        do
+        {
+            belong[s[--top]] = scc;
+            ins[s[top]] = false;
+        } while (s[top] != u);
+    }
+}
+ll yes(ll x){ return x&lt;&lt;1; }
+ll no(ll x){ return x&lt;&lt;1|1; }
+
+void insert(ll x,ll y)
+{
+    //PLP(x);PLN(y);
+    G[x].pb(y);
+    G[y^1].pb(x^1);
+}
+bool solve()
+{
+    FOR(i,0,no(n+m)) if(!dfn[i]) tarjan(i);
+    FOR(i,0,n+m)
+    {
+        //PLN(belong[i]);
+        if(belong[yes(i)] == belong[no(i)]) return false;
+    }
+    return true;
+}
+int main()
+{
+    //__IN;__OUT;
+    ll x,y;
+    RLL(m0);RLL(n);RLL(m);RLL(m1);
+    F(m0)
+    {
+        RLL(x);RLL(y);x--,y--;
+        insert(no(x),yes(y)); // 如果不选x，则必须选y
+    }
+    F(m) insert(yes(n+i),yes(n+i+1)); //
+    insert(yes(n),no(n)); // 使 0 不合法
+    F(n)
+    {
+        RLL(x);RLL(y);
+        insert(yes(i),no(n+x-1)); // 如果选i，则频段不在 n+x-1范围内
+        insert(yes(i),yes(n+y)); // 且频段在 n+y范围内
+    }
+    F(m1)
+    {
+        RLL(x);RLL(y); x--,y--;
+        insert(yes(x),no(y)); // 如果选了x，则不能选y
+    }
+    ll k = 0;
+    if(solve())
+    {
+        F(n) if(belong[yes(i)] &lt; belong[no(i)]) k++;
+        FOR(i,1,m)
+            if(belong[yes(n+i)] &lt; belong[no(n+i)]) // 遇到合法选项
+            {
+                printf(&quot;%lld %lld\n&quot;,k,i);
+                break;
+            }
+
+        F(n) if(belong[yes(i)] &lt; belong[no(i)]) PLP(i+1);
+    }
+    else PS(&quot;-1&quot;);
+
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1277F」Beautiful Rectangle]]></title>
         <id>https://dinnerhunt.cn/post/CF1277F</id>
@@ -1028,72 +1189,6 @@ int main()
             ans = min(ans,dp[n+1][0][k]);
         printf(&quot;%d\n&quot;,ans);
     }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1254B」Send Boxes to Alice]]></title>
-        <id>https://dinnerhunt.cn/post/CF1254B</id>
-        <link href="https://dinnerhunt.cn/post/CF1254B">
-        </link>
-        <updated>2019-12-19T14:24:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤106 and 0≤𝑎𝑖≤106. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems</p>
-<p>Christmas is coming, and our protagonist, Bob, is preparing a spectacular present for his long-time best friend Alice. This year, he decides to prepare 𝑛 boxes of chocolate, numbered from 1 to 𝑛. Initially, the 𝑖-th box contains 𝑎𝑖 chocolate pieces.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>This is the harder version of the problem. In this version, 1≤𝑛≤106 and 0≤𝑎𝑖≤106. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems</p>
-<p>Christmas is coming, and our protagonist, Bob, is preparing a spectacular present for his long-time best friend Alice. This year, he decides to prepare 𝑛 boxes of chocolate, numbered from 1 to 𝑛. Initially, the 𝑖-th box contains 𝑎𝑖 chocolate pieces.</p>
-<!--more-->
-<p>Since Bob is a typical nice guy, he will not send Alice 𝑛 empty boxes. In other words, at least one of 𝑎1,𝑎2,…,𝑎𝑛 is positive. Since Alice dislikes coprime sets, she will be happy only if there exists some integer 𝑘&gt;1 such that the number of pieces in each box is divisible by 𝑘. Note that Alice won't mind if there exists some empty boxes.</p>
-<p>Charlie, Alice's boyfriend, also is Bob's second best friend, so he decides to help Bob by rearranging the chocolate pieces. In one second, Charlie can pick up a piece in box 𝑖 and put it into either box 𝑖−1 or box 𝑖+1 (if such boxes exist). Of course, he wants to help his friend as quickly as possible. Therefore, he asks you to calculate the minimum number of seconds he would need to make Alice happy.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1254/problem/B2">「CodeForces 1254B」Send Boxes to Alice</a></p>
-<h4 id="题解">题解</h4>
-<p>堆数肯定是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span>的因数，如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi mathvariant="normal">∣</mi><mi>s</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>b</mi><mi mathvariant="normal">∣</mi><mi>s</mi><mi>u</mi><mi>m</mi><mo separator="true">,</mo><mi>a</mi><mi mathvariant="normal">∣</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">a|sum  , b |sum , a | b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord">∣</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mord">∣</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mord">∣</span><span class="mord mathdefault">b</span></span></span></span>，那么肯定选<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>堆数<br>
-然后枚<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，因为只有可能将该堆数往后移，或者将后面的堆数往前移这两种可能，所以贪心一下就好</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
-using namespace std;
-const int maxd = 1e6+10;
-int a[maxd];
-long long sum,ans = 1e18;
-vector&lt;long long&gt; b;
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n;scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
-    for(int i=1;i&lt;=n;i++) sum+=a[i];
-    if(sum == 1) {printf(&quot;-1\n&quot;);return 0;}
-    for(long long i=2;i*i&lt;=sum;i++)
-    {
-        if(sum%i==0)
-        {
-            b.push_back(i);
-            sum /= i;
-            i--;
-        }
-    }
-    b.push_back(sum);
-    for(auto x : b)
-    {
-        //printf(&quot;%d\n&quot;,x);
-        long long res = 0; sum = 0; // sum 表示当前还未匹配到的数量
-        for(int i=1;i&lt;=n;i++)
-        {
-            sum += a[i];
-            sum %= x;
-            res += min(sum,x - sum);
-            // 可以选择将当前剩下的带到后面一格，或者将还缺多少的部分从后面带回来，因为总数是一定够除以x的
-        }
-        ans = min(res,ans);
-    }
-    printf(&quot;%lld\n&quot;,ans);
     return 0;
 }
 </code></pre>
