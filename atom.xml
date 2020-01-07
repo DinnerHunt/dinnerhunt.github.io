@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-01-07T09:27:55.523Z</updated>
+    <updated>2020-01-07T14:44:20.216Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,140 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1284D」New Year and Conference]]></title>
+        <id>https://dinnerhunt.cn/post/CF1284D</id>
+        <link href="https://dinnerhunt.cn/post/CF1284D">
+        </link>
+        <updated>2020-01-07T14:22:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>Filled with optimism, Hyunuk will host a conference about how great this new year will be!</p>
+<p>The conference will have 𝑛 lectures. Hyunuk has two candidate venues 𝑎 and 𝑏. For each of the 𝑛 lectures, the speaker specified two time intervals [𝑠𝑎𝑖,𝑒𝑎𝑖] (𝑠𝑎𝑖≤𝑒𝑎𝑖) and [𝑠𝑏𝑖,𝑒𝑏𝑖] (𝑠𝑏𝑖≤𝑒𝑏𝑖). If the conference is situated in venue 𝑎, the lecture will be held from 𝑠𝑎𝑖 to 𝑒𝑎𝑖, and if the conference is situated in venue 𝑏, the lecture will be held from 𝑠𝑏𝑖 to 𝑒𝑏𝑖. Hyunuk will choose one of these venues and all lectures will be held at that venue.</p>
+<p>Two lectures are said to overlap if they share any point in time in common. Formally, a lecture held in interval [𝑥,𝑦] overlaps with a lecture held in interval [𝑢,𝑣] if and only if max(𝑥,𝑢)≤min(𝑦,𝑣).</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Filled with optimism, Hyunuk will host a conference about how great this new year will be!</p>
+<p>The conference will have 𝑛 lectures. Hyunuk has two candidate venues 𝑎 and 𝑏. For each of the 𝑛 lectures, the speaker specified two time intervals [𝑠𝑎𝑖,𝑒𝑎𝑖] (𝑠𝑎𝑖≤𝑒𝑎𝑖) and [𝑠𝑏𝑖,𝑒𝑏𝑖] (𝑠𝑏𝑖≤𝑒𝑏𝑖). If the conference is situated in venue 𝑎, the lecture will be held from 𝑠𝑎𝑖 to 𝑒𝑎𝑖, and if the conference is situated in venue 𝑏, the lecture will be held from 𝑠𝑏𝑖 to 𝑒𝑏𝑖. Hyunuk will choose one of these venues and all lectures will be held at that venue.</p>
+<p>Two lectures are said to overlap if they share any point in time in common. Formally, a lecture held in interval [𝑥,𝑦] overlaps with a lecture held in interval [𝑢,𝑣] if and only if max(𝑥,𝑢)≤min(𝑦,𝑣).</p>
+<!--more-->
+<p>We say that a participant can attend a subset 𝑠 of the lectures if the lectures in 𝑠 do not pairwise overlap (i.e. no two lectures overlap). Note that the possibility of attending may depend on whether Hyunuk selected venue 𝑎 or venue 𝑏 to hold the conference.</p>
+<p>A subset of lectures 𝑠 is said to be venue-sensitive if, for one of the venues, the participant can attend 𝑠, but for the other venue, the participant cannot attend 𝑠.</p>
+<p>A venue-sensitive set is problematic for a participant who is interested in attending the lectures in 𝑠 because the participant cannot be sure whether the lecture times will overlap. Hyunuk will be happy if and only if there are no venue-sensitive sets. Determine whether Hyunuk will be happy.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1284/problem/D">「CodeForces 1284D」New Year and Conference</a></p>
+<h4 id="题解">题解</h4>
+<p>一种很优美的做法，代码量少<br>
+参考 <a href="https://www.xht37.com/hello-2020-%e9%a2%98%e8%a7%a3/">xht37's blog</a><br>
+这里对其代码进行解释</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll maxd = 1e5+10;
+
+ll sa[maxd],sb[maxd],ea[maxd],eb[maxd],a[maxd*4];
+ll n,m,tot;
+V l[maxd*4],r[maxd*4];
+
+
+ll solve()
+{
+    FOR(i,1,m) l[i].clear(),r[i].clear();
+    FOR(i,1,n) l[sa[i]].pb(i), r[ea[i]].pb(i); // l表示在时间i，有那些会议开始了，r表示结束了
+    multiset&lt;ll,greater&lt;ll&gt; &gt; L;
+    multiset&lt;ll&gt; R;
+    FOR(i,1,m)      //枚举时间
+    {
+        for(ll x:l[i]) L.insert(sb[x]), R.insert(eb[x]); // 因为会议x开始了，所以将再另一边的会议丢进集合，也表示开始了
+        if(L.size() &amp;&amp; *L.begin() &gt; *R.begin()) return 1ll; // 如果在集合中出现了断点，说明没有相交，而此时我们枚举的会议都是相交的，所以这里会出现 venue-sensitive
+        for(ll x:r[i]) L.erase(sb[x]),R.erase(eb[x]);// 会议结束了，去掉
+    }
+    return 0ll;
+}
+
+int main()
+{
+//    __IN;__OUT;
+    RLL(n);
+    FOR(i,1,n) RLL4(sa[i],ea[i],sb[i],eb[i]);
+    FOR(i,1,n) a[++tot] = sa[i];
+    FOR(i,1,n) a[++tot] = sb[i];
+    FOR(i,1,n) a[++tot] = ea[i];
+    FOR(i,1,n) a[++tot] = eb[i];
+    sort(a+1,a+1+tot);
+    m = unique(a+1,a+1+tot) - a - 1; // 因为要枚举时间，所以需要离散化
+    FOR(i,1,n) sa[i] = lower_bound(a+1,a+1+m,sa[i]) - a;
+    FOR(i,1,n) sb[i] = lower_bound(a+1,a+1+m,sb[i]) - a;
+    FOR(i,1,n) ea[i] = lower_bound(a+1,a+1+m,ea[i]) - a;
+    FOR(i,1,n) eb[i] = lower_bound(a+1,a+1+m,eb[i]) - a;
+    ll flag = solve(); swap(sa,sb);swap(ea,eb); flag|= solve();
+
+    if(flag) PS(&quot;NO&quot;); else PS(&quot;YES&quot;);
+
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1270G」Subset with Zero Sum]]></title>
+        <id>https://dinnerhunt.cn/post/CF1270G</id>
+        <link href="https://dinnerhunt.cn/post/CF1270G">
+        </link>
+        <updated>2020-01-07T11:29:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given 𝑛 integers 𝑎1,𝑎2,…,𝑎𝑛, such that for each 1≤𝑖≤𝑛 holds 𝑖−𝑛≤𝑎𝑖≤𝑖−1.</p>
+<p>Find some nonempty subset of these integers, whose sum is equal to 0. It can be shown that such a subset exists under given constraints. If there are several possible subsets with zero-sum, you can find any of them.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given 𝑛 integers 𝑎1,𝑎2,…,𝑎𝑛, such that for each 1≤𝑖≤𝑛 holds 𝑖−𝑛≤𝑎𝑖≤𝑖−1.</p>
+<p>Find some nonempty subset of these integers, whose sum is equal to 0. It can be shown that such a subset exists under given constraints. If there are several possible subsets with zero-sum, you can find any of them.</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1270/problem/G">「CodeForces 1270G」Subset with Zero Sum</a></p>
+<h4 id="题解">题解</h4>
+<p>因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mi>n</mi><mo>&lt;</mo><mo>=</mo><msub><mi>a</mi><mi>i</mi></msub><mo>&lt;</mo><mo>=</mo><mi>i</mi><mo>−</mo></mrow><annotation encoding="application/x-tex">i - n &lt;= a_i &lt;= i-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mord">−</span></span></span></span>,所以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&lt;</mo><mo>=</mo><mi>i</mi><mo>−</mo><msub><mi>a</mi><mi>i</mi></msub><mo>&lt;</mo><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 &lt;= i - a_i &lt;=n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><br>
+我们让每个点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>向点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">i -a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 连一条边<br>
+可以发现，图是基环树森林，因为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 条边<br>
+可以简单验证下，环上点权加起来的值一定为0，因此我们要求的就是环上的点</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll maxd = 1e6+10;
+ 
+ll a[maxd],vis[maxd];
+stack&lt;ll&gt; s;
+V ans;
+bool dfs(ll x)
+{
+    if(vis[x])
+    {
+        while(s.top()!=x &amp;&amp; !s.empty())
+        {
+            ans.pb(s.top());s.pop();
+        }
+        ans.pb(s.top());
+        return true;
+    }
+    vis[x] = 1;
+    s.push(x);
+    return dfs(x - a[x]);
+}
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    while(t--)
+    {
+        ll n;RLL(n);ans.clear();
+        while(!s.empty()) s.pop();
+        F(n)
+        {
+            RLL(a[i+1]);
+            vis[i+1] = 0;
+        }
+        F(n)if(dfs(i+1)) break;
+        PLN((ll)ans.size());
+        for(auto x : ans) PLP(x);
+        PN();
+    }
+    return 0;
+ 
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1215F」 Radio Stations]]></title>
         <id>https://dinnerhunt.cn/post/CF1215F</id>
@@ -34,50 +168,7 @@ for each chosen station, the conditions on signal power are met (formally, for e
 <p>参见blog<br>
 <a href="https://www.luogu.com.cn/blog/Sooke/solution-cf1215f">Sooke巨佬</a></p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;cmath&gt;
-#include &lt;map&gt;
-#include &lt;iostream&gt;
-
-#define all(x) x.begin(),x.end()
-#define pb push_back
-#define ls (p&lt;&lt;1)
-#define rs (p&lt;&lt;1|1)
-#define mid ((l+r)&gt;&gt;1)
-#define F(n) for(ll i=0;i&lt;n;i++)
-#define _F(n) for(ll i=n-1;i&gt;=0;i--)
-#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
-#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
-#define RI(n) scanf(&quot;%d&quot;,&amp;n)
-#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
-#define RLF(n) scanf(&quot;%lf&quot;,&amp;n)
-#define RS(n) scanf(&quot;%s&quot;,&amp;n)
-#define PLL(n) printf(&quot;%lld&quot;,n)
-#define PLN(n) printf(&quot;%lld\n&quot;,n)
-#define PLP(n) printf(&quot;%lld &quot;,n)
-#define PS(s) printf(&quot;%s\n&quot;,s)
-#define PP() putchar(' ')
-#define PN() putchar(10)
-#define ST first
-#define ND second
-#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
-#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-#define V vector&lt;long long&gt;
-#define VP vector&lt;P&gt;
-using namespace std;
-
-typedef unsigned long long ull;
-typedef long long ll;
-typedef pair&lt;ll,ll&gt; P;
-typedef pair&lt;P,ll&gt; PI;
-typedef pair&lt;ll,P&gt; IP;
-ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
-typedef long long ll;
-const ll maxd = 2e6+10;
+<pre><code class="language-cpp">const ll maxd = 2e6+10;
 
 V G[maxd];
 ll dfn[maxd],low[maxd],belong[maxd],s[maxd],top,scc,idx;
@@ -191,50 +282,7 @@ int main()
 然后统计最大的数量 ，确定行和列<br>
 再用阶梯的形式去构造该矩阵</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;cmath&gt;
-#include &lt;map&gt;
-#include &lt;iostream&gt;
-
-#define all(x) x.begin(),x.end()
-#define pb push_back
-#define ls (p&lt;&lt;1)
-#define rs (p&lt;&lt;1|1)
-#define mid ((l+r)&gt;&gt;1)
-#define F(n) for(ll i=0;i&lt;n;i++)
-#define _F(n) for(ll i=n-1;i&gt;=0;i--)
-#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
-#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
-#define RI(n) scanf(&quot;%d&quot;,&amp;n)
-#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
-#define RLF(n) scanf(&quot;%lf&quot;,&amp;n)
-#define RS(n) scanf(&quot;%s&quot;,&amp;n)
-#define PLL(n) printf(&quot;%lld&quot;,n)
-#define PLN(n) printf(&quot;%lld\n&quot;,n)
-#define PLP(n) printf(&quot;%lld &quot;,n)
-#define PS(s) printf(&quot;%s\n&quot;,s)
-#define PP() putchar(' ')
-#define PN() putchar(10)
-#define ST first
-#define ND second
-#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
-#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-#define V&lt;long long&gt; vector&lt;long long&gt;
-#define VP&lt;P&gt; vector&lt;P&gt;
-using namespace std;
-
-typedef unsigned long long ull;
-typedef long long ll;
-typedef pair&lt;ll,ll&gt; P;
-typedef pair&lt;P,ll&gt; PI;
-typedef pair&lt;ll,P&gt; IP;
-ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
-typedef long long ll;
-const ll maxd = 4e5+10;
+<pre><code class="language-cpp">const ll maxd = 4e5+10;
 
 ll cnt[maxd],n,ans[maxd];
 map&lt;ll,ll&gt; mp;
@@ -312,47 +360,7 @@ int main()
 设DP[i] 为 i位置上为1的值都已经在最前面一块了<br>
 然后提前处理好 num[i][j]数组，表示所有数字i移动到数字j前面的代价，然后转移就判断通过判断这些数字是否排好序即可</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;cmath&gt;
-#include &lt;map&gt;
-#include &lt;iostream&gt;
-
-#define all(x) x.begin(),x.end()
-#define pb push_back
-#define ls (p&lt;&lt;1)
-#define rs (p&lt;&lt;1|1)
-#define mid ((l+r)&gt;&gt;1)
-#define F(n) for(ll i=0;i&lt;n;i++)
-#define _F(n) for(ll i=n-1;i&gt;=0;i--)
-#define FOR(x,a,b) for(ll x=a;x&lt;=b;x++)
-#define _FOR(x,a,b) for(ll x=a;x&gt;=b;x--)
-#define RI(n) scanf(&quot;%d&quot;,&amp;n)
-#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
-#define RS(n) scanf(&quot;%s&quot;,&amp;n)
-#define PLL(n) printf(&quot;%lld&quot;,n)
-#define PS(s) printf(&quot;%s\n&quot;,s)
-#define PP() putchar(' ')
-#define PN() putchar(10)
-#define ST first
-#define ND second
-#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
-#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-#define V vector&lt;ll&gt;
-
-using namespace std;
-
-typedef unsigned long long ull;
-typedef long long ll;
-typedef pair&lt;ll,ll&gt; P;
-typedef pair&lt;P,ll&gt; PI;
-typedef pair&lt;ll,P&gt; IP;
-ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
-typedef long long ll;
-const ll maxd = 4e5+10;
+<pre><code class="language-cpp">const ll maxd = 4e5+10;
 const ll maxn = (1&lt;&lt;20)-1;
 
 ll a[maxd],b[maxd],cnt[27];
@@ -408,47 +416,7 @@ int main()
 <p>边双缩点后跑树形DP吧。<br>
 代码巨丑无比，写了好久，看来点双板子得改改了。</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;queue&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;cmath&gt;
-#include &lt;map&gt;
-#include &lt;iostream&gt;
- 
-#define all(x) (x).begin(),(x).end()
-#define pb push_back
-#define ls (p&lt;&lt;1)
-#define rs (p&lt;&lt;1|1)
-#define mid ((l+r)&gt;&gt;1)
-#define F(n) for(ll i=0;i&lt;n;i++)
-#define _F(n) for(ll i=n-1;i&gt;=0;i--)
-#define FOR(x,a,b) for(ll (x)=(a);(x)&lt;=(b);(x)++)
-#define _FOR(x,a,b) for(ll (x)=(a);(x)&gt;=(b);(x)--)
-#define RI(n) scanf(&quot;%d&quot;,&amp;n)
-#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
-#define RS(n) scanf(&quot;%s&quot;,&amp;n)
-#define PLL(n) printf(&quot;%lld&quot;,n)
-#define PS(s) printf(&quot;%s\n&quot;,s)
-#define PP() putchar(' ')
-#define PN() putchar(10)
-#define ST first
-#define ND second
-#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
-#define __OUT freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-#define V vector&lt;ll&gt;
- 
-using namespace std;
- 
-typedef unsigned long long ull;
-typedef long long ll;
-typedef pair&lt;ll,ll&gt; P;
-typedef pair&lt;P,ll&gt; PI;
-typedef pair&lt;ll,P&gt; IP;
-ll gcd(ll a,ll b) {if(!b) return a; return gcd(b,a%b);}
-const int maxd = 2e5+10;
+<pre><code class="language-cpp">const int maxd = 2e5+10;
 typedef long long ll;
 ll dfn[maxd],low[maxd],tot,stk[maxd],top,n,m,sz[maxd];
 ll belong[maxd],scc,sum[maxd];
@@ -616,43 +584,7 @@ You are given an array 𝑎1,𝑎2,…,𝑎𝑛. You have to calculate the numbe
 <p>见到一种是否巧妙的方法<br>
 可以发现如果「L,R」区间是合法出栈顺序，那么 「1,L」 和 「1,R」中剩下栈的元素与<strong>顺序</strong>都是<strong>相同</strong>的，因此他们的hash值一定是相同的，所以我们从头到位开始枚举，并用map存该值出现的次数，遇到时统计即可</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;map&gt;
-#include &lt;iostream&gt;
-#include &lt;stack&gt;
-#define all(x) x.begin(),x.end()
-#define pb push_back
-#define ls (p&lt;&lt;1)
-#define rs (p&lt;&lt;1|1)
-#define mid ((l+r)&gt;&gt;1)
-#define F(n) for(ll i=0;i&lt;n;i++)
-#define _F(n) for(ll i=n-1;i&gt;=0;i--)
-#define FOR(a,b) for(ll i=a;i&lt;=b;i++)
-#define _FOR(a,b) for(ll i=a;i&gt;=b;i--)
-#define RI(n) scanf(&quot;%d&quot;,&amp;n)
-#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
-#define PLL(n) printf(&quot;%lld&quot;,n)
-#define PP() putchar(' ')
-#define PN() putchar(10)
-#define ST first
-#define ND second
-#define __IN freopen(&quot;a.in&quot;,&quot;r&quot;,stdin)
-#define __OUT   freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-#define V vector&lt;ll&gt;
-using namespace std;
-
-typedef unsigned long long ull;
-typedef long long ll;
-typedef pair&lt;ll,ll&gt; P;
-typedef pair&lt;P,ll&gt; PI;
-typedef pair&lt;ll,P&gt; IP;
-
-
-const int maxd = 3e5+10;
+<pre><code class="language-cpp">const int maxd = 3e5+10;
 const ull base = 300007;
 typedef long long ll;
 
@@ -805,38 +737,7 @@ DP[x][0] 表示未选满的价值<br>
 然后我们依次考虑，DP[v][0]+E{x,v}这条边的权值(也就是是否与该点连边),如果选该边，则要减去DP[v][1]，则与该点连边的贡献为(DP[v][0]+E{x,v}-DP[v][1])</p>
 <p>然后贪心选前k个就好</p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;map&gt;
-#include &lt;iostream&gt;
-#define all(x) x.begin(),x.end()
-#define pb push_back
-#define ls (p&lt;&lt;1)
-#define rs (p&lt;&lt;1|1)
-#define mid ((l+r)&gt;&gt;1)
-#define F(n) for(ll i=0;i&lt;n;i++)
-#define _F(n) for(ll i=n-1;i&gt;=0;i--)
-#define FOR(a,b) for(ll i=a;i&lt;=b;i++)
-#define _FOR(a,b) for(ll i=a;i&gt;=b;i--)
-#define RI(n) scanf(&quot;%d&quot;,&amp;n)
-#define RLL(n) scanf(&quot;%lld&quot;,&amp;n)
-#define PLL(n) printf(&quot;%lld&quot;,n)
-#define PP() putchar(' ')
-#define PN() putchar(10)
-#define st first
-#define nd second
-using namespace std;
-
-
-typedef long long ll;
-typedef pair&lt;ll,ll&gt; P;
-typedef pair&lt;P,ll&gt; PI;
-typedef pair&lt;ll,P&gt; IP;
-
-const int maxd = 5e5+10;
+<pre><code class="language-cpp">const int maxd = 5e5+10;
 typedef long long ll;
 
 vector&lt;P&gt; G[maxd];
@@ -1059,136 +960,6 @@ int main()
     l[1] = ++cnt;
     dfs(1,1);
     for(int i=1;i&lt;=n;i++) printf(&quot;%d %d\n&quot;,l[i],r[i]);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「SCOI2010」股票交易]]></title>
-        <id>https://dinnerhunt.cn/post/P2569</id>
-        <link href="https://dinnerhunt.cn/post/P2569">
-        </link>
-        <updated>2019-12-19T18:39:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>最近 lxhgww 又迷上了投资股票，通过一段时间的观察和学习，他总结出了股票行情的一些规律。</p>
-<p>通过一段时间的观察，lxhgww 预测到了未来 T 天内某只股票的走势，第 i 天的股票买入价为每股 AP_i，第 ii 天的股票卖出价为每股 BP_i（数据保证对于每个 i，都有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><msub><mi>P</mi><mi>i</mi></msub><mo>≥</mo><mi>B</mi><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">AP_i \geq BP_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault">A</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，但是每天不能无限制地交易，于是股票交易所规定第 i 天的一次买入至多只能购买 AS_i股，一次卖出至多只能卖出 BS_i股。</p>
-<p>另外，股票交易所还制定了两个规定。为了避免大家疯狂交易，股票交易所规定在两次交易（某一天的买入或者卖出均算是一次交易）之间，至少要间隔 WW 天，也就是说如果在第 ii 天发生了交易，那么从第 i+1 天到第 i+W 天，均不能发生交易。同时，为了避免垄断，股票交易所还规定在任何时间，一个人的手里的股票数不能超过 MaxP。</p>
-<p>在第 1 天之前，lxhgww 手里有一大笔钱（可以认为钱的数目无限），但是没有任何股票，当然，T 天以后，lxhgww 想要赚到最多的钱，聪明的程序员们，你们能帮助他吗？</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>最近 lxhgww 又迷上了投资股票，通过一段时间的观察和学习，他总结出了股票行情的一些规律。</p>
-<p>通过一段时间的观察，lxhgww 预测到了未来 T 天内某只股票的走势，第 i 天的股票买入价为每股 AP_i，第 ii 天的股票卖出价为每股 BP_i（数据保证对于每个 i，都有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><msub><mi>P</mi><mi>i</mi></msub><mo>≥</mo><mi>B</mi><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">AP_i \geq BP_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault">A</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，但是每天不能无限制地交易，于是股票交易所规定第 i 天的一次买入至多只能购买 AS_i股，一次卖出至多只能卖出 BS_i股。</p>
-<p>另外，股票交易所还制定了两个规定。为了避免大家疯狂交易，股票交易所规定在两次交易（某一天的买入或者卖出均算是一次交易）之间，至少要间隔 WW 天，也就是说如果在第 ii 天发生了交易，那么从第 i+1 天到第 i+W 天，均不能发生交易。同时，为了避免垄断，股票交易所还规定在任何时间，一个人的手里的股票数不能超过 MaxP。</p>
-<p>在第 1 天之前，lxhgww 手里有一大笔钱（可以认为钱的数目无限），但是没有任何股票，当然，T 天以后，lxhgww 想要赚到最多的钱，聪明的程序员们，你们能帮助他吗？</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://www.luogu.com.cn/problem/P2569">「SCOI2010」股票交易</a></p>
-<h4 id="题解">题解</h4>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
-#include &lt;map&gt;
-using namespace std;
-const int maxd = 2005;
-int a[maxd],b[maxd],c[maxd],d[maxd];
-int dp[maxd][maxd];
-int que[maxd],l,r;
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n,m,k;
-    memset(dp,128,sizeof(dp));
-    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;k);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d %d %d %d&quot;,a+i,b+i,c+i,d+i);
-    for(int i=1;i&lt;=n;i++)
-    {
-        for(int j=0;j&lt;=c[i];j++) dp[i][j] = -1 * j * a[i];
-        for(int j=0;j&lt;=m;j++) dp[i][j] = max(dp[i][j],dp[i-1][j]);
-        if(i&lt;=k) continue;
-        l = 1, r = 0;
-        for(int j=0;j&lt;=m;j++)
-        {
-            while( l&lt;=r &amp;&amp; que[l] &lt; j-c[i]) l++;
-            while( l&lt;=r &amp;&amp; dp[i-k-1][que[r]] + que[r] * a[i] &lt;= dp[i-k-1][j] + j * a[i]) r--;
-            que[++r] = j;
-            if(l &lt;=r ) dp[i][j] = max(dp[i][j],dp[i-k-1][que[l]] + que[l] * a[i] - j * a[i]);
-        }
-        l = 1,r=0;
-        for(int j = m ; j &gt;= 0 ; j--){
-            while(l &lt;= r &amp;&amp; que[l] &gt; j + d[i]) l++;
-            while(l &lt;= r &amp;&amp; dp[i - k - 1][que[r]] + que[r] * b[i] &lt;= dp[i - k - 1][j] + j * b[i]) r--;
-            que[++r] = j;
-            if(l &lt;= r) dp[i][j] = max(dp[i][j] , dp[i - k - 1][que[l]] + que[l] * b[i] - j * b[i]);
-        }
-    }
-    printf(&quot;%d&quot;,dp[n][0]);
-
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「SDOI2009」学校食堂]]></title>
-        <id>https://dinnerhunt.cn/post/P2157</id>
-        <link href="https://dinnerhunt.cn/post/P2157">
-        </link>
-        <updated>2019-12-19T17:28:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>小F 的学校在城市的一个偏僻角落，所有学生都只好在学校吃饭。学校有一个食堂，虽然简陋，但食堂大厨总能做出让同学们满意的菜肴。当然，不同的人口味也不一定相同，但每个人的口味都可以用一个非负整数表示。 由于人手不够，食堂每次只能为一个人做菜。做每道菜所需的时间是和前一道菜有关的，若前一道菜的对应的口味是a，这一道为b，则做这道菜所需的时间为（a or b）-（a and b），而做第一道菜是不需要计算时间的。其中，or 和and 表示整数逐位或运算及逐位与运算，C语言中对应的运算符为“|”和“&amp;”。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>小F 的学校在城市的一个偏僻角落，所有学生都只好在学校吃饭。学校有一个食堂，虽然简陋，但食堂大厨总能做出让同学们满意的菜肴。当然，不同的人口味也不一定相同，但每个人的口味都可以用一个非负整数表示。 由于人手不够，食堂每次只能为一个人做菜。做每道菜所需的时间是和前一道菜有关的，若前一道菜的对应的口味是a，这一道为b，则做这道菜所需的时间为（a or b）-（a and b），而做第一道菜是不需要计算时间的。其中，or 和and 表示整数逐位或运算及逐位与运算，C语言中对应的运算符为“|”和“&amp;”。</p>
-<!--more-->
-<p>学生数目相对于这个学校还是比较多的，吃饭做菜往往就会花去不少时间。因此，学校食堂偶尔会不按照大家的排队顺序做菜，以缩短总的进餐时间。</p>
-<p>虽然同学们能够理解学校食堂的这种做法，不过每个同学还是有一定容忍度的。也就是说，队伍中的第i 个同学，最多允许紧跟他身后的Bi 个人先拿到饭菜。一旦在此之后的任意同学比当前同学先拿到饭，当前同学将会十分愤怒。因此，食堂做菜还得照顾到同学们的情绪。 现在，小F 想知道在满足所有人的容忍度这一前提下，自己的学校食堂做完这些菜最少需要多少时间。</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://www.luogu.com.cn/problem/P2157">「SDOI2009」学校食堂</a></p>
-<h4 id="题解">题解</h4>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
-#include &lt;map&gt;
-using namespace std;
-const int maxd = 1e6+10;
-int dp[1005][1&lt;&lt;8][20]; //dp[i][j][k] 前i个人都吃过饭了，后面j个人吃饭的状态，最近一个人吃饭的位置是k
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t ; scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        int n;scanf(&quot;%d&quot;,&amp;n);
-        vector&lt;int&gt; a(n+1),b(n+1);
-        for(int i=1;i&lt;=n;i++) scanf(&quot;%d %d&quot;,&amp;a[i],&amp;b[i]);
-        memset(dp,0x3f3f3f3f,sizeof(dp)); dp[1][0][7] = 0;
-        for(int i=1;i&lt;=n;i++)   // 第几个人
-            for(int j=0;j&lt;(1&lt;&lt;8);j++)   // 当前后面人数的打饭状态
-                for(int k=-8;k&lt;=7;k++)      //上一个人打饭的位置
-                    if(dp[i][j][k+8]!=0x3f3f3f3f)
-                    {
-                        // J&amp;1 表示第i位已经打过饭了，所以可以直接整体右移动
-                        if(j&amp;1) dp[i+1][j&gt;&gt;1][k-1+8] = min(dp[i+1][j&gt;&gt;1][k-1],dp[i][j][k+8]);
-                        else
-                        {
-                            int now = 0x3f3f3f3f; // 忍耐值
-                            for(int l = 0; l&lt;=7; l++)
-                            if(!((j&gt;&gt;l)&amp;1))     // 往后第l个人如果没有打饭
-                            {
-                                if(i+l &gt; now) break;
-                                now = min(now,i+l+b[i+l]);
-                                dp[i][j|(1&lt;&lt;l)][l+8] = min(dp[i][j|(1&lt;&lt;l)][l+8],dp[i][j][k+8] + (i + k ?(a[i+k] ^ a[i+l]) : 0));
-                            }
-                        }
-                    }
-        int ans = 0x3f3f3f3f;
-        for(int k=0;k&lt;=8;k++)
-            ans = min(ans,dp[n+1][0][k]);
-        printf(&quot;%d\n&quot;,ans);
-    }
     return 0;
 }
 </code></pre>
