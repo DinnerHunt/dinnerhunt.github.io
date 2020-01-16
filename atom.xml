@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-01-07T15:05:25.006Z</updated>
+    <updated>2020-01-16T10:01:04.789Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,387 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[template]]></title>
+        <id>https://dinnerhunt.cn/post/test</id>
+        <link href="https://dinnerhunt.cn/post/test">
+        </link>
+        <updated>2020-10-31T05:30:58.000Z</updated>
+        <content type="html"><![CDATA[<!--more-->
+<h4 id="大致题意">大致题意 📖</h4>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1198C」 Matching vs Independent Set</a></p>
+<h4 id="题解">题解  ❓</h4>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp"></code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1288E」 Messenger Simulator]]></title>
+        <id>https://dinnerhunt.cn/post/CF1288E</id>
+        <link href="https://dinnerhunt.cn/post/CF1288E">
+        </link>
+        <updated>2020-01-16T09:52:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>Polycarp is a frequent user of the very popular messenger. He's chatting with his friends all the time. He has 𝑛 friends, numbered from 1 to 𝑛.</p>
+<p>Recall that a permutation of size 𝑛 is an array of size 𝑛 such that each integer from 1 to 𝑛 occurs exactly once in this array.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Polycarp is a frequent user of the very popular messenger. He's chatting with his friends all the time. He has 𝑛 friends, numbered from 1 to 𝑛.</p>
+<p>Recall that a permutation of size 𝑛 is an array of size 𝑛 such that each integer from 1 to 𝑛 occurs exactly once in this array.</p>
+<!--more-->
+<p>So his recent chat list can be represented with a permutation 𝑝 of size 𝑛. 𝑝1 is the most recent friend Polycarp talked to, 𝑝2 is the second most recent and so on.</p>
+<p>Initially, Polycarp's recent chat list 𝑝 looks like 1,2,…,𝑛 (in other words, it is an identity permutation).</p>
+<p>After that he receives 𝑚 messages, the 𝑗-th message comes from the friend 𝑎𝑗. And that causes friend 𝑎𝑗 to move to the first position in a permutation, shifting everyone between the first position and the current position of 𝑎𝑗 by 1. Note that if the friend 𝑎𝑗 is in the first position already then nothing happens.</p>
+<p>For example, let the recent chat list be 𝑝=[4,1,5,3,2]:</p>
+<p>if he gets messaged by friend 3, then 𝑝 becomes [3,4,1,5,2];<br>
+if he gets messaged by friend 4, then 𝑝 doesn't change [4,1,5,3,2];<br>
+if he gets messaged by friend 2, then 𝑝 becomes [2,4,1,5,3].<br>
+For each friend consider all position he has been at in the beginning and after receiving each message. Polycarp wants to know what were the minimum and the maximum positions.</p>
+<h4 id="大致题意">大致题意 📖</h4>
+<p>给你一个长度为  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>的数组<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>， 开始时<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">a_i = i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span><br>
+然后给你一个长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 的操作序列<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示将在第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>步的时候，将</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://codeforces.com/contest/1288/problem/E">「CodeForces 1288E」 Messenger Simulator</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>因为最多挪动<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>次，因此初始数组长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>+</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n+m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> ，这样每次都往前添加即可，不会整体移动数组<br>
+然后树状数组维护前面有多少个数即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">ll tree[maxd&lt;&lt;2];
+ll a[maxd&lt;&lt;1],pos[maxd&lt;&lt;1],l[maxd],r[maxd];
+void add(ll x, ll v)
+{
+    for(;x&lt;(maxd&lt;&lt;2); x += (x&amp; (-x))) tree[x] +=v;
+}
+ll query(ll x)
+{
+    ll ans = 0ll;
+    for(;x; x -= (x &amp; (-x))) ans += tree[x];
+    return ans;
+}
+int main()
+{
+//    __IN;__OUT;
+    ll n,m;RLL2(n ,m);
+    FOR(i,1,n)
+    {
+        pos[i] = i+m;
+        add(i+m,1);
+        l[i] = r[i] = query(i+m);
+    }
+    F(m)
+    {
+        ll x;RLL(x); l[x] = 1;
+        r[x] = max(query(pos[x]),r[x]);
+        add(pos[x],-1);
+        pos[x] = m-i;
+        add(pos[x],1);
+    }
+    FOR(i,1,n)
+    {
+        r[i] = max(query(pos[i]),r[i]);
+        PLN2(l[i],r[i]);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1288D」 Minimax Problem]]></title>
+        <id>https://dinnerhunt.cn/post/CF1288D</id>
+        <link href="https://dinnerhunt.cn/post/CF1288D">
+        </link>
+        <updated>2020-01-16T09:30:11.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given 𝑛 arrays 𝑎1, 𝑎2, ..., 𝑎𝑛; each array consists of exactly 𝑚 integers. We denote the 𝑦-th element of the 𝑥-th array as 𝑎𝑥,𝑦.</p>
+<p>You have to choose two arrays 𝑎𝑖 and 𝑎𝑗 (1≤𝑖,𝑗≤𝑛, it is possible that 𝑖=𝑗). After that, you will obtain a new array 𝑏 consisting of 𝑚 integers, such that for every <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>∈</mo><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>m</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">k \in [1, m]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">]</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>k</mi></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo>(</mo><msub><mi>a</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo separator="true">,</mo><msub><mi>a</mi><mrow><mi>j</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">b_k = \max(a_{i, k}, a_{j, k})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> .</p>
+<p>Your goal is to choose <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>𝑖</mi></mrow><annotation encoding="application/x-tex">𝑖</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>𝑗</mi></mrow><annotation encoding="application/x-tex">𝑗</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> so that the value of min<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>min</mi><mo>⁡</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><msub><mi>b</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\min \limits_{k = 1}^{m} b_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0213599999999996em;vertical-align:-0.752108em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2692519999999998em;"><span style="top:-2.047892em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">min</span></span></span><span style="top:-3.56786em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.752108em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is maximum possible.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given 𝑛 arrays 𝑎1, 𝑎2, ..., 𝑎𝑛; each array consists of exactly 𝑚 integers. We denote the 𝑦-th element of the 𝑥-th array as 𝑎𝑥,𝑦.</p>
+<p>You have to choose two arrays 𝑎𝑖 and 𝑎𝑗 (1≤𝑖,𝑗≤𝑛, it is possible that 𝑖=𝑗). After that, you will obtain a new array 𝑏 consisting of 𝑚 integers, such that for every <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>∈</mo><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>m</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">k \in [1, m]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">]</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>k</mi></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo>(</mo><msub><mi>a</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo separator="true">,</mo><msub><mi>a</mi><mrow><mi>j</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">b_k = \max(a_{i, k}, a_{j, k})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> .</p>
+<p>Your goal is to choose <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>𝑖</mi></mrow><annotation encoding="application/x-tex">𝑖</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>𝑗</mi></mrow><annotation encoding="application/x-tex">𝑗</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> so that the value of min<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>min</mi><mo>⁡</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><msub><mi>b</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\min \limits_{k = 1}^{m} b_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0213599999999996em;vertical-align:-0.752108em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2692519999999998em;"><span style="top:-2.047892em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">min</span></span></span><span style="top:-3.56786em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.752108em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is maximum possible.</p>
+<!--more-->
+<h4 id="大致题意">大致题意 📖</h4>
+<p>给你<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>(</mo><mo>&lt;</mo><mo>=</mo><mn>3</mn><mi>e</mi><mn>5</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">n ( &lt;= 3e5)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord mathdefault">e</span><span class="mord">5</span><span class="mclose">)</span></span></span></span> 个数组，每个数组有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mo>&lt;</mo><mo>=</mo><mn>8</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">m (&lt;= 8)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">8</span><span class="mclose">)</span></span></span></span> 个数<br>
+选择两个数组 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">a_i,a_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> ,  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 可以等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span><br>
+定义数组<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>的每个项 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>∈</mo><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>m</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">k \in [1, m]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">]</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>k</mi></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo>(</mo><msub><mi>a</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo separator="true">,</mo><msub><mi>a</mi><mrow><mi>j</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">b_k = \max(a_{i, k}, a_{j, k})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> .<br>
+定义<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><msubsup><mi>min</mi><mo>⁡</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><msub><mi>b</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">s = \min \limits_{k = 1}^{m} b_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.0213599999999996em;vertical-align:-0.752108em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2692519999999998em;"><span style="top:-2.047892em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">min</span></span></span><span style="top:-3.56786em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.752108em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i,j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>，使<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>最大</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://codeforces.com/contest/1288/problem/D">「CodeForces 1288D」 Minimax Problem</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>直接求显然很麻烦，注意到(m &lt;= 8)我们考虑二分<br>
+单调性很显然，可以感性理解<br>
+接着考虑如何判断<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>是否满足条件<br>
+直接枚举是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>的，但是因为我们只需要验证是否能每项都大于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>，所以我们可以将每个大于等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的数变成1，小于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的数变成0<br>
+这样的所有数组都会变成最多长为8位的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0,1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span></span></span></span>数组，最多有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup></mrow><annotation encoding="application/x-tex">2^8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span>个不同的数组<br>
+因此我们可以直接枚举这个数组 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>256</mn><mo>∗</mo><mn>256</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(256 * 256)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">2</span><span class="mord">5</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">6</span><span class="mclose">)</span></span></span></span>，即考虑是否存在两个数组的<em>或</em> 全为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const int maxd = 3e5+10;
+ll a[maxd][10],ansl,ansr,n,m,vis[300];
+bool check(ll x)
+{
+    memset(vis,0,sizeof(vis));
+    FOR(i,1,n)
+    {
+        ll now = 0;
+        FOR(j,1,m) if(a[i][j] &gt;= x) now |= 1&lt;&lt;(j-1);
+        vis[now] = i;
+    }
+    F(1&lt;&lt;m)
+        FOR(j,0,(1&lt;&lt;m)-1)
+        if(vis[i] &amp;&amp; vis[j] &amp;&amp; ( (i|j) == (((1&lt;&lt;m)-1))))
+        {
+            ansl = vis[i], ansr = vis[j];
+            return true;
+        }
+    return false;
+}
+int main()
+{
+//    __IN;__OUT;
+    RLL2(n ,m);
+    FOR(i,1,n) FOR(j,1,m) RLL(a[i][j]);
+    ll l = 0,r = 1e9;
+    while(l&lt;=r)
+    {
+        ll x = (l+r)&gt;&gt;1;
+        if(check(x)) l = x+1;
+        else r = x-1;
+    }
+    PLN2(ansl,ansr);
+    return 0;
+}
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1198E」 Rectangle Painting 2]]></title>
+        <id>https://dinnerhunt.cn/post/CF1198E</id>
+        <link href="https://dinnerhunt.cn/post/CF1198E">
+        </link>
+        <updated>2020-01-16T09:23:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>There is a square grid of size 𝑛×𝑛. Some cells are colored in black, all others are colored in white. In one operation you can select some rectangle and color all its cells in white. It costs min(ℎ,𝑤) to color a rectangle of size ℎ×𝑤. You are to make all cells white for minimum total cost.</p>
+<p>The square is large, so we give it to you in a compressed way. The set of black cells is the union of 𝑚 rectangles.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>There is a square grid of size 𝑛×𝑛. Some cells are colored in black, all others are colored in white. In one operation you can select some rectangle and color all its cells in white. It costs min(ℎ,𝑤) to color a rectangle of size ℎ×𝑤. You are to make all cells white for minimum total cost.</p>
+<p>The square is large, so we give it to you in a compressed way. The set of black cells is the union of 𝑚 rectangles.</p>
+<!--more-->
+<h4 id="大致题意">大致题意 📖</h4>
+<p>有一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi><mo>(</mo><mi>n</mi><mo>&lt;</mo><mo>=</mo><mn>1</mn><mi>e</mi><mn>9</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">n \times n (n &lt;= 1e9)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord mathdefault">e</span><span class="mord">9</span><span class="mclose">)</span></span></span></span>的矩阵，其中有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mi>m</mi><mo>&lt;</mo><mo>=</mo><mn>50</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">m (m &lt;= 50)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mclose">)</span></span></span></span> 个黑块，其余为白块，你可以选择一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n \times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>矩阵，将其染成白色，费用为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">min(n,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>，求将涂染成全白的最小费用</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1198/E">「CodeForces 1198E」 Rectangle Painting 2</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1198</mn><mi>D</mi></mrow><annotation encoding="application/x-tex">1198D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">9</span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span>的升级版，不过是两个问题<br>
+相较上个问题,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span></span></span></span> -&gt; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span> ,因此可以知道，只选[1,m]或[n,1]是最优的,因为费用都为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span><br>
+因此就是选最少的行和列，覆盖所有黑格子。于是题目就转化为网络流问题了</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">struct
+{
+    ll x,y,r,c;
+}a[maxd];
+ll fx[maxd],fy[maxd],tot,sx,sy;
+int main()
+{
+//    __IN;__OUT;
+    ll n,m; RLL(m);RLL(n); init();
+    F(n)
+    {
+        RLL(fx[sx]);a[i].x = fx[sx++];
+        RLL(fy[sy]);a[i].y = fy[sy++];
+        RLL(fx[sx]);a[i].r = ++fx[sx++];
+        RLL(fy[sy]);a[i].c = ++fy[sy++];
+    }
+    sort(fx,fx+sx);sort(fy,fy+sy);
+    sx =  unique(fx,fx+sx) - fx;
+    sy =  unique(fy,fy+sy) - fy;
+    s = 0, t = sx+sy+1;
+    FOR(i,1,sx-1) addedge(s,i,fx[i] - fx[i-1]);
+    FOR(i,1,sy-1) addedge(sx - 1 + i,t,fy[i] - fy[i-1]);
+    F(n)
+    {
+        a[i].x = lower_bound(fx, fx + sx, a[i].x) - fx;
+        a[i].y = lower_bound(fy, fy + sy, a[i].y) - fy;
+        a[i].r = lower_bound(fx, fx + sx, a[i].r) - fx;
+        a[i].c = lower_bound(fy, fy + sy, a[i].c) - fy;
+        for (int x = a[i].x; x &lt; a[i].r; x++)
+            for (int y = a[i].y; y &lt; a[i].c; y++)  addedge(x + 1, sx + y, 2e9);
+    }
+    PLN(maxflow());
+ 
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1198F」GCD Groups 2]]></title>
+        <id>https://dinnerhunt.cn/post/CF1198F</id>
+        <link href="https://dinnerhunt.cn/post/CF1198F">
+        </link>
+        <updated>2020-01-16T09:17:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given an array of 𝑛 integers. You need to split all integers into two groups so that the GCD of all integers in the first group is equal to one and the GCD of all integers in the second group is equal to one.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given an array of 𝑛 integers. You need to split all integers into two groups so that the GCD of all integers in the first group is equal to one and the GCD of all integers in the second group is equal to one.</p>
+<!--more-->
+<p>The GCD of a group of integers is the largest non-negative integer that divides all the integers in the group.</p>
+<p>Both groups have to be non-empty.</p>
+<h4 id="大致题意">大致题意 📖</h4>
+<p>给你<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> 个数，求一种方法使得将这<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个数分成两堆，每堆的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mi>C</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">GCD</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span>都为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1198/F">「CodeForces 1198F」GCD Groups 2</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>随机数 + 贪心<br>
+随机生成数列顺序，然后贪心，如果丢左堆，能使得左堆gcd变小，则丢左堆，否则丢右堆</p>
+<h4 id="代码">代码</h4>
+<pre><code>const ll maxd = 4e5+10;
+ll a[maxd],b[maxd],ans[maxd];
+int main()
+{
+//    __IN;__OUT;
+    ll n;RLL(n);
+    FOR(i,1,n) RLL(a[i]);
+    FOR(i,1,n) b[i] = i;
+    clock_t st = clock();
+    while(clock() - st  &lt; 0.4 * CLOCKS_PER_SEC) // 时限小于0.4s时
+    {
+        random_shuffle(b+1,b+1+n); // 将随机打乱顺序
+        ll x = 0 , y = 0;
+        FOR(i,1,n)
+        {
+            ll t = gcd(x,a[b[i]]);
+            if(t == x) y = gcd(a[b[i]],y),ans[b[i]] = 2;
+            else x = t, ans[b[i]] = 1;
+        }
+        if(x == 1 &amp;&amp; y == 1)
+        {
+            PS(&quot;YES&quot;);
+            FOR(i,1,n) PLP(ans[i]);
+            return 0;
+        }
+    }
+    PS(&quot;NO&quot;);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1198D」 Rectangle Painting 1]]></title>
+        <id>https://dinnerhunt.cn/post/CF1198D</id>
+        <link href="https://dinnerhunt.cn/post/CF1198D">
+        </link>
+        <updated>2020-01-16T07:06:18.000Z</updated>
+        <summary type="html"><![CDATA[<p>There is a square grid of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>. Some cells are colored in black, all others are colored in white. In one operation you can select some rectangle and color all its cells in white. It costs <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>max</mi><mo>⁡</mo><mo>(</mo><mi>h</mi><mo separator="true">,</mo><mi>w</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\max(h, w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> to color a rectangle of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>×</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">h \times w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>. You are to make all cells white for minimum total cost.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>There is a square grid of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>. Some cells are colored in black, all others are colored in white. In one operation you can select some rectangle and color all its cells in white. It costs <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>max</mi><mo>⁡</mo><mo>(</mo><mi>h</mi><mo separator="true">,</mo><mi>w</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\max(h, w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> to color a rectangle of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>×</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">h \times w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>. You are to make all cells white for minimum total cost.</p>
+<!--more-->
+<h4 id="大致题意">大致题意 📖</h4>
+<p>有一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>的矩阵，其中有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 个黑块，其余为白块，你可以选择一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n \times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>矩阵，将其染成白色，费用为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">max(n,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>，求将涂染成全白的最小费用</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1198/D">「CodeForces 1198D」 Rectangle Painting 1</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>动态规划<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>4</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，枚举每块矩阵的长宽，进行切割求最小值<br>
+一种比较优美的实现 <a href="https://blog.csdn.net/dreaming__ldx/article/details/97957979">SC.ldxcaicai</a></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll maxd = 55;
+ll a[maxd][maxd],dp[maxd][maxd][maxd][maxd];
+char s[maxd];
+ll dfs(ll x1,ll y1,ll x2,ll y2)
+{
+    if(dp[x1][y1][x2][y2] != -1) return dp[x1][y1][x2][y2]; // 存在值时
+    if(x1 &gt; x2  || y1 &gt; y2) return dp[x1][y1][x2][y2]=0; // 边界
+    if(x1 == x2 &amp;&amp; y1 == y2) return dp[x1][y1][x2][y2] = a[x1][y1]; // 1*1矩阵
+    ll now = max(x2-x1+1,y2-y1+1); //全部涂的价值
+    FOR(a,x1,x2-1) now = min(now,dfs(x1,y1,a,y2) + dfs(a+1,y1,x2,y2));   // 枚举宽
+    FOR(a,y1,y2-1) now = min(now,dfs(x1,y1,x2,a) + dfs(x1,a+1,x2,y2)); // 枚举长
+    return dp[x1][y1][x2][y2] = now;
+}
+int main()
+{
+//    __IN;__OUT;
+    ll n; RLL(n);
+    FOR(i,1,n)
+    {
+        RS(s+1);
+        FOR(j,1,n) a[i][j] =  ( s[j]  == '#');
+    }
+    memset(dp,-1,sizeof(dp));
+    PLN(dfs(1,1,n,n));
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1198C」 Matching vs Independent Set]]></title>
+        <id>https://dinnerhunt.cn/post/CF1198C</id>
+        <link href="https://dinnerhunt.cn/post/CF1198C">
+        </link>
+        <updated>2020-01-15T14:16:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given a graph with 3⋅𝑛 vertices and 𝑚 edges. You are to find a matching of 𝑛 edges, or an independent set of 𝑛 vertices.</p>
+<p>A set of edges is called a matching if no two edges share an endpoint.</p>
+<p>A set of vertices is called an independent set if no two vertices are connected with an edge.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given a graph with 3⋅𝑛 vertices and 𝑚 edges. You are to find a matching of 𝑛 edges, or an independent set of 𝑛 vertices.</p>
+<p>A set of edges is called a matching if no two edges share an endpoint.</p>
+<p>A set of vertices is called an independent set if no two vertices are connected with an edge.</p>
+<!--more-->
+<h4 id="大致题意">大致题意 📖</h4>
+<p>给你一张<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>∗</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">3*n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>边的简单图（不带重边与负环）<br>
+找出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>条独立边(匹配)或者点数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>的独立点集</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://codeforces.com/problemset/problem/1198/C">「CodeForces 1198C」 Matching vs Independent Set</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>先枚举，如果一条边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">E(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> 中的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>都没有出现过，那么该边绝对不会与前面的边有共同交点，因此该边属于匹配。<br>
+剩余没有被边覆盖的边一定为独立点，因为如果剩下的点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>V</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">V_i,V_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>中存在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><msub><mi>V</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>V</mi><mi>j</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">E(V_i,V_j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>,那么一定会被选入到匹配中<br>
+如果匹配数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>大于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>则输出匹配，否则剩余点数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mn>2</mn><mo>∗</mo><mi>k</mi><mo>&gt;</mo><mi>n</mi><mo>(</mo><mi>k</mi><mo>&lt;</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">n - 2 * k &gt; n (k&lt; n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll maxd = 4e5+10;
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    while(t--)
+    {
+        ll n,m,x,y;RLL2(n,m);
+        V vis((3*n)+1,0),ans;
+        F(m)
+        {
+            RLL2(x,y);
+            if(!vis[x] &amp;&amp; !vis[y])
+            {
+                vis[x] = vis[y] = 1;
+                ans.pb(i+1);
+            }
+        }
+ 
+        if(ans.size()&gt;=n)
+        {
+            PS(&quot;Matching&quot;);
+            ll tot = 0;
+            for(auto x:ans) {
+                PLP(x);tot++;
+                if(tot == n) break;
+            }
+        }
+        else
+        {
+            PS(&quot;IndSet&quot;);
+            ll tot = 0;
+            FOR(i,1,3*n)
+                if(!vis[i])
+                {
+                    PLP(i);tot++;
+                    if (tot == n) break;
+                }
+        }
+        PN();
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1284D」New Year and Conference]]></title>
         <id>https://dinnerhunt.cn/post/CF1284D</id>
@@ -257,709 +638,6 @@ int main()
     }
     else PS(&quot;-1&quot;);
 
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1277F」Beautiful Rectangle]]></title>
-        <id>https://dinnerhunt.cn/post/CF1277F</id>
-        <link href="https://dinnerhunt.cn/post/CF1277F">
-        </link>
-        <updated>2019-12-28T10:28:05.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are given 𝑛 integers. You need to choose a subset and put the chosen numbers in a beautiful rectangle (rectangular matrix). Each chosen number should occupy one of its rectangle cells, each cell must be filled with exactly one chosen number. Some of the 𝑛 numbers may not be chosen.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are given 𝑛 integers. You need to choose a subset and put the chosen numbers in a beautiful rectangle (rectangular matrix). Each chosen number should occupy one of its rectangle cells, each cell must be filled with exactly one chosen number. Some of the 𝑛 numbers may not be chosen.</p>
-<!--more-->
-<p>A rectangle (rectangular matrix) is called beautiful if in each row and in each column all values are different.</p>
-<p>What is the largest (by the total number of cells) beautiful rectangle you can construct? Print the rectangle itself.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1277/problem/F">「CodeForces 1277F」Beautiful Rectangle</a></p>
-<h4 id="题解">题解</h4>
-<p>比较麻烦的构造题<br>
-假设行一定小于列，于是我们枚举行 x，然后考虑我们的数是否能构成大于 x*x 的矩阵<br>
-然后统计最大的数量 ，确定行和列<br>
-再用阶梯的形式去构造该矩阵</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const ll maxd = 4e5+10;
-
-ll cnt[maxd],n,ans[maxd];
-map&lt;ll,ll&gt; mp;
-vector&lt;P&gt; a;
-bool cmp(const P a,const P b)
-{
-    return a.ND &gt; b.ND;
-}
-int main()
-{
-//    __IN;__OUT;
-    RLL(n);
-    FOR(i,1,n)
-    {
-        ll x;RLL(x);
-        mp[x]++;
-    }
-    for(auto p:mp) a.pb(p);
-    sort(all(a),cmp);
-    for(auto x:a) cnt[x.ND]++;
-
-    //确定行数和最大摆放数量
-    ll now = a.size(),mx = 0,row = 0, sum = 0;
-    for(int i=1;i *i&lt;=n;i++)
-    {
-        sum+= cnt[i] * i;
-        now -= cnt[i];
-        ll t = now * i + sum;
-        if(t &lt; i * i) continue; // 数不够
-        if(t / i * i &gt; mx) mx = t/i*i,row = i; //如果选出的最大数量多于当前值，则更新
-    }
-    // 构造方案
-    ll col = mx / row , x = 1, y =1;
-    FOR(i,1,a.size())
-    {
-        ll num = min(row,a[i-1].ND);
-        while(num--)
-        {
-            ans[(x-1)*col + y] = a[i-1].first;
-            x = (x %row) + 1, y = (y%col) + 1;
-            if(ans[(x-1) * col + y]) y = (y%col) + 1;
-        }
-    }
-    PLN(mx);PLP(row); PLN(col);
-    FOR(i,1,row)
-        FOR(j,1,col)
-            if(j== col)  PLN(ans[(i-1) * col +j]);
-            else PLP(ans[(i-1) * col +j]);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1215E」 Marbles]]></title>
-        <id>https://dinnerhunt.cn/post/CF1215E</id>
-        <link href="https://dinnerhunt.cn/post/CF1215E">
-        </link>
-        <updated>2019-12-28T09:28:51.000Z</updated>
-        <summary type="html"><![CDATA[<p>Monocarp has arranged 𝑛 colored marbles in a row. The color of the 𝑖-th marble is 𝑎𝑖. Monocarp likes ordered things, so he wants to rearrange marbles in such a way that all marbles of the same color form a contiguos segment (and there is only one such segment for each color).</p>
-<p>In other words, Monocarp wants to rearrange marbles so that, for every color 𝑗, if the leftmost marble of color 𝑗 is 𝑙-th in the row, and the rightmost marble of this color has position 𝑟 in the row, then every marble from 𝑙 to 𝑟 has color 𝑗.</p>
-<p>To achieve his goal, Monocarp can do the following operation any number of times: choose two neighbouring marbles, and swap them.</p>
-<p>You have to calculate the minimum number of operations Monocarp has to perform to rearrange the marbles. Note that the order of segments of marbles having equal color does not matter, it is only required that, for every color, all the marbles of this color form exactly one contiguous segment.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Monocarp has arranged 𝑛 colored marbles in a row. The color of the 𝑖-th marble is 𝑎𝑖. Monocarp likes ordered things, so he wants to rearrange marbles in such a way that all marbles of the same color form a contiguos segment (and there is only one such segment for each color).</p>
-<p>In other words, Monocarp wants to rearrange marbles so that, for every color 𝑗, if the leftmost marble of color 𝑗 is 𝑙-th in the row, and the rightmost marble of this color has position 𝑟 in the row, then every marble from 𝑙 to 𝑟 has color 𝑗.</p>
-<p>To achieve his goal, Monocarp can do the following operation any number of times: choose two neighbouring marbles, and swap them.</p>
-<p>You have to calculate the minimum number of operations Monocarp has to perform to rearrange the marbles. Note that the order of segments of marbles having equal color does not matter, it is only required that, for every color, all the marbles of this color form exactly one contiguous segment.</p>
-<!--more-->
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped</a></p>
-<h4 id="题解">题解</h4>
-<p>当我们移动一个数的位置时，除了该数以外的其他数相对位置是不会发生改变的，因此转移时不会产生后效性<br>
-因此我们可以进行DP<br>
-设DP[i] 为 i位置上为1的值都已经在最前面一块了<br>
-然后提前处理好 num[i][j]数组，表示所有数字i移动到数字j前面的代价，然后转移就判断通过判断这些数字是否排好序即可</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const ll maxd = 4e5+10;
-const ll maxn = (1&lt;&lt;20)-1;
-
-ll a[maxd],b[maxd],cnt[27];
-ll num[27][27],dp[(1&lt;&lt;20)+10];
-int main()
-{
-//    __IN;__OUT;
-    ll n;RLL(n);
-    FOR(i,1,n)RLL(a[i]);
-    FOR(i,1,n)
-    {
-        FOR(j, 1, 20)
-            num[a[i]][j] += cnt[j];
-        cnt[a[i]]++;
-    }
-    memset(dp,0x3f,sizeof(dp));
-    dp[0] = 0;
-    FOR(i,1,maxn)
-        FOR(j,0,19)
-        {
-            if(!((i&gt;&gt;j)&amp;1)) continue; //枚举第j个位置
-            ll t=0;
-            FOR(k,0,19)
-            {
-                if((i&gt;&gt;k)&amp;1) continue;  // 位置确定了，跳过
-                t += num[j+1][k+1];
-            }
-            dp[i] = min(dp[i],dp[i^(1&lt;&lt;j)]+t);
-        }
-    PLL(dp[maxn]);
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1220E」 Tourism]]></title>
-        <id>https://dinnerhunt.cn/post/CF1220E</id>
-        <link href="https://dinnerhunt.cn/post/CF1220E">
-        </link>
-        <updated>2019-12-27T07:46:05.000Z</updated>
-        <summary type="html"><![CDATA[<p>Alex decided to go on a touristic trip over the country.</p>
-<p>For simplicity let's assume that the country has 𝑛 cities and 𝑚 bidirectional roads connecting them. Alex lives in city 𝑠 and initially located in it. To compare different cities Alex assigned each city a score 𝑤𝑖 which is as high as interesting city seems to Alex.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Alex decided to go on a touristic trip over the country.</p>
-<p>For simplicity let's assume that the country has 𝑛 cities and 𝑚 bidirectional roads connecting them. Alex lives in city 𝑠 and initially located in it. To compare different cities Alex assigned each city a score 𝑤𝑖 which is as high as interesting city seems to Alex.</p>
-<!--more-->
-<p>Alex believes that his trip will be interesting only if he will not use any road twice in a row. That is if Alex came to city 𝑣 from city 𝑢, he may choose as the next city in the trip any city connected with 𝑣 by the road, except for the city 𝑢.</p>
-<p>Your task is to help Alex plan his city in a way that maximizes total score over all cities he visited. Note that for each city its score is counted at most once, even if Alex been there several times during his trip.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1220/problem/E">「CodeForces 1220E」 Tourism</a></p>
-<h4 id="题解">题解</h4>
-<p>边双缩点后跑树形DP吧。<br>
-代码巨丑无比，写了好久，看来点双板子得改改了。</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const int maxd = 2e5+10;
-typedef long long ll;
-ll dfn[maxd],low[maxd],tot,stk[maxd],top,n,m,sz[maxd];
-ll belong[maxd],scc,sum[maxd];
-bool use[maxd&lt;&lt;1],inq[maxd];
- 
-P e[maxd&lt;&lt;4];
-ll eid,f[maxd&lt;&lt;2],v[maxd];
-void init()
-{
-    memset(f,-1,sizeof(f));
-    eid = 0;
-}
-void insert(ll x,ll y)
-{
-    e[eid].ST = y, e[eid].ND = f[x] , f[x] = eid++;
-}
-void tarjan(ll x)
-{
-    low[x] = dfn[x] = ++tot;
-    stk[top++] = x, inq[x] = 1;
-//    PLL(x); putchar('-');
-//    PN();
-    for(int i = f[x];i+1; i=e[i].ND)
-    {
-        if(use[i]) continue;
-        ll v = e[i].ST;
-        //PLL(v); PN();
- 
-        if(!dfn[v])
-        {
-            use[i] = use[(i&amp;1)?i-1:i+1] = 1;
-            tarjan(v);
-            use[i] = use[(i&amp;1)?i-1:i+1] = 0;
-            low[x] = min(low[x],low[v]);
-        }
-        else if(inq[v]) low[x] = min(low[x],dfn[v]);
-    }
-    if(low[x] == dfn[x])
-    {
-        scc++;
-        do
-        {
-            belong[stk[--top]] = scc;
-            sum[scc] += v[stk[top]];
-            sz[scc]++;
-            inq[stk[top]] = false;
-        }while(stk[top]!=x);
-    }
-}
-ll dp[maxd],ans,vis[maxd];
-int dfs(ll x)
-{
-    dp[x-n] += sum[x-n];
-    vis[x-n] = 1;
-    int flag = 0;
-    for(ll i = f[x];i+1;i=e[i].ND)
-    {
-        ll v = e[i].ST;
-        if(vis[v-n]) continue;
- 
-        if(dfs(v))
-        {
-            flag = 1;
-            dp[x - n] += dp[v - n];
-            dp[v - n] = 0;
-        }
-    }
-    return sz[x-n]&gt;2 || flag;
-}
-void dfs1(ll x)
-{
-    ans = max(ans,dp[x-n]);
- 
-    //PLL(x-n);PN();
-    vis[x-n] =1;
-    for(ll i = f[x];i+1;i=e[i].ND)
-    {
-        ll v = e[i].ST;
-        //PLL(v-n);PP();PLL(vis[v-n]);PN();
-        if(vis[v-n]) continue;
-        dp[v-n] += dp[x-n];
-        dfs1(v);
-    }
-}
-int main()
-{
-    //__IN;__OUT;
-    RLL(n);RLL(m);
-    init();
-    FOR(i,1,n) RLL(v[i]);
-    FOR(i,1,m)
-    {
-        ll x,y;RLL(x);RLL(y);
-        insert(x,y); insert(y,x);
-    }
-    FOR(i,1,n) if(!dfn[i]) tarjan(i);
-//    FOR(i,1,n)
-//    {
-//        PLL(belong[i]);
-//        PN();
-//    }
-    FOR(i,1,n)
-        for(int j = f[i];j+1;j=e[j].ND)
-        {
-            ll x = belong[e[j].ST],y = belong[i];
-            if(x!=y)
-            {
-                //PLL(x);PP();PLL(y);PN();
-                insert(x+n,y+n);
-                insert(y+n,x+n);
-            }
-        }
- 
-        //PLL(f1[belong[2]]); PN();
-    ll k; RLL(k);
-    dfs(belong[k]+n);
-    FOR(i,1,scc)
-    {
-        vis[i] = 0;
-//        PLL(dp[i]);
-//        PN();
-    }
- 
-    dfs1(belong[k]+n);
-    PLL(ans);
-    return 0;
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1241F」Stack Exterminable Arrays]]></title>
-        <id>https://dinnerhunt.cn/post/CF1241F</id>
-        <link href="https://dinnerhunt.cn/post/CF1241F">
-        </link>
-        <updated>2019-12-27T02:01:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>Let's look at the following process: initially you have an empty stack and an array 𝑠 of the length 𝑙. You are trying to push array elements to the stack in the order 𝑠1,𝑠2,𝑠3,…𝑠𝑙. Moreover, if the stack is empty or the element at the top of this stack is not equal to the current element, then you just push the current element to the top of the stack. Otherwise, you don't push the current element to the stack and, moreover, pop the top element of the stack.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Let's look at the following process: initially you have an empty stack and an array 𝑠 of the length 𝑙. You are trying to push array elements to the stack in the order 𝑠1,𝑠2,𝑠3,…𝑠𝑙. Moreover, if the stack is empty or the element at the top of this stack is not equal to the current element, then you just push the current element to the top of the stack. Otherwise, you don't push the current element to the stack and, moreover, pop the top element of the stack.</p>
-<!--more-->
-<p>If after this process the stack remains empty, the array 𝑠 is considered stack exterminable.</p>
-<p>There are samples of stack exterminable arrays:</p>
-<p>[1,1];<br>
-[2,1,1,2];<br>
-[1,1,2,2];<br>
-[1,3,3,1,2,2];<br>
-[3,1,3,3,1,3];<br>
-[3,3,3,3,3,3];<br>
-[5,1,2,2,1,4,4,5];<br>
-Let's consider the changing of stack more details if 𝑠=[5,1,2,2,1,4,4,5] (the top of stack is highlighted).</p>
-<p>after pushing 𝑠1=5 the stack turn into [5];<br>
-after pushing 𝑠2=1 the stack turn into [5,1];<br>
-after pushing 𝑠3=2 the stack turn into [5,1,2];<br>
-after pushing 𝑠4=2 the stack turn into [5,1];<br>
-after pushing 𝑠5=1 the stack turn into [5];<br>
-after pushing 𝑠6=4 the stack turn into [5,4];<br>
-after pushing 𝑠7=4 the stack turn into [5];<br>
-after pushing 𝑠8=5 the stack is empty.<br>
-You are given an array 𝑎1,𝑎2,…,𝑎𝑛. You have to calculate the number of its subarrays which are stack exterminable.</p>
-<p>Note, that you have to answer 𝑞 independent queries.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1241/problem/F">「CodeForces 1241F」Stack Exterminable Arrays</a></p>
-<h4 id="题解">题解</h4>
-<p>见到一种是否巧妙的方法<br>
-可以发现如果「L,R」区间是合法出栈顺序，那么 「1,L」 和 「1,R」中剩下栈的元素与<strong>顺序</strong>都是<strong>相同</strong>的，因此他们的hash值一定是相同的，所以我们从头到位开始枚举，并用map存该值出现的次数，遇到时统计即可</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const int maxd = 3e5+10;
-const ull base = 300007;
-typedef long long ll;
-
-ll dp[maxd]; // 从该点开始，最多多少个后缀满足要求
-ll last[maxd]; //该点不匹配的最后一个位置
-map&lt;ull,int&gt;mp;
-stack&lt;ll&gt; st;
-ull has[maxd];
-int main()
-{
-    //__IN;__OUT;
-    ll t;RLL(t);
-    while(t--)
-    {
-        ll n;RLL(n);
-        mp.clear(); mp[0]=1; has[0]=0;
-        while(!st.empty()) st.pop();
-        ll ans = 0,l = 0;
-        FOR(1,n)
-        {
-            ll x;RLL(x);
-            if(st.empty() || st.top()!=x )
-            {
-                has[l+1] = (base * has[l] + x);
-                l++;
-                st.push(x);
-            }
-            else
-            {
-                l--;
-                st.pop();
-            }
-            ans+= mp[has[l]];
-            mp[has[l]]++;
-        }
-        PLL(ans);
-        PN();
-    }
-
-    return 0;
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1241D」Sequence Sorting]]></title>
-        <id>https://dinnerhunt.cn/post/CF1241D</id>
-        <link href="https://dinnerhunt.cn/post/CF1241D">
-        </link>
-        <updated>2019-12-26T13:38:22.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are given a sequence 𝑎1,𝑎2,…,𝑎𝑛, consisting of integers.</p>
-<p>You can apply the following operation to this sequence: choose some integer 𝑥 and move all elements equal to 𝑥 either to the beginning, or to the end of 𝑎. Note that you have to move all these elements in one direction in one operation.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are given a sequence 𝑎1,𝑎2,…,𝑎𝑛, consisting of integers.</p>
-<p>You can apply the following operation to this sequence: choose some integer 𝑥 and move all elements equal to 𝑥 either to the beginning, or to the end of 𝑎. Note that you have to move all these elements in one direction in one operation.</p>
-<!--more-->
-<p>For example, if 𝑎=[2,1,3,1,1,3,2], you can get the following sequences in one operation (for convenience, denote elements equal to 𝑥 as 𝑥-elements):</p>
-<p>[1,1,1,2,3,3,2] if you move all 1-elements to the beginning;<br>
-[2,3,3,2,1,1,1] if you move all 1-elements to the end;<br>
-[2,2,1,3,1,1,3] if you move all 2-elements to the beginning;<br>
-[1,3,1,1,3,2,2] if you move all 2-elements to the end;<br>
-[3,3,2,1,1,1,2] if you move all 3-elements to the beginning;<br>
-[2,1,1,1,2,3,3] if you move all 3-elements to the end;<br>
-You have to determine the minimum number of such operations so that the sequence 𝑎 becomes sorted in non-descending order. Non-descending order means that for all 𝑖 from 2 to 𝑛, the condition 𝑎𝑖−1≤𝑎𝑖 is satisfied.</p>
-<p>Note that you have to answer 𝑞 independent queries.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1241/problem/D">「CodeForces 1241D」Sequence Sorting</a></p>
-<h4 id="题解">题解</h4>
-<p>我们把每个数字分成最左点和最右点，那么该数字边成为了一个区间「L，R」<br>
-连续上升区间就是连续并且相邻两个数字的区间没有相交<br>
-我们的目标则是将整个区间数组变成连续上升的<br>
-答案为N - 未移动前的最长连续上升区间长度</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;map&gt;
-#include &lt;iostream&gt;
-#define all(x) x.begin(),x.end()
-#define pb push_back
-using namespace std;
-const int maxd = 2e5+10;
-typedef long long ll;
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t;scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        int n;scanf(&quot;%d&quot;,&amp;n);
- 
-        vector&lt;int&gt; a(n),b(n);
-        map&lt;int,int&gt; mp;
-        for(int i=0;i&lt;n;i++)
-        {
-            scanf(&quot;%d&quot;,&amp;a[i]);
-            b[i] = a[i];
-        }
-        sort(all(b));
-        b.erase(unique(all(b)),b.end());
-        int m =b.size();
-        vector&lt;int&gt; l(m),r(m),dp(m);
- 
-        for(int i=0;i&lt;m;i++) mp[b[i]] = i;
-        for(int i=0;i&lt;n;i++) r[mp[a[i]]] = i;
-        for(int i=n-1;i&gt;=0;i--) l[mp[a[i]]] = i;
-        //for(int i=0;i&lt;m;i++) printf(&quot;%d %d\n&quot;,l[i],r[i]);
-        for(int i=0;i&lt;m;i++) dp[i] = 1;
-        int ans = 1;
-        for(int i=1;i&lt;m;i++)
-        {
-            if(r[i-1] &lt; l[i]) dp[i] = dp[i-1] +1;
-            ans = max(dp[i],ans);
-        }
-        printf(&quot;%d\n&quot;,m-ans);
- 
-    }
- 
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1241E」Paint the Tree]]></title>
-        <id>https://dinnerhunt.cn/post/CF1241E</id>
-        <link href="https://dinnerhunt.cn/post/CF1241E">
-        </link>
-        <updated>2019-12-26T13:30:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>You are given a weighted tree consisting of 𝑛 vertices. Recall that a tree is a connected graph without cycles. Vertices 𝑢𝑖 and 𝑣𝑖 are connected by an edge with weight 𝑤𝑖.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>You are given a weighted tree consisting of 𝑛 vertices. Recall that a tree is a connected graph without cycles. Vertices 𝑢𝑖 and 𝑣𝑖 are connected by an edge with weight 𝑤𝑖.</p>
-<!--more-->
-<p>Let's define the 𝑘-coloring of the tree as an assignment of exactly 𝑘 colors to each vertex, so that each color is used no more than two times. You can assume that you have infinitely many colors available. We say that an edge is saturated in the given 𝑘-coloring if its endpoints share at least one color (i.e. there exists a color that is assigned to both endpoints).</p>
-<p>Let's also define the value of a 𝑘-coloring as the sum of weights of saturated edges.</p>
-<p>Please calculate the maximum possible value of a 𝑘-coloring of the given tree.</p>
-<p>You have to answer 𝑞 independent queries.</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1241/problem/E">「CodeForces 1241E」Paint the Tree</a></p>
-<h4 id="题解">题解</h4>
-<p>树形DP，因为相邻两个点染色才有贡献。<br>
-节点每染一种颜色，表示选了一条边，也就意味着一个点不能选超过k条与之相邻的边<br>
-DP[x][1] 表示该点边选满了的价值<br>
-DP[x][0] 表示未选满的价值<br>
-我们考虑到x时，子树都选好了，先不选与自身链接的边，也就是加上所有DP[v][1]（v为子树节点)<br>
-然后我们依次考虑，DP[v][0]+E{x,v}这条边的权值(也就是是否与该点连边),如果选该边，则要减去DP[v][1]，则与该点连边的贡献为(DP[v][0]+E{x,v}-DP[v][1])</p>
-<p>然后贪心选前k个就好</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const int maxd = 5e5+10;
-typedef long long ll;
-
-vector&lt;P&gt; G[maxd];
-vector&lt;ll&gt; a;
-ll n,k,dp[maxd][2];
-// dp[i][0] 表示选满k边的最大价值
-void dfs(ll x,ll fa)
-{
-//    PLL(x);
-//    PN();
-    dp[x][0] = dp[x][1] = 0;
-    for(auto p:G[x])
-    {
-        ll v = p.st;
-        if(v == fa) continue;
-        dfs(v,x);
-        dp[x][0] += dp[v][1];
-        dp[x][1] += dp[v][1]; //先选满的子树
-    }
-    //选满的子树，这样当前节点就无法与子树节点连边，因为子树点已经满K个了
-
-    a.clear();
-    for(auto p:G[x])
-    {
-        ll v = p.st;
-        if(v == fa) continue;
-        a.pb(-(dp[v][0]+ p.nd - dp[v][1]));
-        //这里我们枚举每个节点的差值，也就是如果子树不选满，则可选这条边
-    }
-    sort(all(a)); //贪心选择价格高的
-
-    ll len = min((ll)a.size(),k);
-    F(len)
-    {
-        ll v = -a[i];
-        if(v &lt; 0)break;
-        if(i&lt;k-1) dp[x][0] += v;
-        dp[x][1] += v;
-    }
-}
-
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int t;scanf(&quot;%d&quot;,&amp;t);
-    while(t--)
-    {
-        RLL(n);RLL(k);
-        F(n-1)
-        {
-            ll a,b,c;
-            RLL(a);RLL(b);RLL(c);
-            //printf(&quot;%lld %lld %lld\n&quot;,a,b,c);
-            G[a].pb(P(b,c));
-            G[b].pb(P(a,c));
-        }
-//        FOR(1,n)
-//        {
-//            for(auto p: G[i]) printf(&quot;%lld &quot;,p.st);
-//            PN();
-//        }
-        dfs(1ll,-1ll);
-        FOR(1,n) G[i].clear();
-        PLL(max(dp[1][0],dp[1][1]));
-        PN();
-
-    }
-
-    return 0;
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces1278D&E」Segment Tree & Tests for problem D]]></title>
-        <id>https://dinnerhunt.cn/post/CF1278D&amp;E</id>
-        <link href="https://dinnerhunt.cn/post/CF1278D&amp;E">
-        </link>
-        <updated>2019-12-23T05:29:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>As the name of the task implies, you are asked to do some work with segments and trees.</p>
-<p>Recall that a tree is a connected undirected graph such that there is exactly one simple path between every pair of its vertices.</p>
-<p>You are given 𝑛 segments [𝑙1,𝑟1],[𝑙2,𝑟2],…,[𝑙𝑛,𝑟𝑛], 𝑙𝑖&lt;𝑟𝑖 for every 𝑖. It is guaranteed that all segments' endpoints are integers, and all endpoints are unique — there is no pair of segments such that they start in the same point, end in the same point or one starts in the same point the other one ends.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>As the name of the task implies, you are asked to do some work with segments and trees.</p>
-<p>Recall that a tree is a connected undirected graph such that there is exactly one simple path between every pair of its vertices.</p>
-<p>You are given 𝑛 segments [𝑙1,𝑟1],[𝑙2,𝑟2],…,[𝑙𝑛,𝑟𝑛], 𝑙𝑖&lt;𝑟𝑖 for every 𝑖. It is guaranteed that all segments' endpoints are integers, and all endpoints are unique — there is no pair of segments such that they start in the same point, end in the same point or one starts in the same point the other one ends.</p>
-<!--more-->
-<p>Let's generate a graph with 𝑛 vertices from these segments. Vertices 𝑣 and 𝑢 are connected by an edge if and only if segments [𝑙𝑣,𝑟𝑣] and [𝑙𝑢,𝑟𝑢] intersect and neither of it lies fully inside the other one.</p>
-<p>For example, pairs ([1,3],[2,4]) and ([5,10],[3,7]) will induce the edges but pairs ([1,2],[3,4]) and ([5,7],[3,10]) will not.</p>
-<p>Determine if the resulting graph is a tree or not.</p>
-<p>&amp;</p>
-<p>We had a really tough time generating tests for problem D. In order to prepare strong tests, we had to solve the following problem.</p>
-<p>Given an undirected labeled tree consisting of 𝑛 vertices, find a set of segments such that:</p>
-<p>both endpoints of each segment are integers from 1 to 2𝑛, and each integer from 1 to 2𝑛 should appear as an endpoint of exactly one segment;<br>
-all segments are non-degenerate;<br>
-for each pair (𝑖,𝑗) such that 𝑖≠𝑗, 𝑖∈[1,𝑛] and 𝑗∈[1,𝑛], the vertices 𝑖 and 𝑗 are connected with an edge if and only if the segments 𝑖 and 𝑗 intersect, but neither segment 𝑖 is fully contained in segment 𝑗, nor segment 𝑗 is fully contained in segment 𝑖.<br>
-Can you solve this problem too?</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://codeforces.com/contest/1278/problem/D">「CodeForces1278D」Segment Tree</a><br>
-<a href="https://codeforces.com/contest/1278/problem/E">「CodeForces1278E」Tests for problem D</a></p>
-<h4 id="题解">题解</h4>
-<p>D题 意思大概就是，给一堆线段<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，如果两个线段<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>A</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i,A_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>相交（包含不算相交）,那么代表<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">点</mi><mi>i</mi><mi mathvariant="normal">与</mi><mi>j</mi></mrow><annotation encoding="application/x-tex">点i与j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">点</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">与</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 之间有连边，问这些线段是否能构造成一颗树</p>
-<p>E题 就是给树，求构造线段</p>
-<p>D题</p>
-<ol>
-<li>将拆成两个点，丢进数组，排序</li>
-<li>枚举点</li>
-<li>如果点是左端点，丢进堆</li>
-<li>如果是右端点，则从大到小枚举堆中端点，直到遇到该右端点所在线段的左端点，途中经过的点都与该线段有交点，删除该边左端点</li>
-<li>返回第二步</li>
-</ol>
-<p>第4步中，当连边为n时，强行退出，时间复杂度为O(n log n)</p>
-<p>E题 类似先序遍历的形式构造</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">//D
-#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;set&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 5e5+10;
-typedef pair&lt;int,int&gt; P;
-vector&lt;P&gt; a;
-set&lt;P&gt; s;
-int fa[maxd],n,flag;
-P b[maxd];
-int gf(int x)
-{
-    if(fa[x] == x) return x ;
-    return fa[x] = gf(fa[x]);
-}
-void check()
-{
-    int num =0;
-    for(auto p: a)
-    {
- 
-        //printf(&quot;-- %d %d\n&quot;,p.first,p.second);
-        if(p.second&gt;0)s.insert(P(-p.first,p.second)); // 插入左端点
-        else
-        {
-            int id = -p.second;
-            for(auto x:s)
-            {
-                //printf(&quot;%d %d\n&quot;,x.first,x.second);
-                if(b[id].first == -x.first)
-                {
-                    s.erase(P(x.first,id));
-                    break;
-                }
-                if(gf(id) == gf(x.second)) flag =1;
-                //printf(&quot;!! %d %d\n&quot;,id,x.second);
-                fa[gf(id)] = gf(x.second);
-                num++;
-                if(num == n) return;
-            }
-        }
-    }
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++)
-    {
-        fa[i] = i;scanf(&quot;%d %d&quot;,&amp;b[i].first,&amp;b[i].second);
-        a.push_back(P(b[i].first,i));
-        a.push_back(P(b[i].second,-i));
-    }
- 
-    sort(a.begin(),a.end());
-    check();
-    for(int i=2;i&lt;=n;i++) if(gf(i) != gf(1)) flag =1;
-    if(flag) printf(&quot;NO\n&quot;);
-    else printf(&quot;YES\n&quot;);
- 
-    return 0;
-
-//E
-#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;set&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxd = 5e5+10;
-vector&lt;int&gt; G[maxd];
-int n,l[maxd],r[maxd],cnt;
-void dfs(int x,int fa)
-{
-    for(auto v:G[x])
-    {
-        if(v==fa) continue;
-        l[v] = ++cnt;
-    }
-    r[x] = ++cnt;
-    for(int i=G[x].size()-1;i &gt;=0;i--)
-    {
-        int v = G[x][i];
-        if(v == fa) continue;
-        dfs(v,x);
-    }
-}
-int main()
-{
-//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
-//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
-    int n;scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;n;i++)
-    {
-        int x,y;
-        scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
-        G[x].push_back(y);
-        G[y].push_back(x);
-    }
-    l[1] = ++cnt;
-    dfs(1,1);
-    for(int i=1;i&lt;=n;i++) printf(&quot;%d %d\n&quot;,l[i],r[i]);
     return 0;
 }
 </code></pre>
