@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-01-16T10:01:04.789Z</updated>
+    <updated>2020-01-17T06:46:25.985Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,21 +10,6 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, dinnerhunt</rights>
-    <entry>
-        <title type="html"><![CDATA[template]]></title>
-        <id>https://dinnerhunt.cn/post/test</id>
-        <link href="https://dinnerhunt.cn/post/test">
-        </link>
-        <updated>2020-10-31T05:30:58.000Z</updated>
-        <content type="html"><![CDATA[<!--more-->
-<h4 id="大致题意">大致题意 📖</h4>
-<h4 id="链接">链接 🔗</h4>
-<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1198C」 Matching vs Independent Set</a></p>
-<h4 id="题解">题解  ❓</h4>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp"></code></pre>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[「CodeForces 1288E」 Messenger Simulator]]></title>
         <id>https://dinnerhunt.cn/post/CF1288E</id>
@@ -638,6 +623,80 @@ int main()
     }
     else PS(&quot;-1&quot;);
 
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1277F」Beautiful Rectangle]]></title>
+        <id>https://dinnerhunt.cn/post/CF1277F</id>
+        <link href="https://dinnerhunt.cn/post/CF1277F">
+        </link>
+        <updated>2019-12-28T10:28:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>You are given 𝑛 integers. You need to choose a subset and put the chosen numbers in a beautiful rectangle (rectangular matrix). Each chosen number should occupy one of its rectangle cells, each cell must be filled with exactly one chosen number. Some of the 𝑛 numbers may not be chosen.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>You are given 𝑛 integers. You need to choose a subset and put the chosen numbers in a beautiful rectangle (rectangular matrix). Each chosen number should occupy one of its rectangle cells, each cell must be filled with exactly one chosen number. Some of the 𝑛 numbers may not be chosen.</p>
+<!--more-->
+<p>A rectangle (rectangular matrix) is called beautiful if in each row and in each column all values are different.</p>
+<p>What is the largest (by the total number of cells) beautiful rectangle you can construct? Print the rectangle itself.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1277/problem/F">「CodeForces 1277F」Beautiful Rectangle</a></p>
+<h4 id="题解">题解</h4>
+<p>比较麻烦的构造题<br>
+假设行一定小于列，于是我们枚举行 x，然后考虑我们的数是否能构成大于 x*x 的矩阵<br>
+然后统计最大的数量 ，确定行和列<br>
+再用阶梯的形式去构造该矩阵</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll maxd = 4e5+10;
+
+ll cnt[maxd],n,ans[maxd];
+map&lt;ll,ll&gt; mp;
+vector&lt;P&gt; a;
+bool cmp(const P a,const P b)
+{
+    return a.ND &gt; b.ND;
+}
+int main()
+{
+//    __IN;__OUT;
+    RLL(n);
+    FOR(i,1,n)
+    {
+        ll x;RLL(x);
+        mp[x]++;
+    }
+    for(auto p:mp) a.pb(p);
+    sort(all(a),cmp);
+    for(auto x:a) cnt[x.ND]++;
+
+    //确定行数和最大摆放数量
+    ll now = a.size(),mx = 0,row = 0, sum = 0;
+    for(int i=1;i *i&lt;=n;i++)
+    {
+        sum+= cnt[i] * i;
+        now -= cnt[i];
+        ll t = now * i + sum;
+        if(t &lt; i * i) continue; // 数不够
+        if(t / i * i &gt; mx) mx = t/i*i,row = i; //如果选出的最大数量多于当前值，则更新
+    }
+    // 构造方案
+    ll col = mx / row , x = 1, y =1;
+    FOR(i,1,a.size())
+    {
+        ll num = min(row,a[i-1].ND);
+        while(num--)
+        {
+            ans[(x-1)*col + y] = a[i-1].first;
+            x = (x %row) + 1, y = (y%col) + 1;
+            if(ans[(x-1) * col + y]) y = (y%col) + 1;
+        }
+    }
+    PLN(mx);PLP(row); PLN(col);
+    FOR(i,1,row)
+        FOR(j,1,col)
+            if(j== col)  PLN(ans[(i-1) * col +j]);
+            else PLP(ans[(i-1) * col +j]);
     return 0;
 }
 </code></pre>
