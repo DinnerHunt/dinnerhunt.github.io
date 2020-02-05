@@ -7,7 +7,7 @@
 <meta name="description" content="练习时长251天且正在被蜗牛追杀的腾讯视频VVVIP会员">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1579771955708">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1580889227681">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -232,6 +232,86 @@ int main()
     return 0;
 }
 </code></pre>
+<h4 id="hlpp">HLPP</h4>
+<pre><code class="language-cpp">	//MF.init(s,t,N) -&gt; MF.add(u,v,flow) -&gt; flow = MF.run()  
+	//要求所有的节点的id范围[1,N]  
+const int INF = 0x7fffffff;  
+const int MAXN = 10005;  
+struct HLPP{  
+#define up(l,r,i) for(register int i=l;i&lt;=r;++i)  
+#define ergv(u) for(vector&lt;edge&gt;::iterator p=head[u].begin();p!=head[u].end();++p)  
+    int n = 0, s, t, hst, nwh;  
+    vector&lt;int&gt; l, g, h, q, mlst[MAXN];  
+    struct edge{    //边  
+        int v, f, nxt;  
+        edge(int _v, int _f, int _n) :v(_v), f(_f), nxt(_n){}  
+    };  
+    vector &lt;edge&gt; head[MAXN];  
+    list   &lt;int &gt; lst[MAXN];  
+    vector &lt;list&lt;int&gt;::iterator&gt; it;  
+    inline void add(int u, int v, int f){      //连边  
+        head[u].push_back(edge(v, f, head[v].size()));  
+        head[v].push_back(edge(u, 0, head[u].size() - 1));  
+    }  
+    inline void rlb(){      //全局冲贴标签  
+        h.assign(n + 3, n), g.assign(n + 3, 0), h[t] = 0;  
+        q.clear(), q.resize(n + 3);  
+        int H = 0, T = 0, u;  
+        for (q[T++] = t; H&lt;T;){  
+       u = q[H++];  
+            ergv(u) if (h[p-&gt;v] == n&amp;&amp;head[p-&gt;v][p-&gt;nxt].f)  
+                ++g[h[p-&gt;v] = h[u] + 1], q[T++] = p-&gt;v;  
+        }  
+        up(1, n, i) mlst[i].clear(), lst[i].clear();  
+        up(1, n, i) if (h[i]&lt;n){  
+            it[i] = lst[h[i]].insert(lst[h[i]].begin(), i);  
+            if (l[i]&gt;0) mlst[h[i]].push_back(i);  
+        }  
+        hst = (nwh = h[q[T - 1]]);  
+    }  
+    inline void psh(int u, edge &amp;e){ //推流子函数  
+        int v = e.v, df = min(l[u], e.f);  
+        e.f -= df, head[v][e.nxt].f += df, l[u] -= df, l[v] += df;  
+        if (l[v]&gt;0 &amp;&amp; l[v] &lt;= df) mlst[h[v]].push_back(v);  
+    }  
+    inline void psh(int u){         //推流  
+        int nh = n, htu = h[u];  
+        ergv(u)if (p-&gt;f) if (h[u] == h[p-&gt;v] + 1){  
+            psh(u, *p); if (l[u] &lt;= 0) return;  
+        }  
+        else nh = min(nh, h[p-&gt;v] + 1);  
+        if (g[htu] == 1){          //断层  
+            up(htu, hst, i){  
+                for (auto &amp;p : lst[i]) --g[h[p]], h[p] = n;  
+                lst[i].clear();  
+            }  
+            hst = htu - 1;  
+        }  
+        else{  
+            --g[htu], it[u] = lst[htu].erase(it[u]), h[u] = nh;  
+            if (nh == n) return;  
+            g[nh]++, it[u] = lst[nh].insert(lst[nh].begin(), u);  
+            hst = max(hst, nwh = nh), mlst[nh].push_back(u);  
+        }  
+    }  
+    inline int run(){  
+        nwh = hst = 0, h.assign(n + 3, 0), h[s] = n, it.resize(n + 3);  
+        up(1, n, i) if (i != s)it[i] = lst[h[i]].insert(lst[h[i]].begin(), i);  
+        g.assign(n + 3, 0), g[0] = n - 1, l.assign(n + 3, 0), l[s] = INF, l[t] = -INF;  
+        ergv(s) psh(s, *p); rlb();  
+        for (int u; nwh;){  
+            if (mlst[nwh].empty()) nwh--; else  
+                u = mlst[nwh].back(), mlst[nwh].pop_back(), psh(u);  
+        }  
+        return l[t] + INF;  
+    }  
+inline void init(int _s, int _t, int _n){  
+    for (int i = 0; i &lt;= n; i++) head[i].clear();  
+        s = _s, t = _t, n = _n;  
+    }  
+}MF;  
+
+</code></pre>
 
             </div>
           </article>
@@ -244,7 +324,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1579771955708" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1580889227681" class="no-responsive avatar">
     <div class="text-muted">练习时长251天且正在被蜗牛追杀的腾讯视频VVVIP会员</div>
     <div class="social-container">
       
@@ -660,23 +740,23 @@ int main()
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY" class="badge warning">
           最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH" class="badge ">
           网络流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM" class="badge success">
           随机数
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge secondary">
           贪心
         </a>
       
@@ -684,11 +764,11 @@ int main()
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge ">
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge ">
           二分图
         </a>
       
@@ -708,11 +788,11 @@ int main()
           双连通分量
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
           Hash
         </a>
       
@@ -720,15 +800,15 @@ int main()
           离散化
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge warning">
           单调队列
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge ">
           DP
         </a>
       
@@ -736,7 +816,7 @@ int main()
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
           组合数学
         </a>
       
@@ -744,7 +824,7 @@ int main()
           博弈论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge warning">
           DFS序
         </a>
       
@@ -752,23 +832,23 @@ int main()
           可持久化Trie
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge ">
           三元环
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge success">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge secondary">
           最小费用最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
           个人经历
         </a>
       
@@ -784,7 +864,7 @@ int main()
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
           并查集
         </a>
       
@@ -792,11 +872,11 @@ int main()
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge warning">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge success">
           差分
         </a>
       
@@ -812,19 +892,19 @@ int main()
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge secondary">
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge secondary">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
           线性基
         </a>
       
@@ -844,43 +924,43 @@ int main()
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge warning">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge warning">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge warning">
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge secondary">
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
@@ -896,19 +976,19 @@ int main()
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge ">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge success">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
           Gridea
         </a>
       
