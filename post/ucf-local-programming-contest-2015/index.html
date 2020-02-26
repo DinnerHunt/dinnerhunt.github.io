@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>UCF Local Programming Contest 2015 | dinnerhunt</title>
+<meta name="description" content="人在武汉，刚下钻石公主号">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1582737713486">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>UCF Local Programming Contest 2015</h1>
+            <p class="article-meta">
+              2020-02-27
+              
+                <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP" class="badge success">
+                  题解
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p><a href="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/file/UCF%20Local%20Contest%202015%20%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A.pdf">UCF Local Contest 2015解题报告[东华大学 ACM 集训队]🔗</a></p>
+<h3 id="f-balanced-strings">F Balanced Strings</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+ll t;
+map&lt;char,ll&gt; mp;
+char s[maxd];
+char k[] = &quot;aeiouy&quot;;
+int main()
+{
+//    __IN;__OUT;
+    RLL(t);ll ca = 0;
+    FOR(i,0,6) mp[k[i]] = 1;
+    while(t--)
+    {
+        RS(s+1);ll len = strlen(s+1);
+        ll a= 0,b=0,flag=0,ans = 0;
+        FOR(i,1,len)
+        {
+            if(s[i] == '?')
+            {
+                if(i%2) a++;
+                else b++;
+            }
+            else if(mp[s[i]] != i%2) // 元音
+            {
+                flag =1;
+                break;
+            }
+        }
+        if(!flag) ans += pow(6,a) * pow(20,b);
+        a = 0 , b= 0 ,flag = 0;
+        FOR(i,1,len)
+        {
+            if(s[i] == '?')
+            {
+                if(i%2) a++;    // 辅音
+                else b++;
+            }
+            else if(mp[s[i]] == i%2) // 位置错了
+            {
+                flag =1;
+                break;
+            }
+        }
+        if(!flag) ans += pow(20,a) * pow(6,b);
+        printf(&quot;String #%d: %lld\n&quot;,++ca,ans);
+        if(t) PN();
+    }
+
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="g-towers-of-hanoi-grid">G Towers of Hanoi Grid</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    ll ca = 0;
+    while(t--)
+    {
+        printf(&quot;Grid #%d: &quot;,++ca);
+        ll d,n;RLL2(d,n);
+        if(d&gt;n*n-2*(n-1))PS(&quot;impossible\n&quot;);
+        else {
+            PLN(d*2*(n-1));
+            PN();
+        }
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="h-reach-for-the-stars">H  Reach for the Stars</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+char mp[11][11];
+const ll fx[5]= {0,0,-1,1,0}, fy[5] = {-1,1,0,0,0};
+ll n,m,ans;
+void dfs(ll i,ll j,ll s,ll num)
+{
+//    PLN4(i,j,s,num);
+//    FOR(i,1,n) PS(mp[i]+1);
+
+    if(s &gt;= ans) return;
+    if(num == 0)
+    {
+        ans = min(ans,s);
+        return ;
+    }
+    if(i == 1|| i &gt;= n || j == 1|| j &gt;= m ) return;
+    if((num-1)/5+1+s &gt;= ans) return;
+    char tmp[5];
+    FOR(p,0,4) tmp[p] = mp[i+fx[p]][j+fy[p]];
+    ll cnt = 0,flag = 0;
+    FOR(p,0,4) flag |= (tmp[p] == '.');
+    FOR(p,0,4) cnt += (tmp[p] == '#');
+//    PLN2(flag,cnt);
+//    FOR(p,0,4) putchar(tmp[p]);
+//    PN();
+    if(!flag &amp;&amp; cnt)
+    {
+        FOR(p,0,4) mp[i+fx[p]][j+fy[p]] = '@';
+        if(j+1 &lt; m) dfs(i,j+1,s+1,num - cnt);
+        else dfs(i+1,2,s+1,num- cnt);
+        FOR(p,0,4) mp[i+fx[p]][j+fy[p]] = tmp[p];
+    }
+    if(mp[i-1][j] == '#') return;
+    if(j==2 &amp;&amp; mp[i][1] == '#') return;
+    if(j==m-1 &amp;&amp; mp[i][m] == '#') return;
+    if(j+1 &lt; m) dfs(i,j+1,s,num);
+    else dfs(i+1,2,s,num);
+}
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    FOR(ca,1,t)
+    {
+        RLL2(n,m);ll num = 0;
+        FOR(i,1,n) RS(mp[i]+1);
+        FOR(i,1,n) FOR(j,1,m) num+=mp[i][j] == '#';
+        if(mp[1][1] == '#'|| mp[1][m] == '#'||mp[n][1] == '#' || mp[n][m] == '#')
+            printf(&quot;Image #%d: impossible\n\n&quot;,ca);
+        else
+        {
+            ans = 1e9+10;dfs(2,2,0,num);
+            if(ans == 1e9+10)printf(&quot;Image #%d: impossible\n\n&quot;,ca);
+            else printf(&quot;Image #%d: %d\n\n&quot;,ca,ans);
+
+        }
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="i-longest-path">I  Longest Path</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+ll a[maxd][maxd];
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    while(t--)
+    {
+        ll n;RLL(n);
+        FOR(i,1,n) FOR(j,1,n) RLL(a[i][j]);
+        list&lt;ll&gt; b;
+        b.pb(1);
+        FOR(i,2,n)
+        {
+            ll flag =0;
+            FF(it, b)
+            {
+                auto net = it; net++;
+                if(net != b.end() &amp;&amp; a[*it][i] &amp;&amp; a[i][*net])
+                {
+                    b.insert(net,i);
+                    flag=1;break;
+                }
+            }
+            if(!flag)
+            {
+                if(a[*b.begin()][i]) b.pb(i);
+                else b.pf(i);
+            }
+        }
+        FF(it,b)
+        {
+            auto net = it; net++;
+            PLL(*it);
+            if(net == b.end()) PN();
+            else PP();
+        }
+
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="j-you-shall-pass">J You Shall Pass</h3>
+<pre><code class="language-cpp">const ll maxd = 1e5+10;
+const ll inf = 1e18;
+
+struct edge{ll to,rev, flow;};
+vector&lt;edge&gt; G[maxd];
+void add(ll u,ll v,ll flow)
+{
+    G[u].push_back((edge) {v, (ll) G[v].size(), flow});
+    G[v].push_back((edge) {u, (ll) G[u].size() - 1, 0});
+}
+ll d[maxd],in[maxd],out[maxd],k[maxd],s,t;
+bool bfs()
+{
+    memset(d,-1,sizeof(d));d[s] = 0;
+    queue&lt;ll&gt; que; que.push(s);
+    while(!que.empty())
+    {
+        ll x = que.front(); que.pop();
+        for(auto p: G[x]) if(p.flow &gt; 0 &amp;&amp; d[p.to] == -1) que.push(p.to),d[p.to] = d[x]+1;
+    }
+    return (d[t] != -1);
+}
+ll dfs(ll x,ll flow)
+{
+    if(x == t)  return flow;
+    ll res = 0ll;
+    F(G[x].size())
+    {
+        edge &amp;e = G[x][i];ll v = e.to;
+        if(e.flow &gt; 0 &amp;&amp; d[x]+1 == d[v])
+        {
+            ll tmp = dfs(v,min(flow,e.flow));
+            flow -= tmp; e.flow -= tmp; res += tmp;
+            G[v][e.rev].flow += tmp;
+            if(!flow) break;
+        }
+    }
+    if(!res) d[x] = -1;
+    return res;
+}
+ll maxflow()
+{
+    ll res = 0;
+    while(bfs()) res += dfs(s,inf);
+    return res;
+}
+
+int main()
+{
+//    __IN;__OUT;
+    ll T;RLL(T);
+    while(T--)
+    {
+        ll n,sum = 0;RLL(n);
+        double x;
+        s = 0, t = n+2*n*n+1;
+        FOR(i,1,n)
+        {
+            RLF(x);
+            ll c = round(x*100);
+            sum += c;
+            add(s,i,c);
+        }
+        FOR(i,1,n)
+        {
+            RLF(x);
+            ll c = round(x*100);
+            sum += c;
+            add(i,t,c);
+        }
+        FOR(i,1,n)FOR(j,1,n)
+        {
+            RLF(x);ll c = round(x*100);
+            sum += c; sum+=c;
+            add(s,n + (i-1) *n +j,c);
+            add(n + (i-1) *n +j + n * n,t,c);
+
+            add(n + (i-1) *n +j,i,inf);
+            add(n + (i-1) *n +j,j,inf);
+            add(i,n + (i-1) *n +j + n * n,inf);
+            add(j,n + (i-1) *n +j + n * n,inf);
+        }
+        ll len =maxflow();
+        double ans =1.0 *  (sum - len) / 100;
+//        PLN2(sum,len);
+        printf(&quot;%.2lf\n&quot;,ans);
+        FOR(i,s,t) G[i].clear();
+    }
+
+    return 0;
+}
+</code></pre>
+<br>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/GYM-102501">
+                <h3 class="post-title">
+                  「GYM 102501」2019-2020 ICPC Southwestern European Regional Programming Contest (SWERC 2019-20)
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1582737713486" class="no-responsive avatar">
+    <div class="text-muted">人在武汉，刚下钻石公主号</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015">UCF Local Programming Contest 2015</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/map">“图” 谱</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/GYM-102501">「GYM 102501」2019-2020 ICPC Southwestern European Regional Programming Contest (SWERC 2019-20)</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1288E">「CodeForces 1288E」 Messenger Simulator</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1288D">「CodeForces 1288D」 Minimax Problem</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1198E">「CodeForces 1198E」 Rectangle Painting 2</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1198F">「CodeForces 1198F」GCD Groups 2</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1198D">「CodeForces 1198D」 Rectangle Painting 1</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1198C">「CodeForces 1198C」 Matching vs Independent Set</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1284D">「CodeForces 1284D」New Year and Conference</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP" class="badge ">
+          题解
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/6psCctHhP" class="badge secondary">
+          GYM
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge secondary">
+          数据结构
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge secondary">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY" class="badge success">
+          最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH" class="badge secondary">
+          网络流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM" class="badge secondary">
+          随机数
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge secondary">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge warning">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge success">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge secondary">
+          双连通分量
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge warning">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge secondary">
+          离散化
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q" class="badge ">
+          单调队列
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge ">
+          DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge success">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge ">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge ">
+          博弈论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge ">
+          DFS序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge secondary">
+          可持久化Trie
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge warning">
+          三元环
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge warning">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge ">
+          最小费用最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge ">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge ">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge ">
+          树上启发式合并
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge warning">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge warning">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge secondary">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge secondary">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge warning">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge success">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge warning">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge ">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge success">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge secondary">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge secondary">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge success">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge ">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge warning">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge secondary">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF" class="badge secondary">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS" class="badge warning">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge warning">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge warning">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE" class="badge secondary">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge success">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge warning">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template" class="badge warning">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

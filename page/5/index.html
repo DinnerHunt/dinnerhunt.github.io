@@ -7,7 +7,7 @@
 <meta name="description" content="人在武汉，刚下钻石公主号">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1582707461251">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1582737713486">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -90,16 +90,47 @@
           
   <article class="article">
     <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/P3825">「NOI2017」游戏</a>
+    </h2>
+    <p class="article-meta">
+      2019-10-28
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge warning">
+          2-SAT
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>小 L 计划进行nn场游戏，每场游戏使用一张地图，小 L 会选择一辆车在该地图上完成游戏。</p>
+<p>小 L 的赛车有三辆，分别用大写字母A、B、C表示。地图一共有四种，分别用小写字母x、a、b、c表示。其中，赛车A不适合在地图a上使用，赛车B不适合在地图b上使用，赛车C不适合在地图c上使用，而地图x则适合所有赛车参加。适合所有赛车参加的地图并不多见，最多只会有d张。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>场游戏的地图可以用一个小写字母组成的字符串描述。例如：S=xaabxcbc表示小 L 计划进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场游戏，其中第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>场的地图类型是x，适合所有赛车，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>场的地图是a，不适合赛车A，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>场的地图是b，不适合赛车B，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>场和第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>场的地图是c，不适合赛车C。</p>
+<p>小 L 对游戏有一些特殊的要求，这些要求可以用四元组 (i, h_i, j, h_j)来描述，表示若在第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 场使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的车子，则第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>场游戏要使用型号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">h_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><br>
+的车子。</p>
+<p>你能帮小 L 选择每场游戏使用的赛车吗？如果有多种方案，输出任意一种方案。如果无解，输出 “-1’’（不含双引号）。</p>
+<p>输入格式</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/P3825" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
       <a href="https://dinnerhunt.cn/post/CF1239C">「CodeForces  1239C」 Queue in the Train</a>
     </h2>
     <p class="article-meta">
       2019-10-26
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge warning">
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge success">
           贪心
         </a>
       
@@ -125,11 +156,11 @@
     <p class="article-meta">
       2019-10-26
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge secondary">
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge warning">
           括号序
         </a>
       
@@ -156,7 +187,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-25
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge secondary">
           贪心
         </a>
       
@@ -188,7 +219,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge ">
           组合数学
         </a>
       
@@ -215,7 +246,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-12
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
           构造
         </a>
       
@@ -240,11 +271,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-12
       
-        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf" class="badge warning">
           枚举
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge secondary">
           树状数组
         </a>
       
@@ -295,7 +326,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-10
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge warning">
           数学
         </a>
       
@@ -344,34 +375,6 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     </div>
   </article>
 
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/p2664">「P2664」 树上游戏</a>
-    </h2>
-    <p class="article-meta">
-      2019-10-08
-      
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge secondary">
-          树上问题
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>lrb有一棵树，树的每个节点有个颜色。给一个长度为n的颜色序列，定义<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的颜色数量。以及</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>s</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i) = \sum_{i=1}^n s(i,j)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span></p>
-<p>求出所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/p2664" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
 
         </div>
         
@@ -392,7 +395,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
       
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1582707461251" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1582737713486" class="no-responsive avatar">
     <div class="text-muted">人在武汉，刚下钻石公主号</div>
     <div class="social-container">
       
@@ -414,6 +417,18 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015">UCF Local Programming Contest 2015</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/map">“图” 谱</a>
+            </li>
+          
         
           
             <li>
@@ -464,15 +479,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1270G">「CodeForces 1270G」Subset with Zero Sum</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1215F">「CodeForces 1215F」 Radio Stations</a>
-            </li>
           
         
           
@@ -802,6 +809,10 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     </div>
     <div class="row">
       
+        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP" class="badge ">
+          题解
+        </a>
+      
         <a href="https://dinnerhunt.cn/tag/6psCctHhP" class="badge warning">
           GYM
         </a>
@@ -810,15 +821,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge ">
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY" class="badge secondary">
           最大流
         </a>
       
@@ -826,7 +837,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           网络流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM" class="badge secondary">
           随机数
         </a>
       
@@ -842,7 +853,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
           二分图
         </a>
       
@@ -850,7 +861,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge ">
           2-SAT
         </a>
       
@@ -858,7 +869,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge ">
           双连通分量
         </a>
       
@@ -866,7 +877,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
           Hash
         </a>
       
@@ -878,7 +889,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           单调队列
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
           数论
         </a>
       
@@ -886,7 +897,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
           树上问题
         </a>
       
@@ -894,27 +905,27 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge warning">
           博弈论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge success">
           DFS序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK" class="badge secondary">
           可持久化Trie
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux" class="badge warning">
           三元环
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo" class="badge secondary">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge ">
           最小费用最大流
         </a>
       
@@ -922,35 +933,35 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7" class="badge warning">
           前缀和
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge ">
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge warning">
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge secondary">
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge ">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
           差分
         </a>
       
@@ -958,19 +969,19 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           枚举
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt" class="badge warning">
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge success">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb" class="badge secondary">
           CDQ分治
         </a>
       
@@ -978,19 +989,19 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
           线性基
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge warning">
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh" class="badge secondary">
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge success">
           DFS
         </a>
       
@@ -998,15 +1009,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c" class="badge secondary">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
           欧拉定理
         </a>
       
@@ -1014,15 +1025,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i" class="badge secondary">
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O" class="badge secondary">
           字符串
         </a>
       
@@ -1034,15 +1045,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
           生成树
         </a>
       
@@ -1050,7 +1061,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk" class="badge ">
           中国剩余定理
         </a>
       
@@ -1058,11 +1069,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/template" class="badge secondary">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
           Gridea
         </a>
       

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-02-26T10:33:42.568Z</updated>
+    <updated>2020-02-26T17:22:08.870Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,288 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[UCF Local Programming Contest 2015]]></title>
+        <id>https://dinnerhunt.cn/post/ucf-local-programming-contest-2015</id>
+        <link href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015">
+        </link>
+        <updated>2020-02-26T17:07:10.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/file/UCF%20Local%20Contest%202015%20%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A.pdf">UCF Local Contest 2015解题报告[东华大学 ACM 集训队]🔗</a></p>
+<h3 id="f-balanced-strings">F Balanced Strings</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+ll t;
+map&lt;char,ll&gt; mp;
+char s[maxd];
+char k[] = &quot;aeiouy&quot;;
+int main()
+{
+//    __IN;__OUT;
+    RLL(t);ll ca = 0;
+    FOR(i,0,6) mp[k[i]] = 1;
+    while(t--)
+    {
+        RS(s+1);ll len = strlen(s+1);
+        ll a= 0,b=0,flag=0,ans = 0;
+        FOR(i,1,len)
+        {
+            if(s[i] == '?')
+            {
+                if(i%2) a++;
+                else b++;
+            }
+            else if(mp[s[i]] != i%2) // 元音
+            {
+                flag =1;
+                break;
+            }
+        }
+        if(!flag) ans += pow(6,a) * pow(20,b);
+        a = 0 , b= 0 ,flag = 0;
+        FOR(i,1,len)
+        {
+            if(s[i] == '?')
+            {
+                if(i%2) a++;    // 辅音
+                else b++;
+            }
+            else if(mp[s[i]] == i%2) // 位置错了
+            {
+                flag =1;
+                break;
+            }
+        }
+        if(!flag) ans += pow(20,a) * pow(6,b);
+        printf(&quot;String #%d: %lld\n&quot;,++ca,ans);
+        if(t) PN();
+    }
+
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="g-towers-of-hanoi-grid">G Towers of Hanoi Grid</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    ll ca = 0;
+    while(t--)
+    {
+        printf(&quot;Grid #%d: &quot;,++ca);
+        ll d,n;RLL2(d,n);
+        if(d&gt;n*n-2*(n-1))PS(&quot;impossible\n&quot;);
+        else {
+            PLN(d*2*(n-1));
+            PN();
+        }
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="h-reach-for-the-stars">H  Reach for the Stars</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+char mp[11][11];
+const ll fx[5]= {0,0,-1,1,0}, fy[5] = {-1,1,0,0,0};
+ll n,m,ans;
+void dfs(ll i,ll j,ll s,ll num)
+{
+//    PLN4(i,j,s,num);
+//    FOR(i,1,n) PS(mp[i]+1);
+
+    if(s &gt;= ans) return;
+    if(num == 0)
+    {
+        ans = min(ans,s);
+        return ;
+    }
+    if(i == 1|| i &gt;= n || j == 1|| j &gt;= m ) return;
+    if((num-1)/5+1+s &gt;= ans) return;
+    char tmp[5];
+    FOR(p,0,4) tmp[p] = mp[i+fx[p]][j+fy[p]];
+    ll cnt = 0,flag = 0;
+    FOR(p,0,4) flag |= (tmp[p] == '.');
+    FOR(p,0,4) cnt += (tmp[p] == '#');
+//    PLN2(flag,cnt);
+//    FOR(p,0,4) putchar(tmp[p]);
+//    PN();
+    if(!flag &amp;&amp; cnt)
+    {
+        FOR(p,0,4) mp[i+fx[p]][j+fy[p]] = '@';
+        if(j+1 &lt; m) dfs(i,j+1,s+1,num - cnt);
+        else dfs(i+1,2,s+1,num- cnt);
+        FOR(p,0,4) mp[i+fx[p]][j+fy[p]] = tmp[p];
+    }
+    if(mp[i-1][j] == '#') return;
+    if(j==2 &amp;&amp; mp[i][1] == '#') return;
+    if(j==m-1 &amp;&amp; mp[i][m] == '#') return;
+    if(j+1 &lt; m) dfs(i,j+1,s,num);
+    else dfs(i+1,2,s,num);
+}
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    FOR(ca,1,t)
+    {
+        RLL2(n,m);ll num = 0;
+        FOR(i,1,n) RS(mp[i]+1);
+        FOR(i,1,n) FOR(j,1,m) num+=mp[i][j] == '#';
+        if(mp[1][1] == '#'|| mp[1][m] == '#'||mp[n][1] == '#' || mp[n][m] == '#')
+            printf(&quot;Image #%d: impossible\n\n&quot;,ca);
+        else
+        {
+            ans = 1e9+10;dfs(2,2,0,num);
+            if(ans == 1e9+10)printf(&quot;Image #%d: impossible\n\n&quot;,ca);
+            else printf(&quot;Image #%d: %d\n\n&quot;,ca,ans);
+
+        }
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="i-longest-path">I  Longest Path</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+ll a[maxd][maxd];
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    while(t--)
+    {
+        ll n;RLL(n);
+        FOR(i,1,n) FOR(j,1,n) RLL(a[i][j]);
+        list&lt;ll&gt; b;
+        b.pb(1);
+        FOR(i,2,n)
+        {
+            ll flag =0;
+            FF(it, b)
+            {
+                auto net = it; net++;
+                if(net != b.end() &amp;&amp; a[*it][i] &amp;&amp; a[i][*net])
+                {
+                    b.insert(net,i);
+                    flag=1;break;
+                }
+            }
+            if(!flag)
+            {
+                if(a[*b.begin()][i]) b.pb(i);
+                else b.pf(i);
+            }
+        }
+        FF(it,b)
+        {
+            auto net = it; net++;
+            PLL(*it);
+            if(net == b.end()) PN();
+            else PP();
+        }
+
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="j-you-shall-pass">J You Shall Pass</h3>
+<pre><code class="language-cpp">const ll maxd = 1e5+10;
+const ll inf = 1e18;
+
+struct edge{ll to,rev, flow;};
+vector&lt;edge&gt; G[maxd];
+void add(ll u,ll v,ll flow)
+{
+    G[u].push_back((edge) {v, (ll) G[v].size(), flow});
+    G[v].push_back((edge) {u, (ll) G[u].size() - 1, 0});
+}
+ll d[maxd],in[maxd],out[maxd],k[maxd],s,t;
+bool bfs()
+{
+    memset(d,-1,sizeof(d));d[s] = 0;
+    queue&lt;ll&gt; que; que.push(s);
+    while(!que.empty())
+    {
+        ll x = que.front(); que.pop();
+        for(auto p: G[x]) if(p.flow &gt; 0 &amp;&amp; d[p.to] == -1) que.push(p.to),d[p.to] = d[x]+1;
+    }
+    return (d[t] != -1);
+}
+ll dfs(ll x,ll flow)
+{
+    if(x == t)  return flow;
+    ll res = 0ll;
+    F(G[x].size())
+    {
+        edge &amp;e = G[x][i];ll v = e.to;
+        if(e.flow &gt; 0 &amp;&amp; d[x]+1 == d[v])
+        {
+            ll tmp = dfs(v,min(flow,e.flow));
+            flow -= tmp; e.flow -= tmp; res += tmp;
+            G[v][e.rev].flow += tmp;
+            if(!flow) break;
+        }
+    }
+    if(!res) d[x] = -1;
+    return res;
+}
+ll maxflow()
+{
+    ll res = 0;
+    while(bfs()) res += dfs(s,inf);
+    return res;
+}
+
+int main()
+{
+//    __IN;__OUT;
+    ll T;RLL(T);
+    while(T--)
+    {
+        ll n,sum = 0;RLL(n);
+        double x;
+        s = 0, t = n+2*n*n+1;
+        FOR(i,1,n)
+        {
+            RLF(x);
+            ll c = round(x*100);
+            sum += c;
+            add(s,i,c);
+        }
+        FOR(i,1,n)
+        {
+            RLF(x);
+            ll c = round(x*100);
+            sum += c;
+            add(i,t,c);
+        }
+        FOR(i,1,n)FOR(j,1,n)
+        {
+            RLF(x);ll c = round(x*100);
+            sum += c; sum+=c;
+            add(s,n + (i-1) *n +j,c);
+            add(n + (i-1) *n +j + n * n,t,c);
+
+            add(n + (i-1) *n +j,i,inf);
+            add(n + (i-1) *n +j,j,inf);
+            add(i,n + (i-1) *n +j + n * n,inf);
+            add(j,n + (i-1) *n +j + n * n,inf);
+        }
+        ll len =maxflow();
+        double ans =1.0 *  (sum - len) / 100;
+//        PLN2(sum,len);
+        printf(&quot;%.2lf\n&quot;,ans);
+        FOR(i,s,t) G[i].clear();
+    }
+
+    return 0;
+}
+</code></pre>
+<br>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「GYM 102501」2019-2020 ICPC Southwestern European Regional Programming Contest (SWERC 2019-20)]]></title>
         <id>https://dinnerhunt.cn/post/GYM-102501</id>
@@ -779,124 +1061,6 @@ int main()
     }
     return 0;
  
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「CodeForces 1215F」 Radio Stations]]></title>
-        <id>https://dinnerhunt.cn/post/CF1215F</id>
-        <link href="https://dinnerhunt.cn/post/CF1215F">
-        </link>
-        <updated>2019-12-28T14:07:33.000Z</updated>
-        <summary type="html"><![CDATA[<p>In addition to complaints about lighting, a lot of complaints about insufficient radio signal covering has been received by Bertown city hall recently. 𝑛 complaints were sent to the mayor, all of which are suspiciosly similar to each other: in the 𝑖-th complaint, one of the radio fans has mentioned that the signals of two radio stations 𝑥𝑖 and 𝑦𝑖 are not covering some parts of the city, and demanded that the signal of at least one of these stations can be received in the whole city.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>In addition to complaints about lighting, a lot of complaints about insufficient radio signal covering has been received by Bertown city hall recently. 𝑛 complaints were sent to the mayor, all of which are suspiciosly similar to each other: in the 𝑖-th complaint, one of the radio fans has mentioned that the signals of two radio stations 𝑥𝑖 and 𝑦𝑖 are not covering some parts of the city, and demanded that the signal of at least one of these stations can be received in the whole city.</p>
-<!--more-->
-<p>Of cousre, the mayor of Bertown is currently working to satisfy these complaints. A new radio tower has been installed in Bertown, it can transmit a signal with any integer power from 1 to 𝑀 (let's denote the signal power as 𝑓). The mayor has decided that he will choose a set of radio stations and establish a contract with every chosen station. To establish a contract with the 𝑖-th station, the following conditions should be met:</p>
-<p>the signal power 𝑓 should be not less than 𝑙𝑖, otherwise the signal of the 𝑖-th station won't cover the whole city;<br>
-the signal power 𝑓 should be not greater than 𝑟𝑖, otherwise the signal will be received by the residents of other towns which haven't established a contract with the 𝑖-th station.<br>
-All this information was already enough for the mayor to realise that choosing the stations is hard. But after consulting with specialists, he learned that some stations the signals of some stations may interfere with each other: there are 𝑚 pairs of stations (𝑢𝑖, 𝑣𝑖) that use the same signal frequencies, and for each such pair it is impossible to establish contracts with both stations. If stations 𝑥 and 𝑦 use the same frequencies, and 𝑦 and 𝑧 use the same frequencies, it does not imply that 𝑥 and 𝑧 use the same frequencies.</p>
-<p>The mayor finds it really hard to analyze this situation, so he hired you to help him. You have to choose signal power 𝑓 and a set of stations to establish contracts with such that:</p>
-<p>all complaints are satisfied (formally, for every 𝑖∈[1,𝑛] the city establishes a contract either with station 𝑥𝑖, or with station 𝑦𝑖);<br>
-no two chosen stations interfere with each other (formally, for every 𝑖∈[1,𝑚] the city does not establish a contract either with station 𝑢𝑖, or with station 𝑣𝑖);<br>
-for each chosen station, the conditions on signal power are met (formally, for each chosen station 𝑖 the condition 𝑙𝑖≤𝑓≤𝑟𝑖 is met).</p>
-<h4 id="链接">链接🔗</h4>
-<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped</a></p>
-<h4 id="题解">题解</h4>
-<p>参见blog<br>
-<a href="https://www.luogu.com.cn/blog/Sooke/solution-cf1215f">Sooke巨佬</a></p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const ll maxd = 2e6+10;
-
-V G[maxd];
-ll dfn[maxd],low[maxd],belong[maxd],s[maxd],top,scc,idx;
-ll m0,n,m,m1;
-bool ins[maxd];
-
-void tarjan(int u)
-{
-    dfn[u] = low[u] = ++idx;
-    s[top++] = u;
-    ins[u] = true;
-    for(auto v:G[u])
-    {
-        if (!dfn[v])
-        {
-            tarjan(v);
-            low[u] = min(low[u], low[v]);
-        }
-        else if (ins[v])
-            low[u] = min(low[u], dfn[v]);
-    }
-    if(dfn[u] == low[u])
-    {
-        ++scc;
-        do
-        {
-            belong[s[--top]] = scc;
-            ins[s[top]] = false;
-        } while (s[top] != u);
-    }
-}
-ll yes(ll x){ return x&lt;&lt;1; }
-ll no(ll x){ return x&lt;&lt;1|1; }
-
-void insert(ll x,ll y)
-{
-    //PLP(x);PLN(y);
-    G[x].pb(y);
-    G[y^1].pb(x^1);
-}
-bool solve()
-{
-    FOR(i,0,no(n+m)) if(!dfn[i]) tarjan(i);
-    FOR(i,0,n+m)
-    {
-        //PLN(belong[i]);
-        if(belong[yes(i)] == belong[no(i)]) return false;
-    }
-    return true;
-}
-int main()
-{
-    //__IN;__OUT;
-    ll x,y;
-    RLL(m0);RLL(n);RLL(m);RLL(m1);
-    F(m0)
-    {
-        RLL(x);RLL(y);x--,y--;
-        insert(no(x),yes(y)); // 如果不选x，则必须选y
-    }
-    F(m) insert(yes(n+i),yes(n+i+1)); //
-    insert(yes(n),no(n)); // 使 0 不合法
-    F(n)
-    {
-        RLL(x);RLL(y);
-        insert(yes(i),no(n+x-1)); // 如果选i，则频段不在 n+x-1范围内
-        insert(yes(i),yes(n+y)); // 且频段在 n+y范围内
-    }
-    F(m1)
-    {
-        RLL(x);RLL(y); x--,y--;
-        insert(yes(x),no(y)); // 如果选了x，则不能选y
-    }
-    ll k = 0;
-    if(solve())
-    {
-        F(n) if(belong[yes(i)] &lt; belong[no(i)]) k++;
-        FOR(i,1,m)
-            if(belong[yes(n+i)] &lt; belong[no(n+i)]) // 遇到合法选项
-            {
-                printf(&quot;%lld %lld\n&quot;,k,i);
-                break;
-            }
-
-        F(n) if(belong[yes(i)] &lt; belong[no(i)]) PLP(i+1);
-    }
-    else PS(&quot;-1&quot;);
-
-    return 0;
 }
 </code></pre>
 ]]></content>
