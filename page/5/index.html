@@ -7,7 +7,7 @@
 <meta name="description" content="人在武汉，刚下钻石公主号">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1582737713486">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1582820068119">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -90,12 +90,37 @@
           
   <article class="article">
     <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/BZOJ2199">「Usaco2011 Jan」奶牛议会</a>
+    </h2>
+    <p class="article-meta">
+      2019-10-28
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge secondary">
+          2-SAT
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>由于对Farmer John的领导感到极其不悦，奶牛们退出了农场，组建了奶牛议会。议会以“每头牛 都可以获得自己想要的”为原则，建立了下面的投票系统： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>只到场的奶牛 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>1</mn><mo>&lt;</mo><mo>=</mo><mi>M</mi><mo>&lt;</mo><mo>=</mo><mn>4000</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(1 &lt;= M &lt;= 4000)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">)</span></span></span></span> 会给N个议案投票<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>1</mn><mo>&lt;</mo><mo>=</mo><mi>N</mi><mo>&lt;</mo><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>000</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(1 &lt;= N &lt;= 1,000)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>。每只 奶牛会对恰好两个议案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>B</mi><mi>i</mi></msub><mi>a</mi><mi>n</mi><mi>d</mi><msub><mi>C</mi><mi>i</mi></msub><mo>(</mo><mn>1</mn><mo>&lt;</mo><mo>=</mo><msub><mi>B</mi><mi>i</mi></msub><mo>&lt;</mo><mo>=</mo><mi>N</mi><mo separator="true">;</mo><mn>1</mn><mo>&lt;</mo><mo>=</mo><msub><mi>C</mi><mi>i</mi></msub><mo>&lt;</mo><mo>=</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">B_i and C_i (1 &lt;= B_i &lt;= N; 1 &lt;= C_i &lt;= N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05017em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05017em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>投 出“是”或“否”（输入文件中的'Y'和'N'）。他们的投票结果分别为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi><msub><mi>B</mi><mi>i</mi></msub><mo>(</mo><mi>V</mi><msub><mi>B</mi><mi>i</mi></msub><mi>i</mi><mi>n</mi><mrow><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup><msup><mi>Y</mi><mo mathvariant="normal">′</mo></msup><msup><mo separator="true">,</mo><mo mathvariant="normal">′</mo></msup><msup><mi>N</mi><mo mathvariant="normal">′</mo></msup></mrow><mo>)</mo><mi>a</mi><mi>n</mi><mi>d</mi><mi>V</mi><msub><mi>C</mi><mi>i</mi></msub><mo>(</mo><mi>V</mi><msub><mi>C</mi><mi>i</mi></msub><mi>i</mi><mi>n</mi><mrow><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup><msup><mi>Y</mi><mo mathvariant="normal">′</mo></msup><msup><mo separator="true">,</mo><mo mathvariant="normal">′</mo></msup><msup><mi>N</mi><mo mathvariant="normal">′</mo></msup></mrow><mo>)</mo></mrow><annotation encoding="application/x-tex">VB_i (VB_i in {&#x27;Y&#x27;, &#x27;N&#x27;}) and VC_i (VC_i in {&#x27;Y&#x27;, &#x27;N&#x27;})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05017em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05017em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct"><span class="mpunct">,</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct"><span class="mpunct">,</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。 最后，议案会以如下的方式决定：每只奶牛投出的两票中至少有一票和最终结果相符合。 例如Bessie给议案1投了赞成'Y'，给议案2投了反对'N'，那么在任何合法的议案通过 方案中，必须满足议案1必须是'Y'或者议案2必须是'N'（或者同时满足）。 给出每只奶牛的投票，你的工作是确定哪些议案可以通过，哪些不能。如果不存在这样一个方案， 输出&quot;IMPOSSIBLE&quot;。如果至少有一个解，输出： Y 如果在每个解中，这个议案都必须通过 N 如果在每个解中，这个议案都必须驳回 ? 如果有的解这个议案可以通过，有的解中这个议案会被驳回 考虑如下的投票集合： - - - - - 议案 - - - - - 1 2 3 奶牛 1 YES NO 奶牛 2 NO NO 奶牛 3 YES YES 奶牛 4 YES YES 下面是两个可能的解： * 议案 1 通过（满足奶牛1，3，4） * 议案 2 驳回（满足奶牛2） * 议案 3 可以通过也可以驳回（这就是有两个解的原因） 事实上，上面的问题也只有两个解。所以，输出的答案如下： YN?</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/BZOJ2199" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
       <a href="https://dinnerhunt.cn/post/P3825">「NOI2017」游戏</a>
     </h2>
     <p class="article-meta">
       2019-10-28
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj" class="badge ">
           2-SAT
         </a>
       
@@ -126,7 +151,7 @@
     <p class="article-meta">
       2019-10-26
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0" class="badge secondary">
           模拟
         </a>
       
@@ -160,7 +185,7 @@
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
           括号序
         </a>
       
@@ -215,11 +240,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-15
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg" class="badge success">
           组合数学
         </a>
       
@@ -246,7 +271,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-12
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq" class="badge ">
           构造
         </a>
       
@@ -300,7 +325,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-11
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge success">
           状压DP
         </a>
       
@@ -326,11 +351,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     <p class="article-meta">
       2019-10-10
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
           数位DP
         </a>
       
@@ -341,33 +366,6 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     </p>
     <div class="row">
       <a href="https://dinnerhunt.cn/post/atcoder138f" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/cf1238e">「CodeForces 1238E」Keyboard Purchase</a>
-    </h2>
-    <p class="article-meta">
-      2019-10-09
-      
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz" class="badge warning">
-          状压DP
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>You have a password which you often type — a string 𝑠 of length 𝑛. Every character of this string is one of the first 𝑚 lowercase Latin letters.</p>
-<p>Since you spend a lot of time typing it, you want to buy a new keyboard.</p>
-<p>A keyboard is a permutation of the first 𝑚 Latin letters. For example, if 𝑚=3, then there are six possible keyboards: abc, acb, bac, bca, cab and cba.</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/cf1238e" class="readmore-link">
         <button>
           Read More
         </button>
@@ -395,7 +393,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
       
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1582737713486" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1582820068119" class="no-responsive avatar">
     <div class="text-muted">人在武汉，刚下钻石公主号</div>
     <div class="social-container">
       
@@ -417,6 +415,12 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2019ccpcjiangxi">「 2019CCPC」- 江西省赛</a>
+            </li>
+          
         
           
             <li>
@@ -472,10 +476,6 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
             </li>
           
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1284D">「CodeForces 1284D」New Year and Conference</a>
-            </li>
           
         
           
@@ -813,23 +813,23 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           题解
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/6psCctHhP" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/6psCctHhP" class="badge secondary">
           GYM
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J" class="badge secondary">
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t" class="badge secondary">
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR" class="badge ">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY" class="badge ">
           最大流
         </a>
       
@@ -837,15 +837,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           网络流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM" class="badge success">
           随机数
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o" class="badge success">
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C" class="badge success">
           普通DP
         </a>
       
@@ -853,11 +853,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8" class="badge secondary">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh" class="badge ">
           图论
         </a>
       
@@ -869,19 +869,19 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco" class="badge success">
           双连通分量
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc" class="badge success">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1" class="badge ">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN" class="badge warning">
           离散化
         </a>
       
@@ -889,15 +889,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           单调队列
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc" class="badge success">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE" class="badge secondary">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1" class="badge success">
           树上问题
         </a>
       
@@ -905,11 +905,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk" class="badge secondary">
           博弈论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD" class="badge secondary">
           DFS序
         </a>
       
@@ -925,7 +925,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV" class="badge secondary">
           最小费用最大流
         </a>
       
@@ -933,7 +933,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs" class="badge warning">
           个人经历
         </a>
       
@@ -941,15 +941,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           前缀和
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF" class="badge warning">
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH" class="badge secondary">
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV" class="badge success">
           并查集
         </a>
       
@@ -957,11 +957,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT" class="badge secondary">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5" class="badge secondary">
           差分
         </a>
       
@@ -973,11 +973,11 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb" class="badge secondary">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA" class="badge ">
           数位DP
         </a>
       
@@ -985,15 +985,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj" class="badge success">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-" class="badge secondary">
           线性基
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R" class="badge ">
           曼哈顿最小生成树
         </a>
       
@@ -1001,15 +1001,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           主席树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9" class="badge secondary">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy" class="badge secondary">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1" class="badge warning">
           支配树
         </a>
       
@@ -1017,15 +1017,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP" class="badge ">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f" class="badge ">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD" class="badge success">
           莫比乌斯反演
         </a>
       
@@ -1045,15 +1045,15 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s" class="badge ">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d" class="badge secondary">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb" class="badge success">
           生成树
         </a>
       
@@ -1065,7 +1065,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK" class="badge secondary">
           计算几何
         </a>
       
@@ -1073,7 +1073,7 @@ This is a harder version of the problem. In this version, 𝑛≤300000.</p>
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea" class="badge warning">
           Gridea
         </a>
       
