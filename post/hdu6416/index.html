@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「HDU 6416」Rikka with Seam | dinnerhunt</title>
+<meta name="description" content="人在武汉，刚下钻石公主号">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1584293707416">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「HDU 6416」Rikka with Seam</h1>
+            <p class="article-meta">
+              2020-03-13
+              
+                <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge success">
+                  前缀和
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge warning">
+                  普通DP
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>Seam carving is a novel algorithm for resizing images while maintaining as much information as possible from the source image.</p>
+<p>Now, Rikka is going to use seam carving method to deal with an n×m black and white picture. We can abstract this picture into an n×m 01 matrix A.</p>
+<!--more-->
+<p>A K-seam of this picture is an integer sequence a which satisfies the following conditions:</p>
+<ol>
+<li>|a|=n, ai∈[1,m].</li>
+<li>|ai−ai+1|≤K, ∀i∈[1,n).</li>
+</ol>
+<p>After choosing a K-seam a, Rikka reduces the size of the picture by deleting pixels (i,ai), and then she gets a matrix A′ of size n×(m−1).</p>
+<p>For example, if the chosen seam is [1,2,3] and the picture is<br>
+⎡⎣⎢⎢110010010⎤⎦⎥⎥<br>
+the result matrix will be<br>
+⎡⎣⎢⎢010010⎤⎦⎥⎥</p>
+<p>Rikka finds that deleting different seams may get the same result. In the previous example, seam [1,2,3],[1,2,1],[1,2,2],[1,1,1] are equivalent.</p>
+<p>Now Rikka wants to calculate the number of different matrixes she can get by deleting exactly one K-seam.</p>
+<h4 id="大致题意">大致题意 📖</h4>
+<p>给你一个只大小为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n \times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>01</mn></mrow><annotation encoding="application/x-tex">01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">1</span></span></span></span>矩阵，你可以从每行选一个位置<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><msub><mi>s</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">pos_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，并且相邻两行选择的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><msub><mi>s</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">pos_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>不能超过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> ，然后删除这些位置上的数，将剩下的数整理后形成大小为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mo>(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">n \times (m-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>的矩阵，求能得到多少种不同的矩阵</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6416">「HDU 6416」Rikka with Seam</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p><a href="https://blog.csdn.net/CatDsy/article/details/81876341">参考博主</a></p>
+<p>如果不考虑重复，则可以从上到下进动态规划</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>x</mi><mo>=</mo><mi>j</mi><mo>−</mo><mi>k</mi></mrow><mrow><mi>j</mi><mo>+</mo><mi>k</mi></mrow></munderover><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \sum_{x=j-k}^{j+k} dp[i-1][x]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.3214420000000002em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.883221em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.347113em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span></span></p>
+<p>于是我们考虑在统计重复的数量，最后减去重复的即是答案<br>
+如果统计重复的数量，考虑 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mo>=</mo><mi>s</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">s[i][j] == s[i][j-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>表示矩阵)时，一定会产生重复<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 表示选该点有多少种方案数<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">same[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 表示选该点会产生多少种重复的结果</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>x</mi><mo>=</mo><mi>j</mi><mo>−</mo><mi>k</mi></mrow><mrow><mi>j</mi><mo>+</mo><mi>k</mi></mrow></munderover><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><munderover><mo>∑</mo><mrow><mi>x</mi><mo>=</mo><mi>j</mi><mo>−</mo><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>j</mi><mo>+</mo><mi>k</mi></mrow></munderover><mi>s</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \sum_{x=j-k}^{j+k} dp[i-1][x] - \sum_{x=j-k+1}^{j+k} same[i-1][x]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.3214420000000002em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.883221em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.347113em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:3.3214420000000002em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.883221em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.347113em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>x</mi><mo>=</mo><mi>j</mi><mo>−</mo><mi>k</mi></mrow><mrow><mi>j</mi><mo>+</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><mi>t</mi><mi>o</mi><mi>t</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><munderover><mo>∑</mo><mrow><mi>x</mi><mo>=</mo><mi>j</mi><mo>−</mo><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>j</mi><mo>+</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><mi>s</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">same[i][j] = \sum_{x=j-k}^{j+k-1}tot[i-1][x] - \sum_{x=j-k+1}^{j+k-1}same[i-1][x]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.3214420000000002em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.883221em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.347113em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:3.3214420000000002em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.883221em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.347113em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp"></code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-ji-lin-sheng-sai/">
+                <h3 class="post-title">
+                  「2018 CCPC」- 吉林省赛
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1584293707416" class="no-responsive avatar">
+    <div class="text-muted">人在武汉，刚下钻石公主号</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6397/">「HDU 6397」Character Encoding</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6406/">「HDU 6406」 Character Encoding &amp; 「P4198」楼房重建</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6416/">「HDU 6416」Rikka with Seam</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/SegmentTree/">「Tamplate」Segment Tree</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-ji-lin-sheng-sai/">「2018 CCPC」- 吉林省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-hei-long-jiang-sheng-sai/">「2018 CCPC」- 黑龙江省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/codeforces-round-624-div-3/">Codeforces Round #624 (Div. 3)</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2019ccpcjiangxi/">「 2019CCPC」- 江西省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015/">UCF Local Programming Contest 2015</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/map/">“图” </a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/yJt_SNX8V/" class="badge secondary">
+          容斥原理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge secondary">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge secondary">
+          LGV
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge warning">
+          莫队
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge ">
+          尺取
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP/" class="badge secondary">
+          题解
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge ">
+          GYM
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge secondary">
+          数据结构
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge ">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge warning">
+          最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge success">
+          网络流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge ">
+          随机数
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o/" class="badge secondary">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="badge ">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge secondary">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="badge success">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge warning">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge ">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco/" class="badge warning">
+          双连通分量
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="badge ">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge secondary">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="badge ">
+          离散化
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q/" class="badge warning">
+          单调队列
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge ">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge secondary">
+          DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge secondary">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk/" class="badge ">
+          博弈论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD/" class="badge secondary">
+          DFS序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK/" class="badge success">
+          可持久化Trie
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge warning">
+          三元环
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge success">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV/" class="badge secondary">
+          最小费用最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge ">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs/" class="badge secondary">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge secondary">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge ">
+          树上启发式合并
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV/" class="badge ">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0/" class="badge secondary">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge warning">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5/" class="badge success">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf/" class="badge success">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge success">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge secondary">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA/" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge ">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge ">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge ">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="badge secondary">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge warning">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9/" class="badge success">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge ">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge warning">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge ">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP/" class="badge secondary">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f/" class="badge success">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD/" class="badge warning">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="badge warning">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge warning">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="badge secondary">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge success">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="badge secondary">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="badge warning">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge warning">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk/" class="badge secondary">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="badge ">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template/" class="badge warning">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge warning">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

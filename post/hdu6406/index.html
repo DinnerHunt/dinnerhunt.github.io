@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「HDU 6406」 Character Encoding &amp; 「P4198」楼房重建 | dinnerhunt</title>
+<meta name="description" content="人在武汉，刚下钻石公主号">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1584293707416">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「HDU 6406」 Character Encoding &amp; 「P4198」楼房重建</h1>
+            <p class="article-meta">
+              2020-03-15
+              
+                <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge ">
+                  线段树
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>There is an apple tree in front of Taotao's house. When autumn comes, n apples on the tree ripen, and Taotao will go to pick these apples.</p>
+<p>When Taotao picks apples, Taotao scans these apples from the first one to the last one. If the current apple is the first apple, or it is strictly higher than the previously picked one, then Taotao will pick this apple; otherwise, he will not pick.</p>
+<!--more-->
+<p>Given the heights of these apples h1,h2,⋯,hn, you are required to answer some independent queries. Each query is two integers p,q, which asks the number of apples Taotao would pick, if the height of the p-th apple were q (instead of hp). Can you answer all these queries?</p>
+<hr>
+<p>小 A 的楼房外有一大片施工工地，工地上有 NN 栋待建的楼房。每天，这片工地上的房子拆了又建、建了又拆。他经常无聊地看着窗外发呆，数自己能够看到多少栋房子。</p>
+<p>为了简化问题，我们考虑这些事件发生在一个二维平面上。小 A 在平面上 (0,0) 点的位置，第 i 栋楼房可以用一条连接 (i,0) 和 (i,H_i) 的线段表示，其中 H_i为第 i 栋楼房的高度。如果这栋楼房上任何一个高度大于 0 的点与 (0,0)的连线没有与之前的线段相交，那么这栋楼房就被认为是可见的。</p>
+<p>施工队的建造总共进行了 M 天。初始时，所有楼房都还没有开始建造，它们的高度均为 0。在第 i 天，建筑队将会将横坐标为 X_i 的房屋的高度变为 Y_i（高度可以比原来大—修建，也可以比原来小—拆除，甚至可以保持不变—建筑队这天什么事也没做）。请你帮小 A 数数每天在建筑队完工之后，他能看到多少栋楼房？</p>
+<h4 id="大致题意">大致题意 📖</h4>
+<p>两题转化一下后，都大致如此，对序列上某一值进行修改，然后求该序列从左到右，最大值的更新次数</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://www.luogu.com.cn/problem/P4198">「P4198」楼房重建</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>HDU 6406 有单<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">log</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span>做法，这里我两题都用的双<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">log</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span>做法<br>
+线段树维护两个值，区间最大值和区间最大值更新次数(也就是题目所求)<br>
+最大值直接维护就好，更新次数主要在合并的时候注意下</p>
+<p>如果左区间最大值 <em>大于</em> 右区间的左区间的最大值，则说明右区间的左区间不会有任何贡献，然后递归右区间查找</p>
+<p>如果左区间最大值 <em>小于</em> 右区间的左区间的最大值，则说明右区间的右区间一定是满贡献，然后递归左区间查找</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll N = 2e5+10;
+const ll mod = 998244353;
+ll t[N&lt;&lt;4],v[N&lt;&lt;4];
+ll query(ll p,ll l,ll r,ll s)
+{
+    if(v[p] &lt;= s)return 0;
+    if(l == r) return v[p] &gt; s;
+    if(v[ls] &lt;= s) return query(rs,mid+1,r,s);
+    return query(ls,l,mid,s) + t[p] - t[ls];
+}
+void update(ll p,ll l ,ll r,ll pos,ll s)
+{
+    if( l == r)
+    {
+        t[p] = 1,v[p] =s;
+        return;
+    }
+    if(pos &lt;=  mid) update(ls,l,mid,pos,s);
+    else update(rs,mid+1,r,pos,s);
+    v[p] = max(v[ls],v[rs]);
+    t[p] = t[ls] + query(rs,mid+1,r,v[ls]);
+}
+ll a[N];
+int main()
+{
+//    __IN;__OUT
+    ll T;RLL(T);
+    while(T--)
+    {
+        ll n,m;RLL2(n,m);
+        FOR(i,1,n)
+        {
+            RLL(a[i]);
+            update(1, 1, n,i,a[i]);
+        }
+        FOR(i,1,m)
+        {
+            ll x,y;RLL2(x,y);
+            update(1, 1, n,x,y);
+            PLN(t[1]);
+            update(1, 1, n,x,a[x]);
+        }
+        FOR(i,1,n) update(1,1,n,i,0);
+    }
+
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/hdu6416/">
+                <h3 class="post-title">
+                  「HDU 6416」Rikka with Seam
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1584293707416" class="no-responsive avatar">
+    <div class="text-muted">人在武汉，刚下钻石公主号</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6397/">「HDU 6397」Character Encoding</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6406/">「HDU 6406」 Character Encoding &amp; 「P4198」楼房重建</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6416/">「HDU 6416」Rikka with Seam</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/SegmentTree/">「Tamplate」Segment Tree</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-ji-lin-sheng-sai/">「2018 CCPC」- 吉林省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-hei-long-jiang-sheng-sai/">「2018 CCPC」- 黑龙江省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/codeforces-round-624-div-3/">Codeforces Round #624 (Div. 3)</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2019ccpcjiangxi/">「 2019CCPC」- 江西省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015/">UCF Local Programming Contest 2015</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/map/">“图” </a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/yJt_SNX8V/" class="badge success">
+          容斥原理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge warning">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge secondary">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge secondary">
+          LGV
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge secondary">
+          莫队
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge ">
+          尺取
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP/" class="badge ">
+          题解
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge warning">
+          GYM
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge success">
+          数据结构
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge warning">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge success">
+          最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge ">
+          网络流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge success">
+          随机数
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o/" class="badge ">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="badge warning">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge secondary">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge secondary">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge secondary">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco/" class="badge warning">
+          双连通分量
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="badge ">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge warning">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="badge secondary">
+          离散化
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q/" class="badge ">
+          单调队列
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge secondary">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge success">
+          DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge warning">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk/" class="badge secondary">
+          博弈论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD/" class="badge secondary">
+          DFS序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK/" class="badge success">
+          可持久化Trie
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge secondary">
+          三元环
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge secondary">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV/" class="badge success">
+          最小费用最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge warning">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs/" class="badge success">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge secondary">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge secondary">
+          树上启发式合并
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV/" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0/" class="badge secondary">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge warning">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5/" class="badge ">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf/" class="badge ">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge ">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge secondary">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA/" class="badge warning">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge ">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge secondary">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge success">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="badge secondary">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge secondary">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9/" class="badge warning">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge secondary">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge ">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge secondary">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP/" class="badge ">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f/" class="badge warning">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD/" class="badge ">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="badge secondary">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="badge success">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge ">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="badge ">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="badge secondary">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge secondary">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk/" class="badge ">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="badge ">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template/" class="badge secondary">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -7,7 +7,7 @@
 <meta name="description" content="人在武汉，刚下钻石公主号">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1583245655567">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1584293707416">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -100,21 +100,41 @@
 <p>质数密度，不超过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>的质数个数大约有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi mathvariant="normal">/</mi><mi>l</mi><mi>n</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">N/ln(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>个<br>
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>−</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">1-N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>每个数约数个数的总和大概为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">N log N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span></p>
 <ul>
-<li>线性筛质数</li>
+<li>线性筛</li>
 </ul>
-<pre><code class="language-cpp">void init()
+<pre><code class="language-cpp">struct
 {
-    for(int i=2;i&lt;maxd;i++)
+    bool vis[N];
+    ll p[N],phi[N],mu[N],inv[N],cnt;
+    // 质数，欧拉函数，莫比乌斯函数
+    void init()
     {
-        if(!vis[i]) pri[++cnt] = i;
-        for(int j=1;j&lt;=cnt&amp;&amp;i*pri[j]&lt;maxd;j++)
+        cnt = 0;memset(vis,0,sizeof(vis));
+        FOR(i, 1, N - 1)
         {
-            vis[i * pri[j]] = 1;
-            if(!(i%prime[j])) break;
+            if(!vis[N]) p[++cnt] = i, mu[i] = -1,phi[i] = i-1;
+            for(ll j=1;j&lt;=cnt &amp;&amp; i * p[j] &lt;N; j++)
+            {
+                vis[i*p[j]] = 1;
+                if(!(i%p[j]))
+                {
+                    phi[i*p[j]]= phi[i] * p[j];
+                    break;
+                }
+                phi[i*p[j]] = phi[i] * (p[j]-1);
+                mu[i*p[j]] = -mu[i];
+            }
         }
+        /* 逆元
+        inv[1] = 1;
+        FOR(i,2,N-1) inv[i] = (mod - mod / i ) * inv[mod%i] %mod;
+         */
     }
-}
+}O_O;
 </code></pre>
+<br>
+* 线性筛阶乘逆元逆元 
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><mrow><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>!</mo></mrow></mfrac><mtext> </mtext><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⋅</mo><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>i</mi><mo>!</mo></mrow></mfrac><mo>=</mo><mi>i</mi><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mtext> </mtext><mo>⇒</mo><mi>i</mi><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⋅</mo><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(i+1)!^{-1}=\frac{1}{(i+1)!}\ (i+1)!^{-1}\cdot (i+1)=\frac {1}{i!}=i!^{-1}\ \Rightarrow i!^{-1}=(i+1)!^{-1}\cdot (i+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.365108em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mclose mtight">)</span><span class="mclose mtight">!</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace"> </span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mclose mtight">!</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace"> </span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
 <br>
 <ul>
 <li>质因数分解</li>
@@ -132,80 +152,26 @@
 }
 </code></pre>
 <br>
-<h3 id="同余">同余</h3>
-<ul>
-<li>线性筛欧拉函数</li>
-</ul>
-<pre><code class="language-cpp">void init()
-{
-    for(int i=2;i&lt;maxd;i++)
-    {
-        if(!vis[i])
-        {
-            pri[++cnt]=i;
-            phi[i]=i-1;
-        }
-        for(int j=1;j&lt;=cnt&amp;&amp;i*pri[j]&lt;maxd;j++)
-        {
-            vis[i*pri[j]]=1;
-            if(!(i%pri[j]))
-            {
-                phi[i*pri[j]]=phi[i]*pri[j];
-                break;
-            }
-            else phi[i*pri[j]]=phi[i]*(pri[j]-1);
-        }
-    }
-}
-</code></pre>
-<br>
-<ul>
-<li>线性筛逆元</li>
-</ul>
-<pre><code class="language-cpp">	inv[1] = 1;
-    void Getinv(int p)
-    {
-        for (int i = 2; i &lt;= n; ++i) 
-            inv[i] = (p - p / i) * inv[p % i] % p;
-    }
-</code></pre>
-<ul>
-<li>线性筛阶乘逆元逆元</li>
-</ul>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><mrow><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>!</mo></mrow></mfrac><mtext> </mtext><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⋅</mo><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>i</mi><mo>!</mo></mrow></mfrac><mo>=</mo><mi>i</mi><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mtext> </mtext><mo>⇒</mo><mi>i</mi><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><msup><mo>!</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⋅</mo><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(i+1)!^{-1}=\frac{1}{(i+1)!}\ (i+1)!^{-1}\cdot (i+1)=\frac {1}{i!}=i!^{-1}\ \Rightarrow i!^{-1}=(i+1)!^{-1}\cdot (i+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.365108em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mclose mtight">)</span><span class="mclose mtight">!</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace"> </span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mclose mtight">!</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace"> </span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose"><span class="mclose">!</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
-<br>
-<ul>
-<li>线性筛莫比乌斯函数</li>
-</ul>
-<pre><code class="language-cpp">void init()
-{
-    mu[1] = 1;
-    for(int i=2;i&lt;maxd;i++)
-    {
-        if(!vis[i]) prime[++cnt] = i, mu[i] = -1;
-        for(int j=1;j&lt;=cnt &amp;&amp; i*prime[j] &lt;= maxd;j++)
-        {
-            vis[i*prime[j]] = 1;
-            if(i%prime[j] == 0) break;
-            mu[i*prime[j]] = -mu[i]; 
-        }
-    }
-}
-</code></pre>
 <ul>
 <li>组合数</li>
 </ul>
 <pre><code class="language-cpp">struct
 {
-    ll fac[maxd];
+    ll fac[N],inv[N],Finv[N];
     void init()
     {
-        fac[0] = 1ll;
-        FOR(i,1,maxd-1) fac[i] = i * fac[i-1] % mod;
+        fac[0] = 1ll, Finv[0]=1ll,inv[1]=1ll;
+        for(int i=2;i&lt;N;i++) inv[i]=(mod-mod/i)*inv[mod%i]%mod;
+        for(int i=1;i&lt;N;i++)
+        {
+            fac[i]=fac[i-1]*i%mod;
+            Finv[i]=Finv[i-1]*inv[i]%mod;
+        }
     }
     ll C(ll n,ll m)
     {
-        return fac[n] * fpow(fac[m],mod-2,mod) %mod * fpow(fac[n-m],mod-2,mod) %mod;
+        if(n&lt;0||m&lt;0||m&gt;n) return 0;
+        return fac[n] * Finv[m] %mod * Finv[n-m] %mod;
     }
 }comb;
 </code></pre>
@@ -221,7 +187,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1583245655567" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1584293707416" class="no-responsive avatar">
     <div class="text-muted">人在武汉，刚下钻石公主号</div>
     <div class="social-container">
       
@@ -243,6 +209,36 @@
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6397/">「HDU 6397」Character Encoding</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6406/">「HDU 6406」 Character Encoding &amp; 「P4198」楼房重建</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6416/">「HDU 6416」Rikka with Seam</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/SegmentTree/">「Tamplate」Segment Tree</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-ji-lin-sheng-sai/">「2018 CCPC」- 吉林省赛</a>
+            </li>
+          
         
           
             <li>
@@ -270,38 +266,18 @@
         
           
             <li>
-              <a href="https://dinnerhunt.cn/post/map/">“图” 谱</a>
+              <a href="https://dinnerhunt.cn/post/map/">“图” </a>
             </li>
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/GYM-102501/">「GYM 102501」2019-2020 ICPC Southwestern European Regional Programming Contest (SWERC 2019-20)</a>
-            </li>
+        
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1288E/">「CodeForces 1288E」 Messenger Simulator</a>
-            </li>
-          
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1288D/">「CodeForces 1288D」 Minimax Problem</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1198E/">「CodeForces 1198E」 Rectangle Painting 2</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/CF1198F/">「CodeForces 1198F」GCD Groups 2</a>
-            </li>
           
         
           
@@ -641,15 +617,35 @@
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/yJt_SNX8V/" class="badge ">
+          容斥原理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge warning">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge secondary">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge success">
           LGV
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge warning">
           莫队
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge secondary">
           尺取
         </a>
       
@@ -657,31 +653,31 @@
           题解
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge success">
           GYM
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge secondary">
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge warning">
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="badge ">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge success">
           最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge warning">
           网络流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge success">
           随机数
         </a>
       
@@ -689,27 +685,23 @@
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge ">
-          普通DP
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="badge secondary">
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge success">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="badge secondary">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge warning">
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge ">
           状压DP
         </a>
       
@@ -717,11 +709,11 @@
           双连通分量
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="badge secondary">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge ">
           Hash
         </a>
       
@@ -733,23 +725,19 @@
           单调队列
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge ">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge success">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge secondary">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge warning">
-          组合数学
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk/" class="badge success">
           博弈论
         </a>
       
@@ -757,91 +745,87 @@
           DFS序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK/" class="badge secondary">
           可持久化Trie
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge ">
           三元环
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge secondary">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV/" class="badge secondary">
           最小费用最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge secondary">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs/" class="badge ">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge success">
-          前缀和
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge success">
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge secondary">
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV/" class="badge warning">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0/" class="badge secondary">
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge ">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5/" class="badge ">
           差分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UiHW6viQf/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf/" class="badge secondary">
           枚举
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge warning">
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge secondary">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA/" class="badge secondary">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge warning">
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge success">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge warning">
           线性基
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="badge warning">
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge ">
           主席树
         </a>
       
@@ -849,15 +833,15 @@
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge success">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge success">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge ">
           LCA
         </a>
       
@@ -865,7 +849,7 @@
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f/" class="badge warning">
           学习笔记
         </a>
       
@@ -873,19 +857,19 @@
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="badge secondary">
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge success">
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="badge ">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge secondary">
           搜索
         </a>
       
@@ -893,15 +877,11 @@
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge secondary">
-          线段树
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="badge success">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge secondary">
           连通图
         </a>
       
@@ -913,11 +893,11 @@
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/template/" class="badge warning">
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge secondary">
           Gridea
         </a>
       
