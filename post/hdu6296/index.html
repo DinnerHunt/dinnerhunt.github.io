@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>「HDU 6296」代码派对 | dinnerhunt</title>
+<meta name="description" content="人在武汉，刚下钻石公主号">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1585133326532">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dinnerhunt.cn">dinnerhunt</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/friend" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>「HDU 6296」代码派对</h1>
+            <p class="article-meta">
+              2020-03-19
+              
+                <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge ">
+                  前缀和
+                </a>
+              
+                <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge warning">
+                  组合数学
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>比特镇的算法竞赛选手们应邀来到了小Q家中参加盛大的&quot;代码派对&quot;。小Q计划在家中举行一场ACM赛制的联谊赛，3个人为一队进行比赛。</p>
+<!--more-->
+<p>为了让比赛更加有趣，也为了让大家能多多了解他人，小Q在花园的地上画出了一个1000×1000的网格图，从上往下依次编号为第1行到第1000行，从左往右依次编号为第1列到第1000列。小Q让每一名选手选择一个网格图内平行坐标轴的子矩形(x1,y1)−(x2,y2)，表示以(x1,y1)和(x2,y2)为对顶点的矩形，包含所有满足x∈[x1,x2]且y∈[y1,y2]的格子。</p>
+<p>小Q规定，i,j,k(1≤i &lt; j &lt; k ≤n)三人组成一支三人队伍能参赛，当且仅当这三个人选择的子矩形包含至少一个公共格子。请写一个程序，帮助小Q统计有多少种三人组合组成的队伍可以参赛。</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6296">「HDU 6296」代码派对</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>一道非常妙的题目<br>
+首先可以做一次二维前缀和，然后对于每个格子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i,j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>可以得到方案数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mrow><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><mn>3</mn></msubsup></mrow><annotation encoding="application/x-tex">C_{a[i][j]}^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3111079999999997em;vertical-align:-0.49699999999999994em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999998em;"><span style="top:-2.378em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mopen mtight">[</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">]</span><span class="mopen mtight">[</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mclose mtight">]</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.49699999999999994em;"><span></span></span></span></span></span></span></span></span></span>，计为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">S_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+但很显然，这样会重复统计，比如两个矩阵交于多个格子<br>
+于是我们考虑求出重复的数量<br>
+对于每个矩阵<br>
+将其最左边一列去掉，进行一次统计方案数，计为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">S_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+将其最上方一列去掉，进行一次统计方案数，计为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+将其最上方一列和左方一列去掉，再进行一次统计方案数，计为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">S_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+答案则为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>−</mo><msub><mi>S</mi><mn>1</mn></msub><mo>−</mo><msub><mi>S</mi><mn>2</mn></msub><mo>+</mo><msub><mi>S</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">S_0 - S_1 - S_2 +S_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll N = 1e5+10,M = 1e3+10;
+const ll mod = 998244353;
+ll C[N],a[N][5],pre[M][M],n;
+ll gao(ll x,ll y)
+{
+    ll ans = 0;MM(pre,0);
+    FOR(i,1,n)
+    {
+        ll x1 = a[i][1] + x ,y1 = a[i][2] + y ,x2 = a[i][3],y2 = a[i][4];
+        pre[x1][y1]++; pre[x2+1][y2+1]++;
+        pre[x2+1][y1]--;pre[x1][y2+1]--;
+    }
+    FOR(i,1,M-1) FOR(j,1,M-1) pre[i][j] += pre[i][j-1] + pre[i-1][j] - pre[i-1][j-1] ,ans+=C[pre[i][j]];
+//    PLN(ans);
+    return ans;
+}
+int main()
+{
+//    __IN;__OUT
+    FOR(i,3,N-1) C[i] = i*(i-1)/2*(i-2)/3;
+    ll T;RLL(T);
+    while(T--)
+    {
+        RLL(n);
+        FOR(i,1,n) FOR(j,1,4)  RLL(a[i][j]);
+        PLN(gao(0,0)-gao(0,1)-gao(1,0)+gao(1,1));
+    }
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://dinnerhunt.cn/post/hdu6290/">
+                <h3 class="post-title">
+                  「HDU 6290」奢侈的旅行
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1585133326532" class="no-responsive avatar">
+    <div class="text-muted">人在武汉，刚下钻石公主号</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6296/">「HDU 6296」代码派对</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6290/">「HDU 6290」奢侈的旅行</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6287/">「HDU 6287」口算训练</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6397/">「HDU 6397」Character Encoding</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6406/">「HDU 6406」 Character Encoding &amp; 「P4198」楼房重建</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6416/">「HDU 6416」Rikka with Seam</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/SegmentTree/">「Tamplate」Segment Tree</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-ji-lin-sheng-sai/">「2018 CCPC」- 吉林省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/2018-ccpc-hei-long-jiang-sheng-sai/">「2018 CCPC」- 黑龙江省赛</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/codeforces-round-624-div-3/">Codeforces Round #624 (Div. 3)</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge secondary">
+          组合数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/G6tI8eZqZF/" class="badge warning">
+          最短路
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge ">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/yJt_SNX8V/" class="badge secondary">
+          容斥原理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge success">
+          线段树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge ">
+          普通DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge ">
+          LGV
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge success">
+          莫队
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge success">
+          尺取
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP/" class="badge secondary">
+          题解
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge success">
+          GYM
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge secondary">
+          数据结构
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge ">
+          思维
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="badge secondary">
+          二分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge ">
+          最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge success">
+          网络流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge success">
+          随机数
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o/" class="badge warning">
+          贪心
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="badge secondary">
+          构造
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge warning">
+          二分图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge success">
+          2-SAT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge secondary">
+          状压DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco/" class="badge secondary">
+          双连通分量
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="badge secondary">
+          树型DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge ">
+          Hash
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="badge ">
+          离散化
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q/" class="badge secondary">
+          单调队列
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge secondary">
+          数论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge secondary">
+          DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge warning">
+          树上问题
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk/" class="badge success">
+          博弈论
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD/" class="badge warning">
+          DFS序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK/" class="badge secondary">
+          可持久化Trie
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge success">
+          三元环
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge warning">
+          期望概率
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/bvBK1-LHV/" class="badge success">
+          最小费用最大流
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge secondary">
+          矩阵乘法
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs/" class="badge success">
+          个人经历
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge warning">
+          TopSort
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge secondary">
+          树上启发式合并
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV/" class="badge warning">
+          并查集
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0/" class="badge success">
+          模拟
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge warning">
+          括号序
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5/" class="badge secondary">
+          差分
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/UiHW6viQf/" class="badge secondary">
+          枚举
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge secondary">
+          树状数组
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge success">
+          数学
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA/" class="badge secondary">
+          数位DP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge secondary">
+          CDQ分治
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge ">
+          原根
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge secondary">
+          线性基
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="badge secondary">
+          曼哈顿最小生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9/" class="badge secondary">
+          DFS
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge secondary">
+          CRT
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge ">
+          支配树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge success">
+          LCA
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP/" class="badge success">
+          欧拉定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f/" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD/" class="badge secondary">
+          莫比乌斯反演
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="badge success">
+          KMP
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge secondary">
+          字符串
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="badge secondary">
+          AC自动机
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge secondary">
+          搜索
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="badge secondary">
+          Tire
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="badge ">
+          生成树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge secondary">
+          连通图
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk/" class="badge warning">
+          中国剩余定理
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="badge warning">
+          计算几何
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/template/" class="badge secondary">
+          template
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

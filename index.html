@@ -7,7 +7,7 @@
 <meta name="description" content="人在武汉，刚下钻石公主号">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1584293707416">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1585133326532">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -90,6 +90,86 @@
           
   <article class="article">
     <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/hdu6296/">「HDU 6296」代码派对</a>
+    </h2>
+    <p class="article-meta">
+      2020-03-19
+      
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+          前缀和
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge success">
+          组合数学
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>比特镇的算法竞赛选手们应邀来到了小Q家中参加盛大的&quot;代码派对&quot;。小Q计划在家中举行一场ACM赛制的联谊赛，3个人为一队进行比赛。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/hdu6296/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/hdu6290/">「HDU 6290」奢侈的旅行</a>
+    </h2>
+    <p class="article-meta">
+      2020-03-19
+      
+        <a href="https://dinnerhunt.cn/tag/G6tI8eZqZF/" class="badge success">
+          最短路
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>高玩小Q不仅喜欢玩寻宝游戏，还喜欢一款升级养成类游戏。在这个游戏的世界地图中一共有n个城镇，编号依次为1到n。</p>
+<p>这些城镇之间有m条单向道路，第i 条单项道路包含四个参数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mi>i</mi><mo separator="true">,</mo><mi>v</mi><mi>i</mi><mo separator="true">,</mo><mi>a</mi><mi>i</mi><mo separator="true">,</mo><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">ui,vi,ai,bi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">i</span></span></span></span>，表示一条从ui号城镇出发，在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">vi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span></span></span></span>号城镇结束的单向道路，因为是单向道路，这不意味着小Q可以从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">vi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span></span></span></span>沿着该道路走到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">ui</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span></span></span></span>。小Q的初始等级<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>e</mi><mi>v</mi><mi>e</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">level</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>为1，每当试图经过一条道路时，需要支付<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo>=</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo>(</mo><mfrac><mrow><mi>l</mi><mi>e</mi><mi>v</mi><mi>e</mi><mi>l</mi><mo>+</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><mrow><mi>l</mi><mi>e</mi><mi>v</mi><mi>e</mi><mi>l</mi></mrow></mfrac><mo>)</mo></mrow><annotation encoding="application/x-tex">cost=log_2(\frac{level+a_i}{level})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2412079999999999em;vertical-align:-0.345em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8962079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span>点积分，并且经过该道路后，小Q的等级会提升<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">ai</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span></span></span></span>级，到达<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>e</mi><mi>v</mi><mi>e</mi><mi>l</mi><mo>+</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">level+a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>级。但是每条道路都会在一定意义上歧视低消费玩家，准确地说，如果该次所需积分<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">cost bi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">b</span><span class="mord mathdefault">i</span></span></span></span>，那么小Q不能经过该次道路，也不能提升相应的等级。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/hdu6290/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/hdu6287/">「HDU 6287」口算训练</a>
+    </h2>
+    <p class="article-meta">
+      2020-03-19
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge secondary">
+          主席树
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>小Q非常喜欢数学，但是他的口算能力非常弱。因此他找到了小T，给了小T一个长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>的正整数序列<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_1,a_2,...,a_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，要求小T抛出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>个问题以训练他的口算能力。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/hdu6287/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
       <a href="https://dinnerhunt.cn/post/hdu6397/">「HDU 6397」Character Encoding</a>
     </h2>
     <p class="article-meta">
@@ -124,7 +204,7 @@
     <p class="article-meta">
       2020-03-15
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge secondary">
           线段树
         </a>
       
@@ -150,11 +230,11 @@
     <p class="article-meta">
       2020-03-13
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge warning">
           前缀和
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge success">
           普通DP
         </a>
       
@@ -200,15 +280,15 @@
     <p class="article-meta">
       2020-03-03
       
-        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge secondary">
           LGV
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge ">
           莫队
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge secondary">
           尺取
         </a>
       
@@ -269,85 +349,6 @@
     </div>
   </article>
 
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015/">UCF Local Programming Contest 2015</a>
-    </h2>
-    <p class="article-meta">
-      2020-02-27
-      
-        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP/" class="badge secondary">
-          题解
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p><a href="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/file/UCF%20Local%20Contest%202015%20%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A.pdf">UCF Local Contest 2015解题报告[东华大学 ACM 集训队]🔗</a></p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/GYM-102501/">「GYM 102501」2019-2020 ICPC Southwestern European Regional Programming Contest (SWERC 2019-20)</a>
-    </h2>
-    <p class="article-meta">
-      2020-02-26
-      
-        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge warning">
-          GYM
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/GYM-102501/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/CF1288E/">「CodeForces 1288E」 Messenger Simulator</a>
-    </h2>
-    <p class="article-meta">
-      2020-01-16
-      
-        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge secondary">
-          数据结构
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge secondary">
-          思维
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>Polycarp is a frequent user of the very popular messenger. He's chatting with his friends all the time. He has 𝑛 friends, numbered from 1 to 𝑛.</p>
-<p>Recall that a permutation of size 𝑛 is an array of size 𝑛 such that each integer from 1 to 𝑛 occurs exactly once in this array.</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/CF1288E/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
 
         </div>
         
@@ -364,7 +365,7 @@
       
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1584293707416" class="no-responsive avatar">
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1585133326532" class="no-responsive avatar">
     <div class="text-muted">人在武汉，刚下钻石公主号</div>
     <div class="social-container">
       
@@ -386,6 +387,24 @@
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6296/">「HDU 6296」代码派对</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6290/">「HDU 6290」奢侈的旅行</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/hdu6287/">「HDU 6287」口算训练</a>
+            </li>
+          
         
           
             <li>
@@ -430,21 +449,9 @@
           
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/2019ccpcjiangxi/">「 2019CCPC」- 江西省赛</a>
-            </li>
-          
         
           
-            <li>
-              <a href="https://dinnerhunt.cn/post/ucf-local-programming-contest-2015/">UCF Local Programming Contest 2015</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/map/">“图” </a>
-            </li>
           
         
           
@@ -794,27 +801,35 @@
     </div>
     <div class="row">
       
-        <a href="https://dinnerhunt.cn/tag/yJt_SNX8V/" class="badge ">
-          容斥原理
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+          前缀和
         </a>
       
         <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="badge ">
           组合数学
         </a>
       
+        <a href="https://dinnerhunt.cn/tag/G6tI8eZqZF/" class="badge success">
+          最短路
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge secondary">
+          主席树
+        </a>
+      
+        <a href="https://dinnerhunt.cn/tag/yJt_SNX8V/" class="badge secondary">
+          容斥原理
+        </a>
+      
         <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge ">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
-          前缀和
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge success">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="badge secondary">
           LGV
         </a>
       
@@ -822,11 +837,11 @@
           莫队
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="badge secondary">
           尺取
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP/" class="badge secondary">
           题解
         </a>
       
@@ -834,11 +849,11 @@
           GYM
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge ">
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge success">
           思维
         </a>
       
@@ -846,19 +861,19 @@
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge secondary">
           最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge secondary">
           网络流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge secondary">
           随机数
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UvxBOp35o/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/UvxBOp35o/" class="badge warning">
           贪心
         </a>
       
@@ -866,7 +881,7 @@
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge success">
           二分图
         </a>
       
@@ -874,51 +889,51 @@
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge ">
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge success">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/REM8Gsvco/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco/" class="badge success">
           双连通分量
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="badge warning">
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge success">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="badge secondary">
           离散化
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q/" class="badge success">
           单调队列
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge success">
           数论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge secondary">
           DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge ">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/ZFEKIoaJk/" class="badge ">
           博弈论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/OxWYXA4zD/" class="badge secondary">
           DFS序
         </a>
       
@@ -926,11 +941,11 @@
           可持久化Trie
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge ">
           三元环
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge secondary">
           期望概率
         </a>
       
@@ -938,7 +953,7 @@
           最小费用最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge secondary">
           矩阵乘法
         </a>
       
@@ -950,7 +965,7 @@
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge ">
           树上启发式合并
         </a>
       
@@ -962,11 +977,11 @@
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge warning">
           括号序
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/SDS7lZID5/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/SDS7lZID5/" class="badge secondary">
           差分
         </a>
       
@@ -974,11 +989,11 @@
           枚举
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge ">
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge success">
           数学
         </a>
       
@@ -986,15 +1001,15 @@
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge warning">
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge success">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge warning">
           线性基
         </a>
       
@@ -1002,23 +1017,19 @@
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge secondary">
-          主席树
-        </a>
-      
         <a href="https://dinnerhunt.cn/tag/IP_rQnta9/" class="badge secondary">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge secondary">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge secondary">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge secondary">
           LCA
         </a>
       
@@ -1034,11 +1045,11 @@
           莫比乌斯反演
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="badge ">
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge secondary">
           字符串
         </a>
       
@@ -1046,11 +1057,11 @@
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge warning">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="badge ">
           Tire
         </a>
       
@@ -1058,15 +1069,15 @@
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge secondary">
           连通图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nRNPJIOnk/" class="badge secondary">
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="badge secondary">
           计算几何
         </a>
       
@@ -1074,7 +1085,7 @@
           template
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge ">
           Gridea
         </a>
       
