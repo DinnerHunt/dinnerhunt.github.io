@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-04-07T11:36:26.475Z</updated>
+    <updated>2020-04-08T07:13:16.688Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -24,6 +24,7 @@
 <a href="https://www.luogu.com.cn/record/32551206">E - Rest In The Shades</a><br>
 <a href="">F - Road Projects</a><br>
 G - Appropriate Team (咕咕咕)</p>
+<p><br><br></p>
 <h3 id="a-death-note">A - Death Note</h3>
 <p>模拟翻页就好，用一个数记录当前剩余的页数</p>
 <p><br><br></p>
@@ -62,8 +63,8 @@ G - Appropriate Team (咕咕咕)</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Codeforces Round #526]]></title>
-        <id>https://dinnerhunt.cn/post/CF526#/</id>
-        <link href="https://dinnerhunt.cn/post/CF526#/">
+        <id>https://dinnerhunt.cn/post/CF526/</id>
+        <link href="https://dinnerhunt.cn/post/CF526/">
         </link>
         <updated>2020-04-06T16:06:53.000Z</updated>
         <content type="html"><![CDATA[<h3 id="code">Code</h3>
@@ -72,21 +73,26 @@ G - Appropriate Team (咕咕咕)</p>
 <a href="https://vjudge.net/solution/25150629">C - The Fair Nut and String</a><br>
 <a href="https://vjudge.net/solution/25151446">D - The Fair Nut and the Best Path</a><br>
 <a href="https://www.luogu.com.cn/record/32514432">E - The Fair Nut and Strings</a><br>
-<a href="https://codeforces.com/problemset/problem/1084/F">F - Max Mex</a></p>
+<a href="https://codeforces.com/problemset/problem/1084/F">F - Max Mex</a><br>
+<br><br></p>
 <h3 id="a-the-fair-nut-and-elevator"><a href="https://codeforces.com/problemset/problem/1084/A">A - The Fair Nut and Elevator</a></h3>
 <p>简单猜想一下，可以知道电梯在一楼是最优的，后面直接统计即可</p>
+<p><br><br></p>
 <h3 id="b-kvass-and-the-fair-nut"><a href="https://codeforces.com/problemset/problem/1084/B">B - Kvass and the Fair Nut</a></h3>
 <p>因为我们要使最小的最大，因此肯定是所有数越平均越好<br>
 求出总和，减去需要花费的，然后剩下的除以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> (下取整)<br>
 当然，因为初始不相同的原因，我们还要提前找到所有数中最小的<br>
 最后对结果取个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span>即可</p>
+<p><br><br></p>
 <h3 id="c-the-fair-nut-and-string"><a href="https://codeforces.com/problemset/problem/1084/C">C - The Fair Nut and String</a></h3>
 <p>当<strong>b</strong>出现时，后面每出现一个<strong>a</strong>都能与前面所有的合法的序列组成一个新的序列<br>
 因此每次<strong>b</strong>出现时，更新增量，<strong>a</strong>出现时更新答案</p>
+<p><br><br></p>
 <h3 id="d-the-fair-nut-and-the-best-path"><a href="https://codeforces.com/problemset/problem/1084/D">D - The Fair Nut and the Best Path</a></h3>
 <p>不用考虑中途没油的情况，如果中途没油，那么前面这段肯定不用选，因为少掉这段答案肯定会增加<br>
 因此题目变成了求选路径，使得所选点权-所选边权最大<br>
 类似求树的直径，树形DP即可(有一次DFS做法，笔者用了两次，笔者代码实现较丑，不建议参考)</p>
+<p><br><br></p>
 <h3 id="e-the-fair-nut-and-strings"><a href="https://codeforces.com/problemset/problem/1084/E">E - The Fair Nut and Strings</a></h3>
 <p>考虑对这<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个字符串建一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span>树，答案则是这棵树的节点个数<br>
 因此我们要最大化每层点的个数<br>
@@ -95,6 +101,7 @@ G - Appropriate Team (咕咕咕)</p>
 字符串<strong>B</strong>同理<br>
 然后下一层的节点为当前层节点数量乘2,接着继续考虑下一位字符<br>
 因为只有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个字符串，因此每层节点最多只有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个</p>
+<p><br><br></p>
 <h3 id="f-max-mex"><a href="https://codeforces.com/problemset/problem/1084/F">F - Max Mex</a></h3>
 <blockquote>
 <p>代码参考 <a href="https://www.luogu.com.cn/user/29936">xyz32768</a></p>
