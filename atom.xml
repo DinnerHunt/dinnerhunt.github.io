@@ -2,14 +2,152 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-05-20T05:45:56.180Z</updated>
+    <updated>2020-06-04T02:41:13.905Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
-    <subtitle>广告位招商</subtitle>
+    <subtitle>zoeK</subtitle>
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「ICPC Central Europe Regional Contest 2019」 G. K==S]]></title>
+        <id>https://dinnerhunt.cn/post/icpc-central-europe-regional-contest-2019-g-ks/</id>
+        <link href="https://dinnerhunt.cn/post/icpc-central-europe-regional-contest-2019-g-ks/">
+        </link>
+        <updated>2020-05-21T08:41:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>Progressive hard octave rock tunes (so-called “phorts”) are written using a specifific music notation. This flflavor of rock is built on just 13 difffferent note pitches, other pitches (in other octaves)are considered to be an outdated musical ballast. Each note can be either a long one or a shortone. Consequently, there are exactly 26 difffferent notes in the rock.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Progressive hard octave rock tunes (so-called “phorts”) are written using a specifific music notation. This flflavor of rock is built on just 13 difffferent note pitches, other pitches (in other octaves)are considered to be an outdated musical ballast. Each note can be either a long one or a shortone. Consequently, there are exactly 26 difffferent notes in the rock.</p>
+<!--more-->
+<p>You are going to compose a phort tune on the occasion of your friend’s birthday and perform itwith your band on the main town square. While composing the phort, you need to avoid certainmusical phrases, which are heavily copyrighted as a result of long research sponsored by bigrecord companies. It has been established that these phrases are very catchy, easy to remember,and could be exploited to bind the listeners subconsciously to a particular music company whichwould utilize these phrases in their production.</p>
+<p>The tune is a sequence of notes. A musical phrase is also a sequence of notes and it is consideredto be contained in a tune if its notes form a contiguous subsequence of the tune, which meansthe same notes appear in the tune right after each other in the same order.</p>
+<p>Fortunately, only a few forbidden phrases have been patented so far. Thus, you have a relativefreedom in composing your own tunes. In particular, you are interested in the number ofacceptable tunes of some length. An acceptable tune is any tune which does not contain aforbidden phrase. The length of the tune is equal to the number of notes it contains.</p>
+<h4 id="大致题意">大致题意 📖</h4>
+<p>给定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span>个长度和不超过100的字符串<br>
+求长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，不包含上面任意子串的字符串方案数</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「ICPC Central Europe Regional Contest 2019」 G. K==S</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>将不合法字符串构建自动机，然后对于每个节点打算不合法标记<br>
+然后就将问题转化成了从点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>开始，不能到达不合法点方案数<br>
+这样就变成了 <a href="https://www.luogu.com.cn/problem/P3758">TJOI2017 可乐</a><br>
+注意一下，对于一个点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>,如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fail[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>不合法，那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>也不合法</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const int mod = 1e9+7;
+const double eps = 1e-8;
+const double pi = acos(-1);
+const int N = 2e5+10;
+struct AC_Automaton
+{
+    ll ch[N][26],fail[N],cnt[N],tot;
+    void init()
+    {
+        MM(ch,-1);MM(fail,0);MM(cnt,0);
+        tot = 0;
+    }
+    void insert(char *s)
+    {
+        ll p = 0,len = strlen(s);
+        FOR(i,0,len-1)
+        {
+            if(ch[p][s[i] - 'a'] == -1) ch[p][s[i]-'a'] = ++tot;
+            p = ch[p][s[i] - 'a'];
+        }
+        cnt[p]++;
+    }
+    void build()
+    {
+        queue&lt;ll&gt; que;
+        FOR(i,0,25)
+        {
+            if(ch[0][i] == -1) ch[0][i] = 0;
+            else que.push(ch[0][i]);
+        }
+        while(!que.empty())
+        {
+            ll p = que.front(); que.pop();
+            FOR(i,0,25)
+            {
+                if(ch[p][i] == -1) ch[p][i] = ch[fail[p]][i];
+                else
+                {
+                    fail[ch[p][i]] = ch[fail[p]][i], que.push(ch[p][i]);
+                    cnt[ch[p][i]] |= cnt[ch[fail[p]][i]];
+                }
+            }
+        }
+    }
+}AC;
+char s[201];
+struct Matrix_Pow
+{
+    ll n;
+    struct matrix
+    {
+        long long a[205][205];
+    }ans,base,C;
+    void init()
+    {
+        MM(ans.a,0);
+        MM(base.a,0);
+        FOR(i,1,204) ans.a[i][i] = 1;
+    }
+    matrix matrix_mul(matrix A, matrix B)
+    {
+        matrix C;
+        for (int i = 1; i &lt;= n; ++i)
+            for (int j = 1; j &lt;= n; ++j)
+            {
+                C.a[i][j] = 0;
+                for (int k = 1; k &lt;= n; ++k) C.a[i][j] = (C.a[i][j] + (A.a[i][k] * B.a[k][j] % mod)) % mod;
+            }
+        return C;
+    }
+    void matrix_pow(long long b)
+    {
+        for (; b; b &gt;&gt;= 1)
+        {
+            if (b &amp; 1) ans = matrix_mul(ans, base);
+            base = matrix_mul(base, base);
+        }
+    }
+}M;
+int main()
+{
+//    __IN;__OUT;
+    ll n,m;RLL2(n,m);
+    AC.init();
+    FOR(i,1,m)
+    {
+        ll x;RLL(x);
+        RS(s);
+        AC.insert(s);
+    }
+    AC.build();
+    M.init();
+    M.n = AC.tot+1;
+    FOR(i,0,AC.tot)
+    {
+        if(AC.cnt[i]) continue;
+        FOR(j,0,25)
+        {
+            ll v = AC.ch[i][j];
+            if(AC.cnt[v]) continue;
+            if(AC.ch[i][j] == -1) v = 0;
+            M.base.a[i+1][v+1]++;
+        }
+    }
+    M.matrix_pow(n);
+    ll ans = 0;
+    FOR(i,1,AC.tot+1)
+        ans = (ans + M.ans.a[1][i])%mod;
+    PLN(ans);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「CF1349D」 Slime and Biscuits]]></title>
         <id>https://dinnerhunt.cn/post/cf1349d/</id>
@@ -59,7 +197,30 @@ biscuits. At each second, Slime will choose a biscuit randomly uniformly among a
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>⋅</mo><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msubsup><mi>E</mi><mi>x</mi><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup></msubsup><mo>−</mo><mi>C</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">n \cdot ans = \sum_{i=1}^n E_{x}^{&#x27;} -  C(n-1)
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9924799999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278285714285715em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p>
 <h4 id="代码">代码</h4>
-<pre><code class="language-cpp"></code></pre>
+<pre><code class="language-cpp">const int mod = 998244353;
+const double eps = 1e-8;
+const int N = 3e5+10;
+ll a[N],ans[N];
+int main()
+{
+//    __IN;__OUT;
+    ll n,s= 0;RLL(n);
+    FOR(i,1,n) RLL(a[i]), s+=a[i];
+    ll invs = fpow(s,mod-2,mod), invn = fpow(n-1,mod-2,mod);
+    _FOR(i,s,1)
+    {
+        ll k1= i * invs % mod * invn % mod;
+        ll k2= (s-i) * invs % mod;
+        ans[i] = (k2 * ans[i+1] + 1) % mod * fpow(k1,mod-2,mod) % mod;
+    }
+    FOR(i,1,s) ans[i] = (ans[i] + ans[i-1])%mod;
+    ll res = 0;
+    FOR(i,1,n) res = (res + ans[s-a[i]]) % mod;
+    res = (res + mod - ans[s] *(n-1) % mod) %mod;
+    PLN(res*fpow(n,mod-2,mod)%mod);
+    return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -687,71 +848,6 @@ int main()
     printf(&quot;%.3lf&quot;,sum);
     return 0;
 }
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「NowCode」杀树]]></title>
-        <id>https://dinnerhunt.cn/post/nowcode-sha-shu/</id>
-        <link href="https://dinnerhunt.cn/post/nowcode-sha-shu/">
-        </link>
-        <updated>2020-05-01T14:22:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>牛牛学习了树。</p>
-<p>给出一棵节点数为 n 的树，删去一个点 i 的代价为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，一条链的长度定义为路径上 点 的个数。一棵树死了，满足不存在一条长度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo><mi>l</mi></mrow><annotation encoding="application/x-tex">\geq l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span> 的链，牛牛希望用最少代价杀死这棵树。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>牛牛学习了树。</p>
-<p>给出一棵节点数为 n 的树，删去一个点 i 的代价为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，一条链的长度定义为路径上 点 的个数。一棵树死了，满足不存在一条长度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo><mi>l</mi></mrow><annotation encoding="application/x-tex">\geq l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span> 的链，牛牛希望用最少代价杀死这棵树。</p>
-<!--more-->
-<h4 id="链接">链接 🔗</h4>
-<p><a href="https://ac.nowcoder.com/acm/contest/5389/D">「NowCode」杀树</a></p>
-<h4 id="题解">题解  ❓</h4>
-<p>树型DP</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const int N = 5e3+10;
-V G[N];
-ll a[N],dp[N][N],s[N],sz[N],n,m;
-void dfs(ll x,ll fa)
-{
-    sz[x] = 1;
-    dp[x][1] = dp[x][0] = 0;
-    for(auto v: G[x])
-    {
-        if(v == fa) continue;
-        dfs(v,x);
-        ll now = 1e18;
-        FOR(i,0,sz[v])
-        {
-            if(i &gt;= m) break;
-            now = min(now,dp[v][i]);
-        }
-        dp[x][0] += now;
-        FOR(i,1,sz[x]+sz[v]) s[i] = 1e18;
-        FOR(i,1,sz[x])if(i &lt; m)
-            FOR(j,0,sz[v]) if(i+j&lt;m)
-                s[max(i,j+1)] = min(s[max(i,j+1)],dp[x][i] + dp[v][j]);
-        sz[x]+= sz[v];
-        FOR(i,1,sz[x]) dp[x][i] = s[i];
-    }
-    dp[x][0] += a[x];
-}
-int main()
-{
-//    __IN;__OUT;
-    RLL2(n,m);
-    FOR(i,1,n) RLL(a[i]);
-    FOR(i,1,n-1)
-    {
-        ll x,y;RLL2(x,y);
-        G[x].pb(y); G[y].pb(x);
-    }
-    MM(dp,233);
-    dfs(1,1);
-    ll ans = dp[1][0];
-    FOR(i,1,m-1)  ans = min(ans,dp[1][i]);
-    PLN(ans);
-    return 0;
-}
-
 </code></pre>
 ]]></content>
     </entry>
