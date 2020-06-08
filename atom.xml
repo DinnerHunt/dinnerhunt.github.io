@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dinnerhunt.cn</id>
     <title>dinnerhunt</title>
-    <updated>2020-06-04T02:45:19.418Z</updated>
+    <updated>2020-06-08T10:28:45.026Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dinnerhunt.cn"/>
     <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
@@ -10,6 +10,92 @@
     <logo>https://dinnerhunt.cn/images/avatar.png</logo>
     <icon>https://dinnerhunt.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[「CodeForces 1158C」Permutation recovery]]></title>
+        <id>https://dinnerhunt.cn/post/CF1158C/</id>
+        <link href="https://dinnerhunt.cn/post/CF1158C/">
+        </link>
+        <updated>2020-06-05T04:31:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>Vasya has written some permutation 𝑝1,𝑝2,…,𝑝𝑛 of integers from 1 to 𝑛, so for all 1≤𝑖≤𝑛 it is true that 1≤𝑝𝑖≤𝑛 and all 𝑝1,𝑝2,…,𝑝𝑛 are different. After that he wrote 𝑛 numbers 𝑛𝑒𝑥𝑡1,𝑛𝑒𝑥𝑡2,…,𝑛𝑒𝑥𝑡𝑛. The number 𝑛𝑒𝑥𝑡𝑖 is equal to the minimal index 𝑖&lt;𝑗≤𝑛, such that 𝑝𝑗&gt;𝑝𝑖. If there is no such 𝑗 let's let's define as 𝑛𝑒𝑥𝑡𝑖=𝑛+1.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Vasya has written some permutation 𝑝1,𝑝2,…,𝑝𝑛 of integers from 1 to 𝑛, so for all 1≤𝑖≤𝑛 it is true that 1≤𝑝𝑖≤𝑛 and all 𝑝1,𝑝2,…,𝑝𝑛 are different. After that he wrote 𝑛 numbers 𝑛𝑒𝑥𝑡1,𝑛𝑒𝑥𝑡2,…,𝑛𝑒𝑥𝑡𝑛. The number 𝑛𝑒𝑥𝑡𝑖 is equal to the minimal index 𝑖&lt;𝑗≤𝑛, such that 𝑝𝑗&gt;𝑝𝑖. If there is no such 𝑗 let's let's define as 𝑛𝑒𝑥𝑡𝑖=𝑛+1.</p>
+<!--more-->
+<p>In the evening Vasya went home from school and due to rain, his notebook got wet. Now it is impossible to read some written numbers. Permutation and some values 𝑛𝑒𝑥𝑡𝑖 are completely lost! If for some 𝑖 the value 𝑛𝑒𝑥𝑡𝑖 is lost, let's say that 𝑛𝑒𝑥𝑡𝑖=−1.</p>
+<p>You are given numbers 𝑛𝑒𝑥𝑡1,𝑛𝑒𝑥𝑡2,…,𝑛𝑒𝑥𝑡𝑛 (maybe some of them are equal to −1). Help Vasya to find such permutation 𝑝1,𝑝2,…,𝑝𝑛 of integers from 1 to 𝑛, that he can write it to the notebook and all numbers 𝑛𝑒𝑥𝑡𝑖, which are not equal to −1, will be correct.</p>
+<h4 id="大致题意">大致题意 📖</h4>
+<p>有排列<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>, 令<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>x</mi><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">nxt_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> ，为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 右侧第一个大于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的数的位置，若不存在则 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>x</mi><msub><mi>t</mi><mi>i</mi></msub><mo>=</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">nxt_i=n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span><br>
+现在整个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>x</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">nxt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span></span></span></span>的一部分丢失了，请根据剩余的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>x</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">nxt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span></span></span></span>，构造出一个符合情况的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>，输出任意一解。</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="http://codeforces.com/problemset/problem/1158/C">「CodeForces 1158C」Permutation recovery</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>拓扑排序 + 线段树优化建图</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const int N = 2e6+10;
+ll a[N],ls[N],rs[N],tot,id[N],rt,d[N],ans[N],n,num;
+V G[N];
+void build(ll &amp;p,ll l,ll r)
+{
+    p = ++tot; a[p] =  d[p] = 0; G[p].clear();
+    if(l==r)
+    {
+        a[p] = l, id[l] = p;
+        return;
+    }
+    build(ls[p],l,mid);
+    build(rs[p],mid+1,r);
+    G[p].pb(ls[p]); G[p].pb(rs[p]);
+    d[ls[p]]++;d[rs[p]]++;
+}
+ll change(ll p,ll l,ll r,ll x,ll y,ll v)
+{
+    if(x &gt; y) return 0;
+    if(x &lt;= l &amp;&amp; r &lt;= y) return G[v].pb(p),d[p]++;
+    if(x &lt;= mid) change(ls[p],l,mid,x,y,v);
+    if(y &gt; mid) change(rs[p],mid+1,r,x,y,v);
+}
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    while(t--)
+    {
+        RLL(n); tot = 0; num = n;
+        build(rt,1,n);
+        FOR(i,1,n)
+        {
+            ll x;RLL(x);
+            if(x!=-1)
+            {
+                if(i+1 &lt;= x-1) change(rt,1,n,i+1,x-1,id[i]);
+                if(x &lt;= n)
+                    G[id[x]].pb(id[i]),d[id[i]]++;
+            }
+        }
+        queue&lt;ll&gt; que;
+
+        FOR(i,1,tot) if(!d[i])que.push(i);
+        while(!que.empty())
+        {
+            ll x = que.front(); que.pop();
+            if(a[x]) ans[a[x]] = num--;
+            for(auto v:G[x])
+            {
+                --d[v];
+                if(!d[v]) que.push(v);
+            }
+        }
+        if(num) PS(&quot;-1&quot;);
+        else
+        {
+            FOR(i,1,n) PLP(ans[i]);
+            PN();
+        }
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[「ICPC Central Europe Regional Contest 2019」 G. K==S]]></title>
         <id>https://dinnerhunt.cn/post/icpc-central-europe-regional-contest-2019-g-ks/</id>
@@ -776,78 +862,6 @@ int main()
     return 0;
 }
 
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[「HNOI2013」游走]]></title>
-        <id>https://dinnerhunt.cn/post/P3232/</id>
-        <link href="https://dinnerhunt.cn/post/P3232/">
-        </link>
-        <updated>2020-05-05T17:43:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>给定一个 n 个点 m 条边的无向连通图，顶点从 1 编号到 n，边从 1 编号到 m。</p>
-<p>小 Z 在该图上进行随机游走，初始时小 Z 在 1 号顶点，每一步小 Z 以相等的概率随机选择当前顶点的某条边，沿着这条边走到下一个顶点，获得等于这条边的编号的分数。当小 Z 到达 n 号顶点时游走结束，总分为所有获得的分数之和。 现在，请你对这 m 条边进行编号，使得小 Z 获得的总分的期望值最小。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>给定一个 n 个点 m 条边的无向连通图，顶点从 1 编号到 n，边从 1 编号到 m。</p>
-<p>小 Z 在该图上进行随机游走，初始时小 Z 在 1 号顶点，每一步小 Z 以相等的概率随机选择当前顶点的某条边，沿着这条边走到下一个顶点，获得等于这条边的编号的分数。当小 Z 到达 n 号顶点时游走结束，总分为所有获得的分数之和。 现在，请你对这 m 条边进行编号，使得小 Z 获得的总分的期望值最小。</p>
-<!--more-->
-<h4 id="链接">链接 🔗</h4>
-<p><a href="https://www.luogu.com.cn/problem/P3232">「HNOI2013」游走</a></p>
-<h4 id="题解">题解  ❓</h4>
-<p>先把每个点经过的期望次数求出来<br>
-然后通过点的期望次数求出边的期望次数<br>
-按照边的期望次数贪心的选取<br>
-点的期望次数可以用高斯消元求出</p>
-<h4 id="代码">代码</h4>
-<pre><code class="language-cpp">const int N = 600+5;
-V G[N];
-double a[N][N],b[N],ans[N];
-void Gauss(ll n)
-{
-    FOR(i,1,n)
-    {
-        ll p=i;
-        FOR(k,i+1,n) if(fabs(a[k][i])&gt;fabs(a[p][i])) p=k;
-        if(i!=p) std::swap(a[i],a[p]),std::swap(b[i],b[p]);
-        FOR(k,i+1,n)
-        {
-            double t=a[k][i]/a[i][i]; b[k]-=t*b[i];
-            FOR(j,1,n) a[k][j]-=t*a[i][j];
-        }
-    }
-    _FOR(i,n,1)
-    {
-        FOR(j,i+1,n) b[i]-=ans[j]*a[i][j];
-        ans[i]=b[i]/a[i][i];
-    }
-}
-ll d[N],s[500000],t[500000];
-double e[500000];
-int main()
-{
-//    __IN;__OUT;
-    ll n,m;RLL2(n,m);
-    FOR(i,1,m)
-    {
-        RLL2(s[i],t[i]);
-        G[s[i]].pb(t[i]);G[t[i]].pb(s[i]);
-        d[s[i]]++,d[t[i]]++;
-    }
-    FOR(i,1,n-1)
-    {
-        a[i][i] = 1.0;
-        for(auto v:G[i])
-            if(v!=n) a[i][v] = -1.0/d[v];
-    }
-    b[1] = 1;
-    Gauss(n-1);
-    FOR(i,1,m) e[i] = ans[s[i]] / d[s[i]] + ans[t[i]] / d[t[i]];
-    sort(e+1,e+1+m);
-    double sum = 0.0;
-    FOR(i,1,m) sum += e[i] * (m-i+1.0);
-    printf(&quot;%.3lf&quot;,sum);
-    return 0;
-}
 </code></pre>
 ]]></content>
     </entry>
