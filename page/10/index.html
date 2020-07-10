@@ -4,10 +4,10 @@
     <meta charset="utf-8" >
 
 <title>dinnerhunt</title>
-<meta name="description" content="zoeK">
+<meta name="description" content="秋刀鱼的滋味，">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1591698465431">
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1594347082177">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -90,6 +90,38 @@
           
   <article class="article">
     <h2 class="article-title">
+      <a href="https://dinnerhunt.cn/post/CRT-note/">「学习笔记」CRT &amp; EXCRT</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-30
+      
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge secondary">
+          CRT
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h4 id="给定同余方程组其中-m_i两两互质">给定同余方程组，其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>m</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">m_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>两两互质</h4>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>≡</mo><msub><mi>a</mi><mn>1</mn></msub><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><msub><mi>m</mi><mn>1</mn></msub><mo>)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>≡</mo><msub><mi>b</mi><mn>2</mn></msub><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><msub><mi>m</mi><mn>2</mn></msub><mo>)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mo>⋯</mo></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>≡</mo><msub><mi>c</mi><mi>n</mi></msub><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><msub><mi>m</mi><mi>n</mi></msub><mo>)</mo></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+	x≡a_1 (mod m_1) \\
+	x≡b_2 (mod m_2) \\
+	\cdots \\
+	x≡c_n (mod m_n)
+\end{cases} 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:5.76em;vertical-align:-2.63em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9500200000000003em;"><span style="top:-1.59999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-1.59999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.89999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-3.1500100000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.30001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.60001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.90001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-5.20002em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.45002em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1300000000000003em;"><span style="top:-5.130000000000001em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.6900000000000004em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="minner">⋯</span></span></span><span style="top:-0.8100000000000002em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.63em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+
+    </p>
+    <div class="row">
+      <a href="https://dinnerhunt.cn/post/CRT-note/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
       <a href="https://dinnerhunt.cn/post/codeforces/">Network Contest</a>
     </h2>
     <p class="article-meta">
@@ -155,7 +187,7 @@
     <p class="article-meta">
       2019-08-03
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge success">
           支配树
         </a>
       
@@ -207,11 +239,11 @@
     <p class="article-meta">
       2019-08-02
       
-        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge secondary">
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge warning">
           LCA
         </a>
       
@@ -238,7 +270,7 @@
     <p class="article-meta">
       2019-08-02
       
-        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="badge warning">
           主席树
         </a>
       
@@ -270,7 +302,7 @@ For example:</p>
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge success">
           数论
         </a>
       
@@ -296,11 +328,11 @@ For example:</p>
     <p class="article-meta">
       2019-07-20
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge warning">
           期望概率
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge ">
           状压DP
         </a>
       
@@ -312,33 +344,6 @@ For example:</p>
     </p>
     <div class="row">
       <a href="https://dinnerhunt.cn/post/P2473/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://dinnerhunt.cn/post/LightOJ1027/">「LightOJ 1027」A Dangerous Maze</a>
-    </h2>
-    <p class="article-meta">
-      2019-07-18
-      
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge secondary">
-          期望概率
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>You are in a maze; seeing n doors in front of you in beginning. You can choose any door you like. The probability for choosing a door is equal for all doors.</p>
-<p>If you choose the ith door, it can either take you back to the same position where you begun in xi minutes, or can take you out of the maze after xi minutes. If you come back to the same position, you can't remember anything. So, every time you come to the beginning position, you have no past experience.</p>
-<p>Now you want to find the expected time to get out of the maze.</p>
-
-    </p>
-    <div class="row">
-      <a href="https://dinnerhunt.cn/post/LightOJ1027/" class="readmore-link">
         <button>
           Read More
         </button>
@@ -366,8 +371,8 @@ For example:</p>
       
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dinnerhunt.cn/images/avatar.png?v=1591698465431" class="no-responsive avatar">
-    <div class="text-muted">zoeK</div>
+    <img src="https://dinnerhunt.cn/images/avatar.png?v=1594347082177" class="no-responsive avatar">
+    <div class="text-muted">秋刀鱼的滋味，</div>
     <div class="social-container">
       
         
@@ -388,6 +393,12 @@ For example:</p>
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://dinnerhunt.cn/post/CF1366D/">「CodeForces 1366D」 Two Divisors</a>
+            </li>
+          
         
           
             <li>
@@ -443,10 +454,6 @@ For example:</p>
             </li>
           
         
-          
-            <li>
-              <a href="https://dinnerhunt.cn/post/P3750/">[六省联考2017] 分手是祝愿</a>
-            </li>
           
         
           
@@ -840,23 +847,27 @@ For example:</p>
     </div>
     <div class="row">
       
+        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge warning">
+          数论
+        </a>
+      
         <a href="https://dinnerhunt.cn/tag/ckJHi3dcUE/" class="badge success">
           线段树优化建图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/sTqOT6kkF/" class="badge secondary">
           TopSort
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="badge secondary">
           AC自动机
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/fUltFljdO/" class="badge ">
           矩阵乘法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="badge warning">
           期望概率
         </a>
       
@@ -864,7 +875,7 @@ For example:</p>
           组合数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/8IGXKPkKk/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/8IGXKPkKk/" class="badge success">
           动态规划
         </a>
       
@@ -876,23 +887,23 @@ For example:</p>
           博弈论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/gjqxZB9f1/" class="badge ">
           树上问题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/_J98Cg05-/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/_J98Cg05-/" class="badge ">
           统计
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/vfZ4AXZxZ/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/vfZ4AXZxZ/" class="badge success">
           BFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/YLsZLd95r/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/YLsZLd95r/" class="badge ">
           递推
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/djgZ4v1DS/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/djgZ4v1DS/" class="badge secondary">
           高斯消元
         </a>
       
@@ -900,31 +911,31 @@ For example:</p>
           树型DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Vmvl0a8b_/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/Vmvl0a8b_/" class="badge secondary">
           构造题
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="badge ">
           计算几何
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="badge warning">
           普通DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/AqP6j6rRX/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/AqP6j6rRX/" class="badge secondary">
           比赛
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="badge secondary">
           Tire
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="badge success">
           线段树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/template/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/template/" class="badge warning">
           template
         </a>
       
@@ -936,7 +947,7 @@ For example:</p>
           莫队算法
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/-B-E5SoA7/" class="badge ">
           前缀和
         </a>
       
@@ -956,7 +967,7 @@ For example:</p>
           LGV
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="badge secondary">
           莫队
         </a>
       
@@ -964,31 +975,31 @@ For example:</p>
           尺取
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/6psCctHhP/" class="badge success">
           GYM
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="badge success">
           数据结构
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="badge secondary">
           思维
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="badge secondary">
           二分
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/4KXGkKsoY/" class="badge ">
           最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/L_xWdX5FH/" class="badge warning">
           网络流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/kd0z2rjWM/" class="badge success">
           随机数
         </a>
       
@@ -996,44 +1007,40 @@ For example:</p>
           贪心
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="badge ">
           构造
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="badge warning">
           二分图
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="badge secondary">
           图论
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/4-INADLfj/" class="badge ">
           2-SAT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/7CxaZLshz/" class="badge ">
           状压DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/REM8Gsvco/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/REM8Gsvco/" class="badge secondary">
           双连通分量
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="badge ">
           Hash
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="badge secondary">
           离散化
         </a>
       
         <a href="https://dinnerhunt.cn/tag/NoIdmIQ7q/" class="badge secondary">
           单调队列
-        </a>
-      
-        <a href="https://dinnerhunt.cn/tag/XSv1yVoEc/" class="badge secondary">
-          数论
         </a>
       
         <a href="https://dinnerhunt.cn/tag/zRUj8NbTE/" class="badge success">
@@ -1048,7 +1055,7 @@ For example:</p>
           可持久化Trie
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="badge ">
           三元环
         </a>
       
@@ -1056,23 +1063,23 @@ For example:</p>
           最小费用最大流
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Z0LVlykNs/" class="badge success">
           个人经历
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/w50seMzuH/" class="badge ">
           树上启发式合并
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/Pp9Co1kPV/" class="badge ">
           并查集
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/sTnZXOcM0/" class="badge warning">
           模拟
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/ROyzLm5NZT/" class="badge ">
           括号序
         </a>
       
@@ -1084,59 +1091,59 @@ For example:</p>
           枚举
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/dKnnJY3rTt/" class="badge ">
           树状数组
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/RoH1tCBeb/" class="badge success">
           数学
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/rn0UkP3YA/" class="badge ">
           数位DP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="badge success">
           CDQ分治
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/y7OqJfHMj/" class="badge warning">
           原根
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/RGMsFoaf-/" class="badge secondary">
           线性基
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="badge ">
           曼哈顿最小生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/IP_rQnta9/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/IP_rQnta9/" class="badge warning">
           DFS
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/U2WN8zugy/" class="badge secondary">
           CRT
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/nxTpcQrz1/" class="badge ">
           支配树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="badge ">
           LCA
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/XxfhfquzP/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/XxfhfquzP/" class="badge success">
           欧拉定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f/" class="badge warning">
+        <a href="https://dinnerhunt.cn/tag/U-TQgmG8f/" class="badge ">
           学习笔记
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/oC4Eeb5aD/" class="badge ">
           莫比乌斯反演
         </a>
       
@@ -1144,19 +1151,19 @@ For example:</p>
           KMP
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="badge secondary">
           字符串
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/P60IVFGvS/" class="badge ">
           搜索
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="badge ">
+        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="badge success">
           生成树
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge secondary">
+        <a href="https://dinnerhunt.cn/tag/b9-ynRneE/" class="badge success">
           连通图
         </a>
       
@@ -1164,7 +1171,7 @@ For example:</p>
           中国剩余定理
         </a>
       
-        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge success">
+        <a href="https://dinnerhunt.cn/tag/gridea/" class="badge warning">
           Gridea
         </a>
       
