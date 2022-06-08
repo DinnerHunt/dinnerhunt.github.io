@@ -1,0 +1,296 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「CodeForces 1241D」Sequence Sorting | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「CodeForces 1241D」Sequence Sorting
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-12-26</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/52PPBlNHN/" class="post-tag i-tag
+                            i-tag-other_4">
+                            #离散化
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="post-tag i-tag
+                            i-tag-other_2">
+                            #思维
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>You are given a sequence 𝑎1,𝑎2,…,𝑎𝑛, consisting of integers.</p>
+<p>You can apply the following operation to this sequence: choose some integer 𝑥 and move all elements equal to 𝑥 either to the beginning, or to the end of 𝑎. Note that you have to move all these elements in one direction in one operation.</p>
+<!--more-->
+<p>For example, if 𝑎=[2,1,3,1,1,3,2], you can get the following sequences in one operation (for convenience, denote elements equal to 𝑥 as 𝑥-elements):</p>
+<p>[1,1,1,2,3,3,2] if you move all 1-elements to the beginning;<br>
+[2,3,3,2,1,1,1] if you move all 1-elements to the end;<br>
+[2,2,1,3,1,1,3] if you move all 2-elements to the beginning;<br>
+[1,3,1,1,3,2,2] if you move all 2-elements to the end;<br>
+[3,3,2,1,1,1,2] if you move all 3-elements to the beginning;<br>
+[2,1,1,1,2,3,3] if you move all 3-elements to the end;<br>
+You have to determine the minimum number of such operations so that the sequence 𝑎 becomes sorted in non-descending order. Non-descending order means that for all 𝑖 from 2 to 𝑛, the condition 𝑎𝑖−1≤𝑎𝑖 is satisfied.</p>
+<p>Note that you have to answer 𝑞 independent queries.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1241/problem/D">「CodeForces 1241D」Sequence Sorting</a></p>
+<h4 id="题解">题解</h4>
+<p>我们把每个数字分成最左点和最右点，那么该数字边成为了一个区间「L，R」<br>
+连续上升区间就是连续并且相邻两个数字的区间没有相交<br>
+我们的目标则是将整个区间数组变成连续上升的<br>
+答案为N - 未移动前的最长连续上升区间长度</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#define all(x) x.begin(),x.end()
+#define pb push_back
+using namespace std;
+const int maxd = 2e5+10;
+typedef long long ll;
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        int n;scanf(&quot;%d&quot;,&amp;n);
+ 
+        vector&lt;int&gt; a(n),b(n);
+        map&lt;int,int&gt; mp;
+        for(int i=0;i&lt;n;i++)
+        {
+            scanf(&quot;%d&quot;,&amp;a[i]);
+            b[i] = a[i];
+        }
+        sort(all(b));
+        b.erase(unique(all(b)),b.end());
+        int m =b.size();
+        vector&lt;int&gt; l(m),r(m),dp(m);
+ 
+        for(int i=0;i&lt;m;i++) mp[b[i]] = i;
+        for(int i=0;i&lt;n;i++) r[mp[a[i]]] = i;
+        for(int i=n-1;i&gt;=0;i--) l[mp[a[i]]] = i;
+        //for(int i=0;i&lt;m;i++) printf(&quot;%d %d\n&quot;,l[i],r[i]);
+        for(int i=0;i&lt;m;i++) dp[i] = 1;
+        int ans = 1;
+        for(int i=1;i&lt;m;i++)
+        {
+            if(r[i-1] &lt; l[i]) dp[i] = dp[i-1] +1;
+            ans = max(dp[i],ans);
+        }
+        printf(&quot;%d\n&quot;,m-ans);
+ 
+    }
+ 
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

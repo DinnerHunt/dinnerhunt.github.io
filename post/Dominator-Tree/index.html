@@ -1,0 +1,399 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    支配树 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            支配树
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-08-02</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h4 id="给定一张dga求每个点能支配的点的个数不包括自己-on-log-n">给定一张DGA，求每个点能支配的点的个数（不包括自己） <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+int fa[maxd][16],degree[maxd],p[maxd],cnt,d[maxd];
+int n,x,y,ans[maxd];
+vector&lt;int&gt; G[maxd],food[maxd],son[maxd];
+//G 原图，G1[i] 为i节点的猎物
+void topsort()
+{
+    queue&lt;int&gt; que;
+    for(int i=1;i&lt;=n;i++)
+        if(!degree[i]) G[0].push_back(i),food[i].push_back(0),degree[i]++;
+    //同一图上存在两个入度为0的点，则会找不到lca
+    que.push(0);
+    while(!que.empty())
+    {
+        x = que.front();p[++cnt] = x;que.pop();
+        for(int i=0;i&lt;G[x].size();i++)
+        {
+            int v =G[x][i];
+            --degree[v];
+            if(!degree[v])que.push(v);
+        }
+    }
+}
+int lca(int x,int y)
+{
+    if(d[x] &lt; d[y]) swap(x,y);
+    for(int i=15;i&gt;=0;i--) if(d[fa[x][i]] &gt;= d[y]) x = fa[x][i];
+    if(x==y) return x;
+    for(int i=15;i&gt;=0;i--) if(fa[x][i] != fa[y][i]) x = fa[x][i],y = fa[y][i];
+    return fa[x][0];
+}
+int dfs(int x)
+{
+    ans[x] =1;
+    for(int i=0;i&lt;son[x].size();i++) ans[x] += dfs(son[x][i]);
+    return ans[x];
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+    {
+        while(scanf(&quot;%d&quot;,&amp;x)!=EOF&amp;&amp;x)
+        {
+            G[x].push_back(i);
+            food[i].push_back(x); 
+            ++degree[i];
+        }
+    }
+    topsort();
+    //printf(&quot;%d &quot;,cnt);
+    for(int i=2;i&lt;=cnt;i++)
+    {
+        x = p[i];y = food[x][0];
+        //printf(&quot;%d &quot;,x);
+        for(int j=1;j&lt; food[x].size();j++) y = lca(y,food[x][j]);
+        son[y].push_back(x); //点y是点x的支配点
+        d[x] = d[y]+1;
+        fa[x][0] = y;
+        for(int j=1;j&lt;=15;j++) fa[x][j] = fa[fa[x][j-1]][j-1]; //倍增
+    }
+    dfs(0);
+    for(int i=1;i&lt;=n;i++) printf(&quot;%d\n&quot;,ans[i]-1);
+    return 0;
+}
+</code></pre>
+<h2 id="nnnn"></n></n></n></n></h2>
+<h4 id="给定一张有向图求从1号点出发每个点能支配的点的个数包括自己-on-log-n">给定一张有向图，求从1号点出发，每个点能支配的点的个数（包括自己） <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 5e5+10;
+int eid,v[maxd&lt;&lt;2],net[maxd&lt;&lt;2],head[maxd&lt;&lt;1],pre[maxd&lt;&lt;1],G[maxd],G1[maxd];
+int dfn[maxd],id[maxd],f[maxd],cnt; // dfs序
+int fa[maxd],val[maxd]; // 带权并查集 val表示该点能到达最上短的满足dfn小于当前枚举的点
+int sdom[maxd],idom[maxd],ans[maxd];// 半支配点和最近支配点
+struct node{int v,net;}e[maxd&lt;&lt;2];
+void insert(int *f,int x,int y)
+{
+    e[eid].v=y;
+    e[eid].net = f[x];
+    f[x] = eid++;
+}
+void init()
+{
+    memset(G,-1,sizeof(G));
+    memset(G1,-1,sizeof(G1));
+    memset(head,-1,sizeof(head));
+    memset(pre,-1,sizeof(pre));
+    eid=0;
+}
+void dfs(int x)
+{
+    //printf(&quot;%d &quot;,x);
+    dfn[x] = ++cnt; id[cnt] = x;
+    for(int i=head[x];i+1;i = e[i].net)
+    {
+        int v = e[i].v;
+        // printf(&quot;%d %d\n&quot;,v,i+1);
+        // break;
+        if(dfn[v])continue;
+        dfs(v);f[v] = x;
+    }
+}
+int gf(int x)
+{
+    if(x==fa[x]) return x;
+    int rt =  gf(fa[x]);
+    if(dfn[sdom[val[fa[x]]]] &lt; dfn[sdom[val[x]]]) val[x] = val[fa[x]];
+    return fa[x] = rt;
+}
+void tarjan()
+{
+    for(int i=cnt;i&gt;=2;i--)
+    {
+        int x = id[i];
+        for(int j = pre[x];j+1; j=e[j].net)
+        {
+            int v = e[j].v;
+            if(!dfn[v]) continue;
+            gf(v);
+            if(dfn[sdom[val[v]]] &lt; dfn[sdom[x]])  sdom[x] = sdom[val[v]];
+        }
+        insert(G,sdom[x],x);
+        fa[x] = f[x];
+        x = f[x];
+        for(int j=G[x];j+1;j=e[j].net)
+        {
+            int v = e[j].v;
+            gf(v);
+            if(sdom[val[v]] == x) idom[v] = x;
+            else idom[v] = val[v];
+        }
+    }
+    for(int i=2;i&lt;=cnt;i++)
+    {
+        int x = id[i];
+        if(idom[x] != sdom[x]) idom[x] = idom[idom[x]];
+    }
+}
+void dfs1(int x)
+{
+    ans[x] = 1;
+    for(int i=G1[x];i+1;i = e[i].net)
+    {
+        int v = e[i].v;
+        dfs1(v); ans[x] += ans[v];
+    }
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);init();
+    for(int i=1;i&lt;=m;i++)
+    {
+        int a,b;scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+        insert(head,a,b);insert(pre,b,a);
+    }
+    for(int i=1;i&lt;=n;i++) sdom[i] = fa[i] = val[i] = i;
+    dfs(1);
+    tarjan();
+    for(int i=2;i&lt;=n;i++) if(idom[i]) insert(G1,idom[i],i);
+    //for(int i=2;i&lt;=n;i++) printf(&quot;%d %d\n&quot;,i,idom[i]);
+    dfs1(1);
+    for(int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E7%BB%99%E5%AE%9A%E4%B8%80%E5%BC%A0dga%E6%B1%82%E6%AF%8F%E4%B8%AA%E7%82%B9%E8%83%BD%E6%94%AF%E9%85%8D%E7%9A%84%E7%82%B9%E7%9A%84%E4%B8%AA%E6%95%B0%E4%B8%8D%E5%8C%85%E6%8B%AC%E8%87%AA%E5%B7%B1-on-log-n">给定一张DGA，求每个点能支配的点的个数（不包括自己） <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#nnnn"></n></n></n></n></a><br>
+*
+<ul>
+<li><a href="#%E7%BB%99%E5%AE%9A%E4%B8%80%E5%BC%A0%E6%9C%89%E5%90%91%E5%9B%BE%E6%B1%82%E4%BB%8E1%E5%8F%B7%E7%82%B9%E5%87%BA%E5%8F%91%E6%AF%8F%E4%B8%AA%E7%82%B9%E8%83%BD%E6%94%AF%E9%85%8D%E7%9A%84%E7%82%B9%E7%9A%84%E4%B8%AA%E6%95%B0%E5%8C%85%E6%8B%AC%E8%87%AA%E5%B7%B1-on-log-n">给定一张有向图，求从1号点出发，每个点能支配的点的个数（包括自己） <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

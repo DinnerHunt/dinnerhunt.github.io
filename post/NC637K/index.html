@@ -1,0 +1,284 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「16届同大邀请赛」美味佳肴 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「16届同大邀请赛」美味佳肴
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="post-tag i-tag
+                            i-tag-other_2">
+                            #主席树
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>众所周知，天才程序员菜哭武是一个伟大的厨师。这天，张老师和石头来到菜哭武家做客，想尝一尝菜哭武的手艺。<br>
+菜哭武手上有n种食材，每种食材个数无限多，编号为i的食材有一个美味度ai。一道菜中，每种编号的食材至多有一个，<br>
+而这道菜的美味度是这道菜包含的食材的美味度之和。</p>
+<!-- more --> 
+<p>每次张老师会指定一个编号l, 石头会指定一个编号r（l &lt;= r），然后菜哭武会在编号在[l, r]中的食材中选若干<br>
+种食材做菜。张老师和石头都是美食家，因此他们要求菜哭武依次做出美味度以1，2，3，4...这样依次加1递增的菜，<br>
+直到菜哭武用当前的食材无法做出美味度为x的菜。比如，某一个[l, r]中的食材的美味度依次为2, 1, 1, 1，7，那么<br>
+美味度为1, 2, 3, 4, 5的菜都是可以做出来的，而美味度为6的菜是无法做出来的，所以对于这对[l, r]，x = 6。</p>
+<p>张老师和石头一共会提出m个这样的[l, r]区间，对于每个区间，菜哭武想知道这个x是多少。</p>
+<br>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://ac.nowcoder.com/acm/contest/637/K">「16届同大邀请赛」美味佳肴</a></p>
+<h4 id="题解">题解</h4>
+<p>数组按顺序排序，如果当前前i个数能构成前 <strong>1-k</strong> 的数，并且第 <strong>i+1</strong> 个数小于k，那么一定能构成k+a[i+1]的数</p>
+<p>用主席树维护区间小于某个值的总和，然后依次枚举查询即可</p>
+<p>因为如果符合情况，都会使当前ans翻倍，所以增长是log级别的</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#define mid ((l+r)&gt;&gt;1)
+using namespace std;
+const int maxd = 1e5+10;
+struct{int ls,rs,v;}tree[maxd*40];
+int rt[maxd],tot;
+void insert(int &amp;x,int l,int r,int v)
+{
+    tree[++tot] = tree[x];x = tot; tree[x].v += v;
+    if(l==r) return ;
+    if(v&lt;=mid) insert(tree[x].ls,l,mid,v);
+    else insert(tree[x].rs,mid+1,r,v);
+}
+int query(int x,int y,int l,int r,int p)
+{
+    if(l==r) return tree[x].v - tree[y].v;
+    if(p&lt;=mid) return query(tree[x].ls,tree[y].ls,l,mid,p);
+    else return tree[tree[x].ls].v - tree[tree[y].ls].v + query(tree[x].rs,tree[y].rs,mid+1,r,p);
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n;scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++) 
+    {
+        int x;scanf(&quot;%d&quot;,&amp;x);
+        insert(rt[i]=rt[i-1],1,1e9,x);
+    }
+    int m;scanf(&quot;%d&quot;,&amp;m);
+    for(int i=1;i&lt;=m;i++)
+    {
+        int a,b,ans=0;
+        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+        while(ans &lt; 1e9)
+        {
+            int k = query(rt[b],rt[a-1],1,1e9,ans+1);
+            if(k==ans) break;
+            ans = k;
+        }
+        printf(&quot;%d\n&quot;,ans+1);
+    }
+
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

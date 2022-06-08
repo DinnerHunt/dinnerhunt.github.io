@@ -1,0 +1,444 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    图论 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        图论</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/map/">
+                        “图” 
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-02-26</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="post-tag i-tag
+                            i-tag-error">
+            #图论
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            二分图
+存在一个图 G=(V,E)G = (V,E)G=(V,E) ，如果能把图中的顶点分割到两个互不相交的点集A,BA,BA,B 中，使得对于图中的任意的边 E(u,v)E(u,v)E(u,v)，不存在 u∈A且v∈Au\in A \text{且}  v \in Au∈A且v∈A 或者 u∈B且v∈Bu\in B \text{且} v \in Bu∈B且v∈B ，则称图GGG为二分图
+定理
+
+二分图中不存在长度为奇数的环，且如果不存在长度为奇数的环，则此图为二分图
+
+
+
+竞赛图
+存在一个图 G=(V,E)G = (V,E)G=(V,E) ，如果对于任意的点 Vi,Vj∈GV_i ,V_j \in GVi​,Vj​∈G 都只存在一条有向边 $V_i -&amp;gt; V_j $ 或者 Vj−&amp;gt;ViV_j -&amp;gt; V_iVj​−&amp;gt;Vi​ ，则称此图为竞赛图
+定理
+
+点数为nnn的竞赛图中一定存在长度为nnn的哈密顿路径 ，可以构造出来
+
+  
+
+LGV(Lindström–Gessel–Viennot) 定理
+
+对于一张无权的DAG图，给定NNN个起点和NNN个终点
+设e(ai,bi)e(a_i,b_i)e(ai​,bi​)为点iii到点jjj的路径方案数，这NNN条不相交路径的方案数为
+
+(e(a1,b1)e(a1,b2)⋯e(a1,bn)e(a2,b1)e(a2,b2)⋯e(a2,bn)⋮⋮⋱⋮e(an,b1)e(an,b2)⋯e(an,bn))\begin{pmatrix}
+e(a_1,b_1) &amp;amp; e(a_1,b_2) &amp;amp; \cdots &amp;amp; e(a_1,b_n) \\
+e(a_2,b_1) &amp;amp; e(a_2,b_2) &amp;amp; \cdots &amp;amp; e(a_2,b_n) \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+e(a_n,b_1) &amp;amp; e(a_n,b_2) &amp;amp; \cdots &amp;amp; e(a_n,b_n)
+\end{pmatrix}⎝⎜⎜⎜⎛​e(a1​,b1​)e(a2​,b1​)⋮e(an​,b1​)​e(a1​,b2​)e(a2​,b2​)⋮e(an​,b2​)​⋯⋯⋱⋯​e(a1​,bn​)e(a2​,bn​)⋮e(an​,bn​)​⎠⎟⎟⎟⎞​
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/map/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CF1270G/">
+                        「CodeForces 1270G」Subset with Zero Sum
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-01-07</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="post-tag i-tag
+                            i-tag-warning">
+            #图论
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>You are given 𝑛 integers 𝑎1,𝑎2,…,𝑎𝑛, such that for each 1≤𝑖≤𝑛 holds 𝑖−𝑛≤𝑎𝑖≤𝑖−1.</p>
+<p>Find some nonempty subset of these integers, whose sum is equal to 0. It can be shown that such a subset exists under given constraints. If there are several possible subsets with zero-sum, you can find any of them.</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CF1270G/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CF1278D&amp;E/">
+                        「CodeForces1278D&amp;E」Segment Tree &amp; Tests for problem D
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-12-23</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="post-tag i-tag
+                            i-tag-error">
+            #数据结构
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="post-tag i-tag
+                            i-tag-warning">
+            #构造
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="post-tag i-tag
+                            i-tag-other_4">
+            #图论
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>As the name of the task implies, you are asked to do some work with segments and trees.</p>
+<p>Recall that a tree is a connected undirected graph such that there is exactly one simple path between every pair of its vertices.</p>
+<p>You are given 𝑛 segments [𝑙1,𝑟1],[𝑙2,𝑟2],…,[𝑙𝑛,𝑟𝑛], 𝑙𝑖&lt;𝑟𝑖 for every 𝑖. It is guaranteed that all segments' endpoints are integers, and all endpoints are unique — there is no pair of segments such that they start in the same point, end in the same point or one starts in the same point the other one ends.</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CF1278D&amp;E/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CF1277e/">
+                        「CodeForces 1277E」 Two Fairs
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-12-17</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="post-tag i-tag
+                            i-tag-other_3">
+            #图论
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>There are 𝑛 cities in Berland and some pairs of them are connected by two-way roads. It is guaranteed that you can pass from any city to any other, moving along the roads. Cities are numerated from 1 to 𝑛.</p>
+<p>Two fairs are currently taking place in Berland — they are held in two different cities 𝑎 and 𝑏 (1≤𝑎,𝑏≤𝑛; 𝑎≠𝑏).</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CF1277e/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/NC637D/">
+                        「16届同大邀请赛」 后花园的树
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="post-tag i-tag
+                            i-tag-other_2">
+            #图论
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="post-tag i-tag
+                            i-tag-warning">
+            #LCA
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>菜哭武的后花园里种着一棵树，这棵树有n个节点和n-1条边，每个节点都涂着一种颜色。菜哭武打算在接下来的m天里，每天执行以下两个操作之一：<br>
+1.菜哭武选择某一种颜色和树上的某一个节点，将这个节点涂上这种颜色（会将该节点原有的颜色覆盖）<br>
+2.菜哭武选择一种颜色，然后询问这棵树上所有涂着这种颜色的节点构成的子树含有多少个节点，(原树上的某个点集S构成的子树T的定义是：<br>
+如果u∈S，v∈S，那么原树u和v路径上的所有点都属于这棵子树T）。如果这棵树上没有这种颜色的节点，那么定义询问的结果为0。</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/NC637D/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/LOJ10069/">
+                        「2012 集训队互测」 Tree
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/7_CxH2ENb/" class="post-tag i-tag
+                            i-tag-">
+            #生成树
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="post-tag i-tag
+                            i-tag-other_1">
+            #图论
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="post-tag i-tag
+                            i-tag-warning">
+            #二分
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>给你一个无向带权连通图，每条边是黑色或白色。让你求一棵最小权的恰好有  need 条白色边的生成树。题目保证有解</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/LOJ10069/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P3199/">
+                        「HNOI2009」 最小圈
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/znvACjrMh/" class="post-tag i-tag
+                            i-tag-">
+            #图论
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="post-tag i-tag
+                            i-tag-info">
+            #二分
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>在图中找一个环，使得环上边权之和除以节点个数最小，求这个最小平均值</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P3199/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

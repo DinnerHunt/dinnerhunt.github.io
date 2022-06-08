@@ -1,0 +1,304 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」高精度 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」高精度
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-04</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <pre><code class="language-cpp">struct bign
+{
+    int d[maxn], len;
+ 
+    void clean() { while(len &gt; 1 &amp;&amp; !d[len-1]) len--; }
+ 
+    bign()          { memset(d, 0, sizeof(d)); len = 1; }
+    bign(int num)   { *this = num; } 
+    bign(char* num) { *this = num; }
+    bign operator = (const char* num){
+        memset(d, 0, sizeof(d)); len = strlen(num);
+        for(int i = 0; i &lt; len; i++) d[i] = num[len-1-i] - '0';
+        clean();
+        return *this;
+    }
+    bign operator = (int num){
+        char s[20]; sprintf(s, &quot;%d&quot;, num);
+        *this = s;
+        return *this;
+    }
+ 
+    bign operator + (const bign&amp; b){
+        bign c = *this; int i;
+        for (i = 0; i &lt; b.len; i++){
+            c.d[i] += b.d[i];
+            if (c.d[i] &gt; 9) c.d[i]%=10, c.d[i+1]++;
+        }
+        while (c.d[i] &gt; 9) c.d[i++]%=10, c.d[i]++;
+        c.len = max(len, b.len);
+        if (c.d[i] &amp;&amp; c.len &lt;= i) c.len = i+1;
+        return c;
+    }
+    bign operator - (const bign&amp; b){
+        bign c = *this; int i;
+        for (i = 0; i &lt; b.len; i++){
+            c.d[i] -= b.d[i];
+            if (c.d[i] &lt; 0) c.d[i]+=10, c.d[i+1]--;
+        }
+        while (c.d[i] &lt; 0) c.d[i++]+=10, c.d[i]--;
+        c.clean();
+        return c;
+    }
+    bign operator * (const bign&amp; b)const{
+        int i, j; bign c; c.len = len + b.len; 
+        for(j = 0; j &lt; b.len; j++) for(i = 0; i &lt; len; i++) 
+            c.d[i+j] += d[i] * b.d[j];
+        for(i = 0; i &lt; c.len-1; i++)
+            c.d[i+1] += c.d[i]/10, c.d[i] %= 10;
+        c.clean();
+        return c;
+    }
+    bign operator / (const bign&amp; b){
+        int i, j;
+        bign c = *this, a = 0;
+        for (i = len - 1; i &gt;= 0; i--)
+        {
+            a = a*10 + d[i];
+            for (j = 0; j &lt; 10; j++) if (a &lt; b*(j+1)) break;
+            c.d[i] = j;
+            a = a - b*j;
+        }
+        c.clean();
+        return c;
+    }
+    bign operator % (const bign&amp; b){
+        int i, j;
+        bign a = 0;
+        for (i = len - 1; i &gt;= 0; i--)
+        {
+            a = a*10 + d[i];
+            for (j = 0; j &lt; 10; j++) if (a &lt; b*(j+1)) break;
+            a = a - b*j;
+        }
+        return a;
+    }
+    bign operator += (const bign&amp; b){
+        *this = *this + b;
+        return *this;
+    }
+ 
+    bool operator &lt;(const bign&amp; b) const{
+        if(len != b.len) return len &lt; b.len;
+        for(int i = len-1; i &gt;= 0; i--)
+            if(d[i] != b.d[i]) return d[i] &lt; b.d[i];
+        return false;
+    }
+    bool operator &gt;(const bign&amp; b) const{return b &lt; *this;}
+    bool operator&lt;=(const bign&amp; b) const{return !(b &lt; *this);}
+    bool operator&gt;=(const bign&amp; b) const{return !(*this &lt; b);}
+    bool operator!=(const bign&amp; b) const{return b &lt; *this || *this &lt; b;}
+    bool operator==(const bign&amp; b) const{return !(b &lt; *this) &amp;&amp; !(b &gt; *this);}
+ 
+    string str() const{
+        char s[maxn]={};
+        for(int i = 0; i &lt; len; i++) s[len-1-i] = d[i]+'0';
+        return s;
+    }
+};
+ 
+istream&amp; operator &gt;&gt; (istream&amp; in, bign&amp; x)
+{
+    string s;
+    in &gt;&gt; s;
+    x = s.c_str();
+    return in;
+}
+ 
+ostream&amp; operator &lt;&lt; (ostream&amp; out, const bign&amp; x)
+{
+    out &lt;&lt; x.str();
+    return out;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

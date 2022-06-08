@@ -1,0 +1,283 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「JXOI2018」游戏 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「JXOI2018」游戏
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-05-08</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="post-tag i-tag
+                            i-tag-error">
+                            #组合数学
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>她长大以后创业了，开了一个公司。 但是管理公司是一个很累人的活，员工们经常背着可怜偷懒，可怜需要时不时对办公室进行检查。</p>
+<p>可怜公司有 n 个办公室，办公室编号是 l 到 l+n-1，可怜会事先制定一个顺序，按照这个顺序依次检查办公室。一开始的时候，所有办公室的员工都在偷懒，当她检查完编号是 i 的办公室时候，这个办公室的员工会认真工作，并且这个办公室的员工通知所有办公室编号是 i 的倍数的办公室，通知他们老板来了，让他们认真工作。因此，可怜检查完第 i 个办公室的时候，所有编号是 i 的倍数(包括 i )的办公室的员工会认真工作。</p>
+<!--more-->
+<p>可怜发现了员工们通风报信的行为，她发现，对于每种不同的顺序 pp ，都存在一个最小的 t(p) ，使得可怜按照这个顺序检查完前 t(p) 个办公室之后，所有的办公室都会开始认真工作。她把这个 t(p) 定义为 pp 的检查时间。</p>
+<p>可怜想知道所有 t(p) 的和。</p>
+<p>但是这个结果可能很大，她想知道和对 10^9+7 取模后的结果。</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://www.luogu.com.cn/problem/P4562">「JXOI2018」游戏</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p>有一些是必须点<br>
+每个排列的花费等于这个排列的必须点最后的位置  (埃式筛)<br>
+然后考虑组合数方式，枚举最后一个点在第i位时的方案数，设必须点个数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span><br>
+则方案数为</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mo>(</mo></msub><mi>n</mi><mo>−</mo><mn>1</mn><msup><mo>)</mo><mo>(</mo></msup><mi>k</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>∗</mo><mi>k</mi><mo>∗</mo><mo>(</mo><mi>n</mi><mo>−</mo><mi>k</mi><mo>)</mo><mo>!</mo></mrow><annotation encoding="application/x-tex">A_(n-1)^(k-1) * k * (n-k)! 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.03853em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.188em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mclose">!</span></span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const double eps = 1e-8;
+const int mod = 1e9+7;
+const int N = 1e7+1;
+int fac[N],inv[N],Finv[N];
+struct
+{
+    void init()
+    {
+        fac[0] = 1, Finv[0]=1,inv[1]=1;
+        for(int i=2;i&lt;N;i++) inv[i]=1ll * (mod-mod/i)*inv[mod%i]%mod;
+        for(int i=1;i&lt;N;i++)
+        {
+            fac[i]=1ll * fac[i-1]*i%mod;
+            Finv[i]=1ll * Finv[i-1]*inv[i]%mod;
+//            PLN(Finv[i]);
+        }
+    }
+    int C(int n,int m)
+    {
+        if(n&lt;0||m&lt;0||m&gt;n) return 0;
+        if(n == m || m == 0) return 1;
+        return 1ll *  fac[n] * Finv[m] %mod * Finv[n-m] %mod;
+    }
+    int A(int n,int m)
+    {
+        return 1ll * fac[n] * Finv[n-m] % mod;
+    }
+}O_O;
+bool vis[N];
+int main()
+{
+//    __IN;__OUT;
+    O_O.init();
+    int ans = 0,l,r,cnt = 0;
+    scanf(&quot;%d %d&quot;,&amp;l,&amp;r);
+    FOR(i,l,r)
+        if(!vis[i])
+        {
+            cnt++;
+            for(int j=i+i;j&lt;=r;j+=i)vis[j] = 1;
+        }
+    int n = r-l+1;
+    FOR(i,cnt,n) ans = (ans + 1ll * i * cnt % mod * O_O.A(i-1,cnt-1) % mod * fac[n-cnt]) % mod;
+    printf(&quot;%d&quot;,ans);
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接 🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解  ❓</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

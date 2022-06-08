@@ -1,0 +1,311 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「CodeForces 1241E」Paint the Tree | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「CodeForces 1241E」Paint the Tree
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-12-26</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="post-tag i-tag
+                            i-tag-other_1">
+                            #树型DP
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>You are given a weighted tree consisting of 𝑛 vertices. Recall that a tree is a connected graph without cycles. Vertices 𝑢𝑖 and 𝑣𝑖 are connected by an edge with weight 𝑤𝑖.</p>
+<!--more-->
+<p>Let's define the 𝑘-coloring of the tree as an assignment of exactly 𝑘 colors to each vertex, so that each color is used no more than two times. You can assume that you have infinitely many colors available. We say that an edge is saturated in the given 𝑘-coloring if its endpoints share at least one color (i.e. there exists a color that is assigned to both endpoints).</p>
+<p>Let's also define the value of a 𝑘-coloring as the sum of weights of saturated edges.</p>
+<p>Please calculate the maximum possible value of a 𝑘-coloring of the given tree.</p>
+<p>You have to answer 𝑞 independent queries.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1241/problem/E">「CodeForces 1241E」Paint the Tree</a></p>
+<h4 id="题解">题解</h4>
+<p>树形DP，因为相邻两个点染色才有贡献。<br>
+节点每染一种颜色，表示选了一条边，也就意味着一个点不能选超过k条与之相邻的边<br>
+DP[x][1] 表示该点边选满了的价值<br>
+DP[x][0] 表示未选满的价值<br>
+我们考虑到x时，子树都选好了，先不选与自身链接的边，也就是加上所有DP[v][1]（v为子树节点)<br>
+然后我们依次考虑，DP[v][0]+E{x,v}这条边的权值(也就是是否与该点连边),如果选该边，则要减去DP[v][1]，则与该点连边的贡献为(DP[v][0]+E{x,v}-DP[v][1])</p>
+<p>然后贪心选前k个就好</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const int maxd = 5e5+10;
+typedef long long ll;
+
+vector&lt;P&gt; G[maxd];
+vector&lt;ll&gt; a;
+ll n,k,dp[maxd][2];
+// dp[i][0] 表示选满k边的最大价值
+void dfs(ll x,ll fa)
+{
+//    PLL(x);
+//    PN();
+    dp[x][0] = dp[x][1] = 0;
+    for(auto p:G[x])
+    {
+        ll v = p.st;
+        if(v == fa) continue;
+        dfs(v,x);
+        dp[x][0] += dp[v][1];
+        dp[x][1] += dp[v][1]; //先选满的子树
+    }
+    //选满的子树，这样当前节点就无法与子树节点连边，因为子树点已经满K个了
+
+    a.clear();
+    for(auto p:G[x])
+    {
+        ll v = p.st;
+        if(v == fa) continue;
+        a.pb(-(dp[v][0]+ p.nd - dp[v][1]));
+        //这里我们枚举每个节点的差值，也就是如果子树不选满，则可选这条边
+    }
+    sort(all(a)); //贪心选择价格高的
+
+    ll len = min((ll)a.size(),k);
+    F(len)
+    {
+        ll v = -a[i];
+        if(v &lt; 0)break;
+        if(i&lt;k-1) dp[x][0] += v;
+        dp[x][1] += v;
+    }
+}
+
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        RLL(n);RLL(k);
+        F(n-1)
+        {
+            ll a,b,c;
+            RLL(a);RLL(b);RLL(c);
+            //printf(&quot;%lld %lld %lld\n&quot;,a,b,c);
+            G[a].pb(P(b,c));
+            G[b].pb(P(a,c));
+        }
+//        FOR(1,n)
+//        {
+//            for(auto p: G[i]) printf(&quot;%lld &quot;,p.st);
+//            PN();
+//        }
+        dfs(1ll,-1ll);
+        FOR(1,n) G[i].clear();
+        PLL(max(dp[1][0],dp[1][1]));
+        PN();
+
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

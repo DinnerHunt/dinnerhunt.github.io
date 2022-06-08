@@ -1,0 +1,344 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「JSOI2012」玄武密码 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「JSOI2012」玄武密码
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="post-tag i-tag
+                            i-tag-error">
+                            #字符串
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/OuaWiLQNF/" class="post-tag i-tag
+                            i-tag-">
+                            #AC自动机
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>在美丽的玄武湖畔，鸡鸣寺边，鸡笼山前，有一块富饶而秀美的土地，人们唤作进香河。相传一日，一缕紫气从天而至，只一瞬间便消失在了进香河中。老人们说，这是玄武神灵将天书藏匿在此。</p>
+<!-- more -->
+<p>很多年后，人们终于在进香河地区发现了带有玄武密码的文字。更加神奇的是，这份带有玄武密码的文字，与玄武湖南岸台城的结构有微妙的关联。于是，漫长的破译工作开始了。</p>
+<p>经过分析，我们可以用东南西北四个方向来描述台城城砖的摆放，不妨用一个长度为N的序列来描述，序列中的元素分别是E，S，W，N，代表了东南西北四向，我们称之为母串。而神秘的玄武密码是由四象的图案描述而成的MM段文字。这里的四象，分别是东之青龙，西之白虎，南之朱雀，北之玄武，对东南西北四向相对应。</p>
+<p>现在，考古工作者遇到了一个难题。对于每一段文字，其前缀在母串上的最大匹配长度是多少呢？</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problemnew/show/P5231">「JSOI2012」玄武密码</a></p>
+<h4 id="题解">题解</h4>
+<p>把字符串构建AC自动机，然后用模式串做匹配，匹配时记录经过的点，然后在原Tire树上查看匹配最终点</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e6+10;
+char str[10000010],arr[maxd];
+int slen[maxd],cnt[maxd];
+int id(char ch)
+{
+    switch(ch)
+    {
+        case 'E' : return 0;
+        case 'S' : return 1;
+        case 'W' : return 2;
+        case 'N' : return 3;
+    }
+    return 0;
+}
+struct 
+{
+    int ch[maxd][4],fail[maxd],tot,last[maxd];
+    bool vis[maxd];
+    void init()
+    {
+        memset(ch,0,sizeof(ch));
+        memset(fail,0,sizeof(fail));
+        tot = 0;
+    }
+    void insert(char *str,int k)
+    {
+        int p = 0;
+        for(int i=0;str[i];i++)
+        {
+            int k = id(str[i]);
+            if(!ch[p][k])
+            {
+                ch[p][k] = ++tot;
+                last[tot] = p;
+            }
+            p = ch[p][k];
+        }
+        cnt[k] = p;
+    }
+    void build()
+    {
+        memset(fail,0,sizeof(fail));
+        queue&lt;int&gt; que;
+        for(int i=0;i&lt;4;i++) if(ch[0][i]) que.push(ch[0][i]);
+        while(!que.empty())
+        {
+            int p = que.front(); que.pop();
+            for(int i=0;i&lt;4;i++)
+            { 
+                if(ch[p][i])
+                {
+                    fail[ch[p][i]] = ch[fail[p]][i];
+                    que.push(ch[p][i]);
+                }
+                else ch[p][i] = ch[fail[p]][i]; 
+            }
+        }
+    }
+    int solve(char *str)
+    {
+        int p = 0,ans = 0;
+        for(int i=0;str[i];i++)
+        {
+            p = ch[p][id(str[i])];
+            int k = p;
+            while(k)
+            {
+                vis[k] = 1;
+                k = fail[k];
+            }
+        }
+        return ans;
+    }
+    int find(int x)
+    {
+        int p = cnt[x];
+        for(int i=slen[x];i&gt;0;i--)
+        {
+            if(vis[p]) return i;
+            p = last[p];
+        }
+        return 0;
+    }
+}AC;
+int main()
+{   
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    scanf(&quot;%s&quot;,str);
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%s&quot;,arr);
+        slen[i] = strlen(arr);
+        AC.insert(arr,i);
+    }
+    AC.build();
+    AC.solve(str);
+    for(int i=1;i&lt;=m;i++)
+        printf(&quot;%d\n&quot;,AC.find(i));
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

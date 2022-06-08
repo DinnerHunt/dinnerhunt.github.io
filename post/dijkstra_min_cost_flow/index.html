@@ -1,0 +1,350 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」Dijkstra费用流 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」Dijkstra费用流
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-11-29</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/template/" class="post-tag i-tag
+                            i-tag-success">
+                            #template
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h4 id="广工-最大瘤版本">广工-最大瘤版本</h4>
+<pre><code class="language-cpp">//MCMF-&gt;init(N) -&gt; MCMF.add(u,v,flow,cost) -&gt; (flow,cost) = MCMF.run(s,t,UP)  
+//其中UP参数表示求s到t的流量不超过UP的情况下的最小费用，无要求填INF即可  
+//所有节点的id范围[0,N]  
+const int MAXN = 10005;  
+const int INF = 0x7fffffff;  
+struct MinCostMaxFlow {  
+    struct edge {  
+        int v, f, c, r;  
+        edge(int _v, int _f, int _c, int _r) :v(_v), f(_f), c(_c), r(_r) {}  
+    };  
+    int V = 0, H[MAXN + 5], dis[MAXN + 5], PreV[MAXN + 5], PreE[MAXN + 5];  
+    vector&lt;edge&gt; G[MAXN + 5];  
+    inline void init(int n) {  
+        for (int i = 0; i &lt;= V; ++i) G[i].clear();  
+        V = n;  
+    }  
+    inline void add(int u, int v, int f, int c) {  
+        G[u].push_back(edge(v, f, c, G[v].size()));  
+        G[v].push_back(edge(u, 0, -c, G[u].size() - 1));  
+    }  
+    typedef pair&lt;int, int&gt; P;  
+    P run(int s, int t, int f) {  
+        int cost = 0, flow = 0, tf; fill(H, H + 1 + V, 0);  
+        while (f) {  
+            priority_queue &lt;P, vector&lt;P&gt;, greater&lt;P&gt; &gt; q;  
+            fill(dis, dis + 1 + V, INF);  
+            dis[s] = 0; q.push(P(0, s));  
+            while (!q.empty()) {  
+                P now = q.top(); q.pop();  
+                int v = now.second;  
+                if (dis[v] &lt; now.first)continue;  
+                for (int i = 0; i &lt; G[v].size(); ++i) {  
+                    edge&amp; e = G[v][i];  
+                    if (e.f &gt; 0 &amp;&amp; dis[e.v] &gt; dis[v] + e.c + H[v] - H[e.v]) {  
+                        dis[e.v] = dis[v] + e.c + H[v] - H[e.v];  
+                        PreV[e.v] = v, PreE[e.v] = i;  
+                        q.push(P(dis[e.v], e.v));  
+                    }  
+                }  
+            }  
+            if (dis[t] == INF)break;  
+            for (int i = 0; i &lt;= V; ++i) H[i] += dis[i];  
+            tf = f;  
+            for (int v = t; v != s; v = PreV[v])  
+                tf = min(tf, G[PreV[v]][PreE[v]].f);  
+            f -= tf, flow += tf, cost += tf*H[t];  
+        	for (int v = t; v != s; v = PreV[v]) {  
+                edge&amp; e = G[PreV[v]][PreE[v]];  
+                e.f -= tf;  
+                G[v][e.r].f += tf;  
+            }  
+        }  
+        return P(flow, cost);  
+    }  
+}MCMF; 
+
+</code></pre>
+<h3 id="宏版">宏版</h3>
+<pre><code class="language-cpp">const ll maxd = 1e5+10;
+const ll inf = 1e18;
+
+struct edge{ll to,rev, flow,cost;};
+ll n,m,k,num;
+vector&lt;edge&gt; G[maxd];
+ll h[maxd],dis[maxd],pn[maxd],pe[maxd];
+
+void add(ll u,ll v,ll flow,ll cost)
+{
+    G[u].push_back((edge){ v,(ll)G[v].size(),flow,cost });
+    G[v].push_back((edge){ u,(ll)G[u].size() - 1,0,-cost });
+}
+
+void min_cost_flow(ll s,ll t,ll &amp;min_cost,ll &amp;max_flow)
+{
+    fill(h+1,h+1+num,0);
+    min_cost = max_flow = 0;
+    ll tot = inf;
+    while(tot&gt;0)
+    {
+        MINQ_P q;
+        fill(dis, dis + 1 +  num,inf);
+        dis[s] = 0; q.push(P(0ll,s));
+        while(!q.empty())
+        {
+            ll u = q.top().ND,dist = q.top().ST; q.pop();
+            if (dis[u] &lt; dist)continue;
+            F( G[u].size())
+            {
+                edge &amp;e = G[u][i];
+                if (e.flow &gt; 0 &amp;&amp; dis[e.to] &gt; dis[u] + e.cost + h[u] - h[e.to])
+                {
+                    dis[e.to] = dis[u] +e.cost + h[u] - h[e.to];
+                    pn[e.to] = u,pe[e.to] = i;
+                    q.push(P(dis[e.to],e.to ));
+                }
+            }
+        }
+        if (dis[t] == inf)break;
+        // 所有点都要
+        FOR(i,0,num) h[i] += dis[i];
+        ll flow = tot;
+        for (int i = t; i != s; i = pn[i]) flow = min(flow, G[pn[i]][pe[i]].flow);
+        for (int i = t; i != s; i = pn[i])
+        {
+            edge&amp; e = G[pn[i]][pe[i]];
+            e.flow -= flow;
+            G[i][e.rev].flow += flow;
+        }
+        tot -= flow;
+        max_flow += flow;
+        min_cost += flow * h[t];
+    }
+}
+void init(){ FOR(i,1,n+n+3) G[i].clear(); }
+ll a[maxd];
+int main()
+{
+    __IN;__OUT;
+    ll s, t,T;RLL(T);
+    while(T--)
+    {
+        RLL(n);RLL(m);init(); s = 0 ,t = n+1 , num = t;
+        ll min_cost, max_flow;
+        min_cost_flow(s, t, min_cost, max_flow);
+        PLN(-min_cost);
+    }
+    return 0;
+}
+
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%B9%BF%E5%B7%A5-%E6%9C%80%E5%A4%A7%E7%98%A4%E7%89%88%E6%9C%AC">广工-最大瘤版本</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%8F%E7%89%88">宏版</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    构造题 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        构造题</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/educational-codeforces-round-48-rated-for-div-2/">
+                        Educational Codeforces Round 48 
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-04-07</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/Vmvl0a8b_/" class="post-tag i-tag
+                            i-tag-info">
+            #构造题
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/NabuBeaxK/" class="post-tag i-tag
+                            i-tag-other_4">
+            #计算几何
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/clzno4f-C/" class="post-tag i-tag
+                            i-tag-other_3">
+            #普通DP
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            Code
+A - Death Note
+B - Segment Occurrences
+C - Vasya And The Mushrooms
+D - Vasya And The Matrix
+E - Rest In The Shades
+F - Road Projects
+G - Appropriate Team (咕咕咕)
+
+A - Death Note
+模拟翻页就好，用一个数记录当前剩余的页数
+
+B - Segment Occurrences
+计算字符串sss的每个位置是否满足往后mmm位等同于ttt
+查询的时候要判断区间的范围是否合法
+因为N&amp;lt;=1000N&amp;lt;=1000N&amp;lt;=1000，所以可以直接O(n2)O(n^2)O(n2)暴力处理，然后暴力查询
+
+C - Vasya And The Mushrooms
+维护值比较麻烦的一道DP
+可以发现，会进行以下几步
+1. 进入新的一列，
+2. 选择往右走的话，那么后面选择的方案是唯一，直接算出价值
+3. 如果选择往上或往下(看进入新列时所在的位子是在第一行还是第二行)，那么就会回到第一步  
+
+因此我们考虑维护每次往右走方案的价值，然后枚举列，计算出最大值即可
+往右走的路径是一个环，根据所在行的不同，需要维护上方开始的环和下方开始的环，然后前缀和处理即可
+
+D - Vasya And The Matrix
+构造题
+如果所有行的异或和 与 所有列的异或和 异或的结果不为000,那么肯定输出NoNoNo
+否则我们考虑在最后一列和最后一列放数字，其他全部放0，这这样除了矩阵最右下角的数字以外
+其他行和列是肯定满足的，最后一个也可以直接通过异或算出来
+
+E - Rest In The Shades
+对于每一个点，根据其所在的纵坐标，我们可以构造相似三角形
+然后求出线段ABABAB覆盖的最左点与与最右点
+也就是 $(y-d) / d 倍的倍的倍的AB$ 长度
+然后二分找到边界，利用前缀和统计时间后再除回原时间即可
+
+F - Road Projects
+将1−n1-n1−n路径扯成一条链，其余的点都是挂在链上的点
+如果某一个链上挂了两个点，那么无论怎么加边，都直接将边放在两点上，答案都是不变的
+不然就只有挂在链上的一个点的情况 ，然后剩余情况就扫描以下即可
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/educational-codeforces-round-48-rated-for-div-2/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

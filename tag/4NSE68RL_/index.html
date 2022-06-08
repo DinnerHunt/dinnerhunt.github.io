@@ -1,0 +1,280 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    FWT | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        FWT</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/fwt/">
+                        「FWT」多项式位运算卷积
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-09-09</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/4NSE68RL_/" class="post-tag i-tag
+                            i-tag-other_1">
+            #FWT
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            给定两个长度为2n2^n2n的两个序列A,BA,BA,B,设Ci=∑j∗kAjAkC_i = \sum_{j*k}A_jA_kCi​=∑j∗k​Aj​Ak​,分别是当∗*∗ 为or,and,xor时，结果mod998244353mod 998244353mod998244353
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;cstring&amp;gt;
+#include &amp;lt;cstdio&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+using namespace std;
+const int maxd = 2&amp;lt;&amp;lt;18;
+const int mod = 998244353;
+int n;
+long long a[maxd],b[maxd],c[maxd],inv2;
+long long pow(int x,int y)
+{
+    long long ans = 1,now = x;
+    while(y)
+    {
+        if(y&amp;amp;1) ans = (now * ans) % mod;
+        now = ( now * now) %mod;
+        y &amp;gt;&amp;gt;=1;
+    }
+    return ans;
+}
+void FWT_or(long long *a,int opt)
+{
+    for(int i=1;i&amp;lt;n;i&amp;lt;&amp;lt;=1)
+        for(int p=i&amp;lt;&amp;lt;1,j=0;j&amp;lt;n;j+=p)
+            for(int k=0;k&amp;lt;i;++k)
+                if(opt==1)a[i+j+k]=(a[j+k]+a[i+j+k])%mod;
+                else a[i+j+k]=(a[i+j+k]+mod-a[j+k])%mod;
+}
+void FWT_and(long long *a,int opt)
+{
+    for(int i=1;i&amp;lt;n;i&amp;lt;&amp;lt;=1)
+        for(int p=i&amp;lt;&amp;lt;1,j=0;j&amp;lt;n;j+=p)
+            for(int k=0;k&amp;lt;i;++k)
+                if(opt==1)a[j+k]=(a[j+k]+a[i+j+k])%mod;
+                else a[j+k]=(a[j+k]+mod-a[i+j+k])%mod;
+}
+void FWT_xor(long long *a,int opt)
+{
+    for(int i=1;i&amp;lt;n;i&amp;lt;&amp;lt;=1)
+        for(int p=i&amp;lt;&amp;lt;1,j=0;j&amp;lt;n;j+=p)
+            for(int k=0;k&amp;lt;i;++k)
+            {
+                int X=a[j+k],Y=a[i+j+k];
+                a[j+k]=(X+Y)%mod;a[i+j+k]=(X+mod-Y)%mod;
+                if(opt==-1)a[j+k]=1ll*a[j+k]*inv2%mod,a[i+j+k]=1ll*a[i+j+k]*inv2%mod;
+            }
+}
+int main() 
+{
+    // freopen(&amp;quot;a.in&amp;quot;,&amp;quot;r&amp;quot;,stdin);
+    // freopen(&amp;quot;k.out&amp;quot;,&amp;quot;w&amp;quot;,stdout);
+    scanf(&amp;quot;%d&amp;quot;,&amp;amp;n); n = 1&amp;lt;&amp;lt;n;inv2 = pow(2,mod-2); 
+    //printf(&amp;quot;%lld\n&amp;quot;,inv2);
+    for(int i=0;i&amp;lt;n;i++) scanf(&amp;quot;%lld&amp;quot;,&amp;amp;a[i]);
+    for(int i=0;i&amp;lt;n;i++) scanf(&amp;quot;%lld&amp;quot;,&amp;amp;b[i]);
+    FWT_or(a,1);FWT_or(b,1);
+    for(int i=0;i&amp;lt;n;i++) c[i] = (1ll * a[i] * b[i] %mod);
+    FWT_or(c,-1);FWT_or(a,-1);FWT_or(b,-1);
+    for(int i=0;i&amp;lt;n;i++) printf(&amp;quot;%lld &amp;quot;,c[i]);
+    putchar(10);
+
+    FWT_and(a,1);FWT_and(b,1);
+    for(int i=0;i&amp;lt;n;i++) c[i] = (1ll * a[i] * b[i] %mod);
+    FWT_and(c,-1);FWT_and(a,-1);FWT_and(b,-1);
+    for(int i=0;i&amp;lt;n;i++) printf(&amp;quot;%lld &amp;quot;,c[i]);
+    putchar(10);
+
+    FWT_xor(a,1);FWT_xor(b,1);
+    for(int i=0;i&amp;lt;n;i++) c[i] = (1ll * a[i] * b[i] %mod);
+    FWT_xor(c,-1);FWT_xor(a,-1);FWT_xor(b,-1);
+    for(int i=0;i&amp;lt;n;i++) printf(&amp;quot;%lld &amp;quot;,c[i]);
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/fwt/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

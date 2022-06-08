@@ -1,0 +1,316 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    点分治 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        点分治</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/Some-Partition/">
+                        「Template」点分治
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/ZV90KMNKN/" class="post-tag i-tag
+                            i-tag-warning">
+            #点分治
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/template/" class="post-tag i-tag
+                            i-tag-info">
+            #template
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            P4178 Tree
+问树上点权小于等于k的路径个数
+#include &amp;lt;cstdio&amp;gt;
+#include &amp;lt;bitset&amp;gt;
+#include &amp;lt;cstring&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+using namespace std;
+const int maxd = 1e5;
+struct node
+{
+	int v,net,dis;
+}e[maxd*2];
+int f[maxd],eid,k;
+long long ans;
+int sz[maxd],son[maxd],d[maxd],vis[maxd],tot;
+int n,m,root,cnt,flag;
+void init()
+{
+	memset(f,-1,sizeof(f));
+	eid = 0;
+}
+void insert(int a,int b,int dis)
+{
+	e[eid].v = b;
+	e[eid].net = f[a];
+	e[eid].dis = dis;
+	f[a] = eid++;
+}
+
+void Get_Root(int x,int fa) //找根
+{
+	son[x] = 0,sz[x] = 1;
+	for(int i=f[x];i+1;i=e[i].net)
+	{
+		int v = e[i].v;
+		if(v==fa||vis[v]) continue;
+		Get_Root(v,x);
+		son[x] = max(son[x],sz[v]);
+		sz[x] += sz[v];		
+	}
+	son[x] = max(son[x],tot - sz[x]);
+	if(son[x] &amp;lt; son[root]) root = x;
+}
+void Get_dis(int x,int fa,int len) // 统计当前重心到各个点的距离
+{
+	for(int i=f[x];i+1;i=e[i].net)
+	{
+		int v = e[i].v;
+		if(vis[v]||v == fa) continue;
+		d[++cnt] = len + e[i].dis;
+		Get_dis(v,x,d[cnt]);
+	}
+}
+int find(int l,int r,int v)
+{
+	int res = 0;
+	while(l&amp;lt;=r)
+	{
+		int mid = (l+r)&amp;gt;&amp;gt;1;
+		if(d[mid]&amp;lt;=v) res = mid, l = mid+1;
+		else r = mid-1;
+	}
+	return res;
+}
+void Get_Ans(int x,int dis,int w)	//统计当前点的符合条件数
+{
+	d[cnt=1] = dis;	//	加入0，覆盖一条边的统计
+	Get_dis(x,0,dis);
+	sort(d+1,d+1+cnt);
+	while(cnt &amp;amp;&amp;amp; d[cnt] &amp;gt; k) cnt--;
+	while(cnt) ans += w*find(1,cnt-1,k-d[cnt]),cnt--;
+}
+void Point_Divid(int x)
+{
+	vis[x] = 1;
+	Get_Ans(x,0,1); 
+	for(int i=f[x];i+1;i=e[i].net)
+	{
+		int v = e[i].v;
+		if(vis[v]) continue;
+		Get_Ans(v,e[i].dis,-1);
+		tot = sz[v];root = 0;
+		Get_Root(v,x),Point_Divid(root);
+	}
+}
+
+int main()
+{
+	// freopen(&amp;quot;a.in&amp;quot;,&amp;quot;r&amp;quot;,stdin);
+	// freopen(&amp;quot;k.out&amp;quot;,&amp;quot;w&amp;quot;,stdout);
+	init(); scanf(&amp;quot;%d&amp;quot;,&amp;amp;n);
+	for(int i=1;i&amp;lt;n;i++)
+	{
+		int x,y,z;
+		scanf(&amp;quot;%d %d %d&amp;quot;,&amp;amp;x,&amp;amp;y,&amp;amp;z);
+		insert(x,y,z);
+		insert(y,x,z);
+	}
+	scanf(&amp;quot;%d&amp;quot;,&amp;amp;k);
+	tot = n; son[0] = 1e9;Get_Root(1,0);
+	Point_Divid(root);
+	printf(&amp;quot;%lld&amp;quot;,ans);
+	return 0;
+}	
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/Some-Partition/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,493 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    UCF Local Programming Contest 2015 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            UCF Local Programming Contest 2015
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-02-27</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/3K1HRZrVeP/" class="post-tag i-tag
+                            i-tag-info">
+                            #题解
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p><a href="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/file/UCF%20Local%20Contest%202015%20%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A.pdf">UCF Local Contest 2015解题报告[东华大学 ACM 集训队]🔗</a></p>
+<!-- more -->
+<h3 id="f-balanced-strings">F Balanced Strings</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+ll t;
+map&lt;char,ll&gt; mp;
+char s[maxd];
+char k[] = &quot;aeiouy&quot;;
+int main()
+{
+//    __IN;__OUT;
+    RLL(t);ll ca = 0;
+    FOR(i,0,6) mp[k[i]] = 1;
+    while(t--)
+    {
+        RS(s+1);ll len = strlen(s+1);
+        ll a= 0,b=0,flag=0,ans = 0;
+        FOR(i,1,len)
+        {
+            if(s[i] == '?')
+            {
+                if(i%2) a++;
+                else b++;
+            }
+            else if(mp[s[i]] != i%2) // 元音
+            {
+                flag =1;
+                break;
+            }
+        }
+        if(!flag) ans += pow(6,a) * pow(20,b);
+        a = 0 , b= 0 ,flag = 0;
+        FOR(i,1,len)
+        {
+            if(s[i] == '?')
+            {
+                if(i%2) a++;    // 辅音
+                else b++;
+            }
+            else if(mp[s[i]] == i%2) // 位置错了
+            {
+                flag =1;
+                break;
+            }
+        }
+        if(!flag) ans += pow(20,a) * pow(6,b);
+        printf(&quot;String #%d: %lld\n&quot;,++ca,ans);
+        if(t) PN();
+    }
+
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="g-towers-of-hanoi-grid">G Towers of Hanoi Grid</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    ll ca = 0;
+    while(t--)
+    {
+        printf(&quot;Grid #%d: &quot;,++ca);
+        ll d,n;RLL2(d,n);
+        if(d&gt;n*n-2*(n-1))PS(&quot;impossible\n&quot;);
+        else {
+            PLN(d*2*(n-1));
+            PN();
+        }
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="h-reach-for-the-stars">H  Reach for the Stars</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+char mp[11][11];
+const ll fx[5]= {0,0,-1,1,0}, fy[5] = {-1,1,0,0,0};
+ll n,m,ans;
+void dfs(ll i,ll j,ll s,ll num)
+{
+//    PLN4(i,j,s,num);
+//    FOR(i,1,n) PS(mp[i]+1);
+
+    if(s &gt;= ans) return;
+    if(num == 0)
+    {
+        ans = min(ans,s);
+        return ;
+    }
+    if(i == 1|| i &gt;= n || j == 1|| j &gt;= m ) return;
+    if((num-1)/5+1+s &gt;= ans) return;
+    char tmp[5];
+    FOR(p,0,4) tmp[p] = mp[i+fx[p]][j+fy[p]];
+    ll cnt = 0,flag = 0;
+    FOR(p,0,4) flag |= (tmp[p] == '.');
+    FOR(p,0,4) cnt += (tmp[p] == '#');
+//    PLN2(flag,cnt);
+//    FOR(p,0,4) putchar(tmp[p]);
+//    PN();
+    if(!flag &amp;&amp; cnt)
+    {
+        FOR(p,0,4) mp[i+fx[p]][j+fy[p]] = '@';
+        if(j+1 &lt; m) dfs(i,j+1,s+1,num - cnt);
+        else dfs(i+1,2,s+1,num- cnt);
+        FOR(p,0,4) mp[i+fx[p]][j+fy[p]] = tmp[p];
+    }
+    if(mp[i-1][j] == '#') return;
+    if(j==2 &amp;&amp; mp[i][1] == '#') return;
+    if(j==m-1 &amp;&amp; mp[i][m] == '#') return;
+    if(j+1 &lt; m) dfs(i,j+1,s,num);
+    else dfs(i+1,2,s,num);
+}
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    FOR(ca,1,t)
+    {
+        RLL2(n,m);ll num = 0;
+        FOR(i,1,n) RS(mp[i]+1);
+        FOR(i,1,n) FOR(j,1,m) num+=mp[i][j] == '#';
+        if(mp[1][1] == '#'|| mp[1][m] == '#'||mp[n][1] == '#' || mp[n][m] == '#')
+            printf(&quot;Image #%d: impossible\n\n&quot;,ca);
+        else
+        {
+            ans = 1e9+10;dfs(2,2,0,num);
+            if(ans == 1e9+10)printf(&quot;Image #%d: impossible\n\n&quot;,ca);
+            else printf(&quot;Image #%d: %d\n\n&quot;,ca,ans);
+
+        }
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="i-longest-path">I  Longest Path</h3>
+<pre><code class="language-cpp">const int maxd = 505;
+ll a[maxd][maxd];
+int main()
+{
+//    __IN;__OUT;
+    ll t;RLL(t);
+    while(t--)
+    {
+        ll n;RLL(n);
+        FOR(i,1,n) FOR(j,1,n) RLL(a[i][j]);
+        list&lt;ll&gt; b;
+        b.pb(1);
+        FOR(i,2,n)
+        {
+            ll flag =0;
+            FF(it, b)
+            {
+                auto net = it; net++;
+                if(net != b.end() &amp;&amp; a[*it][i] &amp;&amp; a[i][*net])
+                {
+                    b.insert(net,i);
+                    flag=1;break;
+                }
+            }
+            if(!flag)
+            {
+                if(a[*b.begin()][i]) b.pb(i);
+                else b.pf(i);
+            }
+        }
+        FF(it,b)
+        {
+            auto net = it; net++;
+            PLL(*it);
+            if(net == b.end()) PN();
+            else PP();
+        }
+
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<h3 id="j-you-shall-pass">J You Shall Pass</h3>
+<pre><code class="language-cpp">const ll maxd = 1e5+10;
+const ll inf = 1e18;
+
+struct edge{ll to,rev, flow;};
+vector&lt;edge&gt; G[maxd];
+void add(ll u,ll v,ll flow)
+{
+    G[u].push_back((edge) {v, (ll) G[v].size(), flow});
+    G[v].push_back((edge) {u, (ll) G[u].size() - 1, 0});
+}
+ll d[maxd],in[maxd],out[maxd],k[maxd],s,t;
+bool bfs()
+{
+    memset(d,-1,sizeof(d));d[s] = 0;
+    queue&lt;ll&gt; que; que.push(s);
+    while(!que.empty())
+    {
+        ll x = que.front(); que.pop();
+        for(auto p: G[x]) if(p.flow &gt; 0 &amp;&amp; d[p.to] == -1) que.push(p.to),d[p.to] = d[x]+1;
+    }
+    return (d[t] != -1);
+}
+ll dfs(ll x,ll flow)
+{
+    if(x == t)  return flow;
+    ll res = 0ll;
+    F(G[x].size())
+    {
+        edge &amp;e = G[x][i];ll v = e.to;
+        if(e.flow &gt; 0 &amp;&amp; d[x]+1 == d[v])
+        {
+            ll tmp = dfs(v,min(flow,e.flow));
+            flow -= tmp; e.flow -= tmp; res += tmp;
+            G[v][e.rev].flow += tmp;
+            if(!flow) break;
+        }
+    }
+    if(!res) d[x] = -1;
+    return res;
+}
+ll maxflow()
+{
+    ll res = 0;
+    while(bfs()) res += dfs(s,inf);
+    return res;
+}
+
+int main()
+{
+//    __IN;__OUT;
+    ll T;RLL(T);
+    while(T--)
+    {
+        ll n,sum = 0;RLL(n);
+        double x;
+        s = 0, t = n+2*n*n+1;
+        FOR(i,1,n)
+        {
+            RLF(x);
+            ll c = round(x*100);
+            sum += c;
+            add(s,i,c);
+        }
+        FOR(i,1,n)
+        {
+            RLF(x);
+            ll c = round(x*100);
+            sum += c;
+            add(i,t,c);
+        }
+        FOR(i,1,n)FOR(j,1,n)
+        {
+            RLF(x);ll c = round(x*100);
+            sum += c; sum+=c;
+            add(s,n + (i-1) *n +j,c);
+            add(n + (i-1) *n +j + n * n,t,c);
+
+            add(n + (i-1) *n +j,i,inf);
+            add(n + (i-1) *n +j,j,inf);
+            add(i,n + (i-1) *n +j + n * n,inf);
+            add(j,n + (i-1) *n +j + n * n,inf);
+        }
+        ll len =maxflow();
+        double ans =1.0 *  (sum - len) / 100;
+//        PLN2(sum,len);
+        printf(&quot;%.2lf\n&quot;,ans);
+        FOR(i,s,t) G[i].clear();
+    }
+
+    return 0;
+}
+</code></pre>
+<br>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#f-balanced-strings">F Balanced Strings</a></li>
+<li><a href="#g-towers-of-hanoi-grid">G Towers of Hanoi Grid</a></li>
+<li><a href="#h-reach-for-the-stars">H  Reach for the Stars</a></li>
+<li><a href="#i-longest-path">I  Longest Path</a></li>
+<li><a href="#j-you-shall-pass">J You Shall Pass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

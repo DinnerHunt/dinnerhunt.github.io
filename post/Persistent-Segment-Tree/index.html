@@ -1,0 +1,322 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」可持久化线段树(主席树) | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」可持久化线段树(主席树)
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-04</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p><a href="https://www.luogu.org/problemnew/show/P3834">可持久化线段树</a></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 200010;
+int arr[maxd],sorted[maxd],root[maxd];
+int size[maxd&lt;&lt;5],ls[maxd&lt;&lt;5],rs[maxd&lt;&lt;5],cnt;
+void insert(int &amp;root,int last,int l,int r,int k){  //当前树，上个版本，第几大， 
+    root = ++cnt;
+    ls[root] = ls[last];
+    rs[root] = rs[last];
+    size[root] = size[last]+1;
+    if(l==r) return;
+    int mid = (l+r)&gt;&gt;1;
+    if(k&lt;=mid) insert(ls[root],ls[last],l,mid,k);
+    else insert(rs[root],rs[last],mid+1,r,k);
+}
+int query(int left,int right,int l,int r,int k){   //l-1版本，r版本}
+    if(l==r) return l;
+    int mid = (l+r) &gt;&gt; 1;
+    int sum = size[ls[right]] - size[ls[left]];
+    if(k&lt;=sum) return query(ls[left],ls[right],l,mid,k);
+    else return query(rs[left],rs[right],mid+1,r,k-sum); 
+}
+int main(){
+    int n,m,num,pos,T;
+    cnt = 0; root[0] = 0;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;arr[i]);
+        sorted[i] = arr[i];
+    }
+    sort(sorted+1,sorted+1+n);
+    num = unique(sorted+1,sorted+n+1) - (sorted+1); //去重后有多少个数
+    for(int i=1;i&lt;=n;i++)
+    {
+        pos = lower_bound(sorted +1,sorted+num+1,arr[i]) - sorted; //当前数排第几
+        insert(root[i],root[i-1],1,num,pos);        
+    }  
+    int l,r,k;
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d %d %d&quot;,&amp;l,&amp;r,&amp;k);
+        pos = query(root[l-1],root[r],1,num,k);   
+        printf(&quot;%d\n&quot;,sorted[pos]);
+    }
+    return 0;
+}
+</code></pre>
+<p>动态区间第k大</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int maxd = 100100;
+int n,m,arr[maxd],sorted[maxd*2],root[maxd];
+int cnt,totn,totx,toty,a[maxd],b[maxd],c[maxd];
+int xx[maxd],yy[maxd];
+int size[maxd*600],l[maxd*600],r[maxd*600];
+void insert(int &amp;now,int last,int k,int L,int R,int v){  //当前树，上个版本，第几大，
+    now = ++cnt;
+    size[now] = size[last]+v;
+    l[now] = l[last];
+    r[now] = r[last];
+    if(L==R) return;
+    int mid = (L+R) &gt;&gt; 1;
+    if(k&lt;=mid) insert(l[now],l[last],k,L,mid,v);
+    else insert(r[now],r[last],k,mid+1,R,v);
+}
+int query(int L,int R,int k){   //l,r,第k大
+    if(L==R) return L;
+    int sum = 0;
+    for(int i=1;i&lt;=totx;i++) sum -= size[l[xx[i]]];
+    for(int i=1;i&lt;=toty;i++) sum += size[l[yy[i]]];
+    int mid = (L+R) &gt;&gt; 1;
+    if(k&lt;=sum){
+        for(int i=1;i&lt;=totx;i++) xx[i] = l[xx[i]];
+        for(int i=1;i&lt;=toty;i++) yy[i] = l[yy[i]];
+        query(L,mid,k);
+    }
+    else{
+        for(int i=1;i&lt;=totx;i++) xx[i] = r[xx[i]];
+        for(int i=1;i&lt;=toty;i++) yy[i] = r[yy[i]];
+        query(mid+1,R,k-sum);
+    }
+}
+
+void add(int x,int v){
+    int k = lower_bound(sorted+1,sorted+1+totn,arr[x]) - sorted;
+    for(int i = x;i&lt;=n;i+=(i&amp;-i)) insert(root[i],root[i],k,1,totn,v);
+}
+inline int read(){
+    int f=1,x=0;char ch;
+    do{ch=getchar();if(ch=='-')f=-1;}while(ch&lt;'0'||ch&gt;'9');
+    do{x=x*10+ch-'0';ch=getchar();}while(ch&gt;='0'&amp;&amp;ch&lt;='9');
+    return f*x;
+}
+int main(){
+    char str[5];
+    n=read(),m=read();
+    for(int i=1;i&lt;=n;i++)
+    {
+        arr[i] = read();
+        sorted[i] = arr[i];
+    }
+    totn = n;
+    for(int i=1;i&lt;=m;i++){
+        scanf(&quot;%s&quot;,str);
+        a[i] = read(), b[i] = read();
+        if(str[0]=='Q') c[i] = read();
+        else sorted[++totn] = b[i];
+    }
+    sort(sorted+1,sorted+1+totn);
+    totn = unique(sorted+1,sorted+totn+1) - (sorted+1); //去重后有多少个数
+    for(int i=1;i&lt;=n;i++) add(i,1);
+    for(int i=1;i&lt;=m;i++)
+    {
+        totx = toty = 0;
+        if(c[i]){
+            for(int j=a[i]-1;j;j-=(j&amp;-j)) xx[++totx] = root[j];
+            for(int j=b[i];j;j-=(j&amp;-j))   yy[++toty] = root[j];
+            printf(&quot;%d\n&quot;,sorted[query(1,totn,c[i])]);
+        }
+        else{
+            add(a[i],-1),arr[a[i]]=b[i];add(a[i],1);
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

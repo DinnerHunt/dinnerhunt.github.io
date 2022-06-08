@@ -1,0 +1,277 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「P3412」 仓鼠找sugar II | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「P3412」 仓鼠找sugar II
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-05-08</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/_J98Cg05-/" class="post-tag i-tag
+                            i-tag-info">
+                            #统计
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/UT5JGG2Yo/" class="post-tag i-tag
+                            i-tag-other_2">
+                            #期望概率
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为1~n。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（a，是任意的）他的基友卧室（b，还是任意的）。（注意，a有可能等于b。）然而小仓鼠学OI学傻了，不知道怎么怎么样才能最短的走到目的地。于是他只能随便乱走。当他在每一个节点时，等概率到这个点的母亲或者所有孩子节点（例如这个节点有一个母亲节点和两个子节点，那么下一步走到这3个节点的概率都是1/3）。一但走到了他基友的卧室，就会停下。</p>
+<!--more-->
+<p>现在小仓鼠希望知道，他走到目的地时，走的步数的期望。这个期望本来是一个有理数，但是为了避免误差，我们要求对这个有理数取模，%998244353。</p>
+<h4 id="链接">链接 🔗</h4>
+<p><a href="https://www.luogu.com.cn/problem/P3412">「P3412」 仓鼠找sugar II</a></p>
+<h4 id="题解">题解  ❓</h4>
+<p><a href="https://www.luogu.com.cn/user/3182">by Created_equal1</a><br>
+首先dp出每个点到其父亲的期望游走距离和每个点父亲到这个点的期望游走距离（可以自己推式子，可以直接拉经典结论），这样我们就相当于把一个双向边拆成两条单向边。然后考虑如何统计答案。<br>
+考虑统计每条边对答案的贡献。枚举某条边E，其对答案产生的贡献就是在E一边的点数<em>E在另一边的点数</em>（E正着走的期望距离+E倒着走的期望距离）</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const int mod = 998244353;
+const double eps = 1e-8;
+const int N = 2e5+10;
+V G[N];
+ll sum,fa[N],sz[N],d[N];
+void dfs(ll x,ll f)
+{
+    d[x] = G[x].size();
+    sz[x] = 1; fa[x] = f;
+    for(auto v: G[x])
+    {
+        if(v == f) continue;
+        dfs(v,x); sz[x] += sz[v];
+        d[x] += d[v];
+    }
+}
+int main()
+{
+//    __IN;__OUT;
+    ll n;RLL(n);
+    FOR(i,1,n-1)
+    {
+        ll x,y;
+        RLL2(x,y);
+        G[x].pb(y);G[y].pb(x);
+    }
+    FOR(i,1,n) sum += G[i].size();
+    dfs(1,0);
+    ll ans = 0;
+    FOR(x,1,n)
+    {
+        for(auto v:G[x])
+        {
+            if(v==fa[x]) ans=(ans+1ll*d[x]*sz[x]%mod*(n-sz[x])%mod)%mod;
+            else ans=(ans+1ll*(sum-d[v])*(n-sz[v])%mod*sz[v]%mod)%mod;
+        }
+    }
+    PLN(ans * fpow(n*n % mod,mod-2,mod) % mod);
+    return 0;
+}
+
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接 🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解  ❓</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

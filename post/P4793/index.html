@@ -1,0 +1,307 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「AHOI2008」矩形藏宝地 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「AHOI2008」矩形藏宝地
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-10-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/kh2Po2cTb/" class="post-tag i-tag
+                            i-tag-primary">
+                            #CDQ分治
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>欢乐岛上最著名的游戏是一个寻宝游戏，小可可来到宝藏的埋藏地，这是一块开阔地，宝藏被分散的埋藏在这块地下，现在要做的是一件件的把宝藏挖出来。为了提示宝藏的埋藏点，游戏的主办方把这块开阔地当作第一象限，将所有可能埋藏宝藏的地方划成一个个矩形的土地，并把这些矩形土地的坐标都告诉了参赛者。挖宝的提示很简单，只要某一个矩阵土地至少被另外一个矩阵土地所包含，那么这个矩阵土地里肯定埋有宝藏。其实这些宝藏都是一些精美的纪念品，如果谁挖出来了纪念品就归谁了，小可可很想为这次旅程画上完美的句号，有你的帮助他信心十足，你只要告诉他：有多少个矩形土地里肯定埋有宝藏就行了。胜利就在眼前，加油吧！</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P4793">「AHOI2008」矩形藏宝地</a></p>
+<h4 id="题解">题解</h4>
+<p>CDQ分治<br>
+排序维护 x2 降序<br>
+归并维护 y2 降序<br>
+树状数组中用 x1的坐标，存y1的值<br>
+然后树状数组求前缀和最小值与当前y1比较</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 2e5+10;
+struct node
+{
+    int x1,y1,x2,y2,f;
+}e[maxd];
+int cmp(const node a,const node b)
+{
+    return a.x2 &gt; b.x2;
+}
+int cmp1(const node a,const node b)
+{
+    return a.y2 &gt; b.y2;
+}
+int fx[maxd&lt;&lt;1],fy[maxd&lt;&lt;1],totx,toty;
+int t[maxd&lt;&lt;1],ans;
+void clear(int x)
+{
+    for(;x&lt;maxd*2;x+=(x&amp;-x)) t[x] = 1e9;
+}
+void update(int x,int y)
+{
+    for(;x&lt;maxd*2;x+=(x&amp;-x)) t[x] = min(t[x],y);
+}
+int query(int x)
+{
+    int ans = 1e9;
+    for(;x;x-=(x&amp;-x)) ans = min(t[x],ans);
+    return ans;
+}
+void cdq(int l,int r)
+{
+    if(l==r) return;
+    int mid = (l+r)/2;
+    cdq(l,mid),cdq(mid+1,r);
+    sort(e+l,e+mid+1,cmp1); sort(e+mid+1,e+r+1,cmp1); //懒得手动归并，直接排序
+    int j = l;
+    for(int i=mid+1;i&lt;=r;i++) // 此时j的x2 一定大于i的x2
+    {
+        if(e[i].f) continue;
+        while(j &lt;= mid&amp;&amp;e[j].y2 &gt; e[i].y2) 
+            update(e[j].x1,e[j].y1),j++; // 把y1插入数组x1的位置
+        int tmp = query(e[i].x1); // 因为查询比 x1小的值，所以查询x1一定小于i的x1;
+        if(tmp &lt; e[i].y1) e[i].f = 1,ans++; 
+    }
+    while(--j&gt;=l) clear(e[j].x1); // 重置
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n;scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++) 
+    {
+        scanf(&quot;%d %d %d %d&quot;,&amp;e[i].x1,&amp;e[i].y1,&amp;e[i].x2,&amp;e[i].y2);
+        fx[++totx] = e[i].x1,fx[++totx] = e[i].x2;
+        fy[++toty] = e[i].y1,fy[++toty] = e[i].y2;
+    }
+    sort(fx+1,fx+1+totx);sort(fy+1,fy+1+toty); //离散化 因为不存在相同的，不需要去重复
+    for(int i=1;i&lt;=n;i++)
+    {
+        e[i].x1 = lower_bound(fx+1,fx+1+totx,e[i].x1) - fx;
+        e[i].x2 = lower_bound(fx+1,fx+1+totx,e[i].x2) - fx;
+        e[i].y1 = lower_bound(fy+1,fy+1+toty,e[i].y1) - fy;
+        e[i].y2 = lower_bound(fy+1,fy+1+toty,e[i].y2) - fy;
+    }
+    sort(e+1,e+1+n,cmp); // 第一维对右x进行排序
+    for(int i=1;i&lt;2*maxd;i++) t[i] = 1e9; // 初始化
+    cdq(1,n);
+    printf(&quot;%d&quot;,ans);
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

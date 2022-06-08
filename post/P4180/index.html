@@ -1,0 +1,391 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「BJWC2010」 严格次小生成树 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「BJWC2010」 严格次小生成树
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="post-tag i-tag
+                            i-tag-warning">
+                            #LCA
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>小C最近学了很多最小生成树的算法，Prim算法、Kurskal算法、消圈算法等等。正当小C洋洋得意之时，小P又来泼小C冷水了。小P说，让小C求出一个无向图的次小生成树，而且这个次小生成树还得是严格次小的，也就是说：如果最小生成树选择的边集是EM，严格次小生成树选择的边集是ES，那么需要满足：(value(e)表示边e的权值)<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><msub><mi>m</mi><mrow><mi>e</mi><mo>∈</mo><msub><mi>E</mi><mi>M</mi></msub></mrow></msub><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>(</mo><mi>e</mi><mo>)</mo><mo>&lt;</mo><msub><mo>∑</mo><mrow><mi>e</mi><mo>∈</mo><msub><mi>E</mi><mi>S</mi></msub></mrow></msub><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>(</mo><mi>e</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">sum_{e \in E_M} value(e) &lt; \sum_{e \in E_S } value(e)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.000305em;vertical-align:-0.250305em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.05764em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.150015em;vertical-align:-0.400015em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.17862099999999992em;"><span style="top:-2.4002900000000005em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.05764em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.400015em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord mathdefault">e</span><span class="mclose">)</span></span></span></span></p>
+<!-- more -->
+<p>这下小 C 蒙了，他找到了你，希望你帮他解决这个问题。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P4180">[BJWC2010]严格次小生成树</a></p>
+<h4 id="题解">题解</h4>
+<p>严格次小生成树，与最小生成树只有一条边不同<br>
+可以以此枚举出非生成树上的边，树加入边后必定形成环，将环上小于加入边的最大边删除，可以得到一个增量，次小生成树的权值就为最小生成树的权值加最小增量<br>
+求环上最短边可以用<strong>LCA</strong>倍增求解</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;set&gt;
+using namespace std;
+const int maxd = 1e5+100;
+struct node
+{
+    int x,y,flag;
+    long long w;
+    bool operator &lt; (const node &amp;other) const
+    {
+        return w &lt; other.w;
+    }
+}arr[maxd&lt;&lt;2];
+inline int read()
+{
+    int f=1,x=0;char ch;
+    do{ch=getchar();if(ch=='-')f=-1;}while(ch&lt;'0'||ch&gt;'9');
+    do{x=x*10+ch-'0';ch=getchar();}while(ch&gt;='0'&amp;&amp;ch&lt;='9');
+    return f*x;
+}
+struct
+{
+    int v,net;
+    long long w;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void insert(int a,int b,long long c)
+{
+    e[eid].net= f[a];
+    e[eid].v= b;
+    e[eid].w = c;
+    f[a] = eid++;
+}
+int p[maxd][30],d[maxd];
+long long  mx[maxd][20],mi[maxd][30];
+int fa[maxd];
+int n,m,a,b,c,x;
+long long ans =1e14,sum=0ll;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    memset(d,-1,sizeof(f));
+    for(int i=1;i&lt;=n;i++) fa[i] = i;
+    eid = 0; d[1] = 0;
+}
+int gf(int x)
+{
+    if(fa[x] == x) return x;
+    return fa[x] = gf(fa[x]);
+}
+void dfs(int x)
+{
+    for(int i = f[x]; i+1; i = e[i].net)
+    {
+        int v = e[i].v;
+        if(d[v]==-1)
+        {
+            d[v] = d[x]+1;
+            p[v][0] = x;
+            mx[v][0] = e[i].w;
+            mi[v][0] = -1e14;
+            dfs(v);
+        }    
+    }
+}
+int lca(int a,int b,long long c)
+{
+    long long x=-1e14,y=-1e14;
+    if(d[b] &gt; d[a]) swap(a,b);
+    for(int i = 15;i&gt;=0;i--)
+        if(d[p[a][i]]&gt;=d[b])
+        {
+            long long k = 0;
+            if(x!=mx[a][i]) k = min(x,mx[a][i]);
+            x = max(x,mx[a][i]);
+            y = max(max(y,mi[a][i]),k); 
+            a = p[a][i];
+        }
+    if(a==b)
+    {
+        if(x == c) return y;
+        return x;
+    }
+    for(int i = 15;i&gt;=0;i--)
+        if(p[a][i]!=p[b][i])
+        {
+            long long check[6];
+            check[0] = x;check[1] = mx[b][i]; check[2]=mx[a][i];
+            check[3] = y;check[4] = mi[b][i]; check[5]=mi[a][i];
+            sort(check,check+6);
+            x = check[5];
+            for(int j=0;j&lt;6;j++)
+            {
+                if(check[j] == x) break;
+                y = check[j];
+            }
+            a=p[a][i],b = p[b][i];
+        }
+    long long check[6];
+    check[0] = x;check[1] = mx[b][0]; check[2]=mx[a][0];
+    check[3] = y;check[4] = mi[b][0]; check[5]=mi[a][0];
+    sort(check,check+6);
+    x = check[5];
+    for(int i=0;i&lt;6;i++)
+    {
+        if(check[i] == x) break;
+        y = check[i];
+    }
+    if(x==c) return y;
+    return x;
+}
+void solve()        //求最小生成树
+{
+    sort(arr+1,arr+m+1);
+    for(int i=1;i&lt;=m;i++)
+    {
+        int x = gf(arr[i].x), y = gf(arr[i].y);
+        if(x == y) continue;
+        sum += arr[i].w;
+        fa[x] = y; 
+        arr[i].flag = 1;
+    }
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    n =read(), m =read();
+    init();
+    for(int i=1;i&lt;=m;i++)       //读取所有边
+        arr[i].x = read(), arr[i].y =read() , arr[i].w= (long long)read();
+    solve();
+    for(int i=1;i&lt;=m;++i)   //  建树
+    {
+        if(arr[i].flag)
+        {
+            insert(arr[i].x,arr[i].y,arr[i].w);
+            insert(arr[i].y,arr[i].x,arr[i].w);
+        }
+    }
+    dfs(1);
+    for(int j=1;j&lt;=15;j++)
+        for(int i=1;i&lt;=n;i++){
+            p[i][j] = p[p[i][j-1]][j-1];    // 父节点
+            long long k = -1e14;
+            if(mx[i][j-1]!=mx[p[i][j-1]][j-1])  // 如果两个点的最长边不同
+            k = min(mx[i][j-1],mx[p[i][j-1]][j-1]); //边权小的那条可能成为次短边
+            mx[i][j] = max(mx[i][j-1],mx[p[i][j-1]][j-1]);
+            mi[i][j] = max(k,max(mi[i][j-1],mi[p[i][j-1]][j-1]));
+        }
+    for(int i=1;i&lt;=m;i++)
+        if(!arr[i].flag)
+        {
+            long long k = arr[i].w - lca(arr[i].x,arr[i].y,arr[i].w);
+            ans = min(ans,k);   //  最小增量
+        }
+    printf(&quot;%lld&quot;,sum + ans);
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

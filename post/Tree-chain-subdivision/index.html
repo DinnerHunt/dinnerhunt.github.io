@@ -1,0 +1,465 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」树链剖分 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」树链剖分
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-04</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p><a href="https://www.luogu.org/problemnew/show/P3384">树链剖分</a></p>
+<p>1.LCA<br>
+2.对某条路径权值进行修改<br>
+3.查询某条路径的权值<br>
+4.查询子数权值<br>
+5.修改子树权值<br>
+6.换根</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+100;
+int n,m,root,x,y;
+long long arr[maxd];
+int fa[maxd],d[maxd],siz[maxd],son[maxd],rk[maxd],id[maxd],top[maxd];
+struct  //  存图
+{
+    struct
+    {
+        int v,net;
+    }e[maxd&lt;&lt;1];
+    int f[maxd],eid;
+    void init()
+    {
+        memset(f,-1,sizeof(f));
+        eid = 0;
+    }
+    void insert(int x,int y)
+    {
+        e[eid].v = y;
+        e[eid].net = f[x];
+        f[x] = eid++;
+    }
+}G;
+struct  //  线段树
+{
+    struct
+    {
+        int l,r,ls,rs;
+        long long sum,lazy;
+    }tree[maxd&lt;&lt;2];
+    int cnt;
+    void init()
+    {
+        cnt = 0;
+    }
+    int len(int x)
+    {
+        return tree[x].r - tree[x].l + 1;
+    }
+    void pushup(int x)
+    {
+        int ls = tree[x].ls, rs = tree[x].rs;
+        tree[x].sum = tree[ls].sum + tree[rs].sum;
+    }
+    void build(int l,int r,int x)
+    {
+        if(l==r)
+        {
+            tree[x].sum = arr[rk[l]];
+            tree[x].l = tree[x].r = l;
+            return ;
+        }
+        int mid = (l+r) &gt;&gt; 1;
+        tree[x].ls = ++cnt,tree[x].rs = ++cnt;
+        tree[x].l = l , tree[x].r = r;
+        build(l,mid,tree[x].ls);
+        build(mid+1,r,tree[x].rs);
+        pushup(x);
+    }
+    void pushdown(int x)
+    {
+        if(tree[x].lazy==0) return;
+        int ls = tree[x].ls,rs = tree[x].rs;
+        long long lz= tree[x].lazy;
+        (tree[ls].sum += lz*len(ls));
+        (tree[rs].sum += lz*len(rs));
+        (tree[ls].lazy += lz);
+        (tree[rs].lazy += lz);
+        tree[x].lazy = 0;
+    }
+    void update(int l,int r,long long v,int x)
+    {
+        if(l&lt;=tree[x].l &amp;&amp; r&gt;=tree[x].r)
+        {
+            (tree[x].sum += v*len(x));
+            (tree[x].lazy += v);
+            return;
+        }
+        pushdown(x);
+        int mid = (tree[x].l+tree[x].r) &gt;&gt; 1;
+        if(l &lt;= mid) update(l,r,v,tree[x].ls);
+        if(r&gt;mid)    update(l,r,v,tree[x].rs);
+        pushup(x);
+    }
+    long long query(int l,int r,int x)
+    {
+        if(l&lt;=tree[x].l &amp;&amp; r &gt;= tree[x].r)
+            return tree[x].sum;
+        pushdown(x);
+        int mid = (tree[x].l+tree[x].r) &gt;&gt; 1;
+        long long ans = 0;
+        if(l&lt;=mid) ans += query(l,r,tree[x].ls);
+        if(r&gt;mid)  ans += query(l,r,tree[x].rs);
+        return ans;
+    }
+}Tree;
+struct
+{
+    int cnt;
+    void init(int root)
+    {
+        cnt = 0;
+        dfs(root);
+        dfs1(root,root);
+    }
+    void dfs(int x)
+    {
+        siz[x] = 1;d[x] = d[fa[x]]+1;
+        for(int i=G.f[x];i+1;i=G.e[i].net)
+        {
+            int v = G.e[i].v;
+            if(v==fa[x]) continue;
+            fa[v] = x;
+            dfs(v);
+            siz[x] += siz[v];
+            if(siz[v] &gt; siz[son[x]])
+                son[x] = v;
+        }
+    }
+    void dfs1(int x,int y)                  //  预处理
+    {
+        top[x]=y; id[x]=++cnt; rk[cnt] = x;
+        if(son[x]) dfs1(son[x],y);
+        for(int i=G.f[x];i+1;i=G.e[i].net)
+        {
+            int v = G.e[i].v;
+            if(v!=son[x]&amp;&amp;v!=fa[x])dfs1(v,v);
+        }
+    }
+    long long sum_lca(int x,int y)          // 求路径的和
+    {
+        long long ans = 0;
+        int fx = top[x], fy = top[y];
+        while(fx!=fy)
+        {
+            if(d[fx] &gt;= d[fy])
+            {
+                (ans += Tree.query(id[fx],id[x],0));
+                x = fa[fx], fx = top[x];
+            }
+            else
+            {
+                (ans += Tree.query(id[fy],id[y],0));
+                y = fa[fy], fy = top[y];
+            }
+        }
+        if(id[x] &lt;= id[y]) (ans += Tree.query(id[x],id[y],0));
+        else (ans += Tree.query(id[y],id[x],0));
+        return ans;
+    }
+    void change(int x,int y,long long v)    // 改变一条路径的值
+    {   
+        int fx = top[x], fy = top[y];
+        while(fx!=fy)
+        {
+            if(d[fx]&gt;=d[fy])
+            {
+                Tree.update(id[fx],id[x],v,0);
+                x = fa[fx], fx = top[x];
+            }
+            else
+            {
+                Tree.update(id[fy],id[y],v,0);
+                y = fa[fy], fy = top[y];
+            }
+        }
+        //printf(&quot;%d %d %lld\n&quot;,id[x],id[y],v);
+        if(id[x] &lt;= id[y]) Tree.update(id[x],id[y],v,0);
+        else Tree.update(id[y],id[x],v,0);
+    }
+    int lca(int x,int y)   // LCA
+    {
+        while(top[x]!=top[y])
+        {
+            if(d[top[x]]&gt;d[top[y]])swap(x,y);
+            y=fa[top[y]];
+        }
+        return d[x]&gt;d[y]?y:x;
+    }
+    int find(int x,int y)   //返回x到y点，x点相邻的位置
+    {
+        while(top[x]!=top[y])
+        {
+            if(d[top[x]]&lt;d[top[y]]) swap(x,y);
+            if(fa[top[x]]==y) return top[x];
+            x=fa[top[x]];
+        }
+        if(d[x]&lt;d[y])swap(x,y);
+        return son[y];
+    }
+    void Tree_update(int x,int y)       // 换根操作
+    {   
+        if(root == x) return Tree.update(1,n,y,0);
+        int k = lca(x,root);
+        if(k != x) return Tree.update(id[x],id[x]+siz[x]-1,y,0);
+        int son = find(x,root);
+        Tree.update(1,n,y,0);
+        Tree.update(id[son],id[son]+siz[son]-1,-y,0);
+    }
+    long long Tree_query(int x)
+    {
+        if(root == x) return Tree.query(1,n,0);
+        int k = lca(x,root);
+        if(k != x) return Tree.query(id[x],id[x]+siz[x]-1,0);
+        int son = find(x,root);
+        return Tree.query(1,n,0)-Tree.query(id[son],id[son]+siz[son]-1,0);
+    }
+}Tree_link;
+
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int x,y,opt;
+    long long z;
+    G.init();Tree.init();
+    //scanf(&quot;%d %d %d %lld&quot;,&amp;n,&amp;m,&amp;root,&amp;mod);
+    scanf(&quot;%d&quot;,&amp;n); root = 1;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;arr[i]);
+    for(int i=2;i&lt;=n;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;x);
+        G.insert(i,x),G.insert(x,i);
+    }
+    Tree_link.init(root);
+    Tree.build(1,n,0);
+    scanf(&quot;%d&quot;,&amp;m);
+    //for(int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,id[i]);
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;opt);
+        //printf(&quot;%d:&quot;,opt);
+        if(opt == 1)
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            root = x;
+        }
+        else if(opt == 2)   // 路径权值更新
+        {
+            scanf(&quot;%d %d %lld&quot;,&amp;x,&amp;y,&amp;z);
+            //printf(&quot;%d %d %lld\n&quot;,x,y,z);
+            Tree_link.change(x,y,z);  
+        }
+        else if(opt == 4)   // 求路径之和
+        {
+            scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+            printf(&quot;%lld\n&quot;,Tree_link.sum_lca(x,y));
+        }
+        else if(opt == 3)   // 更新子树
+        {
+            scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+            Tree_link.Tree_update(x,y);
+        }
+        else            // 查询子树
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            printf(&quot;%lld\n&quot;,Tree_link.Tree_query(x));
+        }
+        //printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

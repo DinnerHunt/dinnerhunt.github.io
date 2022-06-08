@@ -1,0 +1,326 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    模版 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        模版</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/Ternary-ring/">
+                        「Template」三元环计数
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-12-01</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/zG7LCKlux/" class="post-tag i-tag
+                            i-tag-info">
+            #三元环
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/ylS4Ph33D/" class="post-tag i-tag
+                            i-tag-">
+            #模版
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            无向图三元环计数
+O(msqrt(m))O(m sqrt(m))O(msqrt(m))
+ll solve(ll n,ll m)
+{
+    ll a,b;
+    FOR(i,1,n)
+    {
+        RLL2(a,b);e.pb(P(a,b));
+        ++d[a],++d[b];
+    }
+    FOR(i,1,m)
+    {
+        ll u = e[i].first,v = e[i].second;
+        if(d[u] &amp;lt; d[v] || (d[u] == d[v] &amp;amp;&amp;amp; u &amp;gt; v)) swap(u,v);
+        G[u].pb(v);
+    }
+    ll ans = 0;
+    FOR(i,1,n)
+    {
+        for(auto u:G[i]) vis[u] = i;
+        for(auto u:G[i]) for(auto v:G[u]) if(vis[v] == i) ans++;
+    }
+    return ans;
+}
+
+
+有向图三元环计数
+先将图转化为无向图，然后用无向图方法求出三元环，因为数量不超过O(msqrt(m))O(m sqrt(m))O(msqrt(m))
+所以可以求出来以后在在原图上判断该三元环是否存在
+
+竞赛图三元环计数
+先考虑所有方案数，任选三点的方案数为Cn3C_n^3Cn3​
+然后去掉不合法的，对于一个点iii，不可能存在一个三元环，不可能存在两条出边来至该点
+因此对于该点的方案数为 C∣d[i]∣2C_{|d[i]|}^2C∣d[i]∣2​
+所以总方案数为
+Cn3−∑inC∣d[i]∣2C_n^3 - \sum_i^n C_{|d[i]|}^2
+Cn3​−i∑n​C∣d[i]∣2​
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/Ternary-ring/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/matrix_pow/">
+                        「Template」矩阵快速幂
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-11-28</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/ylS4Ph33D/" class="post-tag i-tag
+                            i-tag-other_2">
+            #模版
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            一些经验
+
+GCD(Fbi[x],Fbi[y])=Fbi[GCD(x,y)]GCD(Fbi[x],Fbi[y]) = Fbi[GCD(x,y)]GCD(Fbi[x],Fbi[y])=Fbi[GCD(x,y)]
+f[i]=f[i−1]∗f[i−2]f[i] = f[i-1] * f[i-2]f[i]=f[i−1]∗f[i−2] 可以考虑指数上的增长
+
+
+模版
+//  假设 f[i] = f[i-1] + f[i-3]
+//  f[i] = f[i-1] * 1 + f[i-2] * 0 + f[i-3] * 1;
+// f[i-1] = f[i-1] * 1 + f[i-2] * 0 + f[i-3] * 0;
+// f[i-2] = f[i-1] * 0 + f[i-2] * 1 + f[i-3] * 0;
+// 则矩阵设为
+//  [ 1 , 0 , 1 ]
+//  [ 1 , 0 , 0 ]
+//  [ 0 , 1 , 0 ]
+
+// 设置M.init() , 第k项运行运行M.getans(k);
+struct Matrix_Pow
+{
+    ll n,mod;
+
+    struct matrix
+    {
+        long long a[100][100];
+    }ans,base;
+
+    inline void init() // 这部分设置初始值
+    {
+    }
+    matrix matrix_mul(matrix A, matrix B)
+    {
+        matrix C;
+        for (int i = 1; i &amp;lt;= n; ++i)
+            for (int j = 1; j &amp;lt;= n; ++j)
+            {
+                C.a[i][j] = 0;
+                for (int k = 1; k &amp;lt;= n; ++k) C.a[i][j] = (C.a[i][j] + (A.a[i][k] * B.a[k][j] % mod)) % mod;
+            }
+        return C;
+    }
+    void matrix_pow(long long b)
+    {
+        for (; b; b &amp;gt;&amp;gt;= 1)
+        {
+            if (b &amp;amp; 1) ans = matrix_mul(ans, base);
+            base = matrix_mul(base, base);
+        }
+    }
+}M;
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/matrix_pow/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

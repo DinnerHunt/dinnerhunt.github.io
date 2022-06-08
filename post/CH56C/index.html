@@ -1,0 +1,346 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Contest Hunter Round 56」 异象石 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Contest Hunter Round 56」 异象石
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="post-tag i-tag
+                            i-tag-other_3">
+                            #LCA
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>Adera是Microsoft应用商店中的一款解谜游戏。<br>
+异象石是进入Adera中异时空的引导物，在Adera的异时空中有一张地图。这张地图上有N个点，有N-1条双向边把它们连通起来。起初地图上没有任何异象石，在接下来的M个时刻中，每个时刻会发生以下三种类型的事件之一：</p>
+<!-- more -->
+<ol>
+<li>地图的某个点上出现了异象石（已经出现的不会再次出现）；</li>
+<li>地图某个点上的异象石被摧毁（不会摧毁没有异象石的点）；</li>
+<li>向玩家询问使所有异象石所在的点连通的边集的总长度最小是多少。<br>
+请你作为玩家回答这些问题。</li>
+</ol>
+<h4 id="链接">链接🔗</h4>
+<p><a href="http://contest-hunter.org:83/contest/CH%20Round%20%2356%20-%20%E5%9B%BD%E5%BA%86%E8%8A%82%E6%AC%A2%E4%B9%90%E8%B5%9B/%E5%BC%82%E8%B1%A1%E7%9F%B3">[Contest Hunter Round #56] 异象石</a></p>
+<h4 id="题解">题解</h4>
+<p>树上点的路径可以通过<strong>dfs序</strong>求出来,<br>
+<strong>(a[1] -&gt; a[2] -&gt; a[3] -&gt; a[n] - &gt; a[1])/2</strong><br>
+然后插入和修改点，我们也可以进行动态维护，因为只有简单的前驱与后继的操作，可以直接用<code>set</code>来维护<br>
+PS: 统计距离要用<strong>long long</strong></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;set&gt;
+using namespace std;
+const int maxd = 1e5+10;
+struct
+{
+    int v,net,w;
+}e[maxd&lt;&lt;1];
+int f[maxd],eid;
+void insert(int a,int b,int c)
+{
+    e[eid].net= f[a];
+    e[eid].v= b;
+    e[eid].w = c;
+    f[a] = eid++;
+}
+int p[maxd][30],d[maxd],id[maxd],num[maxd],tot;
+int n,m,a,b,c,x;
+long long ans =0,dist[maxd];
+set&lt;int&gt; s;
+set&lt;int&gt; :: iterator l,r;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    memset(d,-1,sizeof(f));
+    eid = 0; d[1] = 0;
+}
+void dfs(int x)
+{
+    id[x] = ++tot;
+    num[tot] = x;
+    for(int i = f[x]; i+1; i = e[i].net)
+    {
+        int v = e[i].v;
+        if(d[v]==-1)
+        {
+            d[v] = d[x]+1;
+            p[v][0] = x;
+            dist[v] =(long long)(dist[x] + e[i].w);
+            dfs(v);
+        }    
+    }
+}
+int lca(int a,int b)
+{
+    if(d[b] &gt; d[a]) swap(a,b);
+    for(int i = 25;i&gt;=0;i--)
+        if(d[p[a][i]]&gt;=d[b]) a = p[a][i];
+    if(a==b) return a;
+    for(int i = 25;i&gt;=0;i--)
+        if(p[a][i]!=p[b][i]) a=p[a][i],b = p[b][i];
+    return p[a][0];
+}
+long long dis(int x,int y)
+{
+    int ca = lca(x,y);
+    return (long long)(dist[x] + dist[y] - 2*dist[ca]);
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;n);
+    init();
+    for(int i=1;i&lt;n;i++)
+    {
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        insert(a,b,c);insert(b,a,c);
+    }
+    dfs(1);
+    for(int j=1;j&lt;=25;j++)
+        for(int i=1;i&lt;=n;i++)
+            p[i][j] = p[p[i][j-1]][j-1];
+    scanf(&quot;%d\n&quot;,&amp;m);
+    for(int i=1;i&lt;=m;i++)
+    {
+        char str[2];
+        scanf(&quot;%s&quot;,str);
+        if(str[0] == '?') printf(&quot;%lld\n&quot;,ans/2);
+        else if(str[0] == '+')
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            if(s.empty())
+            {
+                s.insert(id[x]);
+                continue;
+            }
+            l = r = s.lower_bound(id[x]);
+            if(r == s.begin()) l = s.end(); l--;
+            if(r == s.end()) r = s.begin();
+            ans +=(long long)(dis(num[*l],x) + dis(x,num[*r]) - dis(num[*l],num[*r]));
+            s.insert(id[x]);
+        }
+        else
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            s.erase(id[x]);
+            if(s.empty()) continue;
+            l = r = s.lower_bound(id[x]);
+            if(r == s.begin()) l = s.end(); l--;
+            if(r == s.end()) r = s.begin();
+            ans -= (long long)(dis(num[*l],x) + dis(x,num[*r]) - dis(num[*l],num[*r]));
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

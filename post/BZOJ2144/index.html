@@ -1,0 +1,313 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「BZOJ2144」 跳跳棋 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「BZOJ2144」 跳跳棋
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/nGfBHKOMR/" class="post-tag i-tag
+                            i-tag-warning">
+                            #二分
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/L5MSR9E9c/" class="post-tag i-tag
+                            i-tag-other_2">
+                            #LCA
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>跳跳棋是在一条数轴上进行的。棋子只能摆在整点上。每个点不能摆超过一个棋子。我们用跳跳棋来做一个简单的<br>
+游戏：棋盘上有3颗棋子，分别在a，b，c这三个位置。我们要通过最少的跳动把他们的位置移动成x，y，z。（棋<br>
+子是没有区别的）跳动的规则很简单，任意选一颗棋子，对一颗中轴棋子跳动。跳动后两颗棋子距离不变。一次只<br>
+允许跳过1颗棋子。</p>
+<!-- more -->
+<p>写一个程序，首先判断是否可以完成任务。如果可以，输出最少需要的跳动次数。</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2144">[ZOJ-2144]跳跳棋</a></p>
+<h4 id="题解">题解</h4>
+<p>可以将题目抽象成一棵二叉树，往左跳和往右跳，表示左儿子和右儿子，然后我们将两个状态点分别往上跳，等于将左右点往中间跳，如果中间点与左右两边点的间距相等，则说明无法再跳了，这个为根<br>
+直接往上跳一个巨大的值，找根，同时处理出高度，如果根不同，直接返回错误，否则二分判断第k父亲是否相等来确认步数<br>
+在往上跳时，可以直接用除法来加速(欧几里得找最大公约数)</p>
+<p><strong>我的代码太丑，这里贴一份 <a href="http://hzwer.com/">hzw</a> 师兄的代码</strong></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define ll long long
+#define inf 1000000000
+using namespace std;
+int read()
+{
+    int x=0,f=1;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+int t1,t2,tmp,ans;
+int a[5],b[5];
+struct data{int a[5];};
+data cal(int *a,int k)//得到a状态向上走k次的状态
+{
+    data ans;
+    int t1=a[2]-a[1],t2=a[3]-a[2];
+    for(int i=1;i&lt;=3;i++)ans.a[i]=a[i];
+    if(t1==t2)return ans;
+    if(t1&lt;t2)
+    {
+	int t=min(k,(t2-1)/t1);
+	k-=t;tmp+=t;//顺便记录深度
+	ans.a[2]+=t*t1;ans.a[1]+=t*t1;
+    }
+    else 
+    {
+	int t=min(k,(t1-1)/t2);
+	k-=t;tmp+=t;
+	ans.a[2]-=t*t2;ans.a[3]-=t*t2;
+    }
+    if(k)return cal(ans.a,k);//辗转相除
+    else return ans;
+}
+bool operator!=(data a,data b)
+{
+    for(int i=1;i&lt;=3;i++)if(a.a[i]!=b.a[i])return 1;
+    return 0;
+}
+int main()
+{
+    for(int i=1;i&lt;=3;i++)a[i]=read();
+    for(int i=1;i&lt;=3;i++)b[i]=read();
+    sort(a+1,a+4);sort(b+1,b+4);
+    data t1=cal(a,inf);int d1=tmp;tmp=0;
+    data t2=cal(b,inf);int d2=tmp;tmp=0;
+//t1,t2分别为a,b的根，d1,d2为深度
+    if(t1!=t2){puts(&quot;NO&quot;);return 0;}
+    if(d1&gt;d2)
+    {
+	swap(d1,d2);
+	for(int i=1;i&lt;=3;i++)swap(a[i],b[i]);
+    }
+    ans=d2-d1;
+    t1=cal(b,ans);
+    for(int i=1;i&lt;=3;i++)b[i]=t1.a[i];//较深的向上调整
+    int l=0,r=d1;
+    while(l&lt;=r)//二分
+    {
+	int mid=(l+r)&gt;&gt;1;
+	if(cal(a,mid)!=cal(b,mid))l=mid+1;
+	else r=mid-1;
+    }
+    puts(&quot;YES&quot;);
+    printf(&quot;%d&quot;,ans+2*l);
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

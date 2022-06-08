@@ -1,0 +1,314 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「CodeForces 1007B」Pave the Parallelepiped  | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「CodeForces 1007B」Pave the Parallelepiped 
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-09-22</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/iO4MbBtKg/" class="post-tag i-tag
+                            i-tag-info">
+                            #组合数学
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>You are given a rectangular parallelepiped with sides of positive integer lengths A, B and C.</p>
+<p>Find the number of different groups of three integers (a, b, c) such that 1≤a≤b≤c and parallelepiped A×B×C can be paved with parallelepipeds a×b×c. Note, that all small parallelepipeds have to be rotated in the same direction.</p>
+<p>For example, parallelepiped 1×5×6 can be divided into parallelepipeds 1×3×5, but can not be divided into parallelepipeds 1×2×3.</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/1673480/origin">「CodeForces 1007B」Pave the Parallelepiped<br>
+</a></p>
+<h4 id="题解">题解</h4>
+<p>考虑将每个数的约数分组，然后再通过组合数学求出<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个数中放回取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>个的不同方案数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C(n,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+long long C(int n,int m)
+{
+    long long ans = 1ll;
+    for(int i=1;i&lt;=m;i++) ans *= (n-i+1);
+    for(int i=1;i&lt;=m;i++) ans /= i;
+    return ans;
+}
+int gcd(int x,int y)
+{
+    if(!y) return x;
+    return gcd(y,x%y);
+}
+int fac[maxd];
+void init()
+{
+    for(int i=1;i&lt;maxd;i++)
+        for(int j=i;j&lt;maxd;j+=i)
+            fac[j]++;
+}
+bool check(int a,int b,int c)
+{
+    if((a&amp;1)&amp;&amp;(b&amp;2)&amp;&amp;(c&amp;4))
+        return true;
+    if((a&amp;1)&amp;&amp;(c&amp;2)&amp;&amp;(b&amp;4))
+        return true;
+    if((b&amp;1)&amp;&amp;(a&amp;2)&amp;&amp;(c&amp;4))
+        return true;
+    if((b&amp;1)&amp;&amp;(c&amp;2)&amp;&amp;(a&amp;4))
+        return true;
+    if((c&amp;1)&amp;&amp;(a&amp;2)&amp;&amp;(b&amp;4))
+        return true;
+    if((c&amp;1)&amp;&amp;(b&amp;2)&amp;&amp;(a&amp;4))
+        return true;
+    return false;
+}
+int cnt[8],use[8];
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int _;scanf(&quot;%d&quot;,&amp;_);init();
+    while(_--)
+    {
+        int a,b,c;
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        int ab = gcd(a,b); int bc = gcd(b,c); int ac = gcd(a,c);
+        int abc = gcd(ab,c);
+        cnt[7] = fac[abc]; // abc
+        cnt[6] = fac[ab] - fac[abc]; // ab
+        cnt[5] = fac[ac] - fac[abc];  // ac
+        cnt[4] = fac[a] -cnt[6] - cnt[5] - cnt[7];  // a (a - ab - ac - abc)
+        cnt[3] = fac[bc] - fac[abc]; // bc
+        cnt[2] = fac[b] - cnt[3] - cnt[6] - cnt[7];      // 010 (b - bc - ab - abc)
+        cnt[1] = fac[c] - cnt[5] - cnt[3] - cnt[7];     
+        // for(int i=1;i&lt;=7;i++) printf(&quot;%d &quot;,cnt[i]);
+        // putchar(10);
+        long long ans = 0ll;
+        for(int a=1;a&lt;8;a++)
+            for(int b=a;b&lt;8;b++)
+                for(int c=b;c&lt;8;c++)
+                    if(check(a,b,c))
+                    {
+                        use[a]++,use[b]++,use[c]++;
+
+                        long long now = 1ll;
+                        for(int i=1;i&lt;8;i++)
+                            if(use[i]) now *= C(cnt[i]+use[i]-1,use[i]);
+                        if(now)
+                        //printf(&quot;%d %d %d %lld\n&quot;,a,b,c,now);
+                        ans += now;
+                        use[a]--,use[b]--,use[c]--;
+                    }
+        printf(&quot;%lld\n&quot;,ans);
+    }
+
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

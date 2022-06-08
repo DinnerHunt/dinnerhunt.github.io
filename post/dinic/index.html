@@ -1,0 +1,431 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」Dinic | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」Dinic
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-04</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>最大流算法 <strong>Dinic</strong></p>
+<pre><code class="language-cpp">const int maxd = 20000;   //点数
+const int inf = 1e9+10;
+struct
+{
+    ll v,net,c;
+}e[maxd&lt;&lt;4];
+ll f[maxd],eid;
+void init()
+{
+    memset(f,-1,sizeof(f));
+    eid = 0;
+}
+void insert(ll x,ll y,ll c)
+{
+    e[eid].v = y;
+    e[eid].net = f[x];
+    e[eid].c = c;
+    f[x] = eid++;
+}
+void addedge(ll x,ll y,ll z)
+{
+    insert(x,y,z);
+    insert(y,x,0);
+}
+ll s,t;
+ll d[maxd],in[maxd],out[maxd],k[maxd];
+bool bfs()
+{
+    memset(d,-1,sizeof(d));
+    queue&lt;ll&gt; que;
+    que.push(s);
+    d[s] = 0;
+    while(!que.empty())
+    {
+        ll x = que.front();
+        que.pop();
+        for(ll i=f[x];i!=-1;i=e[i].net)
+        {
+            ll v = e[i].v;
+            if(e[i].c &gt; 0 &amp;&amp; d[v] ==-1)
+            {
+                que.push(v);
+                d[v] = d[x] +1;
+            }
+        }
+    }
+    return (d[t] != -1);
+}
+ll dfs(ll x,ll flow)
+{
+    if( x== t) return flow;
+    ll res = 0;
+    for(ll i = f[x];i+1;i=e[i].net)
+    {
+        ll v = e[i].v;
+        if(e[i].c &gt;0 &amp;&amp; d[x]+1 == d[v])
+        {
+            ll tmp = dfs(v,min(flow,e[i].c));
+            flow -= tmp;
+            e[i].c -= tmp;
+            res += tmp;
+            e[i^1].c += tmp;
+            if(!flow) break;
+        }
+    }
+    if(res == 0) d[x] = -1;
+    return res;
+}
+ll maxflow()
+{
+    ll res = 0ll;
+    while(bfs()) res += dfs(s,inf);
+    return res;
+}
+
+</code></pre>
+<h4 id="宏版">宏版</h4>
+<pre><code class="language-cpp">const ll maxd = 1e5+10;
+const ll inf = 1e18;
+
+struct edge{ll to,rev, flow;};
+vector&lt;edge&gt; G[maxd];
+void add(ll u,ll v,ll flow)
+{
+    G[u].push_back((edge) {v, (ll) G[v].size(), flow});
+    G[v].push_back((edge) {u, (ll) G[u].size() - 1, 0});
+}
+ll d[maxd],in[maxd],out[maxd],k[maxd],s,t;
+bool bfs()
+{
+    memset(d,-1,sizeof(d));d[s] = 0;
+    queue&lt;ll&gt; que; que.push(s);
+    while(!que.empty())
+    {
+        ll x = que.front(); que.pop();
+        for(auto p: G[x]) if(p.flow &gt; 0 &amp;&amp; d[p.to] == -1) que.push(p.to),d[p.to] = d[x]+1;
+    }
+    return (d[t] != -1);
+}
+ll dfs(ll x,ll flow)
+{
+    if(x == t)  return flow;
+    ll res = 0ll;
+    F(G[x].size())
+    {
+        edge &amp;e = G[x][i];ll v = e.to;
+        if(e.flow &gt; 0 &amp;&amp; d[x]+1 == d[v])
+        {
+            ll tmp = dfs(v,min(flow,e.flow));
+            flow -= tmp; e.flow -= tmp; res += tmp;
+            G[v][e.rev].flow += tmp;
+            if(!flow) break;
+        }
+    }
+    if(!res) d[x] = -1;
+    return res;
+}
+ll maxflow()
+{
+    ll res = 0;
+    while(bfs()) res += dfs(s,inf);
+    return res;
+}
+int main()
+{
+    //__IN;__OUT;
+    ll n,m,x,y,z;RLL(n);RLL(m);RLL(s);RLL(t);
+    F(m)
+    {
+        RLL(x);RLL(y);RLL(z);
+        add(x,y,z);
+    }
+    PLL(maxflow());
+    return 0;
+}
+</code></pre>
+<h4 id="hlpp">HLPP</h4>
+<pre><code class="language-cpp">	//MF.init(s,t,N) -&gt; MF.add(u,v,flow) -&gt; flow = MF.run()  
+	//要求所有的节点的id范围[1,N]  
+const int INF = 0x7fffffff;  
+const int MAXN = 10005;  
+struct HLPP{  
+#define up(l,r,i) for(register int i=l;i&lt;=r;++i)  
+#define ergv(u) for(vector&lt;edge&gt;::iterator p=head[u].begin();p!=head[u].end();++p)  
+    int n = 0, s, t, hst, nwh;  
+    vector&lt;int&gt; l, g, h, q, mlst[MAXN];  
+    struct edge{    //边  
+        int v, f, nxt;  
+        edge(int _v, int _f, int _n) :v(_v), f(_f), nxt(_n){}  
+    };  
+    vector &lt;edge&gt; head[MAXN];  
+    list   &lt;int &gt; lst[MAXN];  
+    vector &lt;list&lt;int&gt;::iterator&gt; it;  
+    inline void add(int u, int v, int f){      //连边  
+        head[u].push_back(edge(v, f, head[v].size()));  
+        head[v].push_back(edge(u, 0, head[u].size() - 1));  
+    }  
+    inline void rlb(){      //全局冲贴标签  
+        h.assign(n + 3, n), g.assign(n + 3, 0), h[t] = 0;  
+        q.clear(), q.resize(n + 3);  
+        int H = 0, T = 0, u;  
+        for (q[T++] = t; H&lt;T;){  
+       u = q[H++];  
+            ergv(u) if (h[p-&gt;v] == n&amp;&amp;head[p-&gt;v][p-&gt;nxt].f)  
+                ++g[h[p-&gt;v] = h[u] + 1], q[T++] = p-&gt;v;  
+        }  
+        up(1, n, i) mlst[i].clear(), lst[i].clear();  
+        up(1, n, i) if (h[i]&lt;n){  
+            it[i] = lst[h[i]].insert(lst[h[i]].begin(), i);  
+            if (l[i]&gt;0) mlst[h[i]].push_back(i);  
+        }  
+        hst = (nwh = h[q[T - 1]]);  
+    }  
+    inline void psh(int u, edge &amp;e){ //推流子函数  
+        int v = e.v, df = min(l[u], e.f);  
+        e.f -= df, head[v][e.nxt].f += df, l[u] -= df, l[v] += df;  
+        if (l[v]&gt;0 &amp;&amp; l[v] &lt;= df) mlst[h[v]].push_back(v);  
+    }  
+    inline void psh(int u){         //推流  
+        int nh = n, htu = h[u];  
+        ergv(u)if (p-&gt;f) if (h[u] == h[p-&gt;v] + 1){  
+            psh(u, *p); if (l[u] &lt;= 0) return;  
+        }  
+        else nh = min(nh, h[p-&gt;v] + 1);  
+        if (g[htu] == 1){          //断层  
+            up(htu, hst, i){  
+                for (auto &amp;p : lst[i]) --g[h[p]], h[p] = n;  
+                lst[i].clear();  
+            }  
+            hst = htu - 1;  
+        }  
+        else{  
+            --g[htu], it[u] = lst[htu].erase(it[u]), h[u] = nh;  
+            if (nh == n) return;  
+            g[nh]++, it[u] = lst[nh].insert(lst[nh].begin(), u);  
+            hst = max(hst, nwh = nh), mlst[nh].push_back(u);  
+        }  
+    }  
+    inline int run(){  
+        nwh = hst = 0, h.assign(n + 3, 0), h[s] = n, it.resize(n + 3);  
+        up(1, n, i) if (i != s)it[i] = lst[h[i]].insert(lst[h[i]].begin(), i);  
+        g.assign(n + 3, 0), g[0] = n - 1, l.assign(n + 3, 0), l[s] = INF, l[t] = -INF;  
+        ergv(s) psh(s, *p); rlb();  
+        for (int u; nwh;){  
+            if (mlst[nwh].empty()) nwh--; else  
+                u = mlst[nwh].back(), mlst[nwh].pop_back(), psh(u);  
+        }  
+        return l[t] + INF;  
+    }  
+inline void init(int _s, int _t, int _n){  
+    for (int i = 0; i &lt;= n; i++) head[i].clear();  
+        s = _s, t = _t, n = _n;  
+    }  
+}MF;  
+
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%AE%8F%E7%89%88">宏版</a></li>
+<li><a href="#hlpp">HLPP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,331 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    FFT | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        FFT</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/fft/">
+                        「FFT」多项式乘法卷积
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-08-29</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/j_78m5K92/" class="post-tag i-tag
+                            i-tag-error">
+            #FFT
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            P3803 多项式乘法（FFT）
+给定两个多项式F(x), G(x), 求它们的卷积
+#include &amp;lt;cstdio&amp;gt;
+#include &amp;lt;cmath&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;cstring&amp;gt;
+using namespace std;
+const double Pi = acos(-1.0);
+const int maxd = 5e6+10;
+struct complex
+{
+    double x,y;
+    complex(double _x=0,double _y=0){x = _x , y = _y;}
+}a[maxd],b[maxd];
+complex operator + (complex a,complex b) { return complex(a.x+b.x,a.y+b.y);}
+complex operator - (complex a,complex b) { return complex(a.x-b.x,a.y-b.y);}
+complex operator * (complex a,complex b) { return complex(a.x*b.x-a.y*b.y,a.x*b.y+a.y*b.x);}
+int n,m,len,pos[maxd],limit=1;
+void fft(complex *A, int symbol)
+{
+    for(int i=0;i&amp;lt;limit;i++) if(i&amp;lt;pos[i]) swap(A[i],A[pos[i]]);
+    for(int mid = 1; mid &amp;lt;limit;mid&amp;lt;&amp;lt;=1)
+    {
+        complex unity(cos(Pi/mid),symbol * sin(Pi/mid));
+        for(int R = mid &amp;lt;&amp;lt;1, j = 0; j &amp;lt; limit; j+=R)
+        {
+            complex w(1,0);
+            for(int k=0;k&amp;lt;mid;k++, w = w *unity)
+            {
+                complex x = A[j+k], y = w * A[j+mid+k];
+                A[j+k] = x+y;
+                A[j+mid+k] = x-y;
+            }
+        }
+    }
+}
+int main()
+{
+    // freopen(&amp;quot;a.in&amp;quot;,&amp;quot;r&amp;quot;,stdin);
+    // freopen(&amp;quot;k.out&amp;quot;,&amp;quot;w&amp;quot;,stdout);
+    int n,m; scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;n,&amp;amp;m);
+    for(int i=0;i&amp;lt;=n;i++) scanf(&amp;quot;%lf&amp;quot;,&amp;amp;a[i].x);
+    for(int i=0;i&amp;lt;=m;i++) scanf(&amp;quot;%lf&amp;quot;,&amp;amp;b[i].x);
+    while(limit&amp;lt;=n+m) limit&amp;lt;&amp;lt;=1,len++;
+    for(int i=0;i&amp;lt;limit;i++) pos[i] = (pos[i&amp;gt;&amp;gt;1] &amp;gt;&amp;gt; 1) | ((i&amp;amp;1) &amp;lt;&amp;lt; (len-1));
+    fft(a,1);fft(b,1);
+    for(int i=0;i&amp;lt;=limit;i++) a[i] = a[i]*b[i];
+    fft(a,-1);
+    for(int i=0;i&amp;lt;=n+m;i++) printf(&amp;quot;%d &amp;quot;,(int)((a[i].x)/limit+0.5));
+
+    return 0;
+}
+
+宏版
+const double Pi = acos(-1.0);
+const int maxd = 5e6+10;
+struct complex
+{
+    double x,y;
+    complex(double _x=0,double _y=0){x = _x , y = _y;}
+}a[maxd],b[maxd];
+complex operator + (complex a,complex b) { return complex(a.x+b.x,a.y+b.y);}
+complex operator - (complex a,complex b) { return complex(a.x-b.x,a.y-b.y);}
+complex operator * (complex a,complex b) { return complex(a.x*b.x-a.y*b.y,a.x*b.y+a.y*b.x);}
+ll n,m,len,pos[maxd],limit=1;
+void fft(complex *A, ll symbol)
+{
+    F(limit) if(i&amp;lt;pos[i]) swap(A[i],A[pos[i]]);
+    for(ll p = 1; p &amp;lt;limit; p &amp;lt;&amp;lt;=1)
+    {
+        complex unity(cos(Pi/p),symbol * sin(Pi/p));
+        for(ll R = p &amp;lt;&amp;lt;1, j = 0; j &amp;lt; limit; j+=R)
+        {
+            complex w(1,0);
+            for(ll k=0;k&amp;lt;p;k++, w = w *unity)
+            {
+                complex x = A[j+k], y = w * A[j+p+k];
+                A[j+k] = x+y;
+                A[j+p+k] = x-y;
+            }
+        }
+    }
+}
+int main()
+{
+    // freopen(&amp;quot;a.in&amp;quot;,&amp;quot;r&amp;quot;,stdin);
+    // freopen(&amp;quot;k.out&amp;quot;,&amp;quot;w&amp;quot;,stdout);
+    ll n,m;RLL2(n,m);
+    FOR(i,0,n) scanf(&amp;quot;%lf&amp;quot;,&amp;amp;a[i].x);
+    FOR(i,0,m) scanf(&amp;quot;%lf&amp;quot;,&amp;amp;b[i].x);
+    while(limit&amp;lt;=n+m) limit&amp;lt;&amp;lt;=1,len++;
+    F(limit) pos[i] = (pos[i&amp;gt;&amp;gt;1] &amp;gt;&amp;gt; 1) | ((i&amp;amp;1) &amp;lt;&amp;lt; (len-1));
+    fft(a,1);fft(b,1ll);
+    F(limit) a[i] = a[i]*b[i];
+    fft(a,-1ll);
+    FOR(i,0,n+m)  printf(&amp;quot;%lld &amp;quot;,(ll)((a[i].x)/limit+0.5));
+    return 0;
+}
+
+NTT
+namespace ntt {
+    ll r[1&amp;lt;&amp;lt;20],w[1&amp;lt;&amp;lt;20];
+    void build() {
+        for(int i = 1; i &amp;lt; N; i *= 2) {
+            w[i] = 1; ll v = fpow(3, (mod - 1) / 2 / i,mod);
+            FOR(j, 1, i-1) w[i + j] = w[i + j - 1] * v % mod;
+        }
+    }
+    // dft(x,x,1), idft(x,x,-1)
+    void dft(ll *a, int n, int f) {
+        FOR(i, 0, n-1) {
+            r[i] = r[i / 2] / 2 + (i &amp;amp; 1) * (n / 2);
+            if(i &amp;lt; r[i]) swap(a[i], a[r[i]]);
+        } ll b;
+        for(int i = 1; i &amp;lt; n; i *= 2) for(int j = 0; j &amp;lt; n; j += 2 * i) FOR(k, 0, i-1)
+        b = a[i + j + k] * w[i + k], a[i + j + k] = (a[j + k] - b) % mod, a[j + k] = (a[j + k] + b) % mod;
+        if(f == -1) {
+            reverse(a + 1, a + n);
+            b = fpow(n, mod - 2,mod);
+            FOR(i, 0, n-1) a[i] = (a[i] + mod) * b % mod;
+        }
+    }
+}
+using ntt :: dft;
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/fft/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

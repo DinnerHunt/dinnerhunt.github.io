@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://dinnerhunt.cn</id>
+    <title>dinnerhunt</title>
+    <updated>2022-06-08T06:51:46.820Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://dinnerhunt.cn"/>
+    <link rel="self" href="https://dinnerhunt.cn/atom.xml"/>
+    <logo>https://dinnerhunt.cn/images/avatar.png</logo>
+    <icon>https://dinnerhunt.cn/favicon.ico</icon>
+    <rights>All rights reserved 2022, dinnerhunt</rights>
+    <entry>
+        <title type="html"><![CDATA[Algorithm-Life]]></title>
+        <id>https://dinnerhunt.cn/post/Algorithm-Life/</id>
+        <link href="https://dinnerhunt.cn/post/Algorithm-Life/">
+        </link>
+        <updated>2022-06-07T13:03:58.000Z</updated>
+        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/algorithm_life.jpeg" div align=center width = 100% height = 100%  />]]></summary>
+        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/algorithm_life.jpeg" div align=center width = 100% height = 100%  />
+<!-- more -->
+<ul>
+<li><strong>训练记录&amp;学习笔记</strong> -&gt; <a href="http://dinnerhunt.cn/post/Training-And-Study">link</a></li>
+<li><strong>题解记录</strong> -&gt; <a href="http://dinnerhunt.cn/post/Problem">link</a></li>
+<li><strong>算法模板</strong> -&gt; <a href="http://dinnerhunt.cn/post/template">link</a></li>
+</ul>
+<hr>
+<ul>
+<li><strong>竞赛生涯</strong></li>
+</ul>
+<blockquote>
+<p>「2019 GDCPC」广州 - 金<br>
+「2022 蓝桥杯」 A组 广东第五<br>
+「2022 CCCC」197<br>
+「2020 ICPC」上海 - 铜<br>
+「2020 CCPC」桂林 - 银，威海 - 铜<br>
+「2021 蓝桥杯」 B组 广东第四，国二等<br>
+「2021 CCCC」244<br>
+「2020 ICPC」上海 - 铁 ，南京 - 银<br>
+「2020 CCPC」威海  - 铁<br>
+「2020 粤港澳CPC」珠海  - 铜<br>
+「2020 蓝桥杯」C组 广东第一，国第三<br>
+「2020 CCCC」238<br>
+「2019 ICPC」 银川，上海 - 铁<br>
+「2019 GDCPC」广州 - 铁<br>
+「2019 蓝桥杯」C组 广东第一，国第二<br>
+「2020 CCCC」180<br>
+「2018 ICPC」 网络赛失败<br>
+「2017 NOIP」 10分</p>
+</blockquote>
+<ul>
+<li><strong>OJ ID</strong></li>
+</ul>
+<blockquote>
+<p>Luogu : <a href="https://www.luogu.org/space/show?uid=62401">dinnerhunt</a><br>
+Vjudge : <a href="https://vjudge.net/user/DinnerHunt">dinnerhunt</a><br>
+CodeForces :  <a href="http://codeforces.com/profile/DinnerHunt">dinnerhunt</a><br>
+Loj :  <a href="https://loj.ac/user/8065">dinnerhunt</a></p>
+</blockquote>
+<ul>
+<li><strong>一个小目标</strong> (3259/10000)</li>
+</ul>
+<blockquote>
+<p>Luogu: 950<br>
+CodeForces: 1061<br>
+Loj: 199<br>
+Vjudge: 765<br>
+Nowcode: 284</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020&2021年总结]]></title>
+        <id>https://dinnerhunt.cn/post/2020-ICPC/</id>
+        <link href="https://dinnerhunt.cn/post/2020-ICPC/">
+        </link>
+        <updated>2021-07-13T06:20:56.000Z</updated>
+        <summary type="html"><![CDATA[<img src="https://gridea-blog.oss-cn-shenzhen.aliyuncs.com/post-resource/icpc-nanjing.png" div align=center width = 100% height = 100%  />]]></summary>
+        <content type="html"><![CDATA[<img src="https://gridea-blog.oss-cn-shenzhen.aliyuncs.com/post-resource/icpc-nanjing.png" div align=center width = 100% height = 100%  />
+<!-- more -->
+<p>今年最大的收获，应该就是南京站擦边而过的银牌了吧。</p>
+<h3 id="今年的历程">今年的历程</h3>
+<p><strong>2020</strong></p>
+<blockquote>
+<p>1 校内集训<br>
+2 疫情爆发<br>
+3 - 8 摸鱼&amp;训练<br>
+9 开学&amp;兼职<br>
+10 - 12 ICPC&amp;CCPC&amp;蓝桥&amp;天梯</p>
+</blockquote>
+<p><strong>2021</strong></p>
+<blockquote>
+<p>1 - 3 摸鱼&amp;备考<br>
+4 专升本考试<br>
+5 找工作&amp;摸鱼<br>
+6 实习</p>
+</blockquote>
+<p>时间太久了，2020年的具体历程已经记不太清了么，这个博客也从去年六月开始荒废了。<br>
+就随便记录一下回忆吧。</p>
+<hr>
+<h3 id="2020">2020</h3>
+<p><strong>1月 校内集训</strong></p>
+<p>在经历了队伍的人员变更之后，训练变得顺利了起来。<br>
+记得在那几天中，我们有借到了 RLXZMDD 的一间办公室用来集训。<br>
+这是三年以来为数不多的集中交流讨论的机会，<br>
+在那几天里，我对明年的省赛以及区域赛充满了信心。</p>
+<p><strong>2月 疫情爆发</strong></p>
+<p>在老家的几天时间里，寒冷的天气以及不适应，使得春节基本都在家里摸鱼。<br>
+返程以后，依然有序的推进VJ的专题训练计划。</p>
+<p><strong>3 - 8月 摸鱼&amp;训练</strong></p>
+<p>得知不能开学的消息后，我有些失落。<br>
+虽然在家中上课，我能获得更多的训练时间，但我总感觉集体的交流讨论才能对团队最大的提升<br>
+并且随着在家中的时间不断延长，很容易出现训练怠慢的情况。<br>
+果不其然，队友的积极性出现了问题。</p>
+<p>没有办法，我只能更加积极的去训练。<br>
+也是在这段时间，我感觉我的思维有了一些变化<br>
+我能开始去发现问题的本质，去理解算法的本质。<br>
+也是在此时，我CodeForce Rating 突破了1900。</p>
+<p>但到八月的多校，我开始感受到了溃败。<br>
+多校的成绩较去年相比，基本一致。</p>
+<p>多校结束后，<br>
+我开始接受这一切，认为拿牌确实不太可能。</p>
+<p><strong>9月 开学&amp;兼职</strong></p>
+<p>回到了学校以后，我并没有多少心思花在训练上。<br>
+有些摆烂的想法，有幸在群中遇到了何老师在深圳的机构在招收助教的信息。<br>
+于是我开始了兼职，并把剩余的心思放在了插本学习当中。</p>
+<p>这份兼职对我来说，是一份鼓励。<br>
+我很感激何老师能给我这份机会，因此在工作途中我也确实全心全意。<br>
+最后离职时的意气用事，也在这里跟何老师道个歉。</p>
+<p>在机构中，我忽然明白，为什么自由时间比初高中生多的大学生<br>
+在多次XCPC的比赛中，被中学生虐榜了。<br>
+在机构中的学生，基本每天都能练习1-3个小时，并且在假期保持着996的高强度训练。<br>
+也看到了如今成年人的压力，见到了一个学生同时报了多个补习班，匆匆忙忙跑来跑去。</p>
+<p>也感受到了一丝焦虑，感觉自己当年的中学生活太过于松懈，以致于今天的颓废。</p>
+<p><strong>10-12月 ICPC&amp;CCPC&amp;蓝桥&amp;天梯</strong></p>
+<p>正如我当初所预料的一样。<br>
+基本没有过的团队训练，在威海和上海的区域赛上显得十分无力。<br>
+所幸，在南京站中，凭借罚时的优势和不少强队缺席。混到了银。<br>
+在之后gym的榜单中也能看到，那场按正常来说只能拿块铜。</p>
+<p>蓝桥也再次跟去年相似，从第二名滑倒了第三名，又没有拿到老班悬赏的W了。<br>
+天梯也再次给浙江职校虐的体无完肤。</p>
+<p>此后我基本也就没有再怎么刷题了，感觉还是升学重要些吧。</p>
+<p><strong>1-3月 摸鱼&amp;备考</strong></p>
+<p>这段时间比较焦虑，因为文化基本并不好，对于插本并没有多少把握。<br>
+寒假在家中的进度十分缓慢，只过了一遍数学的考点，英语政治专业课基本没看。<br>
+直到3月初，才回到宿舍，跟着宿友的节奏，慢慢进入了996的复习状态。</p>
+<p><strong>4月 专升本考试</strong></p>
+<p>专升本考试比想象中的简单，但我的估分也比十分的意外。<br>
+自我感觉良好的数学，估分低了20。<br>
+基本放弃的英语还能达到省平均线。<br>
+在宿舍中，政治背的最少的我竟然得到最高分。<br>
+政治英语的运气加持，使得我的排位位于前200，<br>
+录取了招生学校中唯一的一所211。</p>
+<p><strong>5月 找工作&amp;摸鱼</strong></p>
+<p>本想着插本211 + 区域赛银牌能有机会得到大厂的实习机会。<br>
+但现实是残酷的，找朋友推的企业，简历全挂。<br>
+也因为对未来的不明确，因此技术栈也没定。<br>
+本想着去小企业实习两个月，<br>
+但一百一天的实习费根本无法担负深圳的生活成本。</p>
+<p><strong>6月 实习</strong></p>
+<p>在同学的推荐下，进了一家比较友好的企业，虽说薪资不高。<br>
+但跟同学合租的情况下也够生活开销。<br>
+不过在跟干了一段时间以后，实在是苦于拍黄片爬虫，<br>
+并且对于这种工作和生活感到失望，感觉不是自己想要的。</p>
+<p><strong>7月 重新出发</strong></p>
+<p>在与家人沟通后，我决定辞职。<br>
+目前的两个计划</p>
+<ul>
+<li>参与华师的XCPC训练，对着梦再奋力冲一次。<br>
+去年的银牌并不是真正的自己，就算冲不到金牌，也希望能拿到更能让自己认可的银牌。</li>
+<li>准备2023届的考研，既然专升本洗的不够干净，那就再洗一次。<br>
+逃过的高考终究会以相同的形式回来。</li>
+</ul>
+<p>感谢陈寅老师帮忙物色队友，今年一定会不留遗憾。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2019 年比赛总结]]></title>
+        <id>https://dinnerhunt.cn/post/2019-icpc/</id>
+        <link href="https://dinnerhunt.cn/post/2019-icpc/">
+        </link>
+        <updated>2019-11-25T05:04:08.000Z</updated>
+        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/deck.jpg" div align=center width = 100% height = 100%>]]></summary>
+        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/%E6%9D%82/deck.jpg" div align=center width = 100% height = 100%>
+<!--more-->
+<blockquote>
+<p>在熟悉的深航音乐响起后没，飞机抵达了深圳机场。窗外闪烁着的灯光，意味着今年的比赛终要告一段落了</p>
+</blockquote>
+<h3 id="今年的历程">今年的历程</h3>
+<ul>
+<li>2月       广东工业大学集训</li>
+<li>3月       蓝桥杯省赛</li>
+<li>4月       团体程序程序设计天梯赛</li>
+<li>5月       GDCPC，蓝桥国赛</li>
+<li>7月    中山大学集训</li>
+<li>9月       ICPC&amp;CCPC 网络赛</li>
+<li>10月      银川站</li>
+<li>11月      上海站</li>
+</ul>
+<p>看着Vjudge的Register 30 months ago，我的竞赛经历也走过了两年了。想起去年ccpc camp wls的十年竞赛经历， 以及前天八年经验的清华选手，我都现的无比稚嫩。但还是感觉自己已经在圈子里呆了许久，但却依然菜的真实。</p>
+<p>无论是上半年的蓝桥国赛，CPC省赛，还是年末的两场区域赛，都挺让老师失望的吧。</p>
+</br>
+<hr>
+</br>
+<h3 id="银川站">银川站</h3>
+<p>本着为了拿牌推动校内竞赛发展的想法，老班带领我们来到了石嘴山，开启了第一次ICPC之旅<br>
+在机场有幸见到了北大的队伍，他们在等巴士时仍然开着电脑在学习(这可能是就是我们之间的差距吧)。<br>
+在坐了将近一个钟的大巴之后，我们到达了酒店，10月底的石嘴山并没有想象中的那么冷。<br>
+可能是因为第一次坐飞机太激动了，到达酒店后又迷迷糊糊睡了一下午。<br>
+晚上逛了逛石嘴山市区吧，发现这里有万达还是挺意外的，交通挺便宜的，基本都是5块钱(除了去学校吧)<br>
+现场有400支队伍，比较的挤，不过桌面空间挺大的，还能接受。热身赛调了调编译器，是Ubuntu 环境，也是第一次用吧。<br>
+晚上吃了食堂的饭，饭票给的有点多，有点没吃完。<br>
+</br><br>
+正式赛<br>
+开场快速过了签到，然后把另外一道之前做过的B切了，接着发现了一道进制转化的题目<br>
+发现了该题需要高精度后，便叫同学开始抄高精度的板子，接着看到了一道之前在书上见到过的原题<br>
+板子抄完后一堆编译报错(平时练习赛全是copy的)<br>
+调完以后交上去返回TLE，于是开始怀疑时间复杂度是否过高(对板子的时间复杂度不是彻底理解，于是开始怀疑正确做法是否是一步公式法转化)<br>
+在短暂的僵局之后，迅速把线段树给切了,之后就开始决定搞进制转化or原题。<br>
+在抉择之后，决定尝试先用python把进制转换过了，然后再码另一题<br>
+接着又暴露了问题，对python不熟，在python中没有字符类型，需要用函数转化，但是并不知道。接着提出一个100多行的if else赋值的傻办法，但否定了。(赛后这里应该是最大的决策失误)<br>
+在最后一个半钟的时间，把原题码了，但wa了。(练习做少了，没有考虑到图论的一些坑点)<br>
+最后依然无法解决这两个问题，当然也没有去尝试后面的题，于是遗憾打铁。</p>
+<h4 id="总结">总结</h4>
+<p>组队训练比较少，赛中做了很多错误决策，也有点紧张<br>
+平时练习copy多，赛场上抄板子容易抄错<br>
+过多的口胡一些题目，导致一些坑点没有经历过<br>
+</br><br>
+赛后提前离场了，比较失落吧。晚上老班请我们到万达吃了饭。<br>
+第二天起床便赶往了机场</p>
+</br>
+<h3 id="上海站">上海站</h3>
+<p>今年能拿到上海站的资格也是挺幸运的把，擦边+CCSP竞赛<br>
+因为一些原因，行程订的挺赶的，周六前往，周日返程<br>
+飞机落地后就直接地铁来到了上海大学报道，上大的午饭非常好吃。</p>
+</br>
+热身赛
+场馆相比于宁夏宽敞很多，应该是最后一场区域赛的原因吧，周围坐满了各种985/211高校，不过相较于上次比赛，并没有那么紧张。
+热身赛开场读题读错，导致排名倒数。第二题因为不了解bitset时间复杂度，导致否定了bitset做法。第四题本想暴力搞，但因为某些原因从而放弃。不过这是热身赛吧，也并不是很重要。
+<p>晚上跟广工的闷骚Inctry面基，去吃了一顿老北京火锅(羊肉有点骚，不过味道还是不错的)<br>
+</br><br>
+现场赛<br>
+因为路过气球室，发现粉色气球很多，于是开场便叫同学阅读A题，但发现上当了，A不太可做。<br>
+接着看到一血K产生了，于是看了看K题面，发现并没有啥想法。<br>
+转头开始尝试做B，花了一点时间把B做完以后。就开始了将近4小时的垃圾时间。<br>
+K题其实已经想出了正确解法，但因为最后如果枚举边判断是M时间复杂度，而如果尝试优化一下，只枚举二分图左边的点，可能会少一些常数，但总体最大时间复杂度是不变的。因此我们的K被关了。<br>
+D题没啥想法，但是由于周围队都过了，于是便决定在该题上花费些许时间，但却没有任何进展。<br>
+E题因该是最需要反省的，很简单的应用，但没有找到问题的本质是要我们求什么，也因为剩余时间是在不多了，心态可能有点轻微放弃吧。<br>
+H题比较薄弱，如果前面题都挺顺利的，花点时间应该是可以突破一下<br>
+F题赛中没有看到了，挺裸的一道树剖吧，不过立方和需要推下公式。<br>
+</br><br>
+也许也许多交几次或者加个快读K就过了吧，也许多看看E的图就能发现题目的本质吧<br>
+但终究还是菜，一如既往的菜。<br>
+赛后没有见到老班，可能真的令他太失望了吧。</p>
+<p>闭幕式滚榜的时候，技术支持做的很好，老师的主持也十分有趣。<br>
+平时不喜欢拍照，却有点羡慕滚榜时赛场上的队伍照片。<br>
+铜牌就能在屏幕上看到自己队伍的照片了吧。<br>
+</br><br>
+临走之前，在上大逛了一会，见了下上大的初中同学，感觉彼此都没啥变化。<br>
+想看看东方明珠，想去去陆家嘴。但去了应该也不会开心吧。</p>
+</br>
+<hr>
+</br>
+<p>结束啦，今年的比赛。<br>
+虽然挺失望的，差一点的特等，差一点的牌子。<br>
+但，我不会放弃的。<br>
+它实在是太迷人了<br>
+赛场周围的志愿者穿梭的身影，桌面上的队伍台历，电脑旁飘着的彩色气球<br>
+赛后的滚榜，以及拿牌后的喜悦。<br>
+<strong>加油吧，&quot;So Nice Chicken , Fighting For Au 2020&quot;</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「2019 GDCPC 中智杯」游记]]></title>
+        <id>https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji/</id>
+        <link href="https://dinnerhunt.cn/post/2019-gdcpc-zhong-zhi-bei-you-ji/">
+        </link>
+        <updated>2019-05-19T15:16:49.000Z</updated>
+        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 100% />]]></summary>
+        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_569.jpg"  div align=center width = 100% height = 100% />
+<!-- more -->
+<h4 id="前言">前言</h4>
+<p>在老班与王老师的辛苦下，能公费参与此次比赛，与广东各高校优秀的ACMer交流学习，感到十分荣幸</p>
+<h4 id="day-1">Day  -1</h4>
+<p>周五，在中午下课后，去电影院看了 《比卡丘》，以缓解这周学习数论所带来的阴影<br>
+晚上 Xuqing 将板子打印出来，我们的赛前准备也就结束了</p>
+<br>
+<h4 id="day-0">Day 0</h4>
+<p>凌晨被猫叫醒，也许它也担心我是否能赶上早晨的动车</p>
+<p>下楼正好碰到一同前行的队友 WFcong , 在柳园食堂随便吃了点就到了集合地点 （<strong>mark</strong> Xuqing  🐦 * 1）</p>
+<p>在取票的时候，收到了来之 Fann 老师沉重的关爱，每人两支水( WFcong 背了一个来回  )</p>
+<br>
+<p>经过和谐号的过道，穿过七号线的走廊，我们到达了大学城南（我忘了是南还是北来着）</p>
+<p>搭上一趟计程车后，到了华南理工大学的北门</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_564.jpg"  div align=center />
+<br>
+<br>
+<p>然后右边就是我们下榻的酒店</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_565.jpg"  div align=center />
+<br>
+<br>
+<p>酒店从外面看有些陈旧，但是内部无论是环境，还是设计都是无可挑剔的 (听说很贵，我也不知道，我也不敢问)</p>
+<p>房间里布局(老师特意为我们选了带窗的房间)<br>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_567.jpg"  div align=center /></p>
+<br>
+<p>电梯门口的椅子，有点像爱丽丝梦游仙境里红心女王的椅子<br>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_57d.jpg"  div align=center /></p>
+<br>
+<br>
+<p>然后就是浴室里的牙膏是小条的黑人牙膏，洗手液是瓶装的蓝月亮，还有发胶和漱口水，除了牙刷牙膏以外，其他都不是一次性的，都是些品质比较好的牌子。这时我从未见过的，当然上面大部分都标了非赠品</p>
+<p>午饭在酒店二楼吃的，帅气的 Fann 老师请我们吃了一顿星级大餐。然而这里的茄子煲没有灵魂，我并没能吃完它，挺愧疚的。</p>
+<br>
+<p>在宿舍眯了一会之后，我们坐车来到了中山大学，提前试机，看看考场 （<strong>mark</strong> Fann 老师填错目的地）</p>
+<p>试机时，看了看 A 题，然后写了个分段打表，WA了一发后发现没去 freopen() ，再次提交时过了<br>
+挺开心的，这应该算是ACM现场赛的第一道题了吧</p>
+<p>然后我们收到了老师的领的队服和赞助商送的礼物&quot;智能触碰护眼3色冷暖光可调节能LED灯&quot;一台，据说WFcong 当晚抱着它睡了一晚<br>
+<br></p>
+<p>幸运的看到了中大的龙舟训练<br>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_56b.jpg"  div align=center /></p>
+<br>
+<p>在回酒店的路上，拍了许多照</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_56f.jpg"  style="float:left;"  width = 33% height = 20% />
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_572.jpg"  style="float:left;"  width = 33% height = 20%/>
+<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_582.jpg"  style="float:left;" width = 33% height = 20%/></p>
+<br>
+<br>
+<br>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_579.jpg"  style="float:left;" width = 33% height = 20%/>
+<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_576.jpg" style="float:left;"  width = 33% height = 20%/></p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_575.jpg"  style="float:left;"  width = 33% height = 20% />
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>晚上和 Xqing 叫了一顿丰盛的M记，外加一个榴莲披萨🍕<br>
+(其中，Xqing为了激励自己蓝桥国赛拿特等，特意把电脑显示器的轴承弄坏了点，这种破釜沉舟的精神值得我们学习 )</p>
+<br>
+<br>
+<h4 id="day-1-2">Day 1</h4>
+<p>早早的起了床，洗漱完毕后，成功先于老师到达电梯门口✌️</p>
+<p>酒店的自助早餐特别丰盛，可能是因为有很多外国学者，教授来交流，有特别多的西式早点。</p>
+<br> 
+<p>到了赛场门口，去拿参赛牌时被告知我的并没有打印到，于是给了我一个中大选手的赛牌。挺难过的，第一次参赛没有拿到奖牌，也没有拿到赛牌。</p>
+<p>透过门缝，看到了中大的师兄们在奋力的吹气球。由于他们刚刚开始准备，打算通过猜气球数量猜签到题的想法失败了（wls教的）</p>
+<p>开始觉得带词典进场挺丢人的，看到很多队伍也背了，于是便也大大方方的从包了拿了出来。</p>
+<p>临进比赛时间时，忽然发现旁边的人散开了，回头一看，竟然是楼教主，没想到竟然跟楼教主一个赛场。</p>
+<p>在赛前偷偷拍了几张照片</p>
+<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_57f.jpg"  style="float:left;"  width = 50% height = 25% /></p>
+<p><img src="
+https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/UNADJUSTEDNONRAW_thumb_580.jpg"  style="float:left;"  width =50% height = 25% /></p>
+ <br>
+<br>
+ <br>
+<br>
+ <br>
+<br>
+ <br>
+<br>
+ <br>
+<br>
+ <br>
+<br>
+ <br>
+<br>
+<h5 id="赛中">赛中</h5>
+<p>我从头读题，WFcong从尾读，Xqinger中间。</p>
+<p>A读了几遍题意不太明白具体意思<br>
+然后通过榜单发现E和L是两道签到，然后WFcong 尝试着写E , 在交之前中大系统重启了<br>
+电脑重启后，WA了两法，我发现了这是个错误算法，于是决定自己来写，让他们看L</p>
+<p>写完后一些细节没有处理好，导致程序RE，这时心态有点炸，不过开始以为前8才有牌，所以并没有拿牌的欲望（后来才后悔莫及）</p>
+<p>在做L的时候，因读错题意，WA了两发后，决定不管罚时了（事实证明这个是个错误的决定）   (<strong>mark</strong> Xqinger 读错题)</p>
+<p>在经过几次试探，和重新读题后，L终于过了，接着把E的细节处理好，得到了两个气球，但此时基本垫底</p>
+<p>K是个模拟题，B也是个水题，于是决定让他们读B，我来写K<br>
+写完之后WA了2发，找不到错误。</p>
+<p>正在惆怅时，突然飞来了几个麦当劳外卖袋。特别开心，在赛场上吃到了M记，中大赛场的服务真的好，这次报名费回本了，于是心态调整了回来。</p>
+<p>后面发现了K的题目读错了，修正下过了K以后，一起看了B题  (<strong>mark</strong> 以后不碰雀魂)</p>
+<p>赛前一周一直再看数论，发现手生疏了很多，有点码不动，并且代码错误特别多，在思路正确的情况下，B还WA了两发</p>
+<p>最后以为时间不多了，边随便看了看题，并没有再过题的欲望。过了几分钟后发现刚封榜不久，还有40来分钟，于是打算尝试C，C的想法的想出来了，但之前没做过几道莫队的题，在最后部分卡壳了。原本想在内部二分查找，却发现无法处理，得用平衡树或者主席树，接着大脑陷入了逻辑死循环。赛后听到离散化+树状数组才恍然大悟</p>
+<p>最后因为罚时过高，4题打铁收场</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/GDCPC%202019/WechatIMG7981.jpeg"  div align=center />
+ <br>
+<br>
+ <br>
+<br>
+<p>在总结大会上，看到了气质的主持小姐姐，霸气外漏的楼教主，还有各种上台领奖的大佬</p>
+<p>在等待颁奖的过程中，被幸运的抽到了吐槽的机会。</p>
+<p>在吐槽完后，看到小姐姐从旁边拿着一个灰色的盒子向我走来时，我的笑容逐渐消失 （返程背包负重+20）</p>
+<p>挺可惜的，为了赶车，我们不得不提前离场，错过了滚榜。</p>
+<p>在广州的高铁站，又收获了 Fann 老师的一顿KFC，希望下次还能由Fann带队 😄   ( <strong>mark</strong> Fann 老师走错厕所 🚽)</p>
+<br>
+<br>
+<h4 id="后续">后续</h4>
+<p>特别感谢学校的支持，还有老班，王老师，Fann 老师的帮助 。</p>
+<p>Fann 老师特别可爱，每次去看考点前都跟我们说，待会我就不去了,等你们搞完我去接你们就好了，然后每次都跟着我们去的</p>
+<p>对于成绩还是不太满意的。总共有三个问题，一个读题；一个是做题做少了，码的过程中错误频发；最后就是训练赛打少了，比赛过程中比较紧张。</p>
+<p>争取下次那块牌吧</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「2018 CCPC Wannafly Summer Camp」 游记]]></title>
+        <id>https://dinnerhunt.cn/post/2018-CCPC-Summer-Camp/</id>
+        <link href="https://dinnerhunt.cn/post/2018-CCPC-Summer-Camp/">
+        </link>
+        <updated>2019-05-05T15:13:49.000Z</updated>
+        <summary type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6813.JPG"  div align=center width = 100% height = 100% />]]></summary>
+        <content type="html"><![CDATA[<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6813.JPG"  div align=center width = 100% height = 100% />
+<!-- more -->
+<h4 id="前言">前言</h4>
+<p>一次偶然的机会，在 NewCode 的群里发现了这个 Camp 的信息</p>
+<p>我立刻联系了同学 <strong>Closefrom</strong> 与 <strong>deep_kevin</strong> ，得知他们的意愿之后，我便开始筹划了这次旅程。</p>
+<p>特别感谢当时阿姨的照顾和对我辞职的理解，以及一直支持我去学习的父母</p>
+<p>使得我有机会，参加这次Camp</p>
+<br> 
+<h4 id="day-1">Day -1</h4>
+<p>秦皇岛 -- 这应该是我出过最远的一次门了</p>
+<p>下午6点左右，我们上了火车，在行驶了将近28个小时以后，我们到达了秦皇岛</p>
+<p>Camp安排的酒店挺不错的，离上课的地方很近，就是酒店有点老旧</p>
+<p>路途中，还遇到了 CUG 地质专业的同学， 他背着睡袋和一些工具，脸上映射着阳光，给人一种非常和蔼的感觉<br>
+夜里，我们一起撸了串，聊了许多</p>
+<p>旅行的意义不止是学习吧，还能遇见很多事，认识很多人</p>
+<p>不得不说，北方的撸串才能算是真正的撸串，价格实惠，分量也特别足</p>
+<p>比较特比的是，这边出站行李也需要过机检查</p>
+<br>
+<h4 id="day-0">Day 0</h4>
+<p>上午，我们到了签到处，领到了小牌牌，见到了许多巨佬</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6817.JPG" width = "300" height = "500" />
+<br>
+<p>下午是自由活动时间<br>
+我们去了海边，海水特别干净，比深圳大梅沙干净太多了 ，人也不是特别多</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6829.JPG"  div align=center />
+<h4 id="day-1-2">Day 1</h4>
+<p>早上起晚了，错过了 <strong>wls</strong> 的一部分讲课..</p>
+<p><strong>wls</strong> 讲了学习的意义与与一些学习方法，受益匪浅</p>
+<p>午饭在食堂吃的，还不错</p>
+<p>下午进行了一场训练赛</p>
+<p>题目便难，除了做出签到题以外，就一直在划水</p>
+<p>从排行榜上认识了咖啡鸡  ，从此多了一个可以膜的对象</p>
+<p>晚上听题解听的迷迷糊糊的</p>
+<h4 id="day-2">Day 2</h4>
+<p>经过昨天的教训，我们提前来到了教室，并占坐了一个好位置</p>
+<p>教室是个阶梯教室，我们将近有100支队伍，在300名队员的热情下，教室如同一个大蒸笼，空调显得有点无力</p>
+<p>上午是 <strong>KeyID</strong> 老师上数论课</p>
+<p>讲了一些 积性函数的性质，莫比乌斯反演 等<br>
+剩下的并没有听懂多少，数学基础太差了，而且有点公式恐惧症，以后慢慢补回来吧</p>
+<p>下午又是一场自闭的训练赛</p>
+<p>晚饭吃了当地的面食，味道挺不错的，跟在南方吃的不太一样，面比较有嚼劲</p>
+<h4 id="day-3">Day 3</h4>
+<p>上午 <strong>qls</strong> 讲的计算几何<br>
+讲了一些听的懂的知识点和听不懂的知识点</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6862.JPG"  div align=center />
+<p>下午接着训练赛<br>
+渐渐的能熟悉这种节奏，虽然还是不能过更多的题，但是会去尽力去思考</p>
+<h4 id="day-4">Day 4</h4>
+<p>上午孙耀辉老师讲的线段树</p>
+<p>孙老师课件准备的特别好，难度梯度也设置的非常好，学到了很多线段树的操作</p>
+<p>下午接着训练赛鸭</p>
+<h4 id="day-5">Day 5</h4>
+<p>今天是HDU的多校训练赛，于是我们边获得了一天自由活动的时间</p>
+<p><strong>deep_kevin</strong> 去了山海关<br>
+我和 <strong>Closefrom</strong> 则去海边玩了下水，海边服务收费还是挺贵的，而且服务设置也很简陋</p>
+<p>很可惜 <strong>Closefrom</strong> 想学会游泳的想法在哪天下午并没能实现</p>
+<h4 id="day-6-7-8">Day 6 7 8</h4>
+<p>后面的事记得不是很清楚了</p>
+<p>依稀记得<br>
+<strong>deep_kevin</strong> 为了我和 <strong>Closefrom</strong>  连开三辆小黄车</p>
+<p>群里调侃与领导人体质是不是不一样，为什么秦皇岛能避暑</p>
+<p>早上学校门口各种各样的摊位</p>
+<p>教学楼楼下售空的自动贩卖机</p>
+<p>新校区斜坡上满地的🐛</p>
+<p>某天下午去的公园</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6874.JPG" width = "300" height = "500" />
+<p>还有最后的聚餐 ，环境挺大的，第一次见到开在地下的自助餐厅，但是味道一般般</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/IMG_6887.JPG"  div align=center />
+<p>以及最后和集团照</p>
+<img src="https://dinnerhunt-blog.oss-cn-shanghai.aliyuncs.com/CCPC2018/DSC_1100.jpg"  div align=center />
+<h4 id="后续">后续</h4>
+<p>虽然对自己算法能力的帮助并不是很大(对于我来说难度偏大，不太合适) ，自己以后得多多加油呀</p>
+<p>最后谢谢 <strong>wls</strong> , <strong>王老师</strong> ，这几天的授课老师 ， 以及现场的志愿者小哥哥小姐姐们 ，给我带来如此优质的 camp</p>
+<br>
+<p>本次CAMP 的所有课件，赛题与题解<br>
+<a href="http://note.youdao.com/noteshare?id=2602ccca74102c9643d642fedb5fb742">课件链接🔗 </a></p>
+]]></content>
+    </entry>
+</feed>

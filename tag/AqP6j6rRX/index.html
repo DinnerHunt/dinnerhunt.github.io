@@ -1,0 +1,267 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    比赛 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        比赛</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CF526/">
+                        Codeforces Round #526
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-04-07</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/AqP6j6rRX/" class="post-tag i-tag
+                            i-tag-primary">
+            #比赛
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/EZzd9_x5s/" class="post-tag i-tag
+                            i-tag-success">
+            #Tire
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/FlI-dwm0d/" class="post-tag i-tag
+                            i-tag-info">
+            #线段树
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/r4hP__gsc/" class="post-tag i-tag
+                            i-tag-other_3">
+            #树型DP
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            Code
+A - The Fair Nut and Elevator
+B - Kvass and the Fair Nut
+C - The Fair Nut and String
+D - The Fair Nut and the Best Path
+E - The Fair Nut and Strings
+F - Max Mex
+
+A - The Fair Nut and Elevator
+简单猜想一下，可以知道电梯在一楼是最优的，后面直接统计即可
+
+B - Kvass and the Fair Nut
+因为我们要使最小的最大，因此肯定是所有数越平均越好
+求出总和，减去需要花费的，然后剩下的除以nnn (下取整)
+当然，因为初始不相同的原因，我们还要提前找到所有数中最小的
+最后对结果取个minminmin即可
+
+C - The Fair Nut and String
+当b出现时，后面每出现一个a都能与前面所有的合法的序列组成一个新的序列
+因此每次b出现时，更新增量，a出现时更新答案
+
+D - The Fair Nut and the Best Path
+不用考虑中途没油的情况，如果中途没油，那么前面这段肯定不用选，因为少掉这段答案肯定会增加
+因此题目变成了求选路径，使得所选点权-所选边权最大
+类似求树的直径，树形DP即可(有一次DFS做法，笔者用了两次，笔者代码实现较丑，不建议参考)
+
+E - The Fair Nut and Strings
+考虑对这kkk个字符串建一个TrieTrieTrie树，答案则是这棵树的节点个数
+因此我们要最大化每层点的个数
+对于第iii层
+对于字符串A的第iii个字符aaa，如果a==′b′a == &amp;#x27;b&amp;#x27;a==′b′ 说明如果前面全部最大的哪条路径的现节点不能选aaa，因此数量需要减111
+字符串B同理
+然后下一层的节点为当前层节点数量乘2,接着继续考虑下一位字符
+因为只有kkk个字符串，因此每层节点最多只有kkk个
+
+F - Max Mex
+
+代码参考 xyz32768
+
+线段树维护图上信息
+线段树上每个节点维护[l,r][l,r][l,r]这些点权是否在一条路径上 ，如果在则节点储存该路径左端点右端点信息即可
+合并时对于子节点上两条路径444个点进行判断即可，如果
+dis(x,y)+dis(y,z)==dis(x,z)dis(x,y) + dis(y,z) == dis(x,z)dis(x,y)+dis(y,z)==dis(x,z) 或
+dis(x,z)+dis(y,z)==dis(x,y)dis(x,z) + dis(y,z) == dis(x,y)dis(x,z)+dis(y,z)==dis(x,y)或
+dis(x,y)+dis(x,z)==dis(y,z)dis(x,y) + dis(x,z) == dis(y,z)dis(x,y)+dis(x,z)==dis(y,z)或
+则说333点在一条路径上，每次合并时做两次判断即可
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CF526/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,341 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「HDU 6506」Spin A Web | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「HDU 6506」Spin A Web
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-09-29</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/U4vsCY07R/" class="post-tag i-tag
+                            i-tag-other_4">
+                            #曼哈顿最小生成树
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>We have a canvas divided into grid with H rows and W columns. The square at the ith row from the top and the jth column from the left is represented as (i, j). (i, j) square has two value xi,j and yi,j .<br>
+Now we want to merge the squares to a connected web with minimal cost. Two squares can be connected if they are in the same row or column, and the cost of connecting (i0, j0) and (i1, j1) is|x_i0,j0 - xi1,j1| + |yi0,j0 - yi1,j1|</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6506">「HDU 6506」Spin A Web</a></p>
+<h4 id="题解">题解</h4>
+<p>(找大佬ksf要了题解，然后做成了自己的板子)<br>
+就是曼哈顿最小生成树的板子，连边时依次对每行每列建边，最后跑一遍最小生成树即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+typedef long long ll;
+const ll mod = 1e9+7;
+const int maxd = 2e5+10;
+const int inf = 0x3f3f3f3f;
+struct Point{
+    int x,y,id;
+    bool operator &lt; (const Point &amp;b) const
+    { return b.x == x? y &lt; b.y: x&lt;b.x; }
+}p[maxd],tmp[maxd];
+struct Edge
+{ 
+    int u,v,d; 
+    bool operator &lt; (const Edge &amp;b) const
+    { return d &lt; b.d;}
+} e[maxd&lt;&lt;2];
+int tot;
+int fa[maxd],t[maxd],pos[maxd];
+int gf(int x){
+    if(fa[x] == x) return x;
+    else return fa[x] = gf(fa[x]);
+}
+void update(int x,int v,int pp)
+{
+    for(;x; x -=(x&amp;-x))
+        if(v &lt; t[x]) t[x] = v,pos[x] = pp;
+}
+int query(int x,int m)
+{
+    int ans = inf,pp = -1;
+    for(;x&lt;=m; x+=(x&amp;-x))
+        if(t[x] &lt; ans)  ans = t[x], pp = pos[x];
+    return pp;
+}
+int dis(Point a,Point b)
+{
+    return abs(a.x - b.x) + abs(a.y - b.y);
+}
+void Mannattan_minimum_spanning_tree(int n, Point p[])
+{
+    int a[maxd],b[maxd];
+    for(int dir = 0; dir &lt; 4;dir++)
+    {
+        if(dir == 1 || dir == 3) for(int i = 0;i &lt; n;i++) swap(p[i].x,p[i].y);
+        else if(dir == 2) for(int i = 0;i &lt; n;i++) p[i].x = -p[i].x;
+        sort(p,p+n);
+        for(int i = 0;i &lt; n;i++) a[i] = b[i] = p[i].y - p[i].x;
+        sort(b,b+n);
+        int m = unique(b,b+n) - b;
+        for(int i = 1;i &lt;= m;i++) t[i] = inf,pos[i] = -1;
+        for(int i = n-1 ;i &gt;= 0;i--)
+        {
+            int pos = lower_bound(b,b+m,a[i]) - b + 1;
+            int ans = query(pos,m);
+            if(ans != -1) e[++tot] = (Edge) {p[i].id,p[ans].id,dis(p[i],p[ans])};
+            //addedge(p[i].id,p[ans].id,dis(p[i],p[ans]));
+
+            update(pos,p[i].x+p[i].y,i);
+        }
+    }
+}
+int n,m;
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
+    {
+        for(int i = 1;i&lt;=n;i++)
+            for(int j = 1;j&lt;=m;j++)
+            {
+                p[(i-1)*m+j].id = (i-1)*m+j;
+                scanf(&quot;%d&quot;,&amp;p[(i-1)*m+j].x);
+            }
+        for(int i = 1;i&lt;=n;i++)
+            for(int j = 1;j&lt;=m;j++)
+                scanf(&quot;%d&quot;,&amp;p[(i-1)*m+j].y);
+        tot = 0;
+        for(int i = 1;i&lt;=n;i++)
+        {
+            int C = 0;
+            for(int j = 1;j&lt;=m;j++)
+                tmp[C++] = p[(i-1)*m+j];
+            Mannattan_minimum_spanning_tree(C,tmp);
+        }
+        for(int j = 1;j&lt;=m;j++)
+        {
+            int C = 0;
+            for(int i = 1;i&lt;=n;i++)
+                tmp[C++] = p[(i-1)*m+j];
+            Mannattan_minimum_spanning_tree(C,tmp);
+        }
+
+        for(int i=1;i&lt;=n*m;i++) fa[i] = i;
+        sort(e+1,e+tot+1);
+        ll ans = 0ll;
+        for(int i = 1;i &lt;= tot;i++)
+        {
+            int x = gf(e[i].u) , y = gf(e[i].v);
+            if(x!=y)
+            {
+                fa[x] = y;
+                ans += e[i].d;
+            }
+        }
+        printf(&quot;%lld\n&quot;,ans);
+    }
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

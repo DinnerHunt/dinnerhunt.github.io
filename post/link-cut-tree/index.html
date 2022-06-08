@@ -1,0 +1,245 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」 Link-Cut-Tree | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」 Link-Cut-Tree
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-04-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/template/" class="post-tag i-tag
+                            i-tag-info">
+                            #template
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <pre><code class="language-cpp">const int N = 3e5+10;
+const double Pi = acos(-1.0);
+ll a[N];
+struct LCT
+{
+    #define ls(x) c[x][0]
+    #define rs(x) c[x][1]
+    ll top,c[N][2],fa[N],v[N],rev[N],q[N];
+    inline void pushup(ll x){v[x] = v[ls(x)] +  v[rs(x)] + a[x];}
+    inline void pushdown(ll x){if(rev[x]) rev[ls(x)]^=1,rev[rs(x)]^=1,rev[x]^=1,swap(ls(x),rs(x));}
+    inline bool isroot(ll x){ return ls(fa[x])!=x &amp;&amp; rs(fa[x])!=x;}
+    void rotate(ll x)
+    {
+        ll y=fa[x],z=fa[y],l,r;
+        if(ls(y)==x)l=0;else l=1;r=l^1;
+        if(!isroot(y)){ if(ls(z)==y) ls(z)=x;else rs(z)=x;}
+        fa[x]=z,fa[y]=x, fa[c[x][r]]=y, c[y][l]=c[x][r],c[x][r]=y;
+        pushup(y);pushup(x);
+    }
+    void splay(ll x)
+    {
+        top = 1;q[top] = x;
+        for(ll i=x;!isroot(i);i=fa[i])q[++top]=fa[i];
+        for(ll i=top;i;i--)pushdown(q[i]);
+        while(!isroot(x))
+        {
+            ll y=fa[x],z=fa[y];
+            if(!isroot(y))
+            {
+                if((ls(y)==x)^(ls(z)==y))rotate(x);
+                else rotate(y);
+            }
+            rotate(x);
+        }
+    }
+    //打通根到x的路径
+    void access(ll x){for(ll t=0;x;t=x,x=fa[x])splay(x),rs(x)=t,pushup(x);}
+    //换根
+    void makeroot(ll x){access(x);splay(x);rev[x]^=1;}
+    //找x节点在原树的根
+    int find(ll x){access(x);splay(x);while(ls(x))x=ls(x);splay(x);return x;}
+    // 将x和y拆出实链出来
+    void split(ll x,ll y){makeroot(x);access(y);splay(y);}
+    //断开x,y
+    void cut(ll x,ll y){makeroot(x);if(find(y) == x &amp;&amp; fa[y] == x &amp;&amp; ls(y) == 0){fa[y] = rs(x) = 0;pushup(x);}}
+    //链接x,y
+    void link(ll x,ll y){makeroot(x);if(find(y)!=x) fa[x]=y;}
+}O_O;
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

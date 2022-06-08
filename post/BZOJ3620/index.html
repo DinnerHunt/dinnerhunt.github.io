@@ -1,0 +1,275 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「BZOJ 3620」似乎在梦中见过的样子 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「BZOJ 3620」似乎在梦中见过的样子
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/eDSrgqM2i/" class="post-tag i-tag
+                            i-tag-banana">
+                            #KMP
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="post-tag i-tag
+                            i-tag-other_4">
+                            #字符串
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>“Madoka,不要相信 QB！”伴随着 Homura 的失望地喊叫,Madoka 与 QB 签订了契约.<br>
+这是 Modoka 的一个噩梦,也同时是上个轮回中所发生的事.为了使这一次 Madoka 不再与 QB签订契约,Homura 决定在刚到学校的第一天就解决 QB.然而,QB 也是有许多替身的(但在第八话中的剧情显示它也有可能是无限重生的),不过,意志坚定的 Homura 是不会放弃的——她决定</p>
+<!-- more -->
+<p>消灭所有可能是 QB 的东西.现在，她已感受到附近的状态,并且把它转化为一个长度为 n 的字符串交给了学 OI 的你.<br>
+现在你从她的话中知道 , 所有形似于 A+B+A 的字串都是 QB 或它的替身 , 且len(A)&gt;=k,len(B)&gt;=1 （位置不同其他性质相同的子串算不同子串,位置相同但拆分不同的子串算同一子串）,然后你必须尽快告诉 Homura 这个答案——QB 以及它的替身的数量.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3620">「BZOJ 3620」似乎在梦中见过的样子</a></p>
+<h4 id="题解">题解</h4>
+<ul>
+<li>从左到右做<code>n</code>次<code>getfail</code>，<code>fail[i]</code> 与前缀匹配，整合符号<code>A + B + A</code> 的格式，只要<code>fail[i]</code> &gt; <code>K</code> 则统计其次数</li>
+</ul>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 250005;
+char str[maxd];
+int fail[maxd],n,k,ans;
+int main()
+{
+	scanf(&quot;%s&quot;,str+1);
+	scanf(&quot;%d&quot;,&amp;k);
+	n = strlen(str+1);
+	for(int i=1;i&lt;=n;i++)
+	{
+		for(int j=1;j&lt;=n;j++) fail[j] = i-1;
+
+		int v = i-1;
+		for(int j=i+1;j&lt;=n;j++)
+		{
+			while(v != i-1 &amp;&amp; str[j] != str[v+1] ) v = fail[v];
+			if(str[j] == str[v+1]) v++;
+			fail[j] = v;
+		}
+		
+		v = i-1;  // 匹配串的右端点
+		for(int j=i+1;j&lt;=n;j++)		//枚举右端点
+		{
+			while(v!=i-1&amp;&amp;str[j] != str[v+1]) v = fail[v];
+			if(str[j] == str[v+1]) v++;
+			while((v-i+1)&lt;&lt;1 &gt;= j-i+1) v = fail[v];
+			if(v-i+1&gt;=k) ans++;
+		}
+	}
+	printf(&quot;%d&quot;,ans);
+	return 0;
+}
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

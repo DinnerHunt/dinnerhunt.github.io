@@ -1,0 +1,284 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「POI2010」KOR-Beads | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「POI2010」KOR-Beads
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-05</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/zgSE_vrd1/" class="post-tag i-tag
+                            i-tag-info">
+                            #Hash
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/duzGuTC3O/" class="post-tag i-tag
+                            i-tag-other_2">
+                            #字符串
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>Zxl有一次决定制造一条项链，她以非常便宜的价格买了一长条鲜艳的珊瑚珠子，她现在也有一个机器，能把这条珠子切成很多块（子串），每块有k（k&gt;0）个珠子，如果这条珠子的长度不是k的倍数，最后一块小于k的就不要拉（nc真浪费），保证珠子的长度为正整数。</p>
+<!-- more -->  
+<p>Zxl喜欢多样的项链，为她应该怎样选择数字k来尽可能得到更多的不同的子串感到好奇，子串都是可以反转的，换句话说，子串（1，2，3）和（3,2,1）是一样的。写一个程序，为Zxl决定最适合的k从而获得最多不同的子串。<br>
+例如：这一串珠子是： (1,1,1,2,2,2,3,3,3,1,2,3,3,1,2,2,1,3,3,2,1)， k=1的时候，我们得到3个不同的子串： (1),(2),(3) k=2的时候，我们得到6个不同的子串： (1,1),(1,2),(2,2),(3,3),(3,1),(2,3) k=3的时候，我们得到5个不同的子串： (1,1,1),(2,2,2),(3,3,3),(1,2,3),(3,1,2) k=4的时候，我们得到5个不同的子串： (1,1,1,2),(2,2,3,3),(3,1,2,3),(3,1,2,2),(1,3,3,2)</p>
+<p><a href="https://www.luogu.org/problemnew/show/P3498">「POI2010」KOR-Beads</a></p>
+<h4 id="题解">题解</h4>
+<p>求串长度为k时的不同子串个数，并求出最大子串为k<br>
+可以直接枚举长度，因为这里因为调和级数，这里总体复制度为(N log N);<br>
+后面用HASH判断是否重复出现过，统计个数<br>
+因为回文串算两边，这里hash比较复杂</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;set&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+typedef unsigned long long ull;
+const int mod = 1e6+7;
+const int maxd = 2e5+10;
+const ull P = 13331;
+int n,ans[maxd],tot;
+ull pre[maxd],ha1[maxd],ha2[maxd],x,y,arr[maxd];
+int main()
+{   
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    scanf(&quot;%d&quot;,&amp;n); pre[0]=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%llu&quot;,&amp;arr[i]);
+        pre[i] = pre[i-1]*P;
+        ha1[i] = ha1[i-1]*P + arr[i];
+    }
+    for(int i=n;i;i--) ha2[i] = ha2[i+1]*P + arr[i];
+    for(int i=1;i&lt;=n;i++)   //长度
+    {
+        if(n/i&lt;ans[0]) break;
+        set&lt;ull&gt; s;
+        int k = 0;
+        for(int j=i;j&lt;=n;j+=i)   //起点
+        {
+            x = ha1[j] - ha1[j-i] * pre[i];
+            y = ha2[j-i+1] - ha2[j+1] * pre[i];
+            ull z = x*y;
+            if(!s.count(z))
+            {
+                k++;
+                s.insert(z);
+            }
+        }
+        if(k&gt;ans[0])
+        {
+            tot = 1; ans[tot] = i; ans[0] = k;
+        }
+        else if(k == ans[0]) ans[++tot] = i;
+    }
+    printf(&quot;%d %d\n&quot;,ans[0],tot);
+    for(int i=1;i&lt;=tot;i++) printf(&quot;%d &quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

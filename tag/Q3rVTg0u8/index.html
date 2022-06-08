@@ -1,0 +1,355 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    二分图 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        二分图</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/CF1198C/">
+                        「CodeForces 1198C」 Matching vs Independent Set
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-01-15</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/bx71PebZq/" class="post-tag i-tag
+                            i-tag-other_2">
+            #构造
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="post-tag i-tag
+                            i-tag-other_1">
+            #二分图
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>You are given a graph with 3⋅𝑛 vertices and 𝑚 edges. You are to find a matching of 𝑛 edges, or an independent set of 𝑛 vertices.</p>
+<p>A set of edges is called a matching if no two edges share an endpoint.</p>
+<p>A set of vertices is called an independent set if no two vertices are connected with an edge.</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/CF1198C/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/Hopcroft-Carp/">
+                        「Template」Hopcroft-Carp
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-11-19</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="post-tag i-tag
+                            i-tag-info">
+            #二分图
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            时间复杂度 O(sqrt(n) * e)
+#include &amp;lt;cstdio&amp;gt;
+#include &amp;lt;cstring&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;cmath&amp;gt;
+#define eps 1e-8
+using namespace std;
+const int maxd = 3e5+10;
+const int inf = 1e9;
+int cx[maxd],cy[maxd],dx[maxd],dy[maxd],used[maxd];
+vector&amp;lt;int&amp;gt; G[maxd];
+int n,m,dis;
+int bfs()
+{
+    queue&amp;lt;int&amp;gt; que;
+    dis = inf;
+    memset(dx,-1,sizeof(dx));
+    memset(dy,-1,sizeof(dy));
+    for(int i=1;i&amp;lt;=n;i++)
+    {
+        if(cx[i] == -1)
+        {
+            que.push(i);
+            dx[i] = 0;
+        }
+    }
+    while(!que.empty())
+    {
+        int x = que.front(); que.pop();
+        if(dx[x] &amp;gt; dis) break;
+        for(int v: G[x])
+            if(dy[v] == -1)
+            {
+                dy[v] = dx[x] + 1;
+                if(cy[v] == -1) dis = dy[v];
+                else
+                {
+                    dx[cy[v]] = dy[v]+1;
+                    que.push(cy[v]);
+                }
+            }
+    }
+    return dis!=inf;
+}
+bool dfs(int x)
+{
+    for(int v : G[x])
+    {
+        if(!used[v] &amp;amp;&amp;amp; dy[v] == dx[x]+1)
+        {
+            used[v] = true;
+            if(cy[v] != -1 &amp;amp;&amp;amp; dy[v] == dis) continue;
+            if(cy[v] == -1 || dfs(cy[v]))
+            {
+                cy[v] = x;
+                cx[x] = v;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+int maxmatch()
+{
+    int res = 0;
+    memset(cx,-1,sizeof(cx));
+    memset(cy,-1,sizeof(cy));
+    while(bfs())
+    {
+        memset(used,0,sizeof(used));
+        for(int i=1;i&amp;lt;=n;i++)
+            res += (cx[i] == -1 &amp;amp;&amp;amp; dfs(i));
+    }
+    return res;
+}
+int main()
+{
+//    freopen(&amp;quot;a.in&amp;quot;,&amp;quot;r&amp;quot;,stdin);
+//    freopen(&amp;quot;k.out&amp;quot;,&amp;quot;w&amp;quot;,stdout);
+    return 0;
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/Hopcroft-Carp/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/P1640/">
+                        「SCOI2010」 连续攻击游戏
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/Q3rVTg0u8/" class="post-tag i-tag
+                            i-tag-other_4">
+            #二分图
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>lxhgww最近迷上了一款游戏，在游戏里，他拥有很多的装备，每种装备都有2个属性，这些属性的值用[1,10000]之间的数表示。当他使用某种装备时，他只能使用该装备的某一个属性。并且每种装备最多只能使用一次。游戏进行到最后，lxhgww遇到了终极boss，这个终极boss很奇怪，攻击他的装备所使用的属性值必须从1开始连续递增地攻击，才能对boss产生伤害。也就是说一开始的时候，lxhgww只能使用某个属性值为1的装备攻击boss，然后只能使用某个属性值为2的装备攻击boss，然后只能使用某个属性值为3的装备攻击boss……以此类推。现在lxhgww想知道他最多能连续攻击boss多少次？</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/P1640/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

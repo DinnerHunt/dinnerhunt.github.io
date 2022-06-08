@@ -1,0 +1,309 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」Dancing Links | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」Dancing Links
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-04</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>用于解决精准覆盖问题 ， 又名<strong>双向循环交叉链表</strong></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int n,m;
+const int maxn = 500;
+const int maxd = 500*500;
+struct DXL
+{
+	int n,sz,head;
+	int l[maxd],r[maxd],d[maxd],u[maxd];
+	int s[maxd];
+	int col[maxd],row[maxd]; // 第几列，第几行
+	int ans[maxn],ansd;
+	void init()
+	{
+		head = 0;
+		ansd = -1;
+		for(int i=0;i&lt;=m;i++)
+		{
+			d[i] = u[i] = i;
+			l[i] = i-1; r[i] = i+1;
+		}
+		r[m] = head; l[head] = m;
+		sz = m + 1;
+		memset(s,0,sizeof(s));
+		//printf(&quot;%d &quot;,r[head]);
+	}
+	void addrow(int x,vector&lt;int&gt; vec)
+	{
+		int first = sz;
+		for(int i=0;i&lt;vec.size();i++)
+		{
+			int c = vec[i];
+			l[sz] = sz - 1; r[sz] = sz+1;
+			d[sz] = c , u[sz] = u[c];
+			d[u[c]]= sz, u[c] = sz;
+			col[sz] = c, row[sz] = x;
+			++s[c]; ++ sz;
+		}
+		r[sz-1] = first;
+		l[first] = sz-1;
+	}
+	void remove(int c)
+	{
+		r[l[c]] = r[c];
+		l[r[c]] = l[c];
+		for(int i=d[c];i!=c;i=d[i])
+			for(int j=l[i];j!=i;j=l[j])
+			{
+				d[u[j]] = d[j] , u[d[j]] = u[j];
+				s[col[j]]--;
+			}
+	}
+	void restore(int c)
+	{
+		for(int i=u[c];i!=c;i=u[i])
+			for(int j=r[i];j!=i;j=r[j])
+			{
+				d[u[j]] = j, u[d[j]] = j;
+				s[col[j]]++;
+			}
+		r[l[c]] = c;
+		l[r[c]] = c;
+	}
+	bool dance(int step)
+	{
+		if(r[head] == head)
+		{
+			ansd = step;
+			return true;
+		}
+		int c = r[head];
+		for(int i=r[head];i!=head;i=r[i])
+			if(s[i] &lt; s[c]) c = i;
+		remove(c);
+		for(int i=d[c];i!=c;i=d[i])
+		{
+			ans[step] = row[i];
+			for(int j=r[i];j!=i;j=r[j]) remove(col[j]);
+			if(dance(step+1)) return true;
+			for(int j=l[i];j!=i;j=l[j]) restore(col[j]);
+		}
+		restore(c);
+		return false;
+	}
+	void print()
+	{
+		if(ansd == -1) printf(&quot;No Solution!&quot;);
+		else for(int i=1;i&lt;ansd;i++)
+			printf(&quot;%d &quot;,ans[i]);
+	}
+}Link;
+vector&lt;int&gt; vct; 
+int main()
+{
+	// freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+	int x;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	Link.init();
+	for(int i=1;i&lt;=n;i++)
+	{
+		vct.clear();
+		for(int j=1;j&lt;=m;j++)
+		{
+			scanf(&quot;%d&quot;,&amp;x);
+			if(x) vct.push_back(j);
+		}
+		Link.addrow(i,vct);
+	}
+	Link.dance(1);
+	Link.print();
+	return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

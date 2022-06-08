@@ -1,0 +1,488 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」FHQ-Treap | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」FHQ-Treap
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-04</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p><a href="https://www.luogu.org/problemnew/show/P3369">普通平衡树</a></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;ctime&gt;
+using namespace std;
+const int maxd = 5e5+10;
+inline int read()
+{
+    int x=0,f=1;char c = getchar();
+    while(c&gt;'9'||c&lt;'0'){if(c=='-')f=-1;c=getchar();}
+    while(c&gt;='0'&amp;&amp;c&lt;='9'){x=x*10+c-'0';c=getchar();}
+    return x*f;
+}
+struct
+{
+    int ch[maxd][2],size[maxd],val[maxd],fix[maxd];
+    int root,cnt,x,y,z;
+    void init()
+    {
+        srand((unsigned)time(NULL));
+        root = x = y = z = cnt = 0;
+    }
+    inline void pushup(int x)
+    {
+        size[x] = 1+size[ch[x][0]] + size[ch[x][1]];
+    }
+    inline int new_node(int x)
+    {
+        size[++cnt] = 1;
+        val[cnt] = x;
+        fix[cnt] = rand();
+        return cnt;
+    }
+    int merge(int a,int b)  // 这两棵树合并
+    {
+        if(!a||!b) return a+b; // 如果只有一棵子树
+        if(fix[a] &lt; fix[b]){ch[a][1]=merge(ch[a][1],b);pushup(a);return a;}
+        ch[b][0] = merge(a,ch[b][0]);pushup(b); return b;
+    }
+    void split(int now,int k,int &amp;x,int &amp;y) // 将now为根的树，以权值k为界限，划分成两棵树
+    {
+        if(!now) x=y=0; // 如果到达叶子节点
+        else
+        {
+            if(val[now] &lt;= k)  
+            {
+                x = now;
+                split(ch[now][1],k,ch[now][1],y);
+            }
+            else
+            {
+                y = now;
+                split(ch[now][0],k,x,ch[now][0]);
+            }
+            pushup(now);
+        }
+    }
+    int kth(int now,int k)
+    {
+        while(1)
+        {
+            if(k&lt;=size[ch[now][0]]) now = ch[now][0];
+            else if(k==size[ch[now][0]]+1) return now;
+            else k-=size[ch[now][0]]+1,now=ch[now][1];
+        }
+        return 0;
+    }
+    void insert(int v)
+    {
+        split(root,v,x,y);
+        root = merge(merge(x,new_node(v)),y);
+    }
+    void del(int v)
+    {
+        split(root,v,x,z); // 将比a小的放x,比a大的放z
+        split(x,v-1,x,y);  // 比a-1小的放x，比a-1大的放y,这时a是y的根节点
+        y = merge(ch[y][0],ch[y][1]); // 去根
+        root = merge(merge(x,y),z); 
+    }
+    int rank(int v)
+    {
+        split(root,v-1,x,y);
+        int k = size[x]+1;
+        root = merge(x,y);
+        return k;
+    }
+    int pre(int v)
+    {
+        split(root,v-1,x,y);
+        int k =val[kth(x,size[x])];
+        root = merge(x,y);
+        return k;
+    }
+    int net(int v)
+    {
+        split(root,v,x,y);
+        int k = val[kth(y,1)];
+        root = merge(x,y);
+        return k;
+    }
+}Treap;
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int t,opt,a;t=read();Treap.init();
+    while(t--)
+    {
+        opt=read();a=read();
+        if(opt == 1) Treap.insert(a);
+        if(opt == 2) Treap.del(a);
+        if(opt == 3) printf(&quot;%d\n&quot;,Treap.rank(a));
+        if(opt == 4) printf(&quot;%d\n&quot;,Treap.val[Treap.kth(Treap.root,a)]);
+        if(opt == 5) printf(&quot;%d\n&quot;,Treap.pre(a));
+        if(opt == 6) printf(&quot;%d\n&quot;,Treap.net(a));
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<p><a href="https://www.luogu.org/problemnew/show/P3391">文艺平衡树</a></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;ctime&gt;
+using namespace std;
+const int maxd = 5e5+10;
+inline int read()
+{
+    int x=0,f=1;char c = getchar();
+    while(c&gt;'9'||c&lt;'0'){if(c=='-')f=-1;c=getchar();}
+    while(c&gt;='0'&amp;&amp;c&lt;='9'){x=x*10+c-'0';c=getchar();}
+    return x*f;
+}
+struct
+{
+    int ch[maxd][2],size[maxd],val[maxd],fix[maxd];
+    int root,cnt,x,y,z;
+    bool lazy[maxd];
+    void init()
+    {
+        srand((unsigned)time(NULL));
+        root = x = y = z = cnt = 0;
+    }
+    inline void pushup(int x)
+    {
+        size[x] = 1+size[ch[x][0]] + size[ch[x][1]];
+    }
+    inline void pushdown(int x)
+    {
+        if(!lazy[x]) return;
+        swap(ch[x][0],ch[x][1]);
+        if(ch[x][0]) lazy[ch[x][0]]^=1;
+        if(ch[x][1]) lazy[ch[x][1]]^=1;
+        lazy[x]=0;
+    }
+    inline int new_node(int x)
+    {
+        size[++cnt] = 1;
+        val[cnt] = x;
+        fix[cnt] = rand();
+        return cnt;
+    }
+    int merge(int a,int b)  // 这两棵树合并
+    {
+        if(!a||!b) return a+b; // 如果只有一棵子树
+        if(fix[a] &lt; fix[b])
+        {
+            pushdown(a);
+            ch[a][1]=merge(ch[a][1],b);
+            pushup(a);
+            return a;
+        }
+        else{
+            pushdown(b);
+            ch[b][0] = merge(a,ch[b][0]);
+            pushup(b);
+            return b;
+        }
+    }
+
+    // void split(int now,int k,int &amp;x,int &amp;y) // 以子节点个数为分界 // 区间反转操作需要
+    // {
+    //     if(!now) x = y = 0;
+    //     else
+    //     {
+    //         pushdown(now);
+    //         if(size[ch[now][0]]&lt;k)
+    //         {
+    //             x = now;
+    //             split(ch[now][1],k-size[ch[now][0]]-1,ch[now][1],y);
+    //         }
+    //         else
+    //         {
+    //             y = now;
+    //             split(ch[now][0],k,x,ch[now][0]);
+    //         }
+    //         pushup(now);
+    //     }
+    // }
+
+    void split(int now,int k,int &amp;x,int &amp;y) // 将now为根的树，以权值k为界限，划分成两棵树
+    {
+        if(!now) x=y=0; // 如果到达叶子节点
+        else
+        {
+            pushdown(now);
+            if(val[now] &lt;= k)  
+            {
+                x = now;
+                split(ch[now][1],k,ch[now][1],y);
+            }
+            else
+            {
+                y = now;
+                split(ch[now][0],k,x,ch[now][0]);
+            }
+            pushup(now);
+        }
+    }
+    int kth(int now,int k)  //第k大
+    {
+        while(1)
+        {
+            if(k&lt;=size[ch[now][0]]) now = ch[now][0];
+            else if(k==size[ch[now][0]]+1) return now;
+            else k-=size[ch[now][0]]+1,now=ch[now][1];
+        }
+        return 0;
+    }
+    void coutt(int now)
+    {
+        if(!now) return;
+        pushdown(now);
+        coutt(ch[now][0]);
+        printf(&quot;%d &quot;,val[now]);
+        coutt(ch[now][1]);
+    }
+
+    void insert(int v)  //插入
+    {
+        split(root,v,x,y);
+        root = merge(merge(x,new_node(v)),y);
+    }
+    void del(int v) //删除
+    {
+        split(root,v,x,z); // 将比a小的放x,比a大的放z
+        split(x,v-1,x,y);  // 比a-1小的放x，比a-1大的放y,这时a是y的根节点
+        y = merge(ch[y][0],ch[y][1]); // 去根
+        root = merge(merge(x,y),z); 
+    }
+    int rank(int v) //排名
+    {
+        split(root,v-1,x,y);
+        int k = size[x]+1;
+        root = merge(x,y);
+        return k;
+    }
+    int pre(int v)  //前驱
+    {
+        split(root,v-1,x,y);
+        int k =val[kth(x,size[x])];
+        root = merge(x,y);
+        return k;
+    }
+    int net(int v)  //后继
+    {
+        split(root,v,x,y);
+        int k = val[kth(y,1)];
+        root = merge(x,y);
+        return k;
+    }
+    void rotate(int a,int b)
+    {
+        split(root,a-1,x,y);
+        split(y,b-a+1,y,z); //将要旋转的部分移动到y节点
+        lazy[y]^=1;
+        root = merge(x,merge(y,z));
+    }
+}Treap;
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,m,a,b;Treap.init();
+    n = read(),m = read();
+    for(int i=1;i&lt;=n;i++) Treap.insert(i);
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+        Treap.rotate(a,b);
+    }
+    Treap.coutt(Treap.root);
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

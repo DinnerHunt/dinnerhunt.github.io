@@ -1,0 +1,305 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「CQOI 2015」 任务查询系统 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「CQOI 2015」 任务查询系统
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-08-02</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/fAdq8anlh/" class="post-tag i-tag
+                            i-tag-">
+                            #主席树
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>最近实验室正在为其管理的超级计算机编制一套任务管理系统，而你被安排完成其中的查询部分。超级计算机中的任务用三元组(Si,Ei,Pi)描述，(Si,Ei,Pi)表示任务从第Si秒开始，在第Ei秒后结束（第Si秒和Ei秒任务也在运行），其优先级为Pi。同一时间可能有多个任务同时执行，它们的优先级可能相同，也可能不同。调度系统会经常向查询系统询问，第Xi秒正在运行的任务中，优先级最小的Ki个任务（即将任务按照优先级从小到大排序后取前Ki个）的优先级之和是多少。特别的，如果Ki大于第Xi秒正在运行的任务总数，则直接回答第Xi秒正在运行的任务优先级之和。上述所有参数均为整数，时间的范围在1到n之间（包含1和n）。</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://www.luogu.org/problem/P3168">「CQOI 2015」 任务查询系统</a></p>
+<h4 id="题解">题解</h4>
+<p>把区间开始结束时间理解成差分，然后根据时间排序后在主席树上插入即可</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int maxd = 2e5+10;
+int rt[maxd&lt;&lt;5],ls[maxd&lt;&lt;5],rs[maxd&lt;&lt;5],size[maxd&lt;&lt;5];
+long long sum[maxd&lt;&lt;5];
+int x,a,b,c,tot;
+void insert(int &amp;rt,int last,int l,int r,int x)
+{
+    rt = ++tot; ls[rt] = ls[last],rs[rt] = rs[last];
+    size[rt] = size[last]+((x&gt;0)?1:-1);
+    sum[rt] = (long long)sum[last] + x;
+    //printf(&quot;%d %d %d %d %lld\n&quot;,rt,l,r,size[rt],sum[rt]);
+    if(l==r) return ;
+    int mid = (l+r)&gt;&gt;1;
+    if(abs(x)&lt;=mid) insert(ls[rt],ls[last],l,mid,x);
+    else insert(rs[rt],rs[last],mid+1,r,x);
+    //printf(&quot;%d %d %d %d %d\n&quot;,size[rt],size[last],l,r,x);
+}
+long long query(int y,int l,int r,int v)
+{
+    //printf(&quot;%d %d %d %d %d %d\n&quot;,y,l,r,size[y],size[ls[y]],size[rs[y]]);
+    if(l==r)return min(v,size[y])*l;
+    int mid = (l+r)&gt;&gt;1;
+    if(v &lt;= size[ls[y]]) return query(ls[y],l,mid,v);
+    else return sum[ls[y]] + query(rs[y],mid+1,r,v-size[ls[y]]);
+}
+int eid;
+struct node
+{
+    int pos,v;
+}arr[maxd];
+bool cmp(const node &amp;x,const node &amp;y)
+{
+    return x.pos &lt; y.pos;
+}
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+    int n,m,k=0;scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        arr[++eid].pos = a, arr[eid].v = c;
+        arr[++eid].pos = b+1,arr[eid].v = -c;
+        k = max(k,b+1);
+    }
+    sort(arr+1,arr+1+eid,cmp);
+    int id=1;arr[eid+1].pos = 0;
+    for(int i=1;i&lt;=k;i++)
+    {
+        if(arr[id].pos!=i) rt[i] = rt[i-1];
+        else
+        {
+            //printf(&quot;%d %d %d\n&quot;,i,i-1,arr[id].v);
+            insert(rt[i],rt[i-1],1,10000000,arr[id++].v);
+            while(arr[id].pos == i)
+            {
+                //printf(&quot;%d %d %d\n&quot;,i,i,arr[id].v);
+                insert(rt[i],rt[i],1,10000000,arr[id++].v);
+            }
+        }
+        //printf(&quot;%d %d %d %d\n&quot;,i,rt[i],size[ls[rt[i]]],size[rs[rt[i]]]);
+    }
+    long long ans = 1;
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d %d %d %d&quot;,&amp;x,&amp;a,&amp;b,&amp;c);
+        long long k = 1+(a*ans%c+b)%c;
+        //printf(&quot;%d %lld\n&quot;,x,k);
+        ans = query(rt[x],1,10000000,k);
+        printf(&quot;%lld\n&quot;,ans);
+    }
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

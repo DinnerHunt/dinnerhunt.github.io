@@ -1,0 +1,242 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    莫队 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        莫队</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/2018-ccpc-hei-long-jiang-sheng-sai/">
+                        「2018 CCPC」- 黑龙江省赛
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-03-03</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/SE2VKIgzK/" class="post-tag i-tag
+                            i-tag-success">
+            #LGV
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/3qIGp9_piA/" class="post-tag i-tag
+                            i-tag-banana">
+            #莫队
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/7dTXpwKJUL/" class="post-tag i-tag
+                            i-tag-other_1">
+            #尺取
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            Code For C
+Code For D
+Code For F
+HDU - 6482
+存在一个 *LGV(Lindström–Gessel–Viennot)*定理
+对于一张无权的DAG图，给定NNN个起点和NNN个终点
+设e(ai,bi)e(a_i,b_i)e(ai​,bi​)为点iii到点jjj的路径方案数，这NNN条不相交路径的方案数为
+(e(a1,b1)e(a1,b2)⋯e(a1,bn)e(a2,b1)e(a2,b2)⋯e(a2,bn)⋮⋮⋱⋮e(an,b1)e(an,b2)⋯e(an,bn))\begin{pmatrix}
+e(a_1,b_1) &amp;amp; e(a_1,b_2) &amp;amp; \cdots &amp;amp; e(a_1,b_n) \\
+e(a_2,b_1) &amp;amp; e(a_2,b_2) &amp;amp; \cdots &amp;amp; e(a_2,b_n) \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+e(a_n,b_1) &amp;amp; e(a_n,b_2) &amp;amp; \cdots &amp;amp; e(a_n,b_n)
+\end{pmatrix}⎝⎜⎜⎜⎛​e(a1​,b1​)e(a2​,b1​)⋮e(an​,b1​)​e(a1​,b2​)e(a2​,b2​)⋮e(an​,b2​)​⋯⋯⋱⋯​e(a1​,bn​)e(a2​,bn​)⋮e(an​,bn​)​⎠⎟⎟⎟⎞​
+这里我们有两个起点两个终点，代进去就就可以求出不相交的方案数了，然后用总路径数减去就好
+至于如何求到点(i,j)(i,j)(i,j)的方案数，这里可以理解为，你需要走(i+j)(i+j)(i+j)步，在这(i+j)(i+j)(i+j)步中在何时往下走iii步的方案数，这样就转化为组合数问题，答案为Ci+jiC_{i+j}^iCi+ji​
+
+HDU - 6483
+先用ST表处理出区间的最大最小值
+对于每个询问，mxmxmx表示该区间最大值，mimimi表示该区间最小值
+然后可以将问题转化为询问区间内不同数的个数是否等于mx−mi+1mx - mi +1mx−mi+1
+后面部分可以用莫队算法解决
+
+HDU - 6485
+枚举串sss的后缀，拿其与串ttt尺取
+枚举串ttt的后缀，拿其与串sss尺取
+所得的长度最大值，就是答案
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/2018-ccpc-hei-long-jiang-sheng-sai/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,382 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    SPLAY | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        SPLAY</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/splay/">
+                        「Template」Splay
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-05-04</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/PliHkN3ez/" class="post-tag i-tag
+                            i-tag-other_4">
+            #平衡树
+        </a>
+                        
+                        <a href="https://dinnerhunt.cn/tag/RH63gBh6JZ/" class="post-tag i-tag
+                            i-tag-other_4">
+            #SPLAY
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            普通平衡树
+文艺平衡树
+
+注意细节:
+
+注意虚拟节点的原因，区间范围记得加1
+如果没有维护权值，仅维护序列，则不能使用find操作
+维护序列时，如果需要修[L,R]，则将[L],[R+2]通过伸展操作挪到固定位置进行操作即可
+
+
+
+const int N = 500005;
+struct Splay
+{
+    int ch[N][2], val[N], cnt[N], par[N], sz[N], rev[N];
+    int root,ncnt;
+    int chk(int x) { return ch[par[x]][1] == x; }
+    void pushup(int x) { sz[x] = sz[ch[x][0]] + sz[ch[x][1]] + cnt[x]; }
+    void pushdown(int x)
+    {
+        if (rev[x])
+        {
+            swap(ch[x][0], ch[x][1]);
+            rev[ch[x][0]] ^= 1;rev[ch[x][1]] ^= 1;rev[x] = 0;
+        }
+    }
+    // 旋转操作
+    void rotate(int x)
+    {
+        int y = par[x], z = par[y], k = chk(x), w = ch[x][k ^ 1];
+        // pushdown(x), pushdown(y); 如果有标记需要下放
+        ch[y][k] = w;par[w] = y;ch[z][chk(y)] = x;
+        par[x] = z;ch[x][k ^ 1] = y; par[y] = x;
+        pushup(y); pushup(x);
+    }
+    //伸展操作
+    void splay(int x, int goal = 0)
+    {
+        while (par[x] != goal)
+        {
+            int y = par[x], z = par[y];
+            if (z != goal) chk(x) == chk(y)?rotate(y):rotate(x);
+            rotate(x);
+        }
+        if (!goal) root = x;
+    }
+    //将最大小于等于x的数提到根
+    void find(int x)
+    {
+        if (!root) return;   //  如果根为0，则退出
+        int p = root;
+        while (ch[p][x &amp;gt; val[p]] &amp;amp;&amp;amp; x != val[p]) p = ch[p][x &amp;gt; val[p]];
+        splay(p);     //将cur提到根
+    }
+    // 生成新节点
+    int NewNode(int x)
+    {
+        int p = ++ncnt;
+        par[p] = ch[p][0] = ch[p][1] = 0;
+        val[p] = x, cnt[p] = sz[p] = 1;
+        return p;
+    }
+    // 插入单个值为x的节点
+    void insert(int x)
+    {
+        int p = root, fa = 0;
+        while (p &amp;amp;&amp;amp; val[p] != x) { fa = p,p = ch[p][x &amp;gt; val[p]]; }
+        if (p) cnt[p]++;
+        else
+        {
+            p = NewNode(x);
+            ch[fa][x&amp;gt;val[fa]] = p;
+            par[p] = fa;
+        }
+        splay(p);
+    }
+    // 翻转 (x+1) 至 (y+1) 的区间
+    void reverse(int x, int y)
+    {
+        int u = kth(x), v = kth(y+2);
+        splay(u); splay(v, u);
+        rev[ch[v][0]] ^=1;
+    }
+    // 查找第k大的值
+    int kth(int k)
+    {
+        int p = root;
+        while (1)
+        {
+            pushdown(p);// （标记下放）
+            if (ch[p][0] &amp;amp;&amp;amp; k &amp;lt;= sz[ch[p][0]]) p = ch[p][0];
+            else if (k &amp;gt; sz[ch[p][0]] + cnt[p]) k -= sz[ch[p][0]] + cnt[p],p = ch[p][1];
+            else return p;
+        }
+    }
+    // 查询 x 的排名
+    int rank(int x)
+    {
+        find(x);  // !!!! 这里的查询是加入了虚拟节点的
+        if (val[root] &amp;gt;= x) return sz[ch[root][0]] - 1;
+        return sz[ch[root][0]] + cnt[root] - 1;
+    }
+    // 前驱 - （提到根后，左儿子的最右儿子）
+    int pre(int x)
+    {
+        find(x);
+        if (val[root] &amp;lt; x) return root;
+        int p = ch[root][0];
+        while (ch[p][1]) p = ch[p][1];
+        return p;
+    }
+    // 后继  - （提到根后，右儿子的最左儿子）
+    int succ(int x)
+    {
+        find(x);
+        if (val[root] &amp;gt; x) return root;
+        int p = ch[root][1];
+        while (ch[p][0]) p = ch[p][0];
+        return p;
+    }
+    // 删除权值为 x 的节点
+    void del(int x)
+    {
+        int last = pre(x), net = succ(x);
+        splay(last); splay(net, last);
+        int del = ch[net][0];
+        if (cnt[del] &amp;gt; 1) cnt[del]--,splay(del);
+        else ch[net][0] = 0;
+    }
+    // 删除[x,y]这一段区间
+    void del(int x,int y)
+    {
+        int last = kth(x), net = kth(y+2);// ！！！这里注意边界是否有虚拟节点
+        splay(last); splay(net, last);
+        ch[net][0] = 0;
+    }
+    // 如需插入一段序列，则需要建树
+    int build(int l,int r,int *a)
+    {
+        if(l &amp;gt; r) return 0;
+        int mid = (l+r)&amp;gt;&amp;gt;1, p =NewNode(a[mid]);
+        if(l==r) return p;
+        if((ch[p][0] = build(l,mid-1,a))) par[ch[p][0]] = p;
+        if((ch[p][1] = build(mid+1,r,a))) par[ch[p][1]] = p;
+        pushup(p); return p;
+    }
+    // 在第 x 位后面插入长度为len的数组a
+    void insert(int x,int len,int *a)
+    {
+        int last = kth(x+1), net = kth(x+2); // ！！！这里注意边界是否有虚拟节点
+        splay(last);splay(net,last);
+        int p = build(1,len,a);
+        ch[net][0] = p; par[p] = net;
+    }
+    // 中序遍历输出
+    void print(int x)
+    {
+        pushdown(x);
+        if(ch[x][0]) print(ch[x][0]);
+        printf(&amp;quot;%d &amp;quot;,val[x]);
+        if(ch[x][1]) print(ch[x][1]);
+    }
+    // 初始化清空
+    void init()
+    {
+        ncnt = root = 0;
+        ch[0][0] = ch[0][1] = sz[0] = 0;
+        //insert(-1e9); insert(1e9);  在最初始时，需要根据插入两个边界虚拟节点，以免报错
+    }
+}O_O;
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/splay/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

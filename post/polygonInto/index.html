@@ -1,0 +1,270 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」多边形面积交与并 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」多边形面积交与并
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-10-15</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/template/" class="post-tag i-tag
+                            i-tag-other_1">
+                            #template
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn = 300;
+const double eps = 1e-8;
+int dcmp(double x){         //精度误差比较
+    if(x &gt; eps) return 1;
+    return x &lt; -eps ? -1 : 0;
+}
+struct Point{double x, y;}; //点结构体
+double cross(Point a,Point b,Point c){return (a.x-c.x)*(b.y-c.y)-(b.x-c.x)*(a.y-c.y);}//叉积
+Point intersection(Point a,Point b,Point c,Point d){//传入四点即两直线，输出交点
+    Point p = a;
+    double t =((a.x-c.x)*(c.y-d.y)-(a.y-c.y)*(c.x-d.x))/((a.x-b.x)*(c.y-d.y)-(a.y-b.y)*(c.x-d.x));
+    p.x +=(b.x-a.x)*t;
+    p.y +=(b.y-a.y)*t;
+    return p;//输出交点，证明用数学方法易证
+}
+double PolygonArea(Point p[], int n){//计算多边形面积，三角剖分
+    if(n &lt; 3) return 0.0;
+    double s = p[0].y * (p[n - 1].x - p[1].x);
+    p[n] = p[0];
+    for(int i = 1; i &lt; n; ++ i)
+        s += p[i].y * (p[i - 1].x - p[i + 1].x);
+    return fabs(s * 0.5);//叉乘出来是平行四边形面积故/2，且顺逆方向不定，故取ABS变正
+}
+double CPIA(Point a[], Point b[], int na, int nb){//传入两个三角形，求相交部分的凸包
+    Point p[20], tmp[20];           //复制点集与临时点集（P其实可以用B来做
+    int tn, sflag, eflag;           //每轮相交凸包的点，叉乘符号
+    a[na] = a[0], b[nb] = b[0];     //末点用初点复制方便首末点连边
+    memcpy(p,b,sizeof(Point)*(nb + 1));         //把B复制到P
+    for(int i=0;i&lt;na&amp;&amp;nb&gt;2;i++){                //扫一次A
+        sflag=dcmp(cross(a[i+1],p[0],a[i]));    //取A两点与B第一点求叉乘符号
+        for(int j=tn=0;j&lt;nb;j++,sflag=eflag){   //扫一次B，更新TMP，TN是点数
+            if(sflag&gt;=0)tmp[tn++]=p[j];         //叉乘为正就是B数组的那个点压入
+            eflag=dcmp(cross(a[i+1],p[j+1],a[i]));//求叉乘符号
+            if((sflag^eflag)==-2)               //1异或-1等于-2
+            tmp[tn++]=intersection(a[i],a[i+1],p[j],p[j+1]);//求交点
+        }
+        memcpy(p, tmp, sizeof(Point) * tn);     //把TMP复制到P
+        nb = tn, p[nb] = p[0];//TN即TMP点数记到NB
+    }//其实该是NP表示P数组个数，这里省了个变量就用NB表示，下面第二行做参数而已
+    if(nb &lt; 3) return 0.0;      //相交部分凸包不够三个点，面积就是0
+    return PolygonArea(p, nb);  //求出相交凸包部分的面积
+}
+double SPIA(Point a[], Point b[], int na, int nb){//传入两个多边形的点
+    int i,j;                            //循环变量
+    Point t1[4],t2[4];                  //其实T13与T23没用上
+    double res=0,num1,num2;             //答案初始化，及叉乘符号
+    a[na]=t1[0]=a[0],b[nb]=t2[0]=b[0];  //初始化T1,T2和ANA,BNB
+    for(i=2;i&lt;na;i++){                  //扫一次第一个多边形全部点
+        t1[1]=a[i-1],t1[2]=a[i];        //每次在第一个多边形取两个点赋给T11,T12
+        num1=dcmp(cross(t1[1],t1[2],t1[0]));//求出叉乘符号
+        if(num1&lt;0)swap(t1[1],t1[2]);    //小于0则改变T11,T12可使叉乘符号变正，实即改变T1三个点的顺逆
+        for(j=2;j&lt;nb;j++){              //扫一次第二个多边形全部点
+            t2[1]=b[j-1],t2[2]=b[j];    //然后再在第二个多边形取两个点赋给T21,T22
+            num2=dcmp(cross(t2[1],t2[2],t2[0]));//求出叉乘符号
+            if(num2&lt;0)swap(t2[1],t2[2]);//小于0则改变T11,T12可使叉乘符号变正，实即改变T1三个点的顺逆
+            res+=CPIA(t1,t2,3,3);       //累加相交部分面积
+        }
+    }
+    return res; // 面积交
+    return PolygonArea(a,na)+PolygonArea(b,na)-res
+}
+Point p1[maxn], p2[maxn];//两个数组存读入点集
+int main(){
+    int n1, n2;         //定义
+    while(cin&gt;&gt;n1&gt;&gt;n2){ //输入两个多边形的点数
+        for(int i=0;i&lt;n1;i++)scanf(&quot;%lf%lf&quot;,&amp;p1[i].x,&amp;p1[i].y);//输入点数
+        for(int i=0;i&lt;n2;i++)scanf(&quot;%lf%lf&quot;,&amp;p2[i].x,&amp;p2[i].y);//输入点数
+        cout&lt;&lt;SPIA(p1,p2,n1,n2)&lt;&lt;endl;//输出面积交
+    }
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

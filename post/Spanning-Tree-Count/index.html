@@ -1,0 +1,293 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「Template」Matrix - Tree 矩阵树定理 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「Template」Matrix - Tree 矩阵树定理
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-10-22</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/template/" class="post-tag i-tag
+                            i-tag-">
+                            #template
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>[</mo><mo>]</mo><mo>[</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">A[][]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mopen">[</span><span class="mclose">]</span><span class="mopen">[</span><span class="mclose">]</span></span></span></span> 表示临接矩阵<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mo>[</mo><mo>]</mo><mo>[</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">B[][]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mopen">[</span><span class="mclose">]</span><span class="mopen">[</span><span class="mclose">]</span></span></span></span> 表示度数矩阵<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi><mo>[</mo><mo>]</mo><mo>[</mo><mo>]</mo><mo>=</mo><mi>B</mi><mo>−</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">K[][] = B - A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mopen">[</span><span class="mclose">]</span><span class="mopen">[</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span> 表示基尔霍夫矩阵(Kirchhoff)<br>
+生成树的计数方案数为基尔霍夫矩阵的任意(k-1)次行列式</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+using namespace std;
+const int maxd = 305;
+long long a[maxd][maxd];
+void Gauss(int n)
+{
+    long long ans=1ll;
+    for(int i=1;i&lt;=n;++i)
+    {
+        for(int k=i+1;k&lt;=n;++k)
+        while(a[k][i])
+        {
+            long long d=1ll * a[i][i]/a[k][i];
+            for(int j=i;j&lt;=n;++j) a[i][j]= a[i][j] - 1ll * d*a[k][j];
+            swap(a[i],a[k]),ans=-ans;
+        }
+        ans = ans*a[i][i];
+    }
+    if(ans &lt; 0) ans = -ans;
+    printf(&quot;%lld\n&quot;,ans);
+}
+void add(int x,int y)
+{
+    a[x][y] = a[y][x] = -1ll;
+    a[x][x] ++, a[y][y]++;
+}
+
+int t,n,m;
+
+int main()
+{
+//    freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+//    freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+        scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+        memset(a,0,sizeof(a));
+        for(int i=1;i&lt;=m;i++)
+        {
+            int x,y;scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+            add(x,y);
+        }
+        Gauss(n-1);
+    }
+    return 0;
+}
+
+</code></pre>
+<hr>
+<p>生成数概率</p>
+<pre><code class="language-cpp">const double eps = 1e-8;
+const int N = 66;
+double a[N][N];
+lf Gauss(ll n)
+{
+    lf ans = 1.0;
+    FOR(i,1,n)
+    {
+        ll p = i;
+        FOR(j,i+1,n) if( a[p][i] - a[j][i] &lt; -eps ) p = j;
+        if(p != i) FOR(j,i,n)swap(a[i][j],a[p][j]);
+        if(!a[i][i]) return 0;
+        FOR(j,i+1,n)
+        {
+            double t = a[j][i] / a[i][i];
+            _FOR(k,n,i) a[j][k] -= a[i][k] * t;
+        }
+        ans *= a[i][i];
+    }
+    return fabs(ans);
+}
+void solve()
+{
+    ll n;RLL(n);
+    double k = 1.0;
+    FOR(i,1,n) FOR(j,1,n)
+        {
+            RLF(a[i][j]);
+            if(i == j) continue;
+            if(a[i][j] &gt; 1 - eps) a[i][j] -= eps;
+            if(i &lt; j) k *= (1 - a[i][j]);
+            a[i][j] /= (1 - a[i][j]);
+        }
+    FOR(i,1,n)FOR(j,1,n) if(i!=j) a[i][i] += a[i][j] , a[i][j] = -a[i][j];
+    printf(&quot;%.8lf&quot;,Gauss(n-1)*k);
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

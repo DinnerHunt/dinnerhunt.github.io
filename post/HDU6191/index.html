@@ -1,0 +1,316 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「HDU 6191 」Query on A Tree | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「HDU 6191 」Query on A Tree
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-12-03</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/OxWYXA4zD/" class="post-tag i-tag
+                            i-tag-primary">
+                            #DFS序
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/A_JfFNKrvK/" class="post-tag i-tag
+                            i-tag-info">
+                            #可持久化Trie
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>Monkey A lives on a tree, he always plays on this tree.</p>
+<p>One day, monkey A learned about one of the bit-operations, xor. He was keen of this interesting operation and wanted to practise it at once.</p>
+<p>Monkey A gave a value to each node on the tree. And he was curious about a problem.</p>
+<p>The problem is how large the xor result of number x and one node value of label y can be, when giving you a non-negative integer x and a node label u indicates that node y is in the subtree whose root is u(y can be equal to u).</p>
+<p>Can you help him?</p>
+<!--more-->
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://vjudge.net/problem/HDU-6191">「HDU 6191 」Query on A Tree</a></p>
+<h4 id="题解">题解</h4>
+<p>可持久化trie? 有点感觉01Tri有点像线段树<br>
+主要技巧在用dfs序维护trie，然后子树范围等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>d</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">id[x]-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 至 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>d</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>+</mo><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">id[x] + size[x]-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxd = 1e5+10;
+int t[maxd*32][2],val[maxd*32][2],sz[maxd];
+int rt[maxd],tot,num;
+int v[maxd],id[maxd];
+vector&lt;int&gt; G[maxd];
+void insert(int &amp;now,int last,int x,int p)
+{   
+    now = ++tot;if(p&lt;0) return;
+    int c = (x &gt;&gt; p) &amp; 1;
+    t[now][0] = t[last][0];
+    t[now][1] = t[last][1];
+    val[now][c] = val[last][c]+1;
+    val[now][c^1] = val[last][c^1];
+    insert(t[now][c],t[last][c],x,p-1);
+}
+int query(int now,int last,int x)
+{
+    int ans = 0;
+    for(int i=30;i&gt;=0;i--)
+    {
+        int c = (x &gt;&gt; i) &amp; 1;
+        if(val[now][c^1] - val[last][c^1] &gt; 0) ans += (1&lt;&lt;i),c^=1;
+        now = t[now][c], last = t[last][c];
+    }
+    return ans;
+}
+void dfs(int x)
+{
+    id[x] = ++num;sz[x]=1;
+    insert(rt[id[x]],rt[id[x]-1],v[x],30);
+    for(int i= 0;i&lt;G[x].size();i++)
+    {
+        int v = G[x][i];dfs(v);
+        sz[x] += sz[v];
+    }
+}
+
+int main()
+{
+    // freopen(&quot;a.in&quot;,&quot;r&quot;,stdin);
+    // freopen(&quot;k.out&quot;,&quot;w&quot;,stdout);
+
+    int n,m;
+    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)
+    {
+        memset(t,0,sizeof(t));
+        memset(rt,0,sizeof(rt));
+        memset(val,0,sizeof(val));
+        num  = tot = 0;
+
+        for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;v[i]);
+        //printf(&quot;%d %d\n&quot;,n,m);
+        for(int i=2;i&lt;=n;i++)
+        {
+           int x;scanf(&quot;%d&quot;,&amp;x);
+           G[x].push_back(i);
+        }
+        int root  = 1;
+        dfs(root);
+        // for(int i=1;i&lt;=n;i++)
+        //     printf(&quot;%d %d\n&quot;,i,rt[i]);
+
+        for(int i=1;i&lt;=m;i++)
+        {
+           int x,y;scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+           //printf(&quot;%d %d\n&quot;,id[x]+sz[x]-1,id[x]-1);
+           printf(&quot;%d\n&quot;,query(rt[id[x]+sz[x]-1],rt[id[x]-1],y));
+        }
+        for(int i=1;i&lt;=n;i++) G[i].clear();
+    }
+    return 0;
+}
+
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

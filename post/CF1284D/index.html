@@ -1,0 +1,283 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    「CodeForces 1284D」New Year and Conference | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            「CodeForces 1284D」New Year and Conference
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-01-07</time>
+                            
+                                <a href="https://dinnerhunt.cn/tag/FIeqn9R_J/" class="post-tag i-tag
+                            i-tag-">
+                            #数据结构
+                        </a>
+                                
+                                <a href="https://dinnerhunt.cn/tag/2-eAhAI-t/" class="post-tag i-tag
+                            i-tag-banana">
+                            #思维
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>Filled with optimism, Hyunuk will host a conference about how great this new year will be!</p>
+<p>The conference will have 𝑛 lectures. Hyunuk has two candidate venues 𝑎 and 𝑏. For each of the 𝑛 lectures, the speaker specified two time intervals [𝑠𝑎𝑖,𝑒𝑎𝑖] (𝑠𝑎𝑖≤𝑒𝑎𝑖) and [𝑠𝑏𝑖,𝑒𝑏𝑖] (𝑠𝑏𝑖≤𝑒𝑏𝑖). If the conference is situated in venue 𝑎, the lecture will be held from 𝑠𝑎𝑖 to 𝑒𝑎𝑖, and if the conference is situated in venue 𝑏, the lecture will be held from 𝑠𝑏𝑖 to 𝑒𝑏𝑖. Hyunuk will choose one of these venues and all lectures will be held at that venue.</p>
+<p>Two lectures are said to overlap if they share any point in time in common. Formally, a lecture held in interval [𝑥,𝑦] overlaps with a lecture held in interval [𝑢,𝑣] if and only if max(𝑥,𝑢)≤min(𝑦,𝑣).</p>
+<!--more-->
+<p>We say that a participant can attend a subset 𝑠 of the lectures if the lectures in 𝑠 do not pairwise overlap (i.e. no two lectures overlap). Note that the possibility of attending may depend on whether Hyunuk selected venue 𝑎 or venue 𝑏 to hold the conference.</p>
+<p>A subset of lectures 𝑠 is said to be venue-sensitive if, for one of the venues, the participant can attend 𝑠, but for the other venue, the participant cannot attend 𝑠.</p>
+<p>A venue-sensitive set is problematic for a participant who is interested in attending the lectures in 𝑠 because the participant cannot be sure whether the lecture times will overlap. Hyunuk will be happy if and only if there are no venue-sensitive sets. Determine whether Hyunuk will be happy.</p>
+<h4 id="链接">链接🔗</h4>
+<p><a href="https://codeforces.com/contest/1284/problem/D">「CodeForces 1284D」New Year and Conference</a></p>
+<h4 id="题解">题解</h4>
+<p>一种很优美的做法，代码量少<br>
+参考 <a href="https://www.xht37.com/hello-2020-%e9%a2%98%e8%a7%a3/">xht37's blog</a><br>
+这里对其代码进行解释</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-cpp">const ll maxd = 1e5+10;
+
+ll sa[maxd],sb[maxd],ea[maxd],eb[maxd],a[maxd*4];
+ll n,m,tot;
+V l[maxd*4],r[maxd*4];
+
+
+ll solve()
+{
+    FOR(i,1,m) l[i].clear(),r[i].clear();
+    FOR(i,1,n) l[sa[i]].pb(i), r[ea[i]].pb(i); // l表示在时间i，有那些会议开始了，r表示结束了
+    multiset&lt;ll,greater&lt;ll&gt; &gt; L;
+    multiset&lt;ll&gt; R;
+    FOR(i,1,m)      //枚举时间
+    {
+        for(ll x:l[i]) L.insert(sb[x]), R.insert(eb[x]); // 因为会议x开始了，所以将再另一边的会议丢进集合，也表示开始了
+        if(L.size() &amp;&amp; *L.begin() &gt; *R.begin()) return 1ll; // 如果在集合中出现了断点，说明没有相交，而此时我们枚举的会议都是相交的，所以这里会出现 venue-sensitive
+        for(ll x:r[i]) L.erase(sb[x]),R.erase(eb[x]);
+    }
+    return 0ll;
+}
+
+int main()
+{
+//    __IN;__OUT;
+    RLL(n);
+    FOR(i,1,n) RLL4(sa[i],ea[i],sb[i],eb[i]);
+    FOR(i,1,n) a[++tot] = sa[i];
+    FOR(i,1,n) a[++tot] = sb[i];
+    FOR(i,1,n) a[++tot] = ea[i];
+    FOR(i,1,n) a[++tot] = eb[i];
+    sort(a+1,a+1+tot);
+    m = unique(a+1,a+1+tot) - a - 1; // 因为要枚举时间，所以需要离散化
+    FOR(i,1,n) sa[i] = lower_bound(a+1,a+1+m,sa[i]) - a;
+    FOR(i,1,n) sb[i] = lower_bound(a+1,a+1+m,sb[i]) - a;
+    FOR(i,1,n) ea[i] = lower_bound(a+1,a+1+m,ea[i]) - a;
+    FOR(i,1,n) eb[i] = lower_bound(a+1,a+1+m,eb[i]) - a;
+    ll flag = solve(); swap(sa,sb);swap(ea,eb); flag|= solve();
+
+    if(flag) PS(&quot;NO&quot;); else PS(&quot;YES&quot;);
+
+    return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接🔗</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

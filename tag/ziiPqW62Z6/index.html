@@ -1,0 +1,413 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    莫队算法 | dinnerhunt
+</title>
+<link rel="shortcut icon" href="https://dinnerhunt.cn/favicon.ico?v=1654671103475">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dinnerhunt.cn/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dinnerhunt.cn/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/stackoverflow-light.min.css">
+
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dinnerhunt.cn">
+                <img class="avatar" src="https://dinnerhunt.cn/images/avatar.png?v=1654671103475" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    dinnerhunt
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        莫队算法</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/modui_zhuanti/">
+                        「专题训练」 莫队算法
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-04-05</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/ziiPqW62Z6/" class="post-tag i-tag
+                            i-tag-warning">
+            #莫队算法
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            「BZOJ 2038」小Z的袜子 
+莫队模版题
+处理出询问区间中每种颜色的数量，计算出抽中相同颜色袜子的数量即可
+
+「NBUT 1457」Sona
+莫队维护区间立方和，直接减去原来的立方和，更改后加上现在的立方和，不需要计算公式
+
+「CF 940F」 Machine Learning
+带修莫队+暴力统计
+因为要塞入1,2,3,....k1,2,3,....k1,2,3,....k时，需要k∗(k+1)2\frac{k*(k+1)}{2}2k∗(k+1)​个元素，因此nnn个元素最多填充n\sqrt{n}n​个区间，因此答案的区间不会超过n\sqrt{n}n​
+
+「CF 617F」XOR and Favorite Number
+莫队算法
+异或部分可以用前缀和解决，设pre[i] = a[1] ^ \cdots ^ a[o]
+在莫队的过程中，假设当前区间为[l,r−1][l,r-1][l,r−1],更新至[l,r][l,r][l,r]时，新增了一个 pre[r]pre[r]pre[r],那么对于答案的新增的贡献是在区间[l,r−1][l,r-1][l,r−1]中，有多少个pre[r]kpre[r] ^ kpre[r]k
+
+「洛谷 P3604」美好的每一天
+状态压缩 + 莫队算法
+将 26 个字母的出现的奇偶性压缩成一个数字，然后对于是否为回文串，只需要确认某个区间只有的数字为0或为2的整次幂
+前缀和一下就跟上题差不多了
+「AT1219」	歴史の研究
+回滚莫队
+对于某些不好做减处理的莫队问题，对于左端点同一个块中问题，我们可以进行反复回滚操作，使得不存在减问题
+const ll mod = 1e9+7;
+const int N = 2e5+10;
+int block;
+struct node
+{
+    int id,l,r;
+}q[N];
+int cntl[N],cntr[N],b[N],d[N],e[N];
+bool cmp(node x,node y)
+{
+    if(b[x.l] == b[y.l]) return x.r &amp;lt; y.r;
+    return x.l &amp;lt; y.l;
+}
+int a[N],vl,vr;
+int n,m;
+ll res[N];
+ll clca(int l,int r)
+{
+    int last[N];
+    ll res = 0ll;
+    for(int i=l;i&amp;lt;=r;i++) last[a[i]]=0;
+    for(int i=l;i&amp;lt;=r;i++)
+    {
+        last[a[i]]++;
+        res = max(1ll * last[a[i]] * e[i],res);
+    }
+    return res;
+}
+void solve()
+{
+    ll rans = 0;
+    for(int i=1,l=1,r=0;i&amp;lt;=m;i++)
+    {
+        if(b[q[i-1].l] != b[q[i].l] || i == 0)
+        {
+            FOR(j,vl,vr) cntr[a[j]] = 0; rans = 0;
+            l = min(n,block*b[q[i].l]); r = l -1; vl = r;
+        }
+        if(b[q[i].l]== b[q[i].r]) res[q[i].id] = clca(q[i].l,q[i].r);
+        else
+        {
+//            putchar(&#39;-&#39;);
+//            PLN2(q[i].l,q[i].r);
+            ll ans = 0;
+            while(l &amp;gt; q[i].l)
+            {
+                --l;int x = a[l]; cntl[x]++;
+                ans = max(1ll * (cntl[x] + cntr[x]) * e[l],ans);
+            }
+            while (r &amp;lt; q[i].r)
+            {
+                ++r;int x= a[r]; cntr[x]++;
+                ans = max(1ll * (cntl[x] + cntr[x]) * e[r],ans);
+                rans = max(1ll*cntr[x] * e[r],rans);
+            }
+            vr = max(r,vr);
+            while(l &amp;lt; min(n,block*b[q[i].l])) cntl[a[l]] = 0,++l;
+            res[q[i].id] = max(ans,rans);
+        }
+    }
+}
+map&amp;lt;int,int&amp;gt; mp;
+int main()
+{
+//    __IN;__OUT;
+    RLL2(n,m);
+    FOR(i,1,n) RLL(e[i]);
+    FOR(i,1,n) d[i] = e[i];
+    sort(d+1,d+1+n);
+    int tot = 0;
+    FOR(i,1,n)if(!mp[d[i]]) mp[d[i]] = ++tot;
+    FOR(i,1,n) a[i] = mp[e[i]];
+//    FOR(i,1,n) PLP(c[i]);PN();
+    block = sqrt(n);
+    FOR(i,1,n) b[i] = (i-1)/block+1;
+    FOR(i,1,m) RLL2(q[i].l,q[i].r);
+
+    FOR(i,1,m) q[i].id = i;
+    sort(q+1,q+1+m,cmp);
+//    FOR(i,1,m)PLN2(q[i].l,q[i].r);
+    solve();
+    FOR(i,1,m) PLN(res[i]);
+    return 0;
+}
+
+
+「洛谷 P1903」[国家集训队]数颜色 / 维护队列
+带修莫队
+在原有基础上加上一维时间，处理出每个询问出现那那个时间段，在莫队移动的时候多移动时间即可
+区间大小为nnn ，修改次数为ttt时，块的大小为 nt3\sqrt{nt}^3nt​3最优
+int block = ceil(exp((log(n)+log(t))/3))
+
+
+「WC2013」糖果公园
+树上带修莫队
+可以将树的欧拉序求出来，存每个点在欧拉序中出现的第一次位置和最后一次位置
+对于区间内出现两次的值，不予以统计
+如果两点不在树的同一子树内，则需要格外统计lcalcalca
+然后将树上询问变成区间询问，然后跟上题一样
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/modui_zhuanti/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dinnerhunt.cn/post/modui/">
+                        「Template」莫队算法
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-03-31</time>
+                    
+                        <a href="https://dinnerhunt.cn/tag/ziiPqW62Z6/" class="post-tag i-tag
+                            i-tag-">
+            #莫队算法
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            能用int 尽量用int，不然很容易超时
+const int N = 2e6;
+int c[N],blo[N],d[N];
+map&amp;lt;int,int&amp;gt; mp;
+ll ans,cnt[N];
+struct node{int l,r,id;ll pp;}a[N];
+bool cmp1(const node a,const node b) {if(blo[a.l]==blo[b.l])return a.r&amp;lt;b.r;return a.l&amp;lt;b.l;}
+bool cmp(const node a,const node b) {return a.id &amp;lt; b.id;}
+void add(int x)
+{
+    ans -= (cnt[x] &amp;gt; 0);
+    cnt[x]++;
+    ans += (cnt[x] &amp;gt; 0);
+}
+void del(int x)
+{
+    ans -= (cnt[x] &amp;gt; 0);
+    cnt[x]--;
+    ans += (cnt[x] &amp;gt; 0);
+}
+void solve(int num)
+{
+    for(int i=1,l=1,r=0;i&amp;lt;=num;i++)
+    {
+        for(;r&amp;lt;a[i].r;r++)add(c[r+1]);
+        for(;r&amp;gt;a[i].r;r--)del(c[r]);
+        for(;l&amp;lt;a[i].l;l++)del(c[l]);
+        for(;l&amp;gt;a[i].l;l--)add(c[l-1]);
+        a[i].pp = ans;
+    }
+}
+
+int main()
+{
+//    __IN;__OUT;
+    int n,m;RLL(n);
+    FOR(i,1,n) RLL(c[i]);
+    //如果需要离散化
+    // FOR(i,1,n) d[i] = c[i];  
+    // sort(d+1,d+1+n);
+    // int tot = 0;
+    // FOR(i,1,n)if(!mp[d[i]]) mp[d[i]] = ++tot;
+    // FOR(i,1,n) c[i] = mp[c[i]];
+//    FOR(i,1,n) PLP(c[i]);PN();
+    RLL(m);
+    int block = n/sqrt((m&amp;gt;&amp;gt;1)/3);
+    FOR(i,1,n) blo[i] = (i-1)/block+1;
+    FOR(i,1,m) RLL2(a[i].l,a[i].r);
+    FOR(i,1,m) a[i].id = i;
+    sort(a+1,a+1+m,cmp1);
+    solve(m);
+    sort(a+1,a+1+m,cmp);
+    FOR(i,1,m) PLN(a[i].pp);
+    return 0;
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dinnerhunt.cn/post/modui/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dinnerhunt.cn/images/avatar.png?v=1654671103475)">
+        </div>
+        <h1 class="id_card-title">
+            dinnerhunt
+        </h1>
+        <h2 class="id_card-description">
+            
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script> | 
+  <a class="rss" href="https://dinnerhunt.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>
